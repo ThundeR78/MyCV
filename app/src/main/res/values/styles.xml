@@ -1,0 +1,27 @@
+<resources>
+
+    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+
+    </style>
+
+    <style name="NavDrawerContainer">
+        <item name="android:layout_width">@dimen/navigation_drawer_width</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@color/navdrawer_background</item>
+    </style>
+    <style name="NavDrawerLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@color/navdrawer_profile_background</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">20dp</item>
+    </style>
+    <style name="NavDrawerImage">
+        <item name="android:layout_width">@dimen/navdrawer_image_size</item>
+        <item name="android:layout_height">@dimen/navdrawer_image_size</item>
+        <item name="android:src">@drawable/me_manga</item>
+    </style>
+
+</resources>

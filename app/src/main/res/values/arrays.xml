@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="menu_titles">
+        <item>@string/title_profile</item>
+        <item>@string/title_career</item>
+        <item>@string/title_hobbies</item>
+        <item>@string/title_contact</item>
+        <item>@string/title_cv</item>
+    </string-array>
+
+
+</resources>
