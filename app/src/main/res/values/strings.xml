@@ -11,7 +11,8 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="title_profile">Profile</string>
-    <string name="title_career">Parcours</string>
+    <string name="title_studies">Studies</string>
+    <string name="title_career">Career</string>
     <string name="title_contact">Contact</string>
     <string name="title_hobbies">Loisirs</string>
     <string name="title_cv">CV</string>

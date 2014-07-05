@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Path;
 import android.graphics.Rect;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import fr.wetstein.mycv.R;
-import fr.wetstein.mycv.activity.HomeActivity;
 
 /**
  * Created by ThundeR on 05/07/2014.
@@ -23,6 +21,7 @@ import fr.wetstein.mycv.activity.HomeActivity;
 public class HomeFragment extends Fragment {
 
     public HomeFragment() {
+
     }
 
     @Override
@@ -32,7 +31,7 @@ public class HomeFragment extends Fragment {
         TextView label = (TextView) rootView.findViewById(R.id.section_label);
         ImageView image = (ImageView) rootView.findViewById(R.id.image);
 
-        image.setImageBitmap(getHexagonShape(((BitmapDrawable)image.getDrawable()).getBitmap()));
+        //image.setImageBitmap(getHexagonShape(((BitmapDrawable)image.getDrawable()).getBitmap()));
 
         return rootView;
     }
@@ -40,11 +39,11 @@ public class HomeFragment extends Fragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        ((HomeActivity) activity).onSectionAttached(getArguments().getInt(ARG_SECTION_NUMBER));
+        //((HomeActivity) activity).onSectionAttached(getArguments().getInt(ARG_SECTION_NUMBER));
     }
 
     //TEST
-    public Bitmap getHexagonShape(Bitmap scaleBitmapImage)
+    public Bitmap getHexagonShape(Bitmap scaleBitmapImage) {
         int targetWidth = scaleBitmapImage.getWidth();
         int targetHeight = scaleBitmapImage.getHeight();
         Bitmap targetBitmap = Bitmap.createBitmap(targetWidth,

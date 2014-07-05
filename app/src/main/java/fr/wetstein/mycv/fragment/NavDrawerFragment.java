@@ -31,9 +31,7 @@ import fr.wetstein.mycv.R;
  */
 public class NavDrawerFragment extends Fragment {
 
-    /**
-     * Remember the position of the selected item.
-     */
+    /** Remember the position of the selected item. */
     private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
 
     /**
@@ -42,14 +40,10 @@ public class NavDrawerFragment extends Fragment {
      */
     private static final String PREF_USER_LEARNED_DRAWER = "navigation_drawer_learned";
 
-    /**
-     * A pointer to the current callbacks instance (the Activity).
-     */
+    /** A pointer to the current callbacks instance (the Activity). */
     private NavigationDrawerCallbacks mCallbacks;
 
-    /**
-     * Helper component that ties the action bar to the navigation drawer.
-     */
+    /** Helper component that ties the action bar to the navigation drawer. */
     private ActionBarDrawerToggle mDrawerToggle;
 
     private DrawerLayout mDrawerLayout;
@@ -272,9 +266,7 @@ public class NavDrawerFragment extends Fragment {
      * Callbacks interface that all activities using this fragment must implement.
      */
     public static interface NavigationDrawerCallbacks {
-        /**
-         * Called when an item in the navigation drawer is selected.
-         */
+        /** Called when an item in the navigation drawer is selected. */
         void onNavigationDrawerItemSelected(int position);
     }
 }

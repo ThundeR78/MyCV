@@ -3,6 +3,7 @@
 
     <string-array name="menu_titles">
         <item>@string/title_profile</item>
+        <item>@string/title_studies</item>
         <item>@string/title_career</item>
         <item>@string/title_hobbies</item>
         <item>@string/title_contact</item>
