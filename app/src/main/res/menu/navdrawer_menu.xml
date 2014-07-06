@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+	<item android:id="@+id/item_profile" android:icon="@drawable/ic_launcher" android:title="@string/title_profile" android:orderInCategory="0" />
+	<item android:id="@+id/item_studies" android:icon="@drawable/ic_launcher" android:title="@string/title_studies" android:orderInCategory="1" />
+	<item android:id="@+id/item_career" android:icon="@drawable/ic_launcher" android:title="@string/title_career" android:orderInCategory="2" />
+	<item android:id="@+id/item_skills" android:icon="@drawable/ic_launcher" android:title="@string/title_skills" android:orderInCategory="3" />
+	<item android:id="@+id/item_hobbies" android:icon="@drawable/ic_launcher" android:title="@string/title_hobbies" android:orderInCategory="4" />
+	<item android:id="@+id/item_contact" android:icon="@drawable/ic_launcher" android:title="@string/title_contact" android:orderInCategory="6" />
+    <item android:id="@+id/item_cv" android:icon="@drawable/ic_launcher" android:title="@string/title_cv" android:orderInCategory="5" />
+
+</menu>

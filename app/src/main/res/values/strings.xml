@@ -13,12 +13,20 @@
     <string name="title_profile">Profile</string>
     <string name="title_studies">Studies</string>
     <string name="title_career">Career</string>
+    <string name="title_skills">Skills</string>
     <string name="title_contact">Contact</string>
     <string name="title_hobbies">Loisirs</string>
     <string name="title_cv">CV</string>
 
     <!-- ACTION -->
-    <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
+
+    <!-- LABEL -->
+    <string name="label_send_email">Envoyer un email</string>
+
+    <!-- VALUE -->
+    <string name="value_email">julienwetstein@msn.com</string>
+    <string name="value_phone">06 38 66 43 64</string>
+    <string name="value_age">%1$d ans</string>
 
 </resources>

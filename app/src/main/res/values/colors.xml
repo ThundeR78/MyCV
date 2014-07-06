@@ -1,9 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <!-- COLOR -->
+    <color name="blue">#29ABE2</color>
+    <color name="blue_light">#33B5E5</color>
+    <color name="blue_dark">#0099CC</color>
+    <color name="green">#ACC358</color>
+    <color name="green_light">#99CC00</color>
+    <color name="green_dark">#669900</color>
+    <color name="yellow">#FFC900</color>
+    <color name="orange_light">#FFBB33</color>
+    <color name="orange_dark">#FF8800</color>
+    <color name="red">#ED1C24</color>
+    <color name="red_light">#FF4444</color>
+    <color name="red_dark">#CC0000</color>
+    <color name="violet">#A83AAC</color>
+    <color name="violet_light">#AA66CC</color>
+    <color name="violet_dark">#9933CC</color>
+
     <color name="actionbar_background">@android:color/background_light</color>
 
     <color name="navdrawer_background">@android:color/background_light</color>
     <color name="navdrawer_profile_background">@android:color/background_dark</color>
+    <color name="navdrawer_item_textcolor">@android:color/black</color>
 
+
+    <color name="button_disabled">#E8E8E8</color>
 </resources>

@@ -1,0 +1,59 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/ScrollView">
+    <LinearLayout style="@style/ScrollViewLayout">
+
+        <ImageView android:id="@+id/image"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/me_googleglass" />
+        <TextView
+            android:id="@+id/profile_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/profile_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout style="@style/DetailRow">
+            <TextView
+                android:id="@+id/text_email"
+                android:text="@string/value_email"
+                style="@style/DetailValue" />
+
+            <ImageButton android:id="@+id/button_email" style="@style/DetailButton" android:src="@drawable/ic_action_email" />
+        </LinearLayout>
+
+        <LinearLayout style="@style/DetailRow">
+            <TextView
+                android:id="@+id/text_phone"
+                android:text="@string/value_phone"
+                style="@style/DetailValue" />
+
+            <ImageButton android:id="@+id/button_phone" style="@style/DetailButton" android:src="@drawable/ic_action_call" />
+        </LinearLayout>
+
+        <!--<fr.wetstein.mycv.view.PolygonView
+            android:id="@+id/poly1"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_alignParentLeft="true"
+            app:sides="6"
+            app:stroke_width="1"
+            app:fill_color="@android:color/holo_orange_dark"
+            app:fill_percent="50"
+            app:inscribed_circle="false"
+            android:background="@drawable/me_manga"
+            />
+
+
+
+        <fr.wetstein.mycv.view.HexagonView android:visibility="gone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/me_manga" />-->
+
+    </LinearLayout>
+</ScrollView>

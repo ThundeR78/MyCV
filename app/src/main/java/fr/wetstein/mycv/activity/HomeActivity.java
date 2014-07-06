@@ -10,7 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import fr.wetstein.mycv.R;
-import fr.wetstein.mycv.fragment.HomeFragment;
+import fr.wetstein.mycv.fragment.ProfileFragment;
 import fr.wetstein.mycv.fragment.NavDrawerFragment;
 
 
@@ -46,7 +46,7 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
         Fragment fragment = new Fragment();
         switch (position) {
             case 0:
-                fragment = new HomeFragment();
+                fragment = new ProfileFragment();
                 break;
             case 1:
 

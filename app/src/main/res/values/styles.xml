@@ -4,6 +4,7 @@
 
     </style>
 
+    <!-- NAV DRAWER -->
     <style name="NavDrawerContainer">
         <item name="android:layout_width">@dimen/navigation_drawer_width</item>
         <item name="android:layout_height">match_parent</item>
@@ -23,5 +24,117 @@
         <item name="android:layout_height">@dimen/navdrawer_image_size</item>
         <item name="android:src">@drawable/me_manga</item>
     </style>
+    <style name="NavDrawerList">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_gravity">start</item>
+        <item name="android:choiceMode">singleChoice</item>
+        <item name="android:background">@color/navdrawer_background</item>
+        <item name="android:divider">@android:color/darker_gray</item>
+        <item name="android:dividerHeight">1dp</item>
+    </style>
+    <style name="NavDrawerListIcon">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+        <!--         <item name="android:layout_marginTop">10dp</item> -->
+        <!-- 	android:layout_width="30dp" -->
+    </style>
+    <style name="NavDrawerListText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:textSize">24dp</item>
+        <item name="android:textColor">@color/navdrawer_item_textcolor</item>
+    </style>
 
+    <!-- LAYOUT -->
+    <style name="ScrollView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:paddingLeft">@dimen/activity_horizontal_margin</item>
+        <item name="android:paddingRight">@dimen/activity_horizontal_margin</item>
+        <item name="android:paddingTop">@dimen/activity_vertical_margin</item>
+        <item name="android:paddingBottom">@dimen/activity_vertical_margin</item>
+    </style>
+    <style name="ScrollViewLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <!-- BUTTON -->
+    <style name="Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/button_textsize</item>
+        <item name="android:background">@drawable/button_violet</item>
+    </style>
+    <style name="DetailButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:background">@drawable/round_button_violet</item>
+    </style>
+
+    <!-- DETAIL -->
+    <style name="DetailTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">26sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="DetailSubtitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">22sp</item>
+    </style>
+    <style name="DetailSection">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/violet_dark</item>
+    </style>
+    <style name="DetailSeparator">
+        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:background">@color/violet_dark</item>
+    </style>
+    <style name="DetailRow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+    <style name="DetailText">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="DetailLabel" parent="DetailText">
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="DetailValue" parent="DetailText">
+        <item name="android:layout_weight">2</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="DetailValueDesc" parent="DetailValue">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
 </resources>

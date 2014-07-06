@@ -1,16 +1,17 @@
 package fr.wetstein.mycv.fragment;
 
 
-import android.app.Activity;
 import android.app.ActionBar;
+import android.app.Activity;
 import android.app.Fragment;
-import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -18,11 +19,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import fr.wetstein.mycv.R;
+import fr.wetstein.mycv.adapter.NavDrawerAdapter;
 
 /**
  * Fragment used for managing interactions for and presentation of a navigation drawer.
@@ -30,6 +30,8 @@ import fr.wetstein.mycv.R;
  * design guidelines</a> for a complete explanation of the behaviors implemented here.
  */
 public class NavDrawerFragment extends Fragment {
+
+    public static final String TAG = "NavDrawerFragment";
 
     /** Remember the position of the selected item. */
     private static final String STATE_SELECTED_POSITION = "selected_navigation_drawer_position";
@@ -50,6 +52,7 @@ public class NavDrawerFragment extends Fragment {
     private ListView mDrawerListView;
     private View mFragmentContainerView;
 
+    private NavDrawerAdapter mNavDrawerAdapter;
     private int mCurrentSelectedPosition = 0;
     private boolean mFromSavedInstanceState;
     private boolean mUserLearnedDrawer;
@@ -71,6 +74,7 @@ public class NavDrawerFragment extends Fragment {
             mFromSavedInstanceState = true;
         }
 
+       // mDrawerListView.setSelection(0);
         // Select either the default item (0) or the last selected item.
         selectItem(mCurrentSelectedPosition);
     }
@@ -93,11 +97,13 @@ public class NavDrawerFragment extends Fragment {
                 selectItem(position);
             }
         });
-        mDrawerListView.setAdapter(new ArrayAdapter<String>(
+        mNavDrawerAdapter = new NavDrawerAdapter(getActivity(), R.menu.navdrawer_menu);
+        mDrawerListView.setAdapter(mNavDrawerAdapter);
+        /*mDrawerListView.setAdapter(new ArrayAdapter<String>(
                 getActionBar().getThemedContext(),
                 android.R.layout.simple_list_item_activated_1,
                 android.R.id.text1,
-                getResources().getStringArray(R.array.menu_titles)));
+                getResources().getStringArray(R.array.menu_titles)));*/
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
 
         return rootView;
@@ -182,13 +188,17 @@ public class NavDrawerFragment extends Fragment {
 
     private void selectItem(int position) {
         mCurrentSelectedPosition = position;
+        long id = 0;
         if (mDrawerListView != null) {
+            //id =((View) mDrawerListView.getItemAtPosition(position)).getId();
+            //mDrawerListView.getAdapter().get
             mDrawerListView.setItemChecked(position, true);
         }
         if (mDrawerLayout != null) {
             mDrawerLayout.closeDrawer(mFragmentContainerView);
         }
         if (mCallbacks != null) {
+            Log.v(TAG, "ID="+ id);
             mCallbacks.onNavigationDrawerItemSelected(position);
         }
     }
@@ -239,10 +249,10 @@ public class NavDrawerFragment extends Fragment {
             return true;
         }
 
-        if (item.getItemId() == R.id.action_example) {
-            Toast.makeText(getActivity(), "Example action.", Toast.LENGTH_SHORT).show();
-            return true;
+        switch (item.getItemId()) {
+
         }
+
 
         return super.onOptionsItemSelected(item);
     }

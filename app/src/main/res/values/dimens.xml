@@ -8,4 +8,7 @@
     <dimen name="navigation_drawer_width">240dp</dimen>
 
     <dimen name="navdrawer_image_size">100dp</dimen>
+
+    <dimen name="button_textsize">22sp</dimen>
+    <dimen name="button_corners_radius">3dp</dimen>
 </resources>
