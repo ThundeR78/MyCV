@@ -22,12 +22,6 @@ public class ParserAssets {
 	private static final String pathData = "data/";
 	private static final String fileSkills = "skills.json";
 
-    public static final String NODE_DEV = "dev";
-    public static final String NODE_SOFTWARE = "software";
-    public static final String NODE_LANGUAGE = "language";
-    public static final String NODE_OS = "os";
-    public static final String NODE_VERSIONING = "versioning";
-
     private enum NodesSkill {
         DEV("dev"), SOFTWARE("software"), LANGUAGE("language"), OS("os"), VERSIONING("versioning");
         private String label;
@@ -55,6 +49,8 @@ public class ParserAssets {
 
                     item.label = jsonObjectItem.getString("label");
                     item.rate = jsonObjectItem.getInt("rate");
+                    if (jsonObjectItem.has("color"))
+                        item.color = jsonObjectItem.getString("color");
 
                     items.add(item);
                 }

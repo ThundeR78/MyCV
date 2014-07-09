@@ -15,9 +15,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import fr.wetstein.mycv.R;
 import fr.wetstein.mycv.business.Skill;
@@ -31,6 +34,8 @@ public class SkillsFragment extends Fragment {
     public static final String TAG = "SkillsFragment";
 
     private HashMap<String, List<Skill>> mapSkills;
+
+    private LinearLayout rootLinear;
 
     public SkillsFragment() {
 
@@ -85,6 +90,7 @@ public class SkillsFragment extends Fragment {
 
         // Adds your progressBar to your layout
         ((LinearLayout)rootView.findViewById(R.id.rootLinearLayout)).addView(progressBar);
+        rootLinear = (LinearLayout) rootView.findViewById(R.id.rootLinearLayout);
 
         return rootView;
     }
@@ -99,6 +105,34 @@ public class SkillsFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
+        for (Map.Entry<String, List<Skill>> entry : mapSkills.entrySet()) {
+            String key = entry.getKey();
+            List<Skill> values = entry.getValue();
 
+            TextView txtSection = new TextView(getActivity());
+            txtSection.setText(key);
+            rootLinear.addView(txtSection);
+
+            for (Skill s : values) {
+                RelativeLayout rl = new RelativeLayout(getActivity());
+                rl.setGravity(Gravity.CENTER);
+
+                ProgressBar pgb = new ProgressBar(getActivity(), null, android.R.attr.progressBarStyleHorizontal);
+                if (s.color != null) {
+                    int colorId = getResources().getIdentifier(s.color, "color", getActivity().getPackageName());
+                    pgb.getProgressDrawable().setColorFilter(getResources().getColor(colorId), PorterDuff.Mode.SRC_IN);
+                } else
+                    pgb.getProgressDrawable().setColorFilter(getResources().getColor(R.color.violet_dark), PorterDuff.Mode.SRC_IN);;
+                pgb.setProgress(s.rate);
+                rl.addView(pgb);
+
+                TextView txt = new TextView(getActivity());
+                txt.setText(s.label);
+
+                rl.addView(txt);
+
+                rootLinear.addView(rl);
+            }
+        }
     }
 }

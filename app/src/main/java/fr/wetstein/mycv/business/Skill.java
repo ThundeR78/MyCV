@@ -7,4 +7,6 @@ public class Skill {
 
     public String label;
     public int rate;
+    public String color;
+
 }

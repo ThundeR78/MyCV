@@ -1,12 +1,12 @@
 {
 	"dev": [
-		{ "label": "Android", "rate": "75" },
+		{ "label": "Android", "rate": "75", "color": "green" },
 		{ "label": "Java", "rate": "70" },
 		{ "label": "HTML", "rate": "80" },
 		{ "label": "CSS", "rate": "70" },
 		{ "label": "JavaScript", "rate": "60" },
 		{ "label": "PHP", "rate": "60"  },
-		{ "label": "SQL", "rate": "75" },
+		{ "label": "SQL", "rate": "75", "color": "green_dark" },
 		{ "label": "C#", "rate": "45" },
 		{ "label": "C++", "rate": "35" },
 		{ "label": "C", "rate": "30" }
@@ -14,7 +14,7 @@
 	"software": [
         { "label": "Eclipse", "rate": "75" },
         { "label": "Android Studio", "rate": "40" },
-        { "label": "xCode", "rate": "60" },
+        { "label": "Xcode", "rate": "60" },
         { "label": "Visual Studio", "rate": "50" },
         { "label": "MySQL", "rate": "70" },
         { "label": "PHP", "rate": "60"  }
@@ -30,7 +30,7 @@
         { "label": "Linux", "rate": "30" }
     ],
     "language": [
-        { "label": "Anglais", "rate": "60" },
-        { "label": "Espagnol", "rate": "20" }
+        { "label": "English", "rate": "60" },
+        { "label": "Spanish", "rate": "20" }
     ]
 }
