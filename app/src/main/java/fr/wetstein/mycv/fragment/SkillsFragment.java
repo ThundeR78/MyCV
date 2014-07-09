@@ -114,22 +114,30 @@ public class SkillsFragment extends Fragment {
             rootLinear.addView(txtSection);
 
             for (Skill s : values) {
+                //Layout
                 RelativeLayout rl = new RelativeLayout(getActivity());
                 rl.setGravity(Gravity.CENTER);
 
+                RelativeLayout.LayoutParams paramsProgress = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                paramsProgress.addRule(RelativeLayout.CENTER_IN_PARENT);
+
+                //ProgressBar
                 ProgressBar pgb = new ProgressBar(getActivity(), null, android.R.attr.progressBarStyleHorizontal);
                 if (s.color != null) {
                     int colorId = getResources().getIdentifier(s.color, "color", getActivity().getPackageName());
                     pgb.getProgressDrawable().setColorFilter(getResources().getColor(colorId), PorterDuff.Mode.SRC_IN);
                 } else
-                    pgb.getProgressDrawable().setColorFilter(getResources().getColor(R.color.violet_dark), PorterDuff.Mode.SRC_IN);;
+                    pgb.getProgressDrawable().setColorFilter(getResources().getColor(R.color.violet_dark), PorterDuff.Mode.SRC_IN);
                 pgb.setProgress(s.rate);
-                rl.addView(pgb);
+                rl.addView(pgb, paramsProgress);
 
+                RelativeLayout.LayoutParams paramsLabel = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                paramsLabel.addRule(RelativeLayout.CENTER_IN_PARENT);
+
+                //Label
                 TextView txt = new TextView(getActivity());
                 txt.setText(s.label);
-
-                rl.addView(txt);
+                rl.addView(txt, paramsLabel);
 
                 rootLinear.addView(rl);
             }

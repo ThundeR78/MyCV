@@ -1,36 +1,34 @@
 {
 	"dev": [
 		{ "label": "Android", "rate": "75", "color": "green" },
-		{ "label": "Java", "rate": "70" },
-		{ "label": "HTML", "rate": "80" },
-		{ "label": "CSS", "rate": "70" },
-		{ "label": "JavaScript", "rate": "60" },
-		{ "label": "PHP", "rate": "60"  },
-		{ "label": "SQL", "rate": "75", "color": "green_dark" },
-		{ "label": "C#", "rate": "45" },
-		{ "label": "C++", "rate": "35" },
-		{ "label": "C", "rate": "30" }
+		{ "label": "Java", "rate": "70", "color": "red" },
+        { "label": "C#", "rate": "45", "color": "green_dark" },
+        { "label": "C++", "rate": "35", "color": "orange_light" },
+        { "label": "C", "rate": "30", "color": "yellow" },
+		{ "label": "HTML", "rate": "80", "color": "red" },
+		{ "label": "CSS", "rate": "70", "color": "blue" },
+		{ "label": "JavaScript", "rate": "60", "color": "yellow" },
+		{ "label": "PHP", "rate": "60", "color": "blue" },
+		{ "label": "SQL", "rate": "75", "color": "green_dark" }
 	],
 	"software": [
-        { "label": "Eclipse", "rate": "75" },
-        { "label": "Android Studio", "rate": "40" },
-        { "label": "Xcode", "rate": "60" },
-        { "label": "Visual Studio", "rate": "50" },
-        { "label": "MySQL", "rate": "70" },
-        { "label": "PHP", "rate": "60"  }
+        { "label": "Eclipse", "rate": "75", "color": "violet_dark" },
+        { "label": "Android Studio", "rate": "40", "color": "green_light" },
+        { "label": "Xcode", "rate": "60", "color": "blue_light" },
+        { "label": "Visual Studio", "rate": "50", "color": "violet_dark" },
+        { "label": "MySQL", "rate": "70", "color": "blue_dark" }
     ],
     "os": [
-        { "label": "Windows", "rate": "70" },
-        { "label": "Mac OS X", "rate": "70" },
-        { "label": "Linux", "rate": "30" }
+        { "label": "Windows", "rate": "70", "color": "blue_light" },
+        { "label": "Mac OS X", "rate": "70", "color": "violet" },
+        { "label": "Linux", "rate": "30", "color": "orange_dark" }
     ],
     "versioning": [
-        { "label": "Git", "rate": "70" },
-        { "label": "Mac OS X", "rate": "70" },
-        { "label": "Linux", "rate": "30" }
+        { "label": "Git", "rate": "60", "color": "red" },
+        { "label": "SVN", "rate": "30", "color": "blue" }
     ],
     "language": [
-        { "label": "English", "rate": "60" },
-        { "label": "Spanish", "rate": "20" }
+        { "label": "English", "rate": "60", "color": "blue_dark" },
+        { "label": "Spanish", "rate": "20", "color": "red" }
     ]
 }
