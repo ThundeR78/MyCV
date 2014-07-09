@@ -35,6 +35,11 @@
             <ImageButton android:id="@+id/button_phone" style="@style/DetailButton" android:src="@drawable/ic_action_call" />
         </LinearLayout>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="qualités" />
+
         <!--<fr.wetstein.mycv.view.PolygonView
             android:id="@+id/poly1"
             android:layout_width="250dp"

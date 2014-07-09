@@ -10,8 +10,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import fr.wetstein.mycv.R;
-import fr.wetstein.mycv.fragment.ProfileFragment;
 import fr.wetstein.mycv.fragment.NavDrawerFragment;
+import fr.wetstein.mycv.fragment.ProfileFragment;
+import fr.wetstein.mycv.fragment.SkillsFragment;
 
 
 public class HomeActivity extends Activity implements NavDrawerFragment.NavigationDrawerCallbacks {
@@ -49,9 +50,18 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
                 fragment = new ProfileFragment();
                 break;
             case 1:
-
+                fragment = new ProfileFragment();
                 break;
             case 2:
+
+                break;
+            case 3:
+                fragment = new SkillsFragment();
+                break;
+            case 4:
+
+                break;
+            case 5:
 
                 break;
         }
