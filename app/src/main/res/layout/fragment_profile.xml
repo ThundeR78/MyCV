@@ -40,6 +40,11 @@
             android:layout_height="wrap_content"
             android:text="qualités" />
 
+        <fragment android:id="@+id/map_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:name="com.google.android.gms.maps.MapFragment" />
+
         <!--<fr.wetstein.mycv.view.PolygonView
             android:id="@+id/poly1"
             android:layout_width="250dp"

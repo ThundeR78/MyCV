@@ -27,6 +27,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     private TextView txtAge;
     private ImageButton btnEmail, btnCall;
+    //private MapFragment mMap;
 
     private Calendar calBirthday;
     private int age;
@@ -59,12 +60,15 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         super.onActivityCreated(savedInstanceState);
 
         txtAge.setText(getString(R.string.value_age, age));
+
+        //mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map_fragment)).getMap();
+
+
     }
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        //((HomeActivity) activity).onSectionAttached(getArguments().getInt(ARG_SECTION_NUMBER));
     }
 
     private void calculateAge() {
