@@ -1,11 +1,13 @@
 package fr.wetstein.mycv.adapter;
 
 import android.content.Context;
+import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.HashMap;
@@ -41,16 +43,25 @@ public class ExpandableListSkillAdapter extends BaseExpandableListAdapter {
 
     @Override
     public View getChildView(int groupPosition, final int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-        final String childText = ((Skill) getChild(groupPosition, childPosition)).label;
+        Skill skill = (Skill) getChild(groupPosition, childPosition);
 
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.list_skill_item, null);
         }
 
-        TextView txtListChild = (TextView) convertView.findViewById(R.id.lblListItem);
+        TextView txtListChild = (TextView) convertView.findViewById(R.id.list_skill_item_label);
+        ProgressBar pgbListChild = (ProgressBar) convertView.findViewById(R.id.list_skill_item_progress);
 
-        txtListChild.setText(childText);
+        txtListChild.setText(skill.label);
+
+        pgbListChild.setProgress(skill.rate);
+        if (skill.color != null) {
+            int colorId = mContext.getResources().getIdentifier(skill.color, "color", mContext.getPackageName());
+            pgbListChild.getProgressDrawable().setColorFilter(mContext.getResources().getColor(colorId), PorterDuff.Mode.SRC_IN);
+        } else
+            pgbListChild.getProgressDrawable().setColorFilter(mContext.getResources().getColor(R.color.violet_dark), PorterDuff.Mode.SRC_IN);
+
         return convertView;
     }
 
