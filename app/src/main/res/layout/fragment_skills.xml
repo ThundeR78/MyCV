@@ -4,6 +4,11 @@
     style="@style/ScrollView">
     <LinearLayout android:id="@+id/rootLinearLayout" style="@style/ScrollViewLayout">
 
+        <ExpandableListView
+            android:id="@+id/explv_skills"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"/>
+
         <ProgressBar
             style="@style/CustomProgressBarHorizontal"
             android:layout_width="match_parent"

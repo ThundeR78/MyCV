@@ -13,16 +13,20 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ExpandableListView;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import fr.wetstein.mycv.R;
+import fr.wetstein.mycv.adapter.ExpandableListSkillAdapter;
 import fr.wetstein.mycv.business.Skill;
 import fr.wetstein.mycv.util.ParserAssets;
 import fr.wetstein.mycv.view.TextProgressBar;
@@ -36,6 +40,8 @@ public class SkillsFragment extends Fragment {
     private HashMap<String, List<Skill>> mapSkills;
 
     private LinearLayout rootLinear;
+    private ExpandableListView expListView;
+    private ExpandableListSkillAdapter expListAdapter;
 
     public SkillsFragment() {
 
@@ -48,11 +54,16 @@ public class SkillsFragment extends Fragment {
         //Load Skills
         mapSkills =  ParserAssets.loadSkills(getActivity());
         Log.v(TAG, mapSkills.toString());
+
+
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_skills, container, false);
+
+        expListView = (ExpandableListView) rootView.findViewById(R.id.explv_skills);
 
         ProgressBar progbar = (ProgressBar) rootView.findViewById(R.id.progressbar);
         progbar.getProgressDrawable().setLevel(60*100);
@@ -96,6 +107,19 @@ public class SkillsFragment extends Fragment {
     }
 
     @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        if (mapSkills != null) {
+            //Get all keys
+            List<String> listGroup = new ArrayList<String>(Arrays.asList(mapSkills.keySet().toArray(new String[mapSkills.size()])));
+            Log.v(TAG, listGroup.toString());
+            expListAdapter = new ExpandableListSkillAdapter(getActivity(), listGroup, mapSkills);
+            expListView.setAdapter(expListAdapter);
+        }
+    }
+
+    @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         //((HomeActivity) activity).onSectionAttached(getArguments().getInt(ARG_SECTION_NUMBER));
@@ -105,6 +129,10 @@ public class SkillsFragment extends Fragment {
     public void onStart() {
         super.onStart();
 
+        //loadSkills();
+    }
+
+    private void loadSkills() {
         for (Map.Entry<String, List<Skill>> entry : mapSkills.entrySet()) {
             String key = entry.getKey();
             List<Skill> values = entry.getValue();
@@ -113,13 +141,19 @@ public class SkillsFragment extends Fragment {
             txtSection.setText(key);
             rootLinear.addView(txtSection);
 
+            //TODO : Expandable List ?
             for (Skill s : values) {
                 //Layout
-                RelativeLayout rl = new RelativeLayout(getActivity());
+                LinearLayout rl = new LinearLayout(getActivity());
                 rl.setGravity(Gravity.CENTER);
+                rl.setOrientation(LinearLayout.HORIZONTAL);
 
-                RelativeLayout.LayoutParams paramsProgress = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                paramsProgress.addRule(RelativeLayout.CENTER_IN_PARENT);
+                //Label
+                TextView txt = new TextView(getActivity());
+                txt.setText(s.label);
+                LinearLayout.LayoutParams paramsLabel = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                //paramsLabel.addRule(RelativeLayout.CENTER_IN_PARENT);
+                rl.addView(txt, paramsLabel);
 
                 //ProgressBar
                 ProgressBar pgb = new ProgressBar(getActivity(), null, android.R.attr.progressBarStyleHorizontal);
@@ -129,18 +163,17 @@ public class SkillsFragment extends Fragment {
                 } else
                     pgb.getProgressDrawable().setColorFilter(getResources().getColor(R.color.violet_dark), PorterDuff.Mode.SRC_IN);
                 pgb.setProgress(s.rate);
+                LinearLayout.LayoutParams paramsProgress = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                //paramsProgress.addRule(RelativeLayout.CENTER_IN_PARENT);
                 rl.addView(pgb, paramsProgress);
-
-                RelativeLayout.LayoutParams paramsLabel = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                paramsLabel.addRule(RelativeLayout.CENTER_IN_PARENT);
-
-                //Label
-                TextView txt = new TextView(getActivity());
-                txt.setText(s.label);
-                rl.addView(txt, paramsLabel);
 
                 rootLinear.addView(rl);
             }
+
+            //Add section margin
+            FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) rootLinear.getLayoutParams();
+            lp.setMargins(0, 0, 0, 10);
+            rootLinear.setLayoutParams(lp);
         }
     }
 }
