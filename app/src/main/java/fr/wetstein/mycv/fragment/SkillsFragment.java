@@ -21,12 +21,15 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import fr.wetstein.mycv.R;
 import fr.wetstein.mycv.adapter.ExpandableListSkillAdapter;
+import fr.wetstein.mycv.business.GroupSkill;
 import fr.wetstein.mycv.business.Skill;
 import fr.wetstein.mycv.util.ParserAssets;
 import fr.wetstein.mycv.view.TextProgressBar;
@@ -37,11 +40,12 @@ import fr.wetstein.mycv.view.TextProgressBar;
 public class SkillsFragment extends Fragment {
     public static final String TAG = "SkillsFragment";
 
-    private HashMap<String, List<Skill>> mapSkills;
+    private HashMap<GroupSkill, List<Skill>> mapSkills;
 
     private LinearLayout rootLinear;
     private ExpandableListView expListView;
     private ExpandableListSkillAdapter expListAdapter;
+
 
     public SkillsFragment() {
 
@@ -54,8 +58,6 @@ public class SkillsFragment extends Fragment {
         //Load Skills
         mapSkills =  ParserAssets.loadSkills(getActivity());
         Log.v(TAG, mapSkills.toString());
-
-
 
     }
 
@@ -112,8 +114,23 @@ public class SkillsFragment extends Fragment {
 
         if (mapSkills != null) {
             //Get all keys
-            List<String> listGroup = new ArrayList<String>(Arrays.asList(mapSkills.keySet().toArray(new String[mapSkills.size()])));
+            List<GroupSkill> listGroup = new ArrayList<GroupSkill>(Arrays.asList(mapSkills.keySet().toArray(new GroupSkill[mapSkills.size()])));
             Log.v(TAG, listGroup.toString());
+            Collections.sort(listGroup, new Comparator() {
+                @Override
+                public int compare(Object obj1, Object obj2) {
+                    GroupSkill v1 = (GroupSkill) obj1;
+                    GroupSkill v2 = (GroupSkill) obj2;
+
+                    // ascending order
+                    return v1.orderId - v2.orderId;
+
+                    // descending order
+                    //return v2.orderId - v1.orderId;
+                }
+            });
+
+            //Fill ExpandableListView with Skills
             expListAdapter = new ExpandableListSkillAdapter(getActivity(), listGroup, mapSkills);
             expListView.setAdapter(expListAdapter);
         }
@@ -122,7 +139,6 @@ public class SkillsFragment extends Fragment {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
-        //((HomeActivity) activity).onSectionAttached(getArguments().getInt(ARG_SECTION_NUMBER));
     }
 
     @Override
@@ -133,15 +149,14 @@ public class SkillsFragment extends Fragment {
     }
 
     private void loadSkills() {
-        for (Map.Entry<String, List<Skill>> entry : mapSkills.entrySet()) {
-            String key = entry.getKey();
+        for (Map.Entry<GroupSkill, List<Skill>> entry : mapSkills.entrySet()) {
+            GroupSkill key = entry.getKey();
             List<Skill> values = entry.getValue();
 
             TextView txtSection = new TextView(getActivity());
-            txtSection.setText(key);
+            txtSection.setText(key.label);
             rootLinear.addView(txtSection);
 
-            //TODO : Expandable List ?
             for (Skill s : values) {
                 //Layout
                 LinearLayout rl = new LinearLayout(getActivity());

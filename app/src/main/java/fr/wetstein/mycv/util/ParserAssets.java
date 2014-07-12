@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import fr.wetstein.mycv.business.GroupSkill;
 import fr.wetstein.mycv.business.Skill;
 
 public class ParserAssets {
@@ -31,8 +32,8 @@ public class ParserAssets {
     }
 
     //Load Skill Map
-    public static HashMap<String, List<Skill>> loadSkills(Context context) {
-        HashMap<String, List<Skill>> mapSkill = new HashMap<String, List<Skill>>();
+    public static HashMap<GroupSkill, List<Skill>> loadSkills(Context context) {
+        HashMap<GroupSkill, List<Skill>> mapSkill = new HashMap<GroupSkill, List<Skill>>();
 		
 		try {
 			JSONObject jsonObjectRoot = new JSONObject(loadJSONFromAsset(context, pathData+fileSkills));
@@ -40,22 +41,32 @@ public class ParserAssets {
             //Loop each node
             for (NodesSkill ns : NodesSkill.values()) {
                 List<Skill> items = new ArrayList<Skill>();
-                JSONArray jsonArrayRoot = jsonObjectRoot.getJSONArray(ns.toString());
+                GroupSkill groupItem = new GroupSkill();
+                JSONObject jsonGroup = jsonObjectRoot.getJSONObject(ns.toString());
 
-                //Loop each skill in node
-                for (int i = 0; i < jsonArrayRoot.length(); i++) {
-                    JSONObject jsonObjectItem = jsonArrayRoot.getJSONObject(i);
-                    Skill item = new Skill();
+                if (jsonGroup != null) {
+                    //Group Item
+                    groupItem.orderId = jsonGroup.getInt("orderId");
+                    if (jsonGroup.has("color"))
+                        groupItem.color = jsonGroup.getString("color");
+                    groupItem.label = ns.name();
 
-                    item.label = jsonObjectItem.getString("label");
-                    item.rate = jsonObjectItem.getInt("rate");
-                    if (jsonObjectItem.has("color"))
-                        item.color = jsonObjectItem.getString("color");
+                    //Loop each skill in node
+                    JSONArray jsonArrayRoot = jsonGroup.getJSONArray("values");
+                    for (int i = 0; i < jsonArrayRoot.length(); i++) {
+                        JSONObject jsonObjectItem = jsonArrayRoot.getJSONObject(i);
+                        Skill item = new Skill();
 
-                    items.add(item);
+                        item.label = jsonObjectItem.getString("label");
+                        item.rate = jsonObjectItem.getInt("rate");
+                        if (jsonObjectItem.has("color"))
+                            item.color = jsonObjectItem.getString("color");
+
+                        items.add(item);
+                    }
+
+                    mapSkill.put(groupItem, items);
                 }
-
-                mapSkill.put(ns.name(), items);
             }
 		} catch (JSONException e) {
 			Log.e(TAG, e.toString());

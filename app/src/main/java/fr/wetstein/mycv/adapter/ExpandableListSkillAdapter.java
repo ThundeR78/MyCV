@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import fr.wetstein.mycv.R;
+import fr.wetstein.mycv.business.GroupSkill;
 import fr.wetstein.mycv.business.Skill;
 
 /**
@@ -22,10 +23,10 @@ import fr.wetstein.mycv.business.Skill;
 public class ExpandableListSkillAdapter extends BaseExpandableListAdapter {
 
     private Context mContext;
-    private List<String> mListDataHeader;
-    private HashMap<String, List<Skill>> mListDataChild;
+    private List<GroupSkill> mListDataHeader;
+    private HashMap<GroupSkill, List<Skill>> mListDataChild;
 
-    public ExpandableListSkillAdapter(Context context, List<String> listDataHeader, HashMap<String, List<Skill>> listChildData) {
+    public ExpandableListSkillAdapter(Context context, List<GroupSkill> listDataHeader, HashMap<GroupSkill, List<Skill>> listChildData) {
         mContext = context;
         mListDataHeader = listDataHeader;
         mListDataChild = listChildData;
@@ -87,15 +88,21 @@ public class ExpandableListSkillAdapter extends BaseExpandableListAdapter {
 
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-        String headerTitle = (String) getGroup(groupPosition);
+        GroupSkill group = (GroupSkill) getGroup(groupPosition);
+
         if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.list_skill_group, null);
         }
 
-        TextView lblListHeader = (TextView) convertView.findViewById(R.id.lblListHeader);
-        lblListHeader.setTypeface(null, Typeface.BOLD);
-        lblListHeader.setText(headerTitle);
+        if (group != null) {
+            int backgroundColorId = mContext.getResources().getIdentifier(group.color, "color", mContext.getPackageName());
+            convertView.setBackgroundColor(mContext.getResources().getColor(backgroundColorId));
+
+            TextView lblListHeader = (TextView) convertView.findViewById(R.id.lblListHeader);
+            lblListHeader.setTypeface(null, Typeface.BOLD);
+            lblListHeader.setText(group.label);
+        }
 
         return convertView;
     }
