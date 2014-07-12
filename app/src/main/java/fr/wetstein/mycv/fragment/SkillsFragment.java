@@ -133,6 +133,10 @@ public class SkillsFragment extends Fragment {
             //Fill ExpandableListView with Skills
             expListAdapter = new ExpandableListSkillAdapter(getActivity(), listGroup, mapSkills);
             expListView.setAdapter(expListAdapter);
+
+            //Open first group
+            if (expListAdapter.getGroupCount() > 0)
+                expListView.expandGroup(0, true);
         }
     }
 
