@@ -42,7 +42,7 @@
 
         <fragment android:id="@+id/map_fragment"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:name="com.google.android.gms.maps.MapFragment" />
 
         <!--<fr.wetstein.mycv.view.PolygonView
