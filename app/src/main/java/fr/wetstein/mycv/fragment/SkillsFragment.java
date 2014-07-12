@@ -40,6 +40,8 @@ import fr.wetstein.mycv.view.TextProgressBar;
 public class SkillsFragment extends Fragment {
     public static final String TAG = "SkillsFragment";
 
+    public static final int PROGRESSBAR_ANIMATION_TIME = 1200;
+
     private HashMap<GroupSkill, List<Skill>> mapSkills;
 
     private LinearLayout rootLinear;
@@ -115,7 +117,8 @@ public class SkillsFragment extends Fragment {
         if (mapSkills != null) {
             //Get all keys
             List<GroupSkill> listGroup = new ArrayList<GroupSkill>(Arrays.asList(mapSkills.keySet().toArray(new GroupSkill[mapSkills.size()])));
-            Log.v(TAG, listGroup.toString());
+
+            //Sort List by orderId on group
             Collections.sort(listGroup, new Comparator() {
                 @Override
                 public int compare(Object obj1, Object obj2) {

@@ -1,11 +1,13 @@
 package fr.wetstein.mycv.adapter;
 
+import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -16,6 +18,7 @@ import java.util.List;
 import fr.wetstein.mycv.R;
 import fr.wetstein.mycv.business.GroupSkill;
 import fr.wetstein.mycv.business.Skill;
+import fr.wetstein.mycv.fragment.SkillsFragment;
 
 /**
  * Created by ThundeR on 10/07/2014.
@@ -51,17 +54,29 @@ public class ExpandableListSkillAdapter extends BaseExpandableListAdapter {
             convertView = inflater.inflate(R.layout.list_skill_item, null);
         }
 
-        TextView txtListChild = (TextView) convertView.findViewById(R.id.list_skill_item_label);
-        ProgressBar pgbListChild = (ProgressBar) convertView.findViewById(R.id.list_skill_item_progress);
+        TextView labelChild = (TextView) convertView.findViewById(R.id.list_skill_item_label);
+        ProgressBar progressChild = (ProgressBar) convertView.findViewById(R.id.list_skill_item_progress);
 
-        txtListChild.setText(skill.label);
+        labelChild.setText(skill.label);
 
-        pgbListChild.setProgress(skill.rate);
+        //Animate ProgressBar
+        if (progressChild.getProgress() != skill.rate) {
+            progressChild.setProgress(0);
+            if (android.os.Build.VERSION.SDK_INT >= 11) {
+                //Will update the "progress" propriety of ProgressBar until it reaches progress
+                ObjectAnimator animation = ObjectAnimator.ofInt(progressChild, "progress", skill.rate);
+                animation.setDuration(SkillsFragment.PROGRESSBAR_ANIMATION_TIME);
+                animation.setInterpolator(new AccelerateDecelerateInterpolator());
+                animation.start();
+            } else
+                progressChild.setProgress(skill.rate);
+        }
+        //Colorize ProgressBar
         if (skill.color != null) {
             int colorId = mContext.getResources().getIdentifier(skill.color, "color", mContext.getPackageName());
-            pgbListChild.getProgressDrawable().setColorFilter(mContext.getResources().getColor(colorId), PorterDuff.Mode.SRC_IN);
+            progressChild.getProgressDrawable().setColorFilter(mContext.getResources().getColor(colorId), PorterDuff.Mode.SRC_IN);
         } else
-            pgbListChild.getProgressDrawable().setColorFilter(mContext.getResources().getColor(R.color.violet_dark), PorterDuff.Mode.SRC_IN);
+            progressChild.getProgressDrawable().setColorFilter(mContext.getResources().getColor(R.color.violet_dark), PorterDuff.Mode.SRC_IN);
 
         return convertView;
     }
