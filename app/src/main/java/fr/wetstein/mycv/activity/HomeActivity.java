@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import fr.wetstein.mycv.R;
+import fr.wetstein.mycv.fragment.HobbiesFragment;
 import fr.wetstein.mycv.fragment.NavDrawerFragment;
 import fr.wetstein.mycv.fragment.ProfileFragment;
 import fr.wetstein.mycv.fragment.SkillsFragment;
@@ -59,7 +60,7 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
                 fragment = new SkillsFragment();
                 break;
             case 4:
-
+                fragment = new HobbiesFragment();
                 break;
             case 5:
 
@@ -75,19 +76,19 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
         mTitle = mArrayTitle[position];
     }
 
-    public void onSectionAttached(int number) {
-        switch (number) {
-            case 1:
-                mTitle = getString(R.string.title_section1);
-                break;
-            case 2:
-                mTitle = getString(R.string.title_section2);
-                break;
-            case 3:
-                mTitle = getString(R.string.title_section3);
-                break;
-        }
-    }
+//    public void onSectionAttached(int number) {
+//        switch (number) {
+//            case 1:
+//                mTitle = getString(R.string.title_section1);
+//                break;
+//            case 2:
+//                mTitle = getString(R.string.title_section2);
+//                break;
+//            case 3:
+//                mTitle = getString(R.string.title_section3);
+//                break;
+//        }
+//    }
 
     public void restoreActionBar() {
         ActionBar actionBar = getActionBar();
