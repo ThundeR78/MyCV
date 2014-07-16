@@ -61,17 +61,19 @@ public class HobbiesFragment extends Fragment implements ActionBar.TabListener {
     }
 
     public void initTabs() {
-        // Create the adapter with fragments
+        //Create the adapter with fragments
         mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
+
         mSectionsPagerAdapter.addItem(new MangaFragment(), getString(R.string.title_manga));
         mSectionsPagerAdapter.addItem(new ParkourFragment(), getString(R.string.title_parkour));
+        mSectionsPagerAdapter.addItem(new GamesFragment(), getString(R.string.title_games));
     }
 
     public void addTabs() {
         ActionBar actionBar = getActivity().getActionBar();
         mTabs = new ArrayList<ActionBar.Tab>();
 
-        // For each of the sections in the app, add a tab to the action bar
+        //For each of the sections in the app, add a tab to the action bar
         for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
             //Create Tab with text corresponding to the page title defined by the adapter
             ActionBar.Tab tab = actionBar.newTab()

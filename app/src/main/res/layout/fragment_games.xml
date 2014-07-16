@@ -1,0 +1,11 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" style="@style/ScrollView">
+    <LinearLayout style="@style/ScrollViewLayout">
+
+        <TextView
+            android:id="@+id/manga_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GAMES"/>
+
+    </LinearLayout>
+</ScrollView>

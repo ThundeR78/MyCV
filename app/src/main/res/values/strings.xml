@@ -14,10 +14,14 @@
     <string name="title_hobbies">Loisirs</string>
     <string name="title_manga">Manga</string>
     <string name="title_parkour">Parkour</string>
+    <string name="title_games">Video games</string>
     <string name="title_cv">CV</string>
 
     <!-- ACTION -->
     <string name="action_settings">Settings</string>
+
+    <!-- BUTTON -->
+    <string name="button_see_collection">See collection</string>
 
     <!-- LABEL -->
     <string name="label_send_email">Envoyer un email</string>
