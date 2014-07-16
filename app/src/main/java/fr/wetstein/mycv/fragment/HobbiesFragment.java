@@ -7,14 +7,12 @@ import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import fr.wetstein.mycv.R;
 
@@ -24,35 +22,23 @@ import fr.wetstein.mycv.R;
 public class HobbiesFragment extends Fragment implements ActionBar.TabListener {
     public static final String TAG = "HobbiesFragment";
 
-    /** That will provide fragments for each of the sections. */
-    public SectionsPagerAdapter mSectionsPagerAdapter;
-
-    /** That will host the section contents */
-    public ViewPager mViewPager;
-
-    public List<ActionBar.Tab> mTabs = new ArrayList<ActionBar.Tab>();
+    public SectionsPagerAdapter mSectionsPagerAdapter;  //Provide mFragments for each of the sections
+    public ViewPager mViewPager;    //Host the section contents
+    public List<ActionBar.Tab> mTabs;  //Contain tabs
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
-
-Log.v(TAG, "CREATE");
-
+        createTabs();
+        addTabs();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_hobbies, container, false);
 
-        final ActionBar actionBar = getActivity().getActionBar();
-        //Setup ActionBar
-        //actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-
-        // Set up the ViewPager with the sections adapter.
+        // Set up the ViewPager with the sections adapter
         mViewPager = (ViewPager) rootView.findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
         mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
@@ -64,20 +50,6 @@ Log.v(TAG, "CREATE");
             }
         });
 
-        // For each of the sections in the app, add a tab to the action bar.
-        for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
-            // Create a tab with text corresponding to the page title defined by
-            // the adapter. Also specify this Activity object, which implements
-            // the TabListener interface, as the callback (listener) for when
-            // this tab is selected.
-
-            ActionBar.Tab tab = actionBar.newTab()
-                    .setText(mSectionsPagerAdapter.getPageTitle(i))
-                    .setTabListener(this);
-            mTabs.add(tab);
-            actionBar.addTab(tab);
-        }
-
         return rootView;
     }
 
@@ -85,6 +57,30 @@ Log.v(TAG, "CREATE");
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+    }
+
+    public void createTabs() {
+        // Create the adapter with fragments
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
+        mSectionsPagerAdapter.addItem(new MangaFragment(), getString(R.string.title_manga));
+        mSectionsPagerAdapter.addItem(new ParkourFragment(), getString(R.string.title_parkour));
+    }
+
+    public void addTabs() {
+        ActionBar actionBar = getActivity().getActionBar();
+        mTabs = new ArrayList<ActionBar.Tab>();
+
+        // For each of the sections in the app, add a tab to the action bar
+        for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
+            //Create Tab with text corresponding to the page title defined by the adapter
+            ActionBar.Tab tab = actionBar.newTab()
+                .setText(mSectionsPagerAdapter.getPageTitle(i))
+                .setTabListener(this);
+
+            //Add Tab
+            mTabs.add(tab);
+            actionBar.addTab(tab);
+        }
     }
 
     @Override
@@ -104,65 +100,36 @@ Log.v(TAG, "CREATE");
 
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
+        private List<Fragment> mFragments;
+        private List<String> mTitles;
+
+
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
+            mFragments = new ArrayList<Fragment>();
+            mTitles = new ArrayList<String>();
+
         }
+
+        public void addItem(Fragment myFragment, String title) {
+            mFragments.add(myFragment);
+            mTitles.add(title);
+        }
+
 
         @Override
         public Fragment getItem(int position) {
-            // getItem is called to instantiate the fragment for the given page.
-            // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            return mFragments.get(position);
         }
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
-            return 3;
+            return mFragments.size();
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            Locale l = Locale.getDefault();
-            switch (position) {
-                case 0:
-                    return getString(R.string.title_section1).toUpperCase(l);
-                case 1:
-                    return getString(R.string.title_section2).toUpperCase(l);
-                case 2:
-                    return getString(R.string.title_section3).toUpperCase(l);
-            }
-            return null;
-        }
-    }
-
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_manga, container, false);
-            return rootView;
+            return mTitles.get(position);
         }
     }
 }
