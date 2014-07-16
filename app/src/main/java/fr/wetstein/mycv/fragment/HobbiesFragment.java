@@ -30,7 +30,8 @@ public class HobbiesFragment extends Fragment implements ActionBar.TabListener {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        createTabs();
+        //Create Tabs
+        initTabs();
         addTabs();
     }
 
@@ -59,7 +60,7 @@ public class HobbiesFragment extends Fragment implements ActionBar.TabListener {
 
     }
 
-    public void createTabs() {
+    public void initTabs() {
         // Create the adapter with fragments
         mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
         mSectionsPagerAdapter.addItem(new MangaFragment(), getString(R.string.title_manga));
