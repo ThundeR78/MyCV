@@ -1,19 +1,50 @@
 {
-	"dev": {
-	    "orderId": 1,
-	    "color": "red",
-        "values": [
-            { "label": "Android", "rate": "75", "color": "green" },
-            { "label": "Java", "rate": "70", "color": "red" },
-            { "label": "C#", "rate": "45", "color": "green_dark" },
-            { "label": "C++", "rate": "35", "color": "orange_light" },
-            { "label": "C", "rate": "30", "color": "yellow" },
-            { "label": "HTML", "rate": "80", "color": "red" },
-            { "label": "CSS", "rate": "70", "color": "blue" },
-            { "label": "JavaScript", "rate": "60", "color": "yellow" },
-            { "label": "PHP", "rate": "60", "color": "blue" },
-            { "label": "SQL", "rate": "75", "color": "green_dark" }
-        ]
+	"careers":[
+	    {
+	        "name": "MAFISYS",
+	        "link": "http://www.mafisys.fr",
+            "dateBegin": "24/01/2011",
+            "dateEnd": "18/03/2011",
+            "type": "workExperience",
+            "tasks": [
+                { "label": "Android", "rate": "75", "color": "green" },
+                { "label": "Java", "rate": "70", "color": "red" }
+            ]
+        },
+	    {
+            "name": "MyApphone",
+            "link": "http://www.myapp.net",
+            "dateBegin": "",
+            "dateEnd": "",
+            "type": "sandwichTraining",
+            "tasks": [
+                { "label": "Android", "rate": "75", "color": "green" },
+                { "label": "Java", "rate": "70", "color": "red" }
+            ]
+        },
+        {
+            "name": "wezzoo",
+            "link": "http://www.wezzoo.com",
+            "dateBegin": "",
+            "dateEnd": "",
+            "type": "sandwichTraining",
+            "tasks": [
+                { "label": "Android", "rate": "75", "color": "green" },
+                { "label": "Java", "rate": "70", "color": "red" }
+            ]
+        },
+        {
+            "name": "Sophiacom",
+            "link": "",
+            "dateBegin": "",
+            "dateEnd": "",
+            "type": "sandwichTraining",
+            "tasks": [
+                { "label": "Android", "rate": "75", "color": "green" },
+                { "label": "Java", "rate": "70", "color": "red" }
+            ]
+        }
+	]
 	}
 2013	- Alternance dans l’entreprise Sophiacom, éditeur d’applications mobiles (depuis Septembre 2012) :
 		› Développement d’applications mobiles Android [Java] : mise à jour des applications Keljob, Cadremploi, Explorimmo, et création de l’application YNP MBO.
