@@ -1,0 +1,87 @@
+{
+	"consoles": [
+        {
+            "name": "Super Nintendo",
+            "shortname": "SNES",
+            "logo": "",
+            "icon": "snes",
+            "games": [
+                "DragonBall Z Hyper Dimension",
+                "Aladin",
+                "Mario Kart"
+            ]
+        },
+        {
+            "name": "Game Boy",
+            "shortname": "GB",
+            "logo": "",
+            "icon": "gameboy",
+            "games": [
+                "Super Mario",
+                "Spirou"
+            ]
+        },
+        {
+            "name": "Nintendo 64",
+            "shortname": "N64",
+            "logo": "",
+            "icon": "n64",
+            "games": [
+                "Mario Kart 64",
+                "Super Mario 64"
+            ]
+        },
+        {
+            "name": "GameBoy Advance",
+            "shortname": "GBA",
+            "logo": "",
+            "icon": "gba",
+            "games": [
+                "DragonBall Z",
+                "Golden Sun 1",
+                "Golden Sun 2"
+            ]
+        },
+        {
+            "name": "GameCube",
+            "shortname": "GC",
+            "logo": "",
+            "icon": "gamecube",
+            "games": [
+                "DragonBall Z Hyper Dimension",
+                "Aladin"
+            ]
+        },
+        {
+            "name": "Wii",
+            "shortname": "Wii",
+            "logo": "",
+            "icon": "wii",
+            "games": [
+                "Zelda - Twilight Princess",
+                "Zelda - "
+            ]
+        },
+        {
+            "name": "PC",
+            "shortname": "PC",
+            "logo": "",
+            "icon": "pc",
+            "games": [
+                "Call of Duty - Mordern Warfare",
+                "Half-Life",
+                "Red Faction"
+            ]
+        },
+        {
+            "name": "Steam",
+            "shortname": "Steam",
+            "logo": "",
+            "icon": "steam",
+            "games": [
+                "Borderlands 1",
+                "Borderlands 2"
+            ]
+        }
+	]
+}

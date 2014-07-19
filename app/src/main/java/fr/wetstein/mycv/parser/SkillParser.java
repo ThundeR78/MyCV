@@ -1,4 +1,4 @@
-package fr.wetstein.mycv.util;
+package fr.wetstein.mycv.parser;
 
 import android.content.Context;
 import android.util.Log;
@@ -7,8 +7,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,12 +14,13 @@ import java.util.List;
 import fr.wetstein.mycv.business.GroupSkill;
 import fr.wetstein.mycv.business.Skill;
 
-public class ParserAssets {
+/**
+ * Created by ThundeR on 18/07/2014.
+ */
+public class SkillParser extends ParserAssets {
+    public static final String TAG = "SkillParser";
 
-	public static final String TAG = "ParserAssets";
-	
-	private static final String pathData = "data/";
-	private static final String fileSkills = "skills.json";
+    private static final String fileSkills = "skills.json";
 
     private enum NodesSkill {
         DEV("dev"), SOFTWARE("software"), LANGUAGE("language"), OS("os"), VERSIONING("versioning");
@@ -34,9 +33,9 @@ public class ParserAssets {
     //Load Skill Map
     public static HashMap<GroupSkill, List<Skill>> loadSkills(Context context) {
         HashMap<GroupSkill, List<Skill>> mapSkill = new HashMap<GroupSkill, List<Skill>>();
-		
-		try {
-			JSONObject jsonObjectRoot = new JSONObject(loadJSONFromAsset(context, pathData+fileSkills));
+
+        try {
+            JSONObject jsonObjectRoot = new JSONObject(loadJSONFromAsset(context, pathData+fileSkills));
 
             //Loop each node
             for (NodesSkill ns : NodesSkill.values()) {
@@ -68,29 +67,11 @@ public class ParserAssets {
                     mapSkill.put(groupItem, items);
                 }
             }
-		} catch (JSONException e) {
-			Log.e(TAG, e.toString());
-		}
-		
-		return mapSkill;
-	}
-
-    //Load File in JSON
-	public static String loadJSONFromAsset(Context context, String filename) {
-        String json = null;
-        try {
-            InputStream is = context.getAssets().open(filename);
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-
-            json = new String(buffer, "UTF-8");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return null;
+        } catch (JSONException e) {
+            Log.e(TAG, e.toString());
         }
-        return json;
+
+        return mapSkill;
     }
 
 }

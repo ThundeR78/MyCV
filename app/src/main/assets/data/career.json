@@ -5,6 +5,8 @@
 	        "link": "http://www.mafisys.fr",
             "dateBegin": "24/01/2011",
             "dateEnd": "18/03/2011",
+            "latitude": "",
+            "longitude": "",
             "type": "workExperience",
             "tasks": [
                 { "label": "Android", "rate": "75", "color": "green" },
@@ -16,6 +18,8 @@
             "link": "http://www.myapp.net",
             "dateBegin": "",
             "dateEnd": "",
+            "latitude": "",
+            "longitude": "",
             "type": "sandwichTraining",
             "tasks": [
                 { "label": "Android", "rate": "75", "color": "green" },
@@ -38,6 +42,8 @@
             "link": "",
             "dateBegin": "",
             "dateEnd": "",
+            "latitude": "",
+            "longitude": "",
             "type": "sandwichTraining",
             "tasks": [
                 { "label": "Android", "rate": "75", "color": "green" },

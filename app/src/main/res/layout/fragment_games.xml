@@ -2,10 +2,20 @@
     <LinearLayout style="@style/ScrollViewLayout">
 
         <TextView
-            android:id="@+id/manga_title"
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="GAMES"/>
+
+        <GridView
+            android:id="@+id/gridview_console"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="2"
+            android:gravity="center"
+            android:stretchMode="columnWidth"
+            android:horizontalSpacing="10dp"
+            android:verticalSpacing="10dp" />
 
     </LinearLayout>
 </ScrollView>

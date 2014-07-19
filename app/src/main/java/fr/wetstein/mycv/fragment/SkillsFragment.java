@@ -31,7 +31,7 @@ import fr.wetstein.mycv.R;
 import fr.wetstein.mycv.adapter.ExpandableListSkillAdapter;
 import fr.wetstein.mycv.business.GroupSkill;
 import fr.wetstein.mycv.business.Skill;
-import fr.wetstein.mycv.util.ParserAssets;
+import fr.wetstein.mycv.parser.SkillParser;
 import fr.wetstein.mycv.view.TextProgressBar;
 
 /**
@@ -58,7 +58,7 @@ public class SkillsFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         //Load Skills
-        mapSkills =  ParserAssets.loadSkills(getActivity());
+        mapSkills =  SkillParser.loadSkills(getActivity());
         Log.v(TAG, mapSkills.toString());
 
     }
