@@ -1,7 +1,8 @@
 {
-	"careers":[
+	"career":[
 	    {
 	        "name": "MAFISYS",
+	        "logo": "logo_mafisys";
 	        "link": "http://www.mafisys.fr",
 	        "function": "Editeur de progiciel",
             "address": "5 rue du Clos d'en Haut, 78700 Conflans-Sainte-Honorine",
@@ -16,6 +17,7 @@
         },
 	    {
             "name": "MyApphone",
+            "logo": "logo_myapphone";
             "link": "http://www.myapp.net",
             "function": "Editeur d'applications mobiles",
             "dateBegin": "01/05/2012",
@@ -30,6 +32,7 @@
         },
         {
             "name": "wezzoo",
+            "logo": "logo_wezzoo";
             "link": "http://www.wezzoo.com",
             "function": "Service communautaire",
             "dateBegin": "23/01/2012",
@@ -44,6 +47,7 @@
         },
         {
             "name": "Sophiacom",
+            "logo": "logo_sophiacom";
             "link": "http://www.sophiacom.fr/",
             "function": "Editeur d'applications mobiles",
             "dateBegin": "04/09/2012",

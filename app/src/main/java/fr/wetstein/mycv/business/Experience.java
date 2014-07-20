@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by ThundeR on 06/07/2014.
  */
-public class Career {
+public class Experience {
 
     public String name;
     public String link;
@@ -21,7 +21,7 @@ public class Career {
     public String type;
     public List<String> listTask;
 
-    public Career() {
+    public Experience() {
         listTask = new ArrayList<String>();
     }
 }

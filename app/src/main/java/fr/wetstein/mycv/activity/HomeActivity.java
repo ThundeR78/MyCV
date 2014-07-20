@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import fr.wetstein.mycv.R;
+import fr.wetstein.mycv.fragment.CareerFragment;
 import fr.wetstein.mycv.fragment.HobbiesFragment;
 import fr.wetstein.mycv.fragment.NavDrawerFragment;
 import fr.wetstein.mycv.fragment.ProfileFragment;
@@ -54,6 +55,7 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
             case 1:
                 break;
             case 2:
+                fragment = new CareerFragment();
                 break;
             case 3:
                 fragment = new SkillsFragment();

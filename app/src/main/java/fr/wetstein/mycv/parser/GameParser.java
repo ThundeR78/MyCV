@@ -41,7 +41,7 @@ public class GameParser extends ParserAssets {
                     if (jsonObjectItem.has("icon"))
                         item.icon = jsonObjectItem.getString("icon");
 
-                    //Loop each games in node
+                    //Loop each Game in node
                     JSONArray jsonArray = jsonObjectItem.getJSONArray("games");
                     for (int j = 0; j < jsonArray.length(); j++) {
                         item.listGame.add(jsonArray.getString(j));
