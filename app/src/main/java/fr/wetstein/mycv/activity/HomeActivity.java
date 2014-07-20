@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import fr.wetstein.mycv.R;
 import fr.wetstein.mycv.fragment.HobbiesFragment;
@@ -51,10 +52,10 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
                 fragment = new ProfileFragment();
                 break;
             case 1:
-                fragment = new ProfileFragment();
+                Toast.makeText(this, "En travaux, sera bientôt disponible", Toast.LENGTH_SHORT).show();
                 break;
             case 2:
-
+                Toast.makeText(this, "En travaux, sera bientôt disponible", Toast.LENGTH_SHORT).show();
                 break;
             case 3:
                 fragment = new SkillsFragment();
@@ -63,7 +64,7 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
                 fragment = new HobbiesFragment();
                 break;
             case 5:
-
+                Toast.makeText(this, "En travaux, sera bientôt disponible", Toast.LENGTH_SHORT).show();
                 break;
         }
 

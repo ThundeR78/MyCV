@@ -34,7 +34,7 @@
         {
             "name": "GameBoy Advance",
             "shortname": "GBA",
-            "logo": "",
+            "logo": "logo_gba",
             "icon": "gba",
             "games": [
                 "DragonBall Z",
@@ -45,7 +45,7 @@
         {
             "name": "GameCube",
             "shortname": "GC",
-            "logo": "logo_gba",
+            "logo": "",
             "icon": "gamecube",
             "games": [
                 "DragonBall Z Hyper Dimension",

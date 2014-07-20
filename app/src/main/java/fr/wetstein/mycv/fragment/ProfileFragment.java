@@ -9,6 +9,8 @@ import android.graphics.Path;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -33,7 +37,9 @@ import fr.wetstein.mycv.R;
  * Created by ThundeR on 05/07/2014.
  */
 public class ProfileFragment extends Fragment implements View.OnClickListener {
+    public static final String TAG = "ProfileFragment";
 
+    private static View view;
     private TextView txtAge;
     private ImageButton btnEmail, btnCall;
 
@@ -53,18 +59,38 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
+        if (container == null)
+            return null;
 
-        ImageView image = (ImageView) rootView.findViewById(R.id.image);
-        txtAge = (TextView) rootView.findViewById(R.id.profile_age);
-        btnEmail = (ImageButton) rootView.findViewById(R.id.button_email);
-        btnCall = (ImageButton) rootView.findViewById(R.id.button_phone);
+        if (view != null) {
+            ViewGroup parent = (ViewGroup) view.getParent();
+            if (parent != null)
+                parent.removeView(view);
+        }
+        try {
+            view = inflater.inflate(R.layout.fragment_profile, container, false);
+        } catch (InflateException e) {
+        /* map is already there, just return view as it is */
+        }
+        //View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
+
+        ImageView image = (ImageView) view.findViewById(R.id.image);
+        txtAge = (TextView) view.findViewById(R.id.profile_age);
+        btnEmail = (ImageButton) view.findViewById(R.id.button_email);
+        btnCall = (ImageButton) view.findViewById(R.id.button_phone);
 
         btnEmail.setOnClickListener(this);
         btnCall.setOnClickListener(this);
         //image.setImageBitmap(getHexagonShape(((BitmapDrawable)image.getDrawable()).getBitmap()));
 
-        return rootView;
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        initMap();
     }
 
     @Override
@@ -72,17 +98,12 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         super.onActivityCreated(savedInstanceState);
 
         txtAge.setText(getString(R.string.value_age, age));
-
-
-
-        initMap();
     }
 
     @Override
     public void onResume() {
         super.onResume();
 
-        initMap();
     }
 
     @Override
@@ -91,16 +112,33 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initMap() {
-        if (mMap == null) {
-            mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map_fragment)).getMap();
-
-            //Check if map is created successfully or not
+        //Check if Google Play Services is available on device to display Google Maps
+        int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getActivity().getApplicationContext());
+        if (status == ConnectionResult.SUCCESS) {
             if (mMap == null) {
-                Toast.makeText(getActivity(), "Sorry! unable to create maps", Toast.LENGTH_SHORT).show();
-            } else
-                setupMap();
-        }
+                mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map_fragment)).getMap();
 
+                //Check if map is created successfully or not
+                if (mMap == null) {
+                    Toast.makeText(getActivity(), "Sorry! unable to create maps", Toast.LENGTH_SHORT).show();
+                } else
+                    setupMap();
+            }
+        } else {
+            getView().findViewById(R.id.map_fragment).setVisibility(View.GONE);
+        }
+    }
+
+    /**** The mapfragment's id must be removed from the FragmentManager or else if the same it is passed on the next time then app will crash ****/
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        if (mMap != null) {
+            Log.v(TAG, "REMOVE GMAPS");
+            getFragmentManager().beginTransaction().remove(getFragmentManager().findFragmentById(R.id.map_fragment)).commit();
+            mMap = null;
+        }
     }
 
     private void setupMap() {
