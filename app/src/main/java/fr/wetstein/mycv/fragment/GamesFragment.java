@@ -23,6 +23,11 @@ import fr.wetstein.mycv.view.ExpandableHeightGridView;
 public class GamesFragment extends Fragment implements AdapterView.OnItemClickListener {
     public static final String TAG = "GamesFragment";
 
+    private static final String STEAM_UID = "76561197965164575";
+    private static final String URL_PROFILE = "http://steamcommunity.com/id/thunder78/?xml=1";
+    private static final String URL_GAMES = "http://steamcommunity.com/id/thunder78/games?tab=all&xml=1";
+    private static final String URL_GAMES_JSON = "http://steamcommunity.com/id/thunder78/games?tab=all&format=json";
+
     private ExpandableHeightGridView gridView;
 
     private List<Console> listConsole;

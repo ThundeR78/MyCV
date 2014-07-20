@@ -3,66 +3,60 @@
 	    {
 	        "name": "MAFISYS",
 	        "link": "http://www.mafisys.fr",
+	        "function": "Editeur de progiciel",
+            "address": "5 rue du Clos d'en Haut, 78700 Conflans-Sainte-Honorine",
+            "latitude": "49.003355",
+            "longitude": "2.102085",
             "dateBegin": "24/01/2011",
             "dateEnd": "18/03/2011",
-            "latitude": "",
-            "longitude": "",
             "type": "workExperience",
             "tasks": [
-                { "label": "Android", "rate": "75", "color": "green" },
-                { "label": "Java", "rate": "70", "color": "red" }
+                "Développement de leur application web [ASP.NET] : création d’un ReportBook et d’un système de machine à état pour guider l’utilisateur sur l’application."
             ]
         },
 	    {
             "name": "MyApphone",
             "link": "http://www.myapp.net",
-            "dateBegin": "",
-            "dateEnd": "",
-            "latitude": "",
-            "longitude": "",
+            "function": "Editeur d'applications mobiles",
+            "dateBegin": "01/05/2012",
+            "dateEnd": "30/11/2012",
+            "address": "5 passage Piver, 75011 Paris",
+            "latitude": "48.870299",
+            "longitude": "2.374684",
             "type": "sandwichTraining",
             "tasks": [
-                { "label": "Android", "rate": "75", "color": "green" },
-                { "label": "Java", "rate": "70", "color": "red" }
+                "Développement d’applications mobiles [HTML, CSS, JavaScript, jQuery] : création d’applications à partir du framework de l’entreprise et qui seront ensuite compilées en applications natives."
             ]
         },
         {
             "name": "wezzoo",
             "link": "http://www.wezzoo.com",
-            "dateBegin": "",
-            "dateEnd": "",
+            "function": "Service communautaire",
+            "dateBegin": "23/01/2012",
+            "dateEnd": "30/07/2012",
+            "address": "44 rue Cauchy, 94110 Arcueil",
+            "latitude": "48.80469",
+            "longitude": "2.334573",
             "type": "sandwichTraining",
             "tasks": [
-                { "label": "Android", "rate": "75", "color": "green" },
-                { "label": "Java", "rate": "70", "color": "red" }
+                "Développement web et mobile [HTML, JavaScript, Objective-C] : apport de fonctionnalités sur l’application iOS existante ; création de pages web avec Google Maps, Google Chart…"
             ]
         },
         {
             "name": "Sophiacom",
-            "link": "",
-            "dateBegin": "",
-            "dateEnd": "",
-            "latitude": "",
-            "longitude": "",
+            "link": "http://www.sophiacom.fr/",
+            "function": "Editeur d'applications mobiles",
+            "dateBegin": "04/09/2012",
+            "dateEnd": "31/08/2014",
+            "address": "28 rue de Pologne, 78100 Saint-Germain-en-Laye",
+            "latitude": "48.898154",
+            "longitude": "2.087978",
             "type": "sandwichTraining",
             "tasks": [
-                { "label": "Android", "rate": "75", "color": "green" },
-                { "label": "Java", "rate": "70", "color": "red" }
+                "Développement d’applications mobiles Android [Java] : mise à jour des applications Keljob, Cadremploi, Explorimmo, et création de l’application YNP MBO.",
+                "Développement d’applications mobiles Tizen [HTML5, CSS3, JavaScript] : création des 3 applications clientes citées ci-dessus avec un nouvel outil, Montage Studio.",
+                "Développement d’une application mobile hybride [Android, HTML5, CSS3, JavaScript] : création de l’application de démonstration d’envoi de notification via le service You’n Push."
             ]
         }
 	]
-	}
-2013	- Alternance dans l’entreprise Sophiacom, éditeur d’applications mobiles (depuis Septembre 2012) :
-		› Développement d’applications mobiles Android [Java] : mise à jour des applications Keljob, Cadremploi, Explorimmo, et création de l’application YNP MBO.
-		› Développement d’applications mobiles Tizen [HTML5, CSS3, JavaScript] : création des 3 applications clientes citées ci-dessus avec un nouvel outil, Montage Studio.
-		› Développement d’une application mobile hybride [Android, HTML5, CSS3, JavaScript] : création de l’application de démonstration d’envoi de notification via le service You’n Push.
-
-2012	- Alternance dans l’entreprise wezzoo, site communautaire sur la météo (6 mois) :
-		› Développement web et mobile [HTML, JavaScript, Objective-C] : apport de fonctionnalités sur l’application iOS existante ; création de pages web avec Google Maps, Google Chart…
-
-2011	- Alternance dans l’entreprise MyApphone éditeur d’applications mobiles (5 mois) :
-		› Développement d’applications mobiles [HTML, CSS, JavaScript, jQuery] : création d’applications à partir du framework de l’entreprise et qui seront ensuite compilées en applications natives.
-	- Stage dans l’entreprise Mafisys, éditeur de progiciel (8 semaines) :
-		› Développement de leur application web [ASP.NET] : création d’un ReportBook et d’un système de machine à état pour guider l’utilisateur sur l’application.
-
 }

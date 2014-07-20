@@ -24,11 +24,23 @@
     <string name="button_see_collection">See collection</string>
 
     <!-- LABEL -->
+    <string name="label_consoles">Consoles :</string>
     <string name="label_send_email">Envoyer un email</string>
 
     <!-- VALUE -->
     <string name="value_email">julienwetstein@msn.com</string>
     <string name="value_phone">06 38 66 43 64</string>
     <string name="value_age">%1$d ans</string>
+
+    <!-- TEXT -->
+    <string name="text_descrition_games">Depuis tout jeune, j\'ai porté un certain intérêt aux jeux vidéo, comme beaucoup d\'enfants de ma génération.
+        Tout a commencé avec ma première GameBoy, et ça n\'a toujours pas cessé de m\'intéresser voir m\'impressionner.
+        Nintendo a su marquer mon esprit par son côté fun, attractif, divertissant et fantastique, c\'est pourquoi j\'ai préféré suivre l\'aventure de cette marque plutôt qu\'une autre.\n
+        Les jeux sur consoles ont été très longtemps mon unique moyen de jouer, puis est arrivé les jeux sur PC.
+        Les jeux sur ordinateur, eux, m\'ont permis de connaitre les joies du jeu online, sans pour autant délaisser mes chères consoles.\n
+        L\'aspect addictif des jeux vidéo peut être dangereux, mais on apprend à prioriser les choses et savoir se contrôler, c\'est pourquoi durant mes études j\'ai préféré faire une petite pause.
+        Comme tout le monde, j\'ai mes préférences dans le style de jeux, qui sont : FPS, Combat, Course, Action, Aventure, Plate-forme et Sport.
+    </string>
+
 
 </resources>
