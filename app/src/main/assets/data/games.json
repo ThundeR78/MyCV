@@ -3,8 +3,8 @@
         {
             "name": "Super Nintendo",
             "shortname": "SNES",
-            "logo": "",
-            "icon": "snes",
+            "logo": "logo_snes",
+            "icon": "icon_snes",
             "games": [
                 "DragonBall Z Hyper Dimension",
                 "Aladin",
@@ -14,8 +14,8 @@
         {
             "name": "Game Boy",
             "shortname": "GB",
-            "logo": "",
-            "icon": "gameboy",
+            "logo": "logo_gameboy_color",
+            "icon": "game_boy",
             "games": [
                 "Super Mario",
                 "Spirou"
@@ -45,7 +45,7 @@
         {
             "name": "GameCube",
             "shortname": "GC",
-            "logo": "",
+            "logo": "logo_gba",
             "icon": "gamecube",
             "games": [
                 "DragonBall Z Hyper Dimension",
@@ -76,7 +76,7 @@
         {
             "name": "Steam",
             "shortname": "Steam",
-            "logo": "",
+            "logo": "logo_steam",
             "icon": "steam",
             "games": [
                 "Borderlands 1",

@@ -7,12 +7,13 @@
             android:layout_height="wrap_content"
             android:text="GAMES"/>
 
-        <GridView
+        <fr.wetstein.mycv.view.ExpandableHeightGridView
             android:id="@+id/gridview_console"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:numColumns="2"
             android:gravity="center"
+            android:isScrollContainer="false"
             android:stretchMode="columnWidth"
             android:horizontalSpacing="10dp"
             android:verticalSpacing="10dp" />
