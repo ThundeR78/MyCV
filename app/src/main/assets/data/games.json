@@ -14,8 +14,8 @@
         {
             "name": "Game Boy",
             "shortname": "GB",
-            "logo": "logo_gameboy_color",
-            "icon": "game_boy",
+            "logo": "logo_gameboy",
+            "icon": "icon_game_boy",
             "games": [
                 "Super Mario",
                 "Spirou"
@@ -24,8 +24,8 @@
         {
             "name": "Nintendo 64",
             "shortname": "N64",
-            "logo": "",
-            "icon": "n64",
+            "logo": "logo_n64",
+            "icon": "icon_n64",
             "games": [
                 "Mario Kart 64",
                 "Super Mario 64"
@@ -35,7 +35,7 @@
             "name": "GameBoy Advance",
             "shortname": "GBA",
             "logo": "logo_gba",
-            "icon": "gba",
+            "icon": "icon_gba",
             "games": [
                 "DragonBall Z",
                 "Golden Sun 1",
@@ -45,8 +45,8 @@
         {
             "name": "GameCube",
             "shortname": "GC",
-            "logo": "",
-            "icon": "gamecube",
+            "logo": "logo_gamecube",
+            "icon": "icon_gamecube",
             "games": [
                 "DragonBall Z Hyper Dimension",
                 "Aladin"
@@ -55,8 +55,8 @@
         {
             "name": "Wii",
             "shortname": "Wii",
-            "logo": "",
-            "icon": "wii",
+            "logo": "logo_wii",
+            "icon": "icon_wii",
             "games": [
                 "Zelda - Twilight Princess",
                 "Zelda - "
@@ -66,7 +66,7 @@
             "name": "PC",
             "shortname": "PC",
             "logo": "",
-            "icon": "pc",
+            "icon": "icon_pc",
             "games": [
                 "Call of Duty - Mordern Warfare",
                 "Half-Life",
@@ -77,7 +77,7 @@
             "name": "Steam",
             "shortname": "Steam",
             "logo": "logo_steam",
-            "icon": "steam",
+            "icon": "icon_steam",
             "games": [
                 "Borderlands 1",
                 "Borderlands 2"

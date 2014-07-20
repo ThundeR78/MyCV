@@ -9,7 +9,7 @@
 
         <fr.wetstein.mycv.view.ExpandableHeightGridView
             android:id="@+id/gridview_console"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:numColumns="2"
             android:gravity="center"

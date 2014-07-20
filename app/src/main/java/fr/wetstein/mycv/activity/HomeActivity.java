@@ -46,16 +46,14 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
-        Fragment fragment = new Fragment();
+        Fragment fragment = null;
         switch (position) {
             case 0:
                 fragment = new ProfileFragment();
                 break;
             case 1:
-                Toast.makeText(this, "En travaux, sera bientôt disponible", Toast.LENGTH_SHORT).show();
                 break;
             case 2:
-                Toast.makeText(this, "En travaux, sera bientôt disponible", Toast.LENGTH_SHORT).show();
                 break;
             case 3:
                 fragment = new SkillsFragment();
@@ -64,17 +62,19 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
                 fragment = new HobbiesFragment();
                 break;
             case 5:
-                Toast.makeText(this, "En travaux, sera bientôt disponible", Toast.LENGTH_SHORT).show();
                 break;
         }
 
-        // update the main content by replacing fragments
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.container, fragment)
-                .commit();
+        if (fragment != null) {
+            //Update the main content by replacing fragments
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.container, fragment)
+                    .commit();
 
-        mTitle = mArrayTitle[position];
+            mTitle = mArrayTitle[position];
+        } else
+            Toast.makeText(this, "En travaux, sera bientôt disponible", Toast.LENGTH_SHORT).show();
     }
 
 //    public void onSectionAttached(int number) {
