@@ -24,6 +24,7 @@
     <color name="navdrawer_profile_background">@android:color/background_dark</color>
     <color name="navdrawer_item_textcolor">@android:color/black</color>
 
+    <color name="activity_background">@android:color/background_light</color>
 
     <color name="button_disabled">#E8E8E8</color>
 </resources>

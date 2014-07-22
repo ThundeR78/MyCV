@@ -9,7 +9,6 @@ import android.graphics.Path;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +23,8 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.StreetViewPanorama;
+import com.google.android.gms.maps.StreetViewPanoramaFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -46,6 +47,9 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     //Google Maps
     private GoogleMap mMap;
     private int mLevelZoom = 10;
+
+    //StreetView
+    private StreetViewPanorama mStreetview;
 
     private Calendar calBirthday;
     private int age;
@@ -91,6 +95,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         super.onViewCreated(view, savedInstanceState);
 
         initMap();
+        initStreetView();
     }
 
     @Override
@@ -119,13 +124,23 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                 mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map_fragment)).getMap();
 
                 //Check if map is created successfully or not
-                if (mMap == null) {
-                    Toast.makeText(getActivity(), "Sorry! unable to create maps", Toast.LENGTH_SHORT).show();
-                } else
+                if (mMap != null) {
                     setupMap();
+                } else
+                    Toast.makeText(getActivity(), "Sorry! unable to create Google Maps", Toast.LENGTH_SHORT).show();
             }
         } else {
             getView().findViewById(R.id.map_fragment).setVisibility(View.GONE);
+        }
+    }
+
+    private void initStreetView() {
+        if (mStreetview == null) {
+            mStreetview = ((StreetViewPanoramaFragment) getFragmentManager().findFragmentById(R.id.streetview_fragment)).getStreetViewPanorama();
+            if (mStreetview != null) {
+                setupStreetView();
+            } else
+                Toast.makeText(getActivity(), "Sorry! unable to create StreetView Panorama", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -134,11 +149,11 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     public void onDestroyView() {
         super.onDestroyView();
 
-        if (mMap != null) {
+        /*if (mMap != null) {
             Log.v(TAG, "REMOVE GMAPS");
             getFragmentManager().beginTransaction().remove(getFragmentManager().findFragmentById(R.id.map_fragment)).commit();
             mMap = null;
-        }
+        }*/
     }
 
     private void setupMap() {
@@ -151,6 +166,17 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         //Display Home Marker
         displayHome();
     }
+
+    private void setupStreetView() {
+        mStreetview.setPanningGesturesEnabled(true);
+        mStreetview.setUserNavigationEnabled(true);
+        mStreetview.setZoomGesturesEnabled(true);
+        mStreetview.setStreetNamesEnabled(true);
+
+        //Display Home Panorama
+        mStreetview.setPosition(MyCVApp.HOME_LATLNG);
+    }
+
 
     //Calculate my age with Date
     private void calculateAge() {

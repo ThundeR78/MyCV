@@ -8,7 +8,8 @@
 
     <string name="title_profile">Profile</string>
     <string name="title_studies">Studies</string>
-    <string name="title_career">Career</string>
+    <string name="title_career">Experiences</string>
+    <string name="title_detail_experience">Experience</string>
     <string name="title_skills">Skills</string>
     <string name="title_contact">Contact</string>
     <string name="title_hobbies">Loisirs</string>
@@ -31,6 +32,10 @@
     <string name="value_email">julienwetstein@msn.com</string>
     <string name="value_phone">06 38 66 43 64</string>
     <string name="value_age">%1$d ans</string>
+    <string name="value_dates">De %1$s à %2$s</string>
+
+    <string name="sandwich_training">Alernance</string>
+    <string name="work_experience">Stage</string>
 
     <!-- TEXT -->
     <string name="text_descrition_games">Depuis tout jeune, j\'ai porté un certain intérêt aux jeux vidéo, comme beaucoup d\'enfants de ma génération.

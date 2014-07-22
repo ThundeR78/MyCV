@@ -37,6 +37,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.DetailSliderActivity"
+            android:label="@string/app_name" />
 
         <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyCqh4pZfgqjBx4QL5c29x_oMJ3m96BvE8w" />
         <!-- <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyAphBjtt-_x1zq2GJsiamggUecnAQdWprc" /> -->

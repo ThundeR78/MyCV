@@ -11,7 +11,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import fr.wetstein.mycv.R;
-import fr.wetstein.mycv.fragment.CareerFragment;
+import fr.wetstein.mycv.fragment.ExperienceListFragment;
 import fr.wetstein.mycv.fragment.HobbiesFragment;
 import fr.wetstein.mycv.fragment.NavDrawerFragment;
 import fr.wetstein.mycv.fragment.ProfileFragment;
@@ -28,6 +28,7 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
     private String[] mArrayTitle;
     /** Used to store the last screen title. For use in {@link #restoreActionBar()}. */
     private CharSequence mTitle;
+    private int mCurrentPosition = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,9 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
+        if (mCurrentPosition == position)
+            return;
+
         Fragment fragment = null;
         switch (position) {
             case 0:
@@ -55,7 +59,7 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
             case 1:
                 break;
             case 2:
-                fragment = new CareerFragment();
+                fragment = new ExperienceListFragment();
                 break;
             case 3:
                 fragment = new SkillsFragment();

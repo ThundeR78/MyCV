@@ -12,6 +12,7 @@ import java.util.List;
 
 import fr.wetstein.mycv.R;
 import fr.wetstein.mycv.business.Experience;
+import fr.wetstein.mycv.util.FormatValue;
 
 /**
  * Created by ThundeR on 10/07/2014.
@@ -39,6 +40,7 @@ public class ListExperienceAdapter extends ArrayAdapter<Experience> {
                 holder = new ViewHolder();
                 holder.logo = (ImageView) convertView.findViewById(R.id.list_exp_item_logo);
                 holder.name = (TextView) convertView.findViewById(R.id.list_exp_item_name);
+                holder.date = (TextView) convertView.findViewById(R.id.list_exp_item_date);
                 convertView.setTag(holder);
             }
             else {
@@ -46,9 +48,13 @@ public class ListExperienceAdapter extends ArrayAdapter<Experience> {
             }
         }
 
-        int logoId = getContext().getResources().getIdentifier(item.logo, "drawable", getContext().getPackageName());
-        holder.logo.setImageResource(logoId);
+        String strDateBegin = FormatValue.monthDateFormat.format(item.dateBegin);
+        String strDateEnd = FormatValue.monthDateFormat.format(item.dateEnd);
+        String expDuration = getContext().getString(R.string.value_dates, strDateBegin, strDateEnd);
+
+        holder.logo.setImageResource(item.logo);
         holder.name.setText(item.name);
+        holder.date.setText(expDuration);
 
         return convertView;
     }
@@ -56,5 +62,6 @@ public class ListExperienceAdapter extends ArrayAdapter<Experience> {
     public static class ViewHolder {
         public ImageView logo;
         public TextView name;
+        public TextView date;
     }
 }
