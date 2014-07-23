@@ -27,6 +27,7 @@ import com.google.android.gms.maps.StreetViewPanorama;
 import com.google.android.gms.maps.StreetViewPanoramaFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.Calendar;
@@ -52,13 +53,11 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private StreetViewPanorama mStreetview;
 
     private Calendar calBirthday;
-    private int age;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        calculateAge();
     }
 
     @Override
@@ -102,7 +101,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        txtAge.setText(getString(R.string.value_age, age));
+        txtAge.setText(getString(R.string.value_age, calculateAge()));
     }
 
     @Override
@@ -179,26 +178,29 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
 
     //Calculate my age with Date
-    private void calculateAge() {
+    private int calculateAge() {
         calBirthday = Calendar.getInstance();
         calBirthday.set(1988, Calendar.DECEMBER, 13);
         Calendar calNow = Calendar.getInstance();
 
-        age = calNow.get(Calendar.YEAR) - calBirthday.get(Calendar.YEAR);
+        int age = calNow.get(Calendar.YEAR) - calBirthday.get(Calendar.YEAR);
 
         if (calNow.get(Calendar.DAY_OF_YEAR) < calBirthday.get(Calendar.DAY_OF_YEAR))
             age--;
+
+        return age;
     }
 
     private void displayHome() {
         if (mMap != null) {
             //Add Marker
-            MarkerOptions marker = new MarkerOptions()
+            MarkerOptions markerOptions = new MarkerOptions()
                     .position(MyCVApp.HOME_LATLNG)
                     .title("Julien Wetstein")
                     .snippet("6 rue violet, 75015 Paris")
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET));
-            mMap.addMarker(marker);
+            Marker marker = mMap.addMarker(markerOptions);
+            marker.showInfoWindow();
 
             //Move Camera
             CameraPosition cameraPosition = new CameraPosition.Builder().target(MyCVApp.HOME_LATLNG).zoom(mLevelZoom).build();

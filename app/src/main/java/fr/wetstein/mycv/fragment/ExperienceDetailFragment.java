@@ -19,6 +19,7 @@ public class ExperienceDetailFragment extends DetailFragment<Experience> impleme
 
     private ImageView imgLogo;
 	private TextView textName, textLink, textFunction, textAddress;
+    private TextView textType;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -38,9 +39,9 @@ public class ExperienceDetailFragment extends DetailFragment<Experience> impleme
         imgLogo = (ImageView) contentView.findViewById(R.id.detail_exp_logo);
         textName = (TextView) contentView.findViewById(R.id.detail_exp_name);
 		textFunction = (TextView) contentView.findViewById(R.id.detail_exp_function);
-		//textLink = (TextView) contentView.findViewById(R.id.text_email);
-		//textAddress = (TextView) contentView.findViewById(R.id.text_phone);
-
+		textLink = (TextView) contentView.findViewById(R.id.detail_exp_link);
+		textAddress = (TextView) contentView.findViewById(R.id.detail_exp_address);
+        textType = (TextView) contentView.findViewById(R.id.detail_exp_type);
 
 		return contentView;
 	}
@@ -56,7 +57,11 @@ public class ExperienceDetailFragment extends DetailFragment<Experience> impleme
 	protected void displayItem(Experience inItem) {
 		if (null != inItem && this.isAdded()) {
 			//Display item data
+            imgLogo.setImageResource(inItem.logo);
             textName.setText(inItem.name);
+            textFunction.setText(inItem.function);
+            textLink.setText(inItem.link);
+            textAddress.setText(inItem.address);
 		}
 	}
 	
