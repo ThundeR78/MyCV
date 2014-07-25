@@ -20,6 +20,7 @@
 
     <!-- ACTION -->
     <string name="action_settings">Settings</string>
+    <string name="action_map">Map</string>
 
     <!-- BUTTON -->
     <string name="button_see_collection">See collection</string>

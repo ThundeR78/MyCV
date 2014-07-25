@@ -97,7 +97,7 @@ public class NavDrawerFragment extends Fragment {
                 selectItem(position);
             }
         });
-        mNavDrawerAdapter = new NavDrawerAdapter(getActivity(), R.menu.navdrawer_menu);
+        mNavDrawerAdapter = new NavDrawerAdapter(getActivity(), R.menu.menu_navdrawer);
         mDrawerListView.setAdapter(mNavDrawerAdapter);
         /*mDrawerListView.setAdapter(new ArrayAdapter<String>(
                 getActionBar().getThemedContext(),

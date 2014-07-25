@@ -10,7 +10,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.wetstein.mycv.business.Console;
+import fr.wetstein.mycv.model.Console;
 
 /**
  * Created by ThundeR on 18/07/2014.

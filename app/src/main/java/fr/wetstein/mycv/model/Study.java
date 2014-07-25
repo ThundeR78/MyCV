@@ -1,4 +1,4 @@
-package fr.wetstein.mycv.business;
+package fr.wetstein.mycv.model;
 
 /**
  * Created by ThundeR on 06/07/2014.

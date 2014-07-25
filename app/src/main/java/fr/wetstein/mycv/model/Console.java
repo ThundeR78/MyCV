@@ -1,4 +1,4 @@
-package fr.wetstein.mycv.business;
+package fr.wetstein.mycv.model;
 
 import java.util.ArrayList;
 import java.util.List;

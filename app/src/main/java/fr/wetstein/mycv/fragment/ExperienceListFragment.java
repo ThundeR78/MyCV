@@ -4,8 +4,12 @@ import android.app.Activity;
 import android.app.ListFragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
@@ -15,8 +19,9 @@ import java.util.List;
 
 import fr.wetstein.mycv.R;
 import fr.wetstein.mycv.activity.DetailSliderActivity;
+import fr.wetstein.mycv.activity.MapActivity;
 import fr.wetstein.mycv.adapter.ListExperienceAdapter;
-import fr.wetstein.mycv.business.Experience;
+import fr.wetstein.mycv.model.Experience;
 import fr.wetstein.mycv.parser.ExperienceParser;
 
 /**
@@ -40,6 +45,7 @@ public class ExperienceListFragment extends ListFragment {
         listExperience =  ExperienceParser.loadCareer(getActivity());
         Log.v(TAG, listExperience.toString());
 
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -69,6 +75,25 @@ public class ExperienceListFragment extends ListFragment {
     public void onStart() {
         super.onStart();
 
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_list_experience, menu);
+
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_map) {
+            Intent intent = new Intent(getActivity(), MapActivity.class);
+            intent.putParcelableArrayListExtra(MapActivity.EXTRA_ITEM_LIST_KEY, (ArrayList<? extends Parcelable>) listExperience);
+            startActivity(intent);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

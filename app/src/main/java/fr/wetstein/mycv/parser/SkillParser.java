@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import fr.wetstein.mycv.business.GroupSkill;
-import fr.wetstein.mycv.business.Skill;
+import fr.wetstein.mycv.model.GroupSkill;
+import fr.wetstein.mycv.model.Skill;
 
 /**
  * Created by ThundeR on 18/07/2014.

@@ -1,12 +1,12 @@
-package fr.wetstein.mycv.business;
+package fr.wetstein.mycv.model;
 
 /**
  * Created by ThundeR on 06/07/2014.
  */
-public class Skill {
+public class GroupSkill {
 
     public String label;
-    public int rate;
+    public int orderId;
     public String color;
 
 }

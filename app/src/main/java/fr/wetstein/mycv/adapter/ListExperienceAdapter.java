@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import fr.wetstein.mycv.R;
-import fr.wetstein.mycv.business.Experience;
+import fr.wetstein.mycv.model.Experience;
 import fr.wetstein.mycv.util.FormatValue;
 
 /**

@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import fr.wetstein.mycv.R;
-import fr.wetstein.mycv.business.Console;
+import fr.wetstein.mycv.model.Console;
 
 /**
  * Created by ThundeR on 19/07/2014.

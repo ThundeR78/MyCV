@@ -16,8 +16,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import fr.wetstein.mycv.R;
-import fr.wetstein.mycv.business.GroupSkill;
-import fr.wetstein.mycv.business.Skill;
+import fr.wetstein.mycv.model.GroupSkill;
+import fr.wetstein.mycv.model.Skill;
 import fr.wetstein.mycv.fragment.SkillsFragment;
 
 /**

@@ -1,30 +1,25 @@
-package fr.wetstein.mycv.business;
+package fr.wetstein.mycv.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
  * Created by ThundeR on 06/07/2014.
  */
-public class Experience implements Parcelable {
+public class Experience extends Place implements Parcelable {
+    public static final String TAG = "Experience";
 
-    public String name;
     public String link;
-    public String address;
-    public Double latitude;
-    public Double longitude;
     public String function;
     public int logo;
-    public Date dateBegin;
-    public Date dateEnd;
     public String type;
     public List<String> listTask;
 
     public Experience() {
+        super();
         listTask = new ArrayList<String>();
     }
 
@@ -51,29 +46,19 @@ public class Experience implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(name);
+        super.writeToParcel(dest, flags);
         dest.writeInt(logo);
         dest.writeString(function);
         dest.writeString(link);
-        dest.writeString(address);
-        dest.writeDouble(latitude);
-        dest.writeDouble(longitude);
-        dest.writeLong((dateBegin != null) ? dateBegin.getTime() : 0);
-        dest.writeLong((dateEnd != null) ? dateEnd.getTime() : 0);
         dest.writeString(type);
         dest.writeStringList(listTask);
     }
 
     public void readFromParcel(Parcel in) {
-        name = in.readString();
+        super.readFromParcel(in);
         logo = in.readInt();
         function = in.readString();
         link = in.readString();
-        address = in.readString();
-        latitude = in.readDouble();
-        longitude = in.readDouble();
-        dateBegin = new Date(in.readLong());
-        dateEnd = new Date(in.readLong());
         type = in.readString();
         listTask = new ArrayList<String>();
         in.readStringList(listTask);

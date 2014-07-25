@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import fr.wetstein.mycv.R;
-import fr.wetstein.mycv.business.Experience;
+import fr.wetstein.mycv.model.Experience;
 
 public class ExperienceDetailFragment extends DetailFragment<Experience> implements OnClickListener {
 	private static final String TAG = "ExperienceDetailFragment";
