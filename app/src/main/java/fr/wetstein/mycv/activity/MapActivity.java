@@ -95,19 +95,21 @@ public class MapActivity extends Activity {
         if (mMap != null && items != null) {
             for (Place item : items) {
                 if (item != null && item.latitude != null && item.longitude != null) {
-                    String expDuration = "";
+                    String expDuration = null;
                     if (item.dateBegin != null && item.dateEnd != null) {
                         String strDateBegin = FormatValue.monthDateFormat.format(item.dateBegin);
                         String strDateEnd = FormatValue.monthDateFormat.format(item.dateEnd);
-                        expDuration = getString(R.string.value_dates, strDateBegin, strDateEnd)+"\n";
+                        expDuration = getString(R.string.value_dates, strDateBegin, strDateEnd);
                     }
 
                     //Add Marker
                     MarkerOptions markerOptions = new MarkerOptions()
                             .position(new LatLng(item.latitude, item.longitude))
                             .title(item.name)
-                            .snippet(expDuration + item.address)
                             .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET));
+                    if (expDuration != null && !expDuration.isEmpty())
+                        markerOptions.snippet(expDuration);
+
                     Marker marker = mMap.addMarker(markerOptions);
                     //marker.showInfoWindow();
 
