@@ -17,13 +17,18 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import fr.wetstein.mycv.R;
+import fr.wetstein.mycv.fragment.ExperienceDetailFragment;
+import fr.wetstein.mycv.model.Experience;
 import fr.wetstein.mycv.model.Place;
+import fr.wetstein.mycv.model.Study;
 import fr.wetstein.mycv.util.FormatValue;
 
-public class MapActivity extends Activity {
+public class MapActivity extends Activity implements GoogleMap.OnInfoWindowClickListener {
 	private static final String TAG = "MapActivity";
 
 	public static final String EXTRA_ITEM_LIST_KEY = "ITEM_LIST";
@@ -33,6 +38,7 @@ public class MapActivity extends Activity {
 
     private GoogleMap mMap;
     private int mLevelZoom = 10;
+    private HashMap<Marker, Integer> mapMarker;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +92,7 @@ public class MapActivity extends Activity {
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.getUiSettings().setZoomGesturesEnabled(true);
         mMap.getUiSettings().setMyLocationButtonEnabled(true);
+        mMap.setOnInfoWindowClickListener(this);
 
         //Display Home Marker
         displayItems(listItem);
@@ -93,7 +100,11 @@ public class MapActivity extends Activity {
 
     private void displayItems(List<Place> items) {
         if (mMap != null && items != null) {
-            for (Place item : items) {
+            mapMarker = new HashMap<Marker, Integer>();
+
+            for (int i=0; i<items.size() ;i++) {
+                Place item = items.get(i);
+
                 if (item != null && item.latitude != null && item.longitude != null) {
                     String expDuration = null;
                     if (item.dateBegin != null && item.dateEnd != null) {
@@ -106,17 +117,48 @@ public class MapActivity extends Activity {
                     MarkerOptions markerOptions = new MarkerOptions()
                             .position(new LatLng(item.latitude, item.longitude))
                             .title(item.name)
-                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET));
+                            .icon(BitmapDescriptorFactory.defaultMarker(item.pin));
                     if (expDuration != null && !expDuration.isEmpty())
                         markerOptions.snippet(expDuration);
 
                     Marker marker = mMap.addMarker(markerOptions);
                     //marker.showInfoWindow();
 
+                    mapMarker.put(marker, i);
+
                     //Move Camera
                     //CameraPosition cameraPosition = new CameraPosition.Builder().target(MyCVApp.HOME_LATLNG).zoom(mLevelZoom).build();
                     //mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
                 }
+            }
+        }
+    }
+
+    @Override
+    public void onInfoWindowClick(Marker marker) {
+        if (mapMarker.containsKey(marker)) {
+            int position = mapMarker.get(marker);
+            Place item = listItem.get(position);
+
+            if (item != null) {
+                //Go to Detail with parameters
+                Intent intent = new Intent(this, DetailSliderActivity.class);
+
+                //Check list item class
+                if (item instanceof Experience) {
+                    intent.putExtra(DetailSliderActivity.FRAGMENT_NAME_KEY, ExperienceDetailFragment.class.getName());
+                    List<Experience> listExperience = (List<Experience>)(List<?>) listItem;
+                    intent.putParcelableArrayListExtra(DetailSliderActivity.ITEM_LIST_KEY,  (ArrayList<Experience>)listExperience);
+                    intent.putExtra(DetailSliderActivity.STARTING_PAGE_NUMBER_KEY, position);
+                    intent.putExtra(DetailSliderActivity.ITEM_KEY, (Experience) item);
+                } else if (item instanceof Study) {
+
+                }
+
+                Bundle extras = new Bundle();
+                intent.putExtra(DetailSliderActivity.EXTRAS_BUNDLE_KEY, extras);
+
+                startActivity(intent);
             }
         }
     }

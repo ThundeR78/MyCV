@@ -8,6 +8,7 @@
             "address": "5 rue du Clos d'en Haut, 78700 Conflans-Sainte-Honorine",
             "latitude": "49.003355",
             "longitude": "2.102085",
+            "pin": "30",
             "dateBegin": "24/01/2011",
             "dateEnd": "18/03/2011",
             "type": "work_experience",
@@ -25,6 +26,7 @@
             "address": "5 passage Piver, 75011 Paris",
             "latitude": "48.870299",
             "longitude": "2.374684",
+            "pin": "240",
             "type": "sandwich_training",
             "tasks": [
                 "Développement d’applications mobiles [HTML, CSS, JavaScript, jQuery] : création d’applications à partir du framework de l’entreprise et qui seront ensuite compilées en applications natives."
@@ -40,6 +42,7 @@
             "address": "44 rue Cauchy, 94110 Arcueil",
             "latitude": "48.80469",
             "longitude": "2.334573",
+            "pin": "60",
             "type": "sandwich_training",
             "tasks": [
                 "Développement web et mobile [HTML, JavaScript, Objective-C] : apport de fonctionnalités sur l’application iOS existante ; création de pages web avec Google Maps, Google Chart…"
@@ -55,6 +58,7 @@
             "address": "28 rue de Pologne, 78100 Saint-Germain-en-Laye",
             "latitude": "48.898154",
             "longitude": "2.087978",
+            "pin": "120",
             "type": "sandwich_training",
             "tasks": [
                 "Développement d’applications mobiles Android [Java] : mise à jour des applications Keljob, Cadremploi, Explorimmo, et création de l’application YNP MBO.",

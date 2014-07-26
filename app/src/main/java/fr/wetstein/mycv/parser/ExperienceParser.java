@@ -42,8 +42,10 @@ public class ExperienceParser extends ParserAssets {
                     item.address = jsonObjectItem.getString("address");
                     item.latitude = jsonObjectItem.getDouble("latitude");
                     item.longitude = jsonObjectItem.getDouble("longitude");
+                    item.pin = Float.parseFloat(jsonObjectItem.optString("pin").toString());
                     String resLogoName = jsonObjectItem.getString("logo");
-                    item.logo = context.getResources().getIdentifier(resLogoName, "drawable", context.getPackageName());
+                    if (resLogoName != null)
+                        item.logo = context.getResources().getIdentifier(resLogoName, "drawable", context.getPackageName());
 
                     String dateBegin = jsonObjectItem.getString("dateBegin");
                     item.dateBegin = FormatValue.dateFormat.parse(dateBegin);

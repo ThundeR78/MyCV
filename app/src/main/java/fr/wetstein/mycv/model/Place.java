@@ -17,6 +17,7 @@ public class Place implements Parcelable {
     public Double longitude;
     public Date dateBegin;
     public Date dateEnd;
+    public float pin;
 
     public Place() {
 
@@ -51,6 +52,7 @@ public class Place implements Parcelable {
         dest.writeDouble(longitude);
         dest.writeLong((dateBegin != null) ? dateBegin.getTime() : 0);
         dest.writeLong((dateEnd != null) ? dateEnd.getTime() : 0);
+        dest.writeFloat(pin);
     }
 
     public void readFromParcel(Parcel in) {
@@ -60,5 +62,6 @@ public class Place implements Parcelable {
         longitude = in.readDouble();
         dateBegin = new Date(in.readLong());
         dateEnd = new Date(in.readLong());
+        pin = in.readFloat();
     }
 }
