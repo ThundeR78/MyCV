@@ -20,20 +20,20 @@ import java.util.List;
 import fr.wetstein.mycv.R;
 import fr.wetstein.mycv.activity.DetailSliderActivity;
 import fr.wetstein.mycv.activity.MapActivity;
-import fr.wetstein.mycv.adapter.ListExperienceAdapter;
-import fr.wetstein.mycv.model.Experience;
-import fr.wetstein.mycv.parser.ExperienceParser;
+import fr.wetstein.mycv.adapter.ListStudyAdapter;
+import fr.wetstein.mycv.model.Study;
+import fr.wetstein.mycv.parser.StudyParser;
 
 /**
  * Created by ThundeR on 05/07/2014.
  */
-public class ExperienceListFragment extends ListFragment {
-    public static final String TAG = "ExperienceListFragment";
+public class StudyListFragment extends ListFragment {
+    public static final String TAG = "StudyListFragment";
 
-    private List<Experience> listExperience;
-    private ListExperienceAdapter listAdapter;
+    private List<Study> listStudy;
+    private ListStudyAdapter listAdapter;
 
-    public ExperienceListFragment() {
+    public StudyListFragment() {
 
     }
 
@@ -42,8 +42,8 @@ public class ExperienceListFragment extends ListFragment {
         super.onCreate(savedInstanceState);
 
         //Load items
-        listExperience =  ExperienceParser.loadCareer(getActivity());
-        Log.v(TAG, listExperience.toString());
+        listStudy =  StudyParser.loadStudies(getActivity());
+        Log.v(TAG, listStudy.toString());
 
         setHasOptionsMenu(true);
     }
@@ -59,9 +59,9 @@ public class ExperienceListFragment extends ListFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        if (listExperience != null) {
+        if (listStudy != null) {
             //Fill ExpandableListView with Skills
-            listAdapter = new ListExperienceAdapter(getActivity(), R.layout.list_experience_item, listExperience);
+            listAdapter = new ListStudyAdapter(getActivity(), R.layout.list_study_item, listStudy);
             setListAdapter(listAdapter);
         }
     }
@@ -89,7 +89,7 @@ public class ExperienceListFragment extends ListFragment {
         int id = item.getItemId();
         if (id == R.id.action_map) {
             Intent intent = new Intent(getActivity(), MapActivity.class);
-            intent.putParcelableArrayListExtra(MapActivity.EXTRA_ITEM_LIST_KEY, (ArrayList<? extends Parcelable>) listExperience);
+            intent.putParcelableArrayListExtra(MapActivity.EXTRA_ITEM_LIST_KEY, (ArrayList<? extends Parcelable>) listStudy);
             startActivity(intent);
         }
 
@@ -99,14 +99,14 @@ public class ExperienceListFragment extends ListFragment {
     @Override
     public void onListItemClick(ListView lv, View view, int position, long id) {
         super.onListItemClick(lv, view, position, id);
-        ListExperienceAdapter lc_adapter = (ListExperienceAdapter) lv.getAdapter();
+        ListStudyAdapter lc_adapter = (ListStudyAdapter) lv.getAdapter();
 
         //Go to Detail with parameters
         Intent intent = new Intent(getActivity(), DetailSliderActivity.class);
         intent.putExtra(DetailSliderActivity.FRAGMENT_NAME_KEY, ExperienceDetailFragment.class.getName());
-        intent.putParcelableArrayListExtra(DetailSliderActivity.ITEM_LIST_KEY, (ArrayList<Experience>) listExperience);
+        intent.putParcelableArrayListExtra(DetailSliderActivity.ITEM_LIST_KEY, (ArrayList<Study>) listStudy);
         intent.putExtra(DetailSliderActivity.POSITION_KEY, position);
-        intent.putExtra(DetailSliderActivity.ITEM_KEY, (Experience) lc_adapter.getItem(position));
+        intent.putExtra(DetailSliderActivity.ITEM_KEY, (Study) lc_adapter.getItem(position));
         Bundle extras = new Bundle();
         intent.putExtra(DetailSliderActivity.EXTRAS_BUNDLE_KEY, extras);
 

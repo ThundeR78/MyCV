@@ -25,7 +25,7 @@ import fr.wetstein.mycv.R;
 import fr.wetstein.mycv.fragment.ExperienceDetailFragment;
 import fr.wetstein.mycv.model.Experience;
 import fr.wetstein.mycv.model.Place;
-import fr.wetstein.mycv.model.Study;
+import fr.wetstein.mycv.model.School;
 import fr.wetstein.mycv.util.FormatValue;
 
 public class MapActivity extends Activity implements GoogleMap.OnInfoWindowClickListener {
@@ -149,9 +149,9 @@ public class MapActivity extends Activity implements GoogleMap.OnInfoWindowClick
                     intent.putExtra(DetailSliderActivity.FRAGMENT_NAME_KEY, ExperienceDetailFragment.class.getName());
                     List<Experience> listExperience = (List<Experience>)(List<?>) listItem;
                     intent.putParcelableArrayListExtra(DetailSliderActivity.ITEM_LIST_KEY,  (ArrayList<Experience>)listExperience);
-                    intent.putExtra(DetailSliderActivity.STARTING_PAGE_NUMBER_KEY, position);
+                    intent.putExtra(DetailSliderActivity.POSITION_KEY, position);
                     intent.putExtra(DetailSliderActivity.ITEM_KEY, (Experience) item);
-                } else if (item instanceof Study) {
+                } else if (item instanceof School) {
 
                 }
 

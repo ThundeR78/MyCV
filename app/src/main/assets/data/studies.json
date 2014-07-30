@@ -1,29 +1,81 @@
 {
-	"dev": {
-	    "orderId": 1,
-	    "color": "red",
-        "values": [
-            { "label": "Android", "rate": "75", "color": "green" },
-            { "label": "Java", "rate": "70", "color": "red" },
-            { "label": "C#", "rate": "45", "color": "green_dark" },
-            { "label": "C++", "rate": "35", "color": "orange_light" },
-            { "label": "C", "rate": "30", "color": "yellow" },
-            { "label": "HTML", "rate": "80", "color": "red" },
-            { "label": "CSS", "rate": "70", "color": "blue" },
-            { "label": "JavaScript", "rate": "60", "color": "yellow" },
-            { "label": "PHP", "rate": "60", "color": "blue" },
-            { "label": "SQL", "rate": "75", "color": "green_dark" }
-        ]
-	}
-
-	2012/2014	Cycle mastère programmation en altenance – option architecture logicielle
-    2011/2012	Bachelor professionnel en alternance - option développement web + Certification Cisco
-    	Ecole ESGI – Paris (75019)
-
-    2010/2011	BTS Informatique et Gestion – option développement
-    		   Lycée Jules Ferry – Conflans Sainte Honorine (78700)
-
-    2008/2009	Baccalauréat Sciences et Technologie de la Gestion – option Gestion des Systèmes d'Information + Brevet Informatique et Internet (B2I)
-    Lycée Galilée – Cergy (95800)
-
+	"studies":[
+	    {
+            "name": "Baccalauréat Sciences et Technologie de la Gestion",
+            "option": "Gestion des Systèmes d'Information",
+            "date": "2008/2009",
+            "school": 1,
+            "certifications": [
+                "Baccalauréat STG",
+                "Brevet Informatique et Internet (B2I)"
+            ]
+        },
+	    {
+	        "name": "BTS Informatique et Gestion",
+	        "option": "Développement",
+	        "date": "2009/2011",
+	        "school": 2,
+	        "certifications": [
+                "BTS Informatique et Gestion – option Développement"
+            ]
+	    },
+        {
+            "name": "Licence Professionnelle",
+            "option": "Développement Web",
+            "date": "2011/2012",
+            "school": 3,
+            "certifications": [
+                "BTS Informatique et Gestion – option Développement",
+                "Certification Cisco - CCNA 1"
+            ]
+        },
+        {
+            "name": "Master of Sciences",
+            "option": "Développement Web",
+            "date": "2011/2012",
+            "school": 3,
+            "certification": [
+                "Master – option Architecture Logicielle",
+                "TOEIC - Listening and Reading"
+            ]
+        }
+    ],
+    "schools": [
+        {
+            "id": 1,
+            "name": "Lycée Galilée",
+            "logo": "",
+            "link": "http://www.lyc-galilee-cergy.ac-versailles.fr/",
+            "address": "11 avenue du Jour, Cergy (95801)",
+            "latitude": "49.04474",
+            "longitude": "2.031094",
+            "pin": "210",
+            "dateBegin": "09/2008",
+            "dateEnd": "07/2009"
+        },
+        {
+            "id": 2,
+            "name": "Lycée Jules Ferry",
+            "logo": "",
+            "link": "http://www.lyc-ferry-conflans.ac-versailles.fr/",
+            "address": "7 rue Joseph Bouyssel, 78700 Conflans-Sainte-Honorine",
+            "latitude": "48.998935",
+            "longitude": "2.095932",
+            "pin": "210",
+            "dateBegin": "09/2009",
+            "dateEnd": "07/2011"
+        },
+        {
+            "id": 3,
+            "name": "ESGI",
+            "logo": "logo_mafisys",
+            "link": "http://www.esgi.fr",
+            "address": "21 rue Erard, 75012 Paris",
+            "latitude": "48.8461315",
+            "longitude": "2.3854732",
+            "pin": "240",
+            "dateBegin": "09/2011",
+            "dateEnd": "07/2014"
+        }
+    ]
 }

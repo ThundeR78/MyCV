@@ -16,6 +16,7 @@ import fr.wetstein.mycv.fragment.HobbiesFragment;
 import fr.wetstein.mycv.fragment.NavDrawerFragment;
 import fr.wetstein.mycv.fragment.ProfileFragment;
 import fr.wetstein.mycv.fragment.SkillsFragment;
+import fr.wetstein.mycv.fragment.StudyListFragment;
 
 
 public class HomeActivity extends Activity implements NavDrawerFragment.NavigationDrawerCallbacks {
@@ -57,6 +58,7 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
                 fragment = new ProfileFragment();
                 break;
             case 1:
+                fragment = new StudyListFragment();
                 break;
             case 2:
                 fragment = new ExperienceListFragment();

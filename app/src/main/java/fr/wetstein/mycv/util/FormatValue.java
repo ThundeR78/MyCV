@@ -24,6 +24,7 @@ public class FormatValue {
 	public static SimpleDateFormat timedateFormat = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy", Locale.getDefault());
 	public static SimpleDateFormat dayDateFormat = new SimpleDateFormat("EEEE F MMMM yyyy' à 'HH'h'mm", Locale.getDefault());
     public static SimpleDateFormat monthDateFormat = new SimpleDateFormat("MMMM yyyy", Locale.getDefault());
+    public static SimpleDateFormat dateMonthFormat = new SimpleDateFormat("MM/yyyy", Locale.getDefault());
 	public static NumberFormat numberFormat = NumberFormat.getInstance();
 	
 	public static String millisecondFormat(long time) {
