@@ -8,6 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import fr.wetstein.mycv.model.Console;
@@ -46,6 +47,8 @@ public class GameParser extends ParserAssets {
                     for (int j = 0; j < jsonArray.length(); j++) {
                         item.listGame.add(jsonArray.getString(j));
                     }
+
+                    Collections.sort(item.listGame);
 
                     listItem.add(item);
                 }

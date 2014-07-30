@@ -21,6 +21,7 @@ import fr.wetstein.mycv.R;
 import fr.wetstein.mycv.activity.DetailSliderActivity;
 import fr.wetstein.mycv.activity.MapActivity;
 import fr.wetstein.mycv.adapter.ListStudyAdapter;
+import fr.wetstein.mycv.model.School;
 import fr.wetstein.mycv.model.Study;
 import fr.wetstein.mycv.parser.StudyParser;
 
@@ -42,7 +43,7 @@ public class StudyListFragment extends ListFragment {
         super.onCreate(savedInstanceState);
 
         //Load items
-        listStudy =  StudyParser.loadStudies(getActivity());
+        listStudy =  StudyParser.loadStudies(getActivity(), true);
         Log.v(TAG, listStudy.toString());
 
         setHasOptionsMenu(true);
@@ -89,7 +90,8 @@ public class StudyListFragment extends ListFragment {
         int id = item.getItemId();
         if (id == R.id.action_map) {
             Intent intent = new Intent(getActivity(), MapActivity.class);
-            intent.putParcelableArrayListExtra(MapActivity.EXTRA_ITEM_LIST_KEY, (ArrayList<? extends Parcelable>) listStudy);
+            List<School> listSchool = StudyParser.loadSchools(getActivity(), true);
+            intent.putParcelableArrayListExtra(MapActivity.EXTRA_ITEM_LIST_KEY, (ArrayList<? extends Parcelable>) listSchool);
             startActivity(intent);
         }
 
@@ -103,10 +105,9 @@ public class StudyListFragment extends ListFragment {
 
         //Go to Detail with parameters
         Intent intent = new Intent(getActivity(), DetailSliderActivity.class);
-        intent.putExtra(DetailSliderActivity.FRAGMENT_NAME_KEY, ExperienceDetailFragment.class.getName());
+        intent.putExtra(DetailSliderActivity.FRAGMENT_NAME_KEY, StudyDetailFragment.class.getName());
         intent.putParcelableArrayListExtra(DetailSliderActivity.ITEM_LIST_KEY, (ArrayList<Study>) listStudy);
         intent.putExtra(DetailSliderActivity.POSITION_KEY, position);
-        intent.putExtra(DetailSliderActivity.ITEM_KEY, (Study) lc_adapter.getItem(position));
         Bundle extras = new Bundle();
         intent.putExtra(DetailSliderActivity.EXTRAS_BUNDLE_KEY, extras);
 

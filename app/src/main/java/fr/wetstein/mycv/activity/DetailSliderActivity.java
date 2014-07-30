@@ -21,7 +21,6 @@ public class DetailSliderActivity<Item extends Parcelable> extends Activity {
 	private static final String TAG = "DetailSliderActivity";
 
 	public final static String FRAGMENT_NAME_KEY = "FRAGMENT_NAME";
-	public final static String ITEM_KEY = "ITEM";
 	public static final String ITEM_LIST_KEY = "ITEM_LIST";
 	public static final String POSITION_KEY = "POSITION";
 	public final static String EXTRAS_BUNDLE_KEY = "EXTRA_BUNDLE";
@@ -48,8 +47,8 @@ public class DetailSliderActivity<Item extends Parcelable> extends Activity {
 		if (intent != null) {
 			fragmentName = intent.getStringExtra(FRAGMENT_NAME_KEY);
 			items = intent.getParcelableArrayListExtra(ITEM_LIST_KEY);
-			currentItem = intent.getParcelableExtra(ITEM_KEY);
 			currentIndex = intent.getIntExtra(POSITION_KEY, 0);
+            currentItem = items.get(currentIndex);
 			if (intent.hasExtra(EXTRAS_BUNDLE_KEY))
 				extras = intent.getBundleExtra(EXTRAS_BUNDLE_KEY);
 		}

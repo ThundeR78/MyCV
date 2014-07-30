@@ -24,14 +24,12 @@ public class StudyParser extends ParserAssets {
     private static final String file = "studies.json";
 
     //Load Study list
-    public static List<Study> loadStudies(Context context) {
+    public static List<Study> loadStudies(Context context, boolean knowSchool) {
         List<Study> listItem = new ArrayList<Study>();
 
         try {
             JSONObject jsonObjectRoot = new JSONObject(loadJSONFromAsset(context, pathData+file));
             JSONArray jsonArrayRoot = jsonObjectRoot.getJSONArray("studies");
-
-            List<School> listSchool = loadSchools(context);
 
             //Loop each node
             for (int i = 0; i < jsonArrayRoot.length(); i++) {
@@ -49,12 +47,14 @@ public class StudyParser extends ParserAssets {
                         item.listCertif.add(jsonArray.getString(j));
                     }
 
-                    //Link Study -> School
-                    int schoolId = jsonObjectItem.getInt("school");
-                    for (School school : listSchool) {
-                        if (school.id == schoolId) {
-                            school.listStudy.add(item);
-                            item.school = school;
+                    if (knowSchool) {
+                        List<School> listSchool = loadSchools(context, false);
+                        //Link Study -> School
+                        int schoolId = jsonObjectItem.getInt("school");
+                        for (School school : listSchool) {
+                            if (school.id == schoolId) {
+                                item.school = school;
+                            }
                         }
                     }
 
@@ -69,7 +69,7 @@ public class StudyParser extends ParserAssets {
     }
 
     //Load School list
-    public static List<School> loadSchools(Context context) {
+    public static List<School> loadSchools(Context context, boolean knowStudies) {
         List<School> listItem = new ArrayList<School>();
 
         try {
@@ -90,14 +90,32 @@ public class StudyParser extends ParserAssets {
                     item.longitude = jsonObjectItem.getDouble("longitude");
                     item.pin = Float.parseFloat(jsonObjectItem.optString("pin").toString());
 
+                    //Logo
                     String resLogoName = jsonObjectItem.getString("logo");
                     if (resLogoName != null)
                         item.logo = context.getResources().getIdentifier(resLogoName, "drawable", context.getPackageName());
 
+                    //Date
                     String dateBegin = jsonObjectItem.getString("dateBegin");
                     item.dateBegin = FormatValue.dateMonthFormat.parse(dateBegin);
                     String dateEnd = jsonObjectItem.getString("dateEnd");
                     item.dateEnd = FormatValue.dateMonthFormat.parse(dateEnd);
+
+                    //Studies
+                    if (knowStudies) {
+                        List<Study> listStudy = loadStudies(context, false);
+                        JSONArray jsonArray = jsonObjectItem.getJSONArray("studiesId");
+
+                        for (int j = 0; j < jsonArray.length(); j++) {
+                            int studyId = jsonArray.getInt(j);
+                            //Link School -> Studies
+                            for (Study study : listStudy) {
+                                if (study.id == studyId) {
+                                    item.listStudy.add(study);
+                                }
+                            }
+                        }
+                    }
 
                     listItem.add(item);
                 }

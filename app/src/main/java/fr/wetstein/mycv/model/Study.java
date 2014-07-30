@@ -11,6 +11,7 @@ import java.util.List;
  */
 public class Study implements Parcelable {
 
+    public int id;
     public String name;
     public String option;
     public String date;
@@ -45,6 +46,7 @@ public class Study implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
         dest.writeString(name);
         dest.writeString(option);
         dest.writeString(date);
@@ -53,6 +55,7 @@ public class Study implements Parcelable {
     }
 
     public void readFromParcel(Parcel in) {
+        id = in.readInt();
         name = in.readString();
         option = in.readString();
         date = in.readString();

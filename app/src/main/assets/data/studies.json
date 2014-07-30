@@ -1,6 +1,7 @@
 {
 	"studies":[
 	    {
+	        "id": 1,
             "name": "Baccalauréat Sciences et Technologie de la Gestion",
             "option": "Gestion des Systèmes d'Information",
             "date": "2008/2009",
@@ -11,6 +12,7 @@
             ]
         },
 	    {
+	        "id": 2,
 	        "name": "BTS Informatique et Gestion",
 	        "option": "Développement",
 	        "date": "2009/2011",
@@ -20,6 +22,7 @@
             ]
 	    },
         {
+            "id": 3,
             "name": "Licence Professionnelle",
             "option": "Développement Web",
             "date": "2011/2012",
@@ -30,11 +33,12 @@
             ]
         },
         {
+            "id": 4,
             "name": "Master of Sciences",
-            "option": "Développement Web",
+            "option": "Architecture des Logiciels",
             "date": "2011/2012",
             "school": 3,
-            "certification": [
+            "certifications": [
                 "Master – option Architecture Logicielle",
                 "TOEIC - Listening and Reading"
             ]
@@ -51,7 +55,8 @@
             "longitude": "2.031094",
             "pin": "210",
             "dateBegin": "09/2008",
-            "dateEnd": "07/2009"
+            "dateEnd": "07/2009",
+            "studiesId": [1]
         },
         {
             "id": 2,
@@ -63,7 +68,8 @@
             "longitude": "2.095932",
             "pin": "210",
             "dateBegin": "09/2009",
-            "dateEnd": "07/2011"
+            "dateEnd": "07/2011",
+            "studiesId": [2]
         },
         {
             "id": 3,
@@ -75,7 +81,8 @@
             "longitude": "2.3854732",
             "pin": "240",
             "dateBegin": "09/2011",
-            "dateEnd": "07/2014"
+            "dateEnd": "07/2014",
+            "studiesId": [3,4]
         }
     ]
 }

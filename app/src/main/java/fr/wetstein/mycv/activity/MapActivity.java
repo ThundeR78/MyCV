@@ -150,7 +150,6 @@ public class MapActivity extends Activity implements GoogleMap.OnInfoWindowClick
                     List<Experience> listExperience = (List<Experience>)(List<?>) listItem;
                     intent.putParcelableArrayListExtra(DetailSliderActivity.ITEM_LIST_KEY,  (ArrayList<Experience>)listExperience);
                     intent.putExtra(DetailSliderActivity.POSITION_KEY, position);
-                    intent.putExtra(DetailSliderActivity.ITEM_KEY, (Experience) item);
                 } else if (item instanceof School) {
 
                 }

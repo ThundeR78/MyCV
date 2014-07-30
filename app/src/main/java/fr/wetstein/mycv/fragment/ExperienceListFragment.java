@@ -106,7 +106,6 @@ public class ExperienceListFragment extends ListFragment {
         intent.putExtra(DetailSliderActivity.FRAGMENT_NAME_KEY, ExperienceDetailFragment.class.getName());
         intent.putParcelableArrayListExtra(DetailSliderActivity.ITEM_LIST_KEY, (ArrayList<Experience>) listExperience);
         intent.putExtra(DetailSliderActivity.POSITION_KEY, position);
-        intent.putExtra(DetailSliderActivity.ITEM_KEY, (Experience) lc_adapter.getItem(position));
         Bundle extras = new Bundle();
         intent.putExtra(DetailSliderActivity.EXTRAS_BUNDLE_KEY, extras);
 
