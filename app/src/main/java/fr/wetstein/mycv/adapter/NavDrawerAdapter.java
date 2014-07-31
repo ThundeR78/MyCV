@@ -79,6 +79,7 @@ public class NavDrawerAdapter extends BaseAdapter {
 		MenuItemHolder holder = (MenuItemHolder) rowView.getTag();
 		holder.label.setText(menuItemList.get(position).label);
 		holder.icon.setImageDrawable(menuItemList.get(position).icon);
+        holder.icon.setVisibility(View.GONE);
 
 		return rowView;
 	}
