@@ -6,9 +6,20 @@
             "logo": "logo_snes",
             "icon": "icon_snes",
             "games": [
-                "DragonBall Z Hyper Dimension",
-                "Aladin",
-                "Mario Kart"
+                "DragonBall Z : Hyper Dimension",
+                "Aladdin",
+                "Mario Kart",
+                "Super Mario All Stars",
+                "Starwing",
+                "Sailormoon",
+                "The Legend of Zelda : A Link to the Past",
+                "Street Fighter II",
+                "Mortal Kombat",
+                "Le Livre de la Jungle",
+                "Fifa 97",
+                "Astérix",
+                "Lemmings",
+                "Super Mario World"
             ]
         },
         {
@@ -17,8 +28,19 @@
             "logo": "logo_gameboy",
             "icon": "icon_game_boy",
             "games": [
-                "Super Mario",
-                "Spirou"
+                "Super Mario Land",
+                "Spirou",
+                "Pokémon Version Bleue",
+                "Pokémon Version Rouge",
+                "Tetris",
+                "The Legend of Zelda : Oracle of Seasons",
+                "Les Schtroumpfs",
+                "Obélix",
+                "Pokémon Version Jaune",
+                "Pokémon Version Or",
+                "Pokémon Version Argent",
+                "Spirou",
+                "Titeuf"
             ]
         },
         {
@@ -28,7 +50,19 @@
             "icon": "icon_n64",
             "games": [
                 "Mario Kart 64",
-                "Super Mario 64"
+                "Super Mario 64",
+                "Super Smash Bros.",
+                "GoldenEye 007",
+                "Star Fox 64",
+                "The Legend of Zelda : Ocarina of Time",
+                "The Legend of Zelda : Majora's Mask",
+                "1080° Snowboarding",
+                "Donkey Kong 64",
+                "Mario Tennis",
+                "Pokémon Snap",
+                "Pokémon Stadium",
+                "Banjo-Kazooie",
+                "Diddy Kong Racing"
             ]
         },
         {
@@ -37,9 +71,20 @@
             "logo": "logo_gba",
             "icon": "icon_gba",
             "games": [
-                "DragonBall Z",
-                "Golden Sun 1",
-                "Golden Sun 2"
+                "Dragon Ball Z : Supersonic Warriors ",
+                "Golden Sun",
+                "Golden Sun : L'Age Perdu",
+                "Dragon Ball : Advanced Adventure",
+                "Bomberman Tournament",
+                "The Legend of Zelda : The Minish Cap",
+                "Mario & Luigi : Superstar Saga",
+                "Mario Kart : Super Circuit",
+                "Metroid : Zero Mission",
+                "Metroid Fusion",
+                "Rayman Advance",
+                "Shaman King : Master of Spirits",
+                "Sonic Advance",
+                "Wario Land 4"
             ]
         },
         {
@@ -48,8 +93,32 @@
             "logo": "logo_gamecube",
             "icon": "icon_gamecube",
             "games": [
-                "DragonBall Z Hyper Dimension",
-                "Aladin"
+                "Turok Evolution",
+                "Bloody Roar Primal Fury",
+                "Star Wars Rogue Leader",
+                "Medal of Honor : Les Faucons de Guerre",
+                "Bomberman Generation",
+                "Burnout 2 : Point of Impact",
+                "Super Mario Sunshine",
+                "Mario Power Tennis",
+                "Metroid Prime",
+                "Metroid Prime 2 : Echoes",
+                "Star Fox Adventures",
+                "Resident Evil 4",
+                "Prince of Persia : Warrior Within",
+                "Fifa 07",
+                "Soul Calibur 2",
+                "James Bond 007 : Quitte ou Double",
+                "The Legend of Zelda : Wind Waker",
+                "Super Mario Football",
+                "Tales of Symphonia",
+                "Dragonball Z Budokaï",
+                "Super Smash Bros. Melee",
+                "Mario Kart: Double Dash!!",
+                "Sega Soccer Slam",
+                "Tony Hawk's Wasteland",
+                "Tony Hawk's Underground",
+                "Tony Hawk's Underground 2"
             ]
         },
         {
@@ -58,8 +127,12 @@
             "logo": "logo_wii",
             "icon": "icon_wii",
             "games": [
-                "Zelda - Twilight Princess",
-                "Zelda - "
+                "No More Heroes",
+                "Metroid Prime 3 : Corruption",
+                "New Super Mario Bros. Wii",
+                "Super Smash Bros. Brawl",
+                "The Legend of Zelda : Twilight Princess",
+                "The Legend of Zelda : Skyward Sword"
             ]
         },
         {
@@ -68,7 +141,7 @@
             "logo": "",
             "icon": "icon_pc",
             "games": [
-                "Call of Duty - Mordern Warfare",
+                "Call of Duty : Mordern Warfare",
                 "Half-Life",
                 "Red Faction"
             ]
