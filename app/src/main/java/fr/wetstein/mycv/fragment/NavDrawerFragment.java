@@ -53,7 +53,7 @@ public class NavDrawerFragment extends Fragment {
     private View mFragmentContainerView;
 
     private NavDrawerAdapter mNavDrawerAdapter;
-    private int mCurrentSelectedPosition = 0;
+    private int mCurrentSelectedPosition = -1;
     private boolean mFromSavedInstanceState;
     private boolean mUserLearnedDrawer;
 
@@ -76,7 +76,7 @@ public class NavDrawerFragment extends Fragment {
 
        // mDrawerListView.setSelection(0);
         // Select either the default item (0) or the last selected item.
-        selectItem(mCurrentSelectedPosition);
+        selectItem(0);
     }
 
     @Override
@@ -187,19 +187,21 @@ public class NavDrawerFragment extends Fragment {
     }
 
     private void selectItem(int position) {
-        mCurrentSelectedPosition = position;
-        long id = 0;
-        if (mDrawerListView != null) {
-            //id =((View) mDrawerListView.getItemAtPosition(position)).getId();
-            //mDrawerListView.getAdapter().get
-            mDrawerListView.setItemChecked(position, true);
-        }
-        if (mDrawerLayout != null) {
-            mDrawerLayout.closeDrawer(mFragmentContainerView);
-        }
-        if (mCallbacks != null) {
-            Log.v(TAG, "ID="+ id);
-            mCallbacks.onNavigationDrawerItemSelected(position);
+        if (mCurrentSelectedPosition != position) {
+            mCurrentSelectedPosition = position;
+            int id = 0;
+
+            if (mDrawerListView != null) {
+                id = ((NavDrawerAdapter.SlideMenuItem) mDrawerListView.getItemAtPosition(position)).id;
+                mDrawerListView.setItemChecked(position, true);
+            }
+            if (mDrawerLayout != null) {
+                mDrawerLayout.closeDrawer(mFragmentContainerView);
+            }
+            if (mCallbacks != null) {
+                Log.v(TAG, "ID=" + id);
+                mCallbacks.onNavigationDrawerItemSelected(id, position);
+            }
         }
     }
 
@@ -277,6 +279,6 @@ public class NavDrawerFragment extends Fragment {
      */
     public static interface NavigationDrawerCallbacks {
         /** Called when an item in the navigation drawer is selected. */
-        void onNavigationDrawerItemSelected(int position);
+        void onNavigationDrawerItemSelected(int id, int position);
     }
 }

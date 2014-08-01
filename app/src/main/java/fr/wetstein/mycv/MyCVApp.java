@@ -5,6 +5,7 @@ import android.app.Application;
 import com.google.android.gms.maps.model.LatLng;
 
 import fr.sophiacom.ynp.androidlib.YNPClient;
+import fr.wetstein.mycv.notification.MyMessageHandler;
 
 /**
  * Created by ThundeR on 12/07/2014.
@@ -29,6 +30,7 @@ public class MyCVApp extends Application {
         YNPClient.senderId = "448487069157";
         YNPClient.mode = DEV_MODE ? YNPClient.MODE_SANDBOX : YNPClient.MODE_PRODUCTION;
         YNPClient.notificationIconId = R.drawable.me_manga;
+        YNPClient.messageHandler = new MyMessageHandler();
         if (DEV_MODE) YNPClient.checkManifest(this);
         YNPClient.initialize(this);
     }

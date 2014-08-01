@@ -10,12 +10,16 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,7 +41,7 @@ public class MapActivity extends Activity implements GoogleMap.OnInfoWindowClick
 	protected Place currentItem;
 
     private GoogleMap mMap;
-    private int mLevelZoom = 10;
+    private int mLevelZoom = 9;
     private HashMap<Marker, Integer> mapMarker;
 
 	@Override
@@ -126,9 +130,19 @@ public class MapActivity extends Activity implements GoogleMap.OnInfoWindowClick
 
                     mapMarker.put(marker, i);
 
+                    //Add Line
+                    if (i > 0) {
+                        PolylineOptions lineOptions = new PolylineOptions()
+                            .add(items.get(i-1).getLatLng())
+                            .add(items.get(i).getLatLng()).geodesic(true);
+                        if (item.color > 0)
+                            lineOptions.color(getResources().getColor(item.color));
+                        Polyline polyline = mMap.addPolyline(lineOptions);
+                    }
+
                     //Move Camera
-                    //CameraPosition cameraPosition = new CameraPosition.Builder().target(MyCVApp.HOME_LATLNG).zoom(mLevelZoom).build();
-                    //mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
+                    CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(48.8534100, 2.3488000)).zoom(mLevelZoom).build();
+                    mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
                 }
             }
         }

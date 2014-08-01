@@ -1,0 +1,116 @@
+package fr.wetstein.mycv.fragment;
+
+import android.app.Activity;
+import android.app.ListFragment;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Parcelable;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import fr.wetstein.mycv.R;
+import fr.wetstein.mycv.activity.DetailSliderActivity;
+import fr.wetstein.mycv.activity.MapActivity;
+import fr.wetstein.mycv.adapter.ListStudyAdapter;
+import fr.wetstein.mycv.model.School;
+import fr.wetstein.mycv.model.Study;
+import fr.wetstein.mycv.parser.StudyParser;
+
+/**
+ * Created by ThundeR on 05/07/2014.
+ */
+public class NewsListFragment extends ListFragment {
+    public static final String TAG = "NewsListFragment";
+
+    private List<Study> listNews;
+    private ListStudyAdapter listAdapter;
+
+    public NewsListFragment() {
+
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        //Load items
+        listNews =  StudyParser.loadStudies(getActivity(), true);
+        Log.v(TAG, listNews.toString());
+
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View rootView = inflater.inflate(R.layout.fragment_list, container, false);
+
+        return rootView;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        if (listNews != null) {
+            //Fill ExpandableListView with Skills
+            listAdapter = new ListStudyAdapter(getActivity(), R.layout.list_study_item, listNews);
+            setListAdapter(listAdapter);
+        }
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_list_experience, menu);
+
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_map) {
+            Intent intent = new Intent(getActivity(), MapActivity.class);
+            List<School> listSchool = StudyParser.loadSchools(getActivity(), true);
+            intent.putParcelableArrayListExtra(MapActivity.EXTRA_ITEM_LIST_KEY, (ArrayList<? extends Parcelable>) listSchool);
+            startActivity(intent);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onListItemClick(ListView lv, View view, int position, long id) {
+        super.onListItemClick(lv, view, position, id);
+        ListStudyAdapter lc_adapter = (ListStudyAdapter) lv.getAdapter();
+
+        //Go to Detail with parameters
+        Intent intent = new Intent(getActivity(), DetailSliderActivity.class);
+        intent.putExtra(DetailSliderActivity.FRAGMENT_NAME_KEY, StudyDetailFragment.class.getName());
+        intent.putParcelableArrayListExtra(DetailSliderActivity.ITEM_LIST_KEY, (ArrayList<Study>) listNews);
+        intent.putExtra(DetailSliderActivity.POSITION_KEY, position);
+        Bundle extras = new Bundle();
+        intent.putExtra(DetailSliderActivity.EXTRAS_BUNDLE_KEY, extras);
+
+        startActivity(intent);
+    }
+}

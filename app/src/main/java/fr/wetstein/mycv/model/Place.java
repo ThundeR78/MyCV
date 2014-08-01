@@ -3,6 +3,8 @@ package fr.wetstein.mycv.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.Date;
 
 /**
@@ -18,9 +20,14 @@ public class Place implements Parcelable {
     public Date dateBegin;
     public Date dateEnd;
     public float pin;
+    public int color;
 
     public Place() {
 
+    }
+
+    public LatLng getLatLng() {
+        return new LatLng(latitude, longitude);
     }
 
     public static final Parcelable.Creator<Place> CREATOR = new Parcelable.Creator<Place>() {
@@ -53,6 +60,7 @@ public class Place implements Parcelable {
         dest.writeLong((dateBegin != null) ? dateBegin.getTime() : 0);
         dest.writeLong((dateEnd != null) ? dateEnd.getTime() : 0);
         dest.writeFloat(pin);
+        dest.writeInt(color);
     }
 
     public void readFromParcel(Parcel in) {
@@ -63,5 +71,6 @@ public class Place implements Parcelable {
         dateBegin = new Date(in.readLong());
         dateEnd = new Date(in.readLong());
         pin = in.readFloat();
+        color = in.readInt();
     }
 }

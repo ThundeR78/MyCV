@@ -15,6 +15,7 @@ import fr.wetstein.mycv.R;
 import fr.wetstein.mycv.fragment.ExperienceListFragment;
 import fr.wetstein.mycv.fragment.HobbiesFragment;
 import fr.wetstein.mycv.fragment.NavDrawerFragment;
+import fr.wetstein.mycv.fragment.NewsListFragment;
 import fr.wetstein.mycv.fragment.ProfileFragment;
 import fr.wetstein.mycv.fragment.SkillsFragment;
 import fr.wetstein.mycv.fragment.StudyListFragment;
@@ -30,7 +31,8 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
     private String[] mArrayTitle;
     /** Used to store the last screen title. For use in {@link #restoreActionBar()}. */
     private CharSequence mTitle;
-    private int mCurrentPosition = -1;
+    private int mCurrentPosition = 0;
+    private long mCurrentId = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,28 +60,29 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
     }
 
     @Override
-    public void onNavigationDrawerItemSelected(int position) {
-        if (mCurrentPosition == position)
-            return;
-
+    public void onNavigationDrawerItemSelected(int id, int position) {
         Fragment fragment = null;
-        switch (position) {
-            case 0:
+        switch (id) {
+            case R.id.item_profile:
                 fragment = new ProfileFragment();
                 break;
-            case 1:
+            case R.id.item_news:
+                fragment = new NewsListFragment();
+                break;
+            case R.id.item_studies:
                 fragment = new StudyListFragment();
                 break;
-            case 2:
+            case R.id.item_career:
                 fragment = new ExperienceListFragment();
                 break;
-            case 3:
+            case R.id.item_skills:
                 fragment = new SkillsFragment();
                 break;
-            case 4:
+            case R.id.item_hobbies:
                 fragment = new HobbiesFragment();
                 break;
-            case 5:
+            default:
+                fragment = new ProfileFragment();
                 break;
         }
 
@@ -94,20 +97,6 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
         } else
             Toast.makeText(this, "En travaux, sera bientôt disponible", Toast.LENGTH_SHORT).show();
     }
-
-//    public void onSectionAttached(int number) {
-//        switch (number) {
-//            case 1:
-//                mTitle = getString(R.string.title_section1);
-//                break;
-//            case 2:
-//                mTitle = getString(R.string.title_section2);
-//                break;
-//            case 3:
-//                mTitle = getString(R.string.title_section3);
-//                break;
-//        }
-//    }
 
     public void restoreActionBar() {
         ActionBar actionBar = getActionBar();

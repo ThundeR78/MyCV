@@ -43,6 +43,10 @@ public class ExperienceParser extends ParserAssets {
                     item.latitude = jsonObjectItem.getDouble("latitude");
                     item.longitude = jsonObjectItem.getDouble("longitude");
                     item.pin = Float.parseFloat(jsonObjectItem.optString("pin").toString());
+                    if (jsonObjectItem.has("color")) {
+                        String resColorName = jsonObjectItem.getString("color");
+                        item.color = context.getResources().getIdentifier(resColorName, "color", context.getPackageName());
+                    }
                     String resLogoName = jsonObjectItem.getString("logo");
                     if (resLogoName != null)
                         item.logo = context.getResources().getIdentifier(resLogoName, "drawable", context.getPackageName());
