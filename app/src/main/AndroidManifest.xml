@@ -15,9 +15,18 @@
     <uses-permission android:name="android.permission.ACCESS_ASSISTED_GPS" />
     <uses-permission android:name="android.permission.LOCATION" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
+    <!-- GOOGLE MAPS -->
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-feature android:glEsVersion="0x00020000" android:required="true" />
+
+    <!-- YNP -->
+    <permission android:name="fr.wetstein.mycv.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+    <uses-permission android:name="fr.wetstein.mycv.permission.C2D_MESSAGE" />
+    <permission android:name="fr.wetstein.mycv.permission.YNP_MESSAGE" android:protectionLevel="signature" />
+    <uses-permission android:name="fr.wetstein.mycv.permission.YNP_MESSAGE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
     <application
         android:allowBackup="true"
@@ -46,6 +55,29 @@
         <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyCqh4pZfgqjBx4QL5c29x_oMJ3m96BvE8w" />
         <!-- <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyAphBjtt-_x1zq2GJsiamggUecnAQdWprc" /> -->
         <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+
+        <!-- YNP -->
+        <service android:name="fr.sophiacom.ynp.androidlib.service.YNPService" />
+        <service android:name="fr.sophiacom.ynp.androidlib.service.YNPIDService">
+            <intent-filter>
+                <action android:name="fr.sophiacom.ynp.androidlib.action.GET_GENERATED_ID" />
+            </intent-filter>
+        </service>
+
+        <!-- Only C2DM servers can send messages for the app. If permission is not set - any other app can generate it. -->
+        <receiver android:name="fr.sophiacom.ynp.androidlib.c2dm.C2DMBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <!-- Receive the actual message -->
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <category android:name="fr.wetstein.mycv" />
+            </intent-filter>
+            <!-- Receive the registration id -->
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+                <category android:name="fr.wetstein.mycv" />
+            </intent-filter>
+        </receiver>
+
     </application>
 
 </manifest>

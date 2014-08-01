@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import fr.sophiacom.ynp.androidlib.YNPClient;
 import fr.wetstein.mycv.R;
 import fr.wetstein.mycv.fragment.ExperienceListFragment;
 import fr.wetstein.mycv.fragment.HobbiesFragment;
@@ -45,6 +46,15 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
 
         // Set up the drawer.
         mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if (YNPClient.isThisDeviceSupported(this)) {
+            YNPClient.registerApp(this);
+        }
     }
 
     @Override
