@@ -31,6 +31,8 @@
     <!-- LABEL -->
     <string name="label_consoles">Consoles :</string>
     <string name="label_send_email">Envoyer un email</string>
+    <string name="label_qualities">Qualités</string>
+    <string name="label_shortcomings">Défauts</string>
 
     <!-- VALUE -->
     <string name="value_email">julienwetstein@msn.com</string>

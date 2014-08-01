@@ -13,4 +13,7 @@
     <dimen name="button_corners_radius">3dp</dimen>
 
     <dimen name="gridview_image_size">100dp</dimen>
+
+    <dimen name="table_border_size">1dp</dimen>
+    <dimen name="table_padding_size">5dp</dimen>
 </resources>

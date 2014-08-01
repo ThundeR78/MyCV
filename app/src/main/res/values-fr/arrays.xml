@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="array_qualities">
+        <item>Curieux</item>
+        <item>Ouvert d\'esprit</item>
+        <item>Ponctuel</item>
+        <item>Compréhensif</item>
+    </string-array>
+    <string-array name="array_shortcomings">
+        <item>Mauvaise mémoire</item>
+    </string-array>
+
+</resources>

@@ -36,10 +36,22 @@
             <ImageButton android:id="@+id/button_phone" style="@style/DetailButton" android:src="@drawable/ic_action_call" />
         </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="qualités" android:visibility="gone"/>
+        <TableLayout android:id="@+id/profile_table"
+            style="@style/TableLayout">
+            <TableRow style="@style/TableRowHeader">
+                <TextView
+                    style="@style/TableRowHeaderLabel"
+                    android:text="@string/label_qualities"
+                    android:layout_margin="@dimen/table_border_size" />
+                <TextView
+                    style="@style/TableRowHeaderLabel"
+                    android:text="@string/label_shortcomings"
+                    android:layout_marginTop="@dimen/table_border_size"
+                    android:layout_marginBottom="@dimen/table_border_size"
+                    android:layout_marginRight="@dimen/table_border_size"/>
+            </TableRow>
+        </TableLayout>
+
 
         <fragment android:id="@+id/map_fragment"
             android:layout_width="wrap_content"

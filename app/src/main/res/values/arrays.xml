@@ -11,5 +11,14 @@
         <item>@string/title_cv</item>
     </string-array>
 
+    <string-array name="array_qualities">
+        <item>Inquisitive</item>
+        <item>Open-minded</item>
+        <item>Punctual</item>
+        <item>Understanding</item>
+    </string-array>
+    <string-array name="array_shortcomings">
+        <item>Poor memory</item>
+    </string-array>
 
 </resources>

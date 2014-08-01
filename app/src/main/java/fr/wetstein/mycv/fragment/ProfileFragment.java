@@ -15,6 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,6 +46,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private static View view;
     private TextView txtAge;
     private ImageButton btnEmail, btnCall;
+    private TableLayout tblPersonnality;
 
     //Google Maps
     private GoogleMap mMap;
@@ -81,10 +84,13 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         txtAge = (TextView) view.findViewById(R.id.profile_age);
         btnEmail = (ImageButton) view.findViewById(R.id.button_email);
         btnCall = (ImageButton) view.findViewById(R.id.button_phone);
+        tblPersonnality = (TableLayout) view.findViewById(R.id.profile_table);
 
         btnEmail.setOnClickListener(this);
         btnCall.setOnClickListener(this);
         //image.setImageBitmap(getHexagonShape(((BitmapDrawable)image.getDrawable()).getBitmap()));
+
+        displayTable();
 
         return view;
     }
@@ -206,6 +212,48 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             CameraPosition cameraPosition = new CameraPosition.Builder().target(MyCVApp.HOME_LATLNG).zoom(mLevelZoom).build();
             mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
         }
+    }
+
+    private void displayTable() {
+        String[] arrayQuality = getResources().getStringArray(R.array.array_qualities);
+        String[] arrayShortcoming = getResources().getStringArray(R.array.array_shortcomings);
+        int maxSize = (arrayQuality.length >= arrayShortcoming.length) ? arrayQuality.length : arrayShortcoming.length;
+
+        for (int i=0; i < maxSize ;i++) {
+            String quality = (arrayQuality.length > 0 && arrayQuality.length > i) ? arrayQuality[i] : "";
+            String shortcoming = (arrayShortcoming.length > 0 && arrayShortcoming.length > i) ? arrayShortcoming[i] : "";
+
+            TableRow row = new TableRow(getActivity());
+            TextView txtQuality = new TextView(getActivity());
+            TextView txtShortcoming = new TextView(getActivity());
+
+            txtQuality.setText(quality);
+            txtShortcoming.setText(shortcoming);
+
+            row.addView(txtQuality);
+            row.addView(txtShortcoming);
+
+            adjustTableColumn(txtQuality, true);
+            adjustTableColumn(txtShortcoming, false);
+
+            tblPersonnality.addView(row);
+        }
+    }
+
+    private TextView adjustTableColumn(TextView text, boolean paddingLeft){
+        int borderSize = (int) getResources().getDimension(R.dimen.table_border_size);
+        int paddingSize = (int) getResources().getDimension(R.dimen.table_padding_size);
+
+        TableRow.LayoutParams params = (TableRow.LayoutParams) text.getLayoutParams();
+        params.setMargins(paddingLeft ? borderSize : 0, 0, borderSize, borderSize);
+        params.width = 0;
+        params.weight = 1;
+        params.height = TableRow.LayoutParams.MATCH_PARENT;
+        text.setLayoutParams(params);
+        text.setPadding(paddingSize, paddingSize, paddingSize, paddingSize);
+        text.setBackgroundColor(getResources().getColor(R.color.table_row_background));
+
+        return text;
     }
 
     //TEST
