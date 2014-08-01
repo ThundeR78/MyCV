@@ -132,11 +132,10 @@ public class MapActivity extends Activity implements GoogleMap.OnInfoWindowClick
 
                     //Add Line
                     if (i > 0) {
-                        PolylineOptions lineOptions = new PolylineOptions()
-                            .add(items.get(i-1).getLatLng())
-                            .add(items.get(i).getLatLng()).geodesic(true);
-                        if (item.color > 0)
-                            lineOptions.color(getResources().getColor(item.color));
+                        PolylineOptions lineOptions = new PolylineOptions();
+                        lineOptions.add(items.get(i-1).getLatLng()).add(items.get(i).getLatLng()).geodesic(true);
+                        lineOptions.color(getResources().getColor(item.color > 0 ? item.color : R.color.red));
+
                         Polyline polyline = mMap.addPolyline(lineOptions);
                     }
 

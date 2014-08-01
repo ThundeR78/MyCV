@@ -53,7 +53,8 @@
             "address": "11 avenue du Jour, Cergy (95801)",
             "latitude": "49.04474",
             "longitude": "2.031094",
-            "pin": "210",
+            "pin": "60",
+            "color": "yellow",
             "dateBegin": "09/2008",
             "dateEnd": "07/2009",
             "studiesId": [1]
@@ -66,7 +67,8 @@
             "address": "7 rue Joseph Bouyssel, 78700 Conflans-Sainte-Honorine",
             "latitude": "48.998935",
             "longitude": "2.095932",
-            "pin": "210",
+            "pin": "30",
+            "color": "orange_light",
             "dateBegin": "09/2009",
             "dateEnd": "07/2011",
             "studiesId": [2]
@@ -80,6 +82,7 @@
             "latitude": "48.8461315",
             "longitude": "2.3854732",
             "pin": "240",
+            "color": "blue_dark",
             "dateBegin": "09/2011",
             "dateEnd": "07/2014",
             "studiesId": [3,4]

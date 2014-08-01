@@ -90,6 +90,13 @@ public class StudyParser extends ParserAssets {
                     item.longitude = jsonObjectItem.getDouble("longitude");
                     item.pin = Float.parseFloat(jsonObjectItem.optString("pin").toString());
 
+                    //Color
+                    if (jsonObjectItem.has("color")) {
+                        String resColorName = jsonObjectItem.getString("color");
+                        if (resColorName != null)
+                            item.color = context.getResources().getIdentifier(resColorName, "color", context.getPackageName());
+                    }
+
                     //Logo
                     String resLogoName = jsonObjectItem.getString("logo");
                     if (resLogoName != null)
