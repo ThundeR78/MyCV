@@ -55,13 +55,13 @@
 
         <fragment android:id="@+id/map_fragment"
             android:layout_width="wrap_content"
-            android:layout_height="200dp"
+            android:layout_height="@dimen/map_height"
             android:name="com.google.android.gms.maps.MapFragment" />
 
         <fragment
             android:id="@+id/streetview_fragment"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="@dimen/map_height"
             class="com.google.android.gms.maps.StreetViewPanoramaFragment"/>
 
         <!--<fr.wetstein.mycv.view.PolygonView

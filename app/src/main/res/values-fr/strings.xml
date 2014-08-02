@@ -41,13 +41,29 @@
     <string name="work_experience">Stage</string>
 
     <!-- TEXT -->
-    <string name="text_descrition_games">Depuis tout jeune, j\'ai porté un certain intérêt aux jeux vidéo, comme beaucoup d\'enfants de ma génération.
+    <string name="text_description_games">Depuis tout jeune, j\'ai porté un certain intérêt aux jeux vidéo, comme beaucoup d\'enfants de ma génération.
         Tout a commencé avec ma première GameBoy, et ça n\'a toujours pas cessé de m\'intéresser voir m\'impressionner.
         Nintendo a su marquer mon esprit par son côté fun, attractif, divertissant et fantastique, c\'est pourquoi j\'ai préféré suivre l\'aventure de cette marque plutôt qu\'une autre.\n
         Les jeux sur consoles ont été très longtemps mon unique moyen de jouer, puis est arrivé les jeux sur PC.
         Les jeux sur ordinateur, eux, m\'ont permis de connaitre les joies du jeu online, sans pour autant délaisser mes chères consoles.\n
         L\'aspect addictif des jeux vidéo peut être dangereux, mais on apprend à prioriser les choses et savoir se contrôler, c\'est pourquoi durant mes études j\'ai préféré faire une petite pause.
         Comme tout le monde, j\'ai mes préférences dans le style de jeux, qui sont : FPS, Combat, Course, Action, Aventure, Plate-forme et Sport.
+    </string>
+    <string name="text_description_parkour">J\'ai découvert le Parkour plus jeune, comme la plus part des gens en regardant le célèbre film Yamakasi de Luc Besson sorti en 2001. C\'était la première fois que l\'on pouvait voir de tels mouvements et accrobaties, surtout dans un film français.\n
+        Ce n\'est que bien plus tard, que j\'ai réalisé qu\'il s\'agissait d\'une nouvelle pratique sportive inventée par un jeune français, David Belle. Cette activité est en fait un entrainement fait pour apprendre à se déplacer dans notre environnement. Il se peut qu\'il faille franchir un obstacle, grimper un mur, sauter d\'un endroit à un autre, pour cela des techniques ont été travaillés pour le faire de manière fluide, rapide et efficace.\n
+        Depuis, je m\'y suis donc intéressé de loin en regardant comme tout le monde des vidéos sur le web, je me renseignais sur les spots où l\'on pouvait pratiquer cet activité et autres. Déjà tout petit, je m\'amusais à sauter sur les rochers à la plage, grimper aux arbres, il y avait une sorte de challenge et de plaisir là dedans.\n
+        J\'ai essayé pour la première fois après avoir suivi un camarade de BTS qui en faisait déjà en amateur. Les débuts furent rudes mais c\'était intéressant de voir ce que l\'on est capable de faire si l\'on tente de repousser nos limites ou simplement faire des mouvements que l\'on avait jamais eu l\'occasion d\'essayer. Ensuite, j\'ai continué avec un autre ami, et bien souvent on rencontrait d\'autres traceurs sur les lieux pour nous apprendre quelques trucs.\n\n
+        Après 2ans d\'entrainement dehors, pas forcément intensif, j\'ai voulu progresser plus vite, car j\'avais l\'impression de stagner en buttant sur des obstacles qui me faisait peur. J\'ai donc passé un nouveau cap en m\'inscrivant dans l\'association "Gravity Style" fondée par 2 membres des Yamakasi, Charles Perriere et Malik Diouf. L\'association propose de s\'entrainer dans un gymnase où l\'on place des tapis et autres pour créer des obstacles ou bien dans une salle vraie salle de gymnastique avec des barres, des poutres et un praticable. En 2012, l\'association a changée et est devenu "Culture Parkour" fondée par Charles alors que Malik a continué avec "Gravity Style" pour en faire une marque.\n
+        Dans ce cadre, il était plus facile de s\'entrainer et se surpasser sans crainte car il y avait un minimum de sécurité contrairement à l\'extérieur et des coachs pour nous guider et nous reprendre dans nos exercices. Ceci ne m\'a pas empêché tout de même de me blesser au poignée, ce qui m\'a obligé a arrêté durant un moment et donc de me consacrer pleinement à mes études. Maintenant que les bancs de l\'école sont derrières moi, je vais pouvoir m\'y remettre et me réinscrire pour retrouver mes capacités et les améliorer.\n\n
+        Le Parkour a de nombreux avantages qui m\'ont beaucoup plu :\n
+        - On apprend à gagner confiance en soi et cela s\'applique même ensuite dans le reste de notre vie\n
+        - On apprend à connaitre nos limites physiquement comme psychologiquement et ensuite à les repousser\n
+        - Il y a une vraie philosophie presque de combattant derrière cette pratique\n\n
+        Aujourd\'hui le Parkour est connu et pratiqué internationnellement, on en voit partout : dans les pubs, films, clips, jeux vidéo, &#8230; Contrairement à ce que les gens pensent, les traceurs ne passent pas leur temps à sauter de toit en toit, même si cela peut arriver pour certains assez expérimentés. En général, on s\'entraine assez bas du sol pour peaufiner les techniques et on augmente la difficulté au fur et à mesure.\n
+        Le Parkour est très souvent confondu avec une autre pratique s\'y rapprochant, le Freerun. Il s\'agit là d\'un mélange entre Parkour et gymnastique, puisqu\'il utilise des mouvements du Parkour en y mêlant des accrobaties de la gymnastique (salto, vrille, &#8230;). Dans ce cas, il s\'agit plus de faire du spectacle puisque l\'on prend plus de risques au final pour ne pas faire mieux qu\'en allant au plus simple.
+    </string>
+    <string name="text_description_parkour_book">
+        David Belle est le créateur du Parkour même s\'il s\'est inspiré de ce qui se faisait déjà, il a su développer cette pratique avec son groupe qui deviendra plus tard les "Yamakasi" et y a mis tout son coeur dedans. Il a par la suite eu une carrière d\'acteur, mais entre temps il a sorti un livre très intéressant que je recommande sur son parcours : comment il en a eu l\'idée, comment il l\'a appliqué, &#8230;
     </string>
 
 

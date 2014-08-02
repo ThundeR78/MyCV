@@ -20,8 +20,6 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -122,9 +120,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initMap() {
-        //Check if Google Play Services is available on device to display Google Maps
-        int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getActivity().getApplicationContext());
-        if (status == ConnectionResult.SUCCESS) {
+        if (MyCVApp.isGooglePlayServicesAvailable(getActivity().getApplicationContext())) {
             if (mMap == null) {
                 mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map_fragment)).getMap();
 
@@ -140,12 +136,16 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     }
 
     private void initStreetView() {
-        if (mStreetview == null) {
-            mStreetview = ((StreetViewPanoramaFragment) getFragmentManager().findFragmentById(R.id.streetview_fragment)).getStreetViewPanorama();
-            if (mStreetview != null) {
-                setupStreetView();
-            } else
-                Toast.makeText(getActivity(), "Sorry! unable to create StreetView Panorama", Toast.LENGTH_SHORT).show();
+        if (MyCVApp.isGooglePlayServicesAvailable(getActivity().getApplicationContext())) {
+            if (mStreetview == null) {
+                mStreetview = ((StreetViewPanoramaFragment) getFragmentManager().findFragmentById(R.id.streetview_fragment)).getStreetViewPanorama();
+                if (mStreetview != null) {
+                    setupStreetView();
+                } else
+                    Toast.makeText(getActivity(), "Sorry! unable to create StreetView Panorama", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            getView().findViewById(R.id.streetview_fragment).setVisibility(View.GONE);
         }
     }
 
@@ -164,6 +164,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private void setupMap() {
         //Change settings Google Maps
         mMap.setMyLocationEnabled(true);
+        mMap.getUiSettings().setAllGesturesEnabled(true);
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.getUiSettings().setZoomGesturesEnabled(true);
         mMap.getUiSettings().setMyLocationButtonEnabled(true);

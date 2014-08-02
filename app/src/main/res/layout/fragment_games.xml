@@ -4,7 +4,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/text_descrition_games"/>
+            android:text="@string/text_description_games"/>
 
         <TextView
             android:layout_width="wrap_content"

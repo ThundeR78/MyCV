@@ -48,7 +48,8 @@ public class DetailSliderActivity<Item extends Parcelable> extends Activity {
 			fragmentName = intent.getStringExtra(FRAGMENT_NAME_KEY);
 			items = intent.getParcelableArrayListExtra(ITEM_LIST_KEY);
 			currentIndex = intent.getIntExtra(POSITION_KEY, 0);
-            currentItem = items.get(currentIndex);
+            if (items != null)
+                currentItem = items.get(currentIndex);
 			if (intent.hasExtra(EXTRAS_BUNDLE_KEY))
 				extras = intent.getBundleExtra(EXTRAS_BUNDLE_KEY);
 		}
