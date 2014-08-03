@@ -22,10 +22,13 @@ import fr.wetstein.mycv.fragment.StudyListFragment;
 
 
 public class HomeActivity extends Activity implements NavDrawerFragment.NavigationDrawerCallbacks {
+    public static final String TAG = "HomeActivity";
 
-    /**
-     * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
-     */
+    public static final String EXTRA_CONTENT = "CONTENT";
+
+    //private Bundle mFragmentExtras;
+
+    /** Fragment managing the behaviors, interactions and presentation of the navigation drawer */
     private NavDrawerFragment mNavigationDrawerFragment;
 
     private String[] mArrayTitle;
@@ -37,6 +40,11 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        /*if (savedInstanceState != null) {
+            //Restore the fragment's instance
+            mContent = getFragmentManager().getFragment(savedInstanceState, EXTRA_CONTENT);
+        }*/
 
         mArrayTitle = getResources().getStringArray(R.array.menu_titles);
 
@@ -57,6 +65,14 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
         if (YNPClient.isThisDeviceSupported(this)) {
             YNPClient.registerApp(this);
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        //Save the fragment's instance
+        //getFragmentManager().putFragment(outState, EXTRA_CONTENT, mContent);
     }
 
     @Override

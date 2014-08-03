@@ -41,6 +41,9 @@ import fr.wetstein.mycv.R;
 public class ProfileFragment extends Fragment implements View.OnClickListener {
     public static final String TAG = "ProfileFragment";
 
+    public static final String EXTRA_QUALITIES = "QUALITIES";
+    public static final String EXTRA_SHORTCOMINGS = "SHOTCOMINGS";
+
     private static View view;
     private TextView txtAge;
     private ImageButton btnEmail, btnCall;
@@ -54,11 +57,14 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private StreetViewPanorama mStreetview;
 
     private Calendar calBirthday;
+    private String[] arrayQuality;
+    private String[] arrayShortcoming;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setRetainInstance(true);
     }
 
     @Override
@@ -88,7 +94,12 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         btnCall.setOnClickListener(this);
         //image.setImageBitmap(getHexagonShape(((BitmapDrawable)image.getDrawable()).getBitmap()));
 
-        displayTable();
+        txtAge.setText(getString(R.string.value_age, calculateAge()));
+
+        if (savedInstanceState != null) {
+            arrayQuality = savedInstanceState.getStringArray(EXTRA_QUALITIES);
+            arrayShortcoming = savedInstanceState.getStringArray(EXTRA_SHORTCOMINGS);
+        }
 
         return view;
     }
@@ -105,7 +116,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        txtAge.setText(getString(R.string.value_age, calculateAge()));
+        displayTable();
     }
 
     @Override
@@ -117,6 +128,14 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putStringArray(EXTRA_QUALITIES, arrayQuality);
+        outState.putStringArray(EXTRA_SHORTCOMINGS, arrayShortcoming);
     }
 
     private void initMap() {
@@ -216,28 +235,30 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     }
 
     private void displayTable() {
-        String[] arrayQuality = getResources().getStringArray(R.array.array_qualities);
-        String[] arrayShortcoming = getResources().getStringArray(R.array.array_shortcomings);
-        int maxSize = (arrayQuality.length >= arrayShortcoming.length) ? arrayQuality.length : arrayShortcoming.length;
+        if (tblPersonnality.getChildCount() <= 1) {
+            arrayQuality = getResources().getStringArray(R.array.array_qualities);
+            arrayShortcoming = getResources().getStringArray(R.array.array_shortcomings);
+            int maxSize = (arrayQuality.length >= arrayShortcoming.length) ? arrayQuality.length : arrayShortcoming.length;
 
-        for (int i=0; i < maxSize ;i++) {
-            String quality = (arrayQuality.length > 0 && arrayQuality.length > i) ? arrayQuality[i] : "";
-            String shortcoming = (arrayShortcoming.length > 0 && arrayShortcoming.length > i) ? arrayShortcoming[i] : "";
+            for (int i=0; i < maxSize ;i++) {
+                String quality = (arrayQuality.length > 0 && arrayQuality.length > i) ? arrayQuality[i] : "";
+                String shortcoming = (arrayShortcoming.length > 0 && arrayShortcoming.length > i) ? arrayShortcoming[i] : "";
 
-            TableRow row = new TableRow(getActivity());
-            TextView txtQuality = new TextView(getActivity());
-            TextView txtShortcoming = new TextView(getActivity());
+                TableRow row = new TableRow(getActivity());
+                TextView txtQuality = new TextView(getActivity());
+                TextView txtShortcoming = new TextView(getActivity());
 
-            txtQuality.setText(quality);
-            txtShortcoming.setText(shortcoming);
+                txtQuality.setText(quality);
+                txtShortcoming.setText(shortcoming);
 
-            row.addView(txtQuality);
-            row.addView(txtShortcoming);
+                row.addView(txtQuality);
+                row.addView(txtShortcoming);
 
-            adjustTableColumn(txtQuality, true);
-            adjustTableColumn(txtShortcoming, false);
+                adjustTableColumn(txtQuality, true);
+                adjustTableColumn(txtShortcoming, false);
 
-            tblPersonnality.addView(row);
+                tblPersonnality.addView(row);
+            }
         }
     }
 

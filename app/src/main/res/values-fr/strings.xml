@@ -8,6 +8,7 @@
 
     <!-- TITLE -->
     <string name="title_profile">Profile</string>
+    <string name="title_news">News</string>
     <string name="title_studies">Études</string>
     <string name="title_detail_study">Étude</string>
     <string name="title_career">Expériences</string>
@@ -30,6 +31,8 @@
     <!-- LABEL -->
     <string name="label_consoles">Consoles :</string>
     <string name="label_send_email">Envoyer un email</string>
+    <string name="label_qualities">Qualités</string>
+    <string name="label_shortcomings">Défauts</string>
 
     <!-- VALUE -->
     <string name="value_email">julienwetstein@msn.com</string>
