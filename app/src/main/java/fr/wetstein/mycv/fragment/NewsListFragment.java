@@ -4,26 +4,27 @@ import android.app.Activity;
 import android.app.ListFragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+
+import org.json.JSONArray;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import fr.wetstein.mycv.R;
 import fr.wetstein.mycv.activity.DetailSliderActivity;
-import fr.wetstein.mycv.activity.MapActivity;
 import fr.wetstein.mycv.adapter.ListStudyAdapter;
-import fr.wetstein.mycv.model.School;
 import fr.wetstein.mycv.model.Study;
 import fr.wetstein.mycv.parser.StudyParser;
+import fr.wetstein.mycv.request.NewsRequest;
 
 /**
  * Created by ThundeR on 05/07/2014.
@@ -45,8 +46,6 @@ public class NewsListFragment extends ListFragment {
         //Load items
         listNews =  StudyParser.loadStudies(getActivity(), true);
         Log.v(TAG, listNews.toString());
-
-        setHasOptionsMenu(true);
     }
 
     @Override
@@ -75,27 +74,32 @@ public class NewsListFragment extends ListFragment {
     @Override
     public void onStart() {
         super.onStart();
-
+        launchRequest();
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_list_experience, menu);
+    private void launchRequest() {
+        //refreshLayout.setRefreshing(true);
 
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_map) {
-            Intent intent = new Intent(getActivity(), MapActivity.class);
-            List<School> listSchool = StudyParser.loadSchools(getActivity(), true);
-            intent.putParcelableArrayListExtra(MapActivity.EXTRA_ITEM_LIST_KEY, (ArrayList<? extends Parcelable>) listSchool);
-            startActivity(intent);
-        }
-
-        return super.onOptionsItemSelected(item);
+        NewsRequest request = new NewsRequest(getActivity().getApplicationContext());
+        Response.Listener<JSONArray> successListener = new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray json) {
+            Log.v(TAG, "SUCCESS REQUEST : "+ json.toString());
+            Toast.makeText(getActivity(), "Success", Toast.LENGTH_LONG).show();
+            }
+        };
+        Response.ErrorListener errorListener = new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Log.v(TAG, "ERROR REQUEST : "+ error);
+                /*String messageError = getString(R.string.error_request);
+                if (error != null && error.networkResponse != null)
+                    messageError = getString(R.string.error_request_status, error.networkResponse.statusCode);
+                Crouton.makeText(getActivity(), messageError, Style.ALERT).show();*/
+                Toast.makeText(getActivity(), "Error : "+error, Toast.LENGTH_LONG).show();
+            }
+        };
+        request.getListNews(successListener, errorListener);
     }
 
     @Override

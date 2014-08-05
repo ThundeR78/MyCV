@@ -4,8 +4,10 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -19,6 +21,7 @@ import fr.wetstein.mycv.fragment.NewsListFragment;
 import fr.wetstein.mycv.fragment.ProfileFragment;
 import fr.wetstein.mycv.fragment.SkillsFragment;
 import fr.wetstein.mycv.fragment.StudyListFragment;
+import fr.wetstein.mycv.util.PrefsManager;
 
 
 public class HomeActivity extends Activity implements NavDrawerFragment.NavigationDrawerCallbacks {
@@ -62,8 +65,17 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
     protected void onStart() {
         super.onStart();
 
+        //Register app on YNP services
         if (YNPClient.isThisDeviceSupported(this)) {
             YNPClient.registerApp(this);
+            String installId = YNPClient.getServerRegistrationId(this);
+
+            if (installId != null) {
+                SharedPreferences.Editor editor = PrefsManager.getPreferencesEditor(this);
+                editor.putString(PrefsManager.PREF_INSTALL_ID, installId);
+                editor.commit();
+                Log.v(TAG, installId);
+            }
         }
     }
 
