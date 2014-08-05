@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.Volley;
 
@@ -40,15 +41,17 @@ public class RequestManager {
 	}
 	
 	//Send Request
-	public boolean addRequest(Request request) {
+	public boolean addRequest(Request request, Response.ErrorListener errorListener) {
 		if (isConnected(mContext)) {
 			Log.v(TAG, "URL = "+ request.getUrl());
 		    request.setTag(mContext);
 		    
 			mRequestQueue.add(request);
 			return true;
-		} else
-			return false;
+		} else {
+            errorListener.onErrorResponse(null);
+            return false;
+        }
 	}
 	
 	//Check if connection possible
@@ -65,7 +68,7 @@ public class RequestManager {
 	        	/*if (context instanceof Activity)
 	        		Crouton.makeText((Activity) context, "Network Error", Style.ALERT).show();
 	        	else*/
-	        		Toast.makeText(context, "Network Error", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Network Error", Toast.LENGTH_LONG).show();
 	            return false;
 	        }
 		} else 

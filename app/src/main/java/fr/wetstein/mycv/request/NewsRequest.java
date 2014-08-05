@@ -2,11 +2,19 @@ package fr.wetstein.mycv.request;
 
 import android.content.Context;
 
+import com.android.volley.Request;
 import com.android.volley.Response;
-import com.android.volley.toolbox.JsonArrayRequest;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
-import org.json.JSONArray;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
+import fr.sophiacom.ynp.androidlib.YNPClient;
+import fr.wetstein.mycv.model.News;
 import fr.wetstein.mycv.util.PrefsManager;
 
 /**
@@ -15,7 +23,7 @@ import fr.wetstein.mycv.util.PrefsManager;
 public class NewsRequest extends RequestManager {
     public static final String TAG = "NewsRequest";
 
-    private static final String BASE_URL_YNPNEWS = "https://mobile.youandpush.com/";
+    private static final String BASE_URL_YNPNEWS = "https://sandbox-mobile.youandpush.com/";
     private static final String PREFIX_URL = "v1/";
     private static final String URL_APP = "application/";
     private static final String URL_INSTALL = "/installation/";
@@ -29,7 +37,8 @@ public class NewsRequest extends RequestManager {
     public NewsRequest(Context context) {
         super(context);
 
-        installId = PrefsManager.getPreferences(context).getString(PrefsManager.PREF_INSTALL_ID, "");
+        if (context != null)
+            installId = PrefsManager.getPreferences(context).getString(PrefsManager.PREF_INSTALL_ID, "");
     }
 
     public static String getBaseUrl() {
@@ -51,13 +60,37 @@ public class NewsRequest extends RequestManager {
         return urlBuilder.toString();
     }
 
-    public void getListNews(Response.Listener<JSONArray> successListener, Response.ErrorListener errorListener) {
+    public void getListNews(Response.Listener<List<News>> successListener, Response.ErrorListener errorListener) {
         String url = getUrl();
 
-        JsonArrayRequest request = new JsonArrayRequest(url, successListener, errorListener);
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        //gsonBuilder.setDateFormat("M/d/yy hh:mm a"); //Format of our JSON dates
+        Gson gson = gsonBuilder.create();
 
-        boolean ok = addRequest(request);
-        if (!ok)
-            errorListener.onErrorResponse(null);
+        Type listType = new TypeToken<ArrayList<News>>(){}.getType();
+
+        HashMap<String, String> headers = new HashMap<String, String>();
+        headers.put("Authorization", "ApiKey " + YNPClient.apiKey);
+
+        //Create request
+        GsonRequest<List<News>> request = new GsonRequest<List<News>>(
+            Request.Method.GET,
+            url,
+            listType,
+            headers,
+            successListener,
+            errorListener);
+        /*{
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    HashMap<String, String> headers = new HashMap<String, String>();
+                    headers.put("Authorization", "ApiKey " + YNPClient.apiKey);
+                    return headers;
+                }
+        };*/
+        request.setGson(gson);
+
+        //Launch request
+        addRequest(request, errorListener);
     }
 }

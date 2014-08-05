@@ -8,6 +8,7 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.model.LatLng;
 
 import fr.sophiacom.ynp.androidlib.YNPClient;
+import fr.wetstein.mycv.util.NukeSSLCerts;
 
 /**
  * Created by ThundeR on 12/07/2014.
@@ -22,6 +23,8 @@ public class MyCVApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        NukeSSLCerts.nuke();
 
         registerYNP();
     }

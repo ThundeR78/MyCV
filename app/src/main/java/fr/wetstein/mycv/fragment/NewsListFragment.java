@@ -14,14 +14,13 @@ import android.widget.Toast;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 
-import org.json.JSONArray;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import fr.wetstein.mycv.R;
 import fr.wetstein.mycv.activity.DetailSliderActivity;
 import fr.wetstein.mycv.adapter.ListStudyAdapter;
+import fr.wetstein.mycv.model.News;
 import fr.wetstein.mycv.model.Study;
 import fr.wetstein.mycv.parser.StudyParser;
 import fr.wetstein.mycv.request.NewsRequest;
@@ -81,11 +80,12 @@ public class NewsListFragment extends ListFragment {
         //refreshLayout.setRefreshing(true);
 
         NewsRequest request = new NewsRequest(getActivity().getApplicationContext());
-        Response.Listener<JSONArray> successListener = new Response.Listener<JSONArray>() {
+
+        Response.Listener<List<News>> successListener = new Response.Listener<List<News>>() {
             @Override
-            public void onResponse(JSONArray json) {
-            Log.v(TAG, "SUCCESS REQUEST : "+ json.toString());
-            Toast.makeText(getActivity(), "Success", Toast.LENGTH_LONG).show();
+            public void onResponse(List<News> listItem) {
+                Log.v(TAG, "SUCCESS REQUEST : "+ (listItem != null ? listItem.size() : "null"));
+                Toast.makeText(getActivity(), "Success", Toast.LENGTH_LONG).show();
             }
         };
         Response.ErrorListener errorListener = new Response.ErrorListener() {
