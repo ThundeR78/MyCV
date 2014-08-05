@@ -40,35 +40,38 @@ public class DetailSliderActivity<Item extends Parcelable> extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
+        super.onCreate(savedInstanceState);
 
-		extras = new Bundle();
-		final Intent intent = getIntent();
-		if (intent != null) {
-			fragmentName = intent.getStringExtra(FRAGMENT_NAME_KEY);
-			items = intent.getParcelableArrayListExtra(ITEM_LIST_KEY);
-			currentIndex = intent.getIntExtra(POSITION_KEY, 0);
+        extras = new Bundle();
+        final Intent intent = getIntent();
+        if (intent != null) {
+            fragmentName = intent.getStringExtra(FRAGMENT_NAME_KEY);
+            items = intent.getParcelableArrayListExtra(ITEM_LIST_KEY);
+            currentIndex = intent.getIntExtra(POSITION_KEY, 0);
             if (items != null)
                 currentItem = items.get(currentIndex);
-			if (intent.hasExtra(EXTRAS_BUNDLE_KEY))
-				extras = intent.getBundleExtra(EXTRAS_BUNDLE_KEY);
-		}
-		
-		setContentView(R.layout.activity_slide_detail);
-		
-		if (extras != null && results != null)
-			extras.putAll(results);
-		
-		fragments = new ArrayList<Fragment>();
-		for (int i = 0; i < items.size(); i++) {
-			DetailFragment<Item> detailFragment = (DetailFragment<Item>) Fragment.instantiate(this, fragmentName);
-			if (extras != null)
-				detailFragment.setArguments(extras);
-			if (items != null && items.get(i) != null)
-				detailFragment.setCurrentItem(items.get(i));
-			
-			fragments.add(detailFragment);
-		}
+            if (intent.hasExtra(EXTRAS_BUNDLE_KEY))
+                extras = intent.getBundleExtra(EXTRAS_BUNDLE_KEY);
+        }
+
+        setContentView(R.layout.activity_slide_detail);
+
+        if (extras != null && results != null)
+            extras.putAll(results);
+
+        fragments = new ArrayList<Fragment>();
+        if (fragmentName != null) {
+            for (int i = 0; i < items.size(); i++) {
+                DetailFragment<Item> detailFragment = (DetailFragment<Item>) Fragment.instantiate(this, fragmentName);
+                if (extras != null)
+                    detailFragment.setArguments(extras);
+                if (items != null && items.get(i) != null)
+                    detailFragment.setCurrentItem(items.get(i));
+
+                fragments.add(detailFragment);
+            }
+        } else
+            finish();
 
 		this.myPagerAdapter = new SlidePagerAdapter(super.getFragmentManager(), fragments);
 

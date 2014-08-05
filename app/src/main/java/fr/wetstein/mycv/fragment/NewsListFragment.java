@@ -19,10 +19,8 @@ import java.util.List;
 
 import fr.wetstein.mycv.R;
 import fr.wetstein.mycv.activity.DetailSliderActivity;
-import fr.wetstein.mycv.adapter.ListStudyAdapter;
+import fr.wetstein.mycv.adapter.ListNewsAdapter;
 import fr.wetstein.mycv.model.News;
-import fr.wetstein.mycv.model.Study;
-import fr.wetstein.mycv.parser.StudyParser;
 import fr.wetstein.mycv.request.NewsRequest;
 
 /**
@@ -31,8 +29,8 @@ import fr.wetstein.mycv.request.NewsRequest;
 public class NewsListFragment extends ListFragment {
     public static final String TAG = "NewsListFragment";
 
-    private List<Study> listNews;
-    private ListStudyAdapter listAdapter;
+    private List<News> listNews;
+    private ListNewsAdapter listAdapter;
 
     public NewsListFragment() {
 
@@ -42,9 +40,6 @@ public class NewsListFragment extends ListFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //Load items
-        listNews =  StudyParser.loadStudies(getActivity(), true);
-        Log.v(TAG, listNews.toString());
     }
 
     @Override
@@ -58,11 +53,6 @@ public class NewsListFragment extends ListFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        if (listNews != null) {
-            //Fill ExpandableListView with Skills
-            listAdapter = new ListStudyAdapter(getActivity(), R.layout.list_study_item, listNews);
-            setListAdapter(listAdapter);
-        }
     }
 
     @Override
@@ -86,6 +76,13 @@ public class NewsListFragment extends ListFragment {
             public void onResponse(List<News> listItem) {
                 Log.v(TAG, "SUCCESS REQUEST : "+ (listItem != null ? listItem.size() : "null"));
                 Toast.makeText(getActivity(), "Success", Toast.LENGTH_LONG).show();
+                listNews = listItem;
+
+                if (listNews != null) {
+                    //Fill ExpandableListView with Skills
+                    listAdapter = new ListNewsAdapter(getActivity(), R.layout.list_news_item, listNews);
+                    setListAdapter(listAdapter);
+                }
             }
         };
         Response.ErrorListener errorListener = new Response.ErrorListener() {
@@ -105,12 +102,12 @@ public class NewsListFragment extends ListFragment {
     @Override
     public void onListItemClick(ListView lv, View view, int position, long id) {
         super.onListItemClick(lv, view, position, id);
-        ListStudyAdapter lc_adapter = (ListStudyAdapter) lv.getAdapter();
+        ListNewsAdapter lc_adapter = (ListNewsAdapter) lv.getAdapter();
 
         //Go to Detail with parameters
         Intent intent = new Intent(getActivity(), DetailSliderActivity.class);
-        intent.putExtra(DetailSliderActivity.FRAGMENT_NAME_KEY, StudyDetailFragment.class.getName());
-        intent.putParcelableArrayListExtra(DetailSliderActivity.ITEM_LIST_KEY, (ArrayList<Study>) listNews);
+        //intent.putExtra(DetailSliderActivity.FRAGMENT_NAME_KEY, NewsDetailFragment.class.getName());
+        intent.putParcelableArrayListExtra(DetailSliderActivity.ITEM_LIST_KEY, (ArrayList<News>) listNews);
         intent.putExtra(DetailSliderActivity.POSITION_KEY, position);
         Bundle extras = new Bundle();
         intent.putExtra(DetailSliderActivity.EXTRAS_BUNDLE_KEY, extras);

@@ -61,8 +61,10 @@ public class GsonRequest<T> extends Request<T> {
 
             T parsedObject = null;
             if (clazz != null) {
+                //Item
                 parsedObject = gson.fromJson(json, clazz);
             } else if (type != null) {
+                //List Item
                 parsedObject = gson.fromJson(json, type);
             }
 

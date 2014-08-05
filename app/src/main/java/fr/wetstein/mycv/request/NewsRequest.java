@@ -12,6 +12,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import fr.sophiacom.ynp.androidlib.YNPClient;
 import fr.wetstein.mycv.model.News;
@@ -68,9 +69,7 @@ public class NewsRequest extends RequestManager {
         Gson gson = gsonBuilder.create();
 
         Type listType = new TypeToken<ArrayList<News>>(){}.getType();
-
-        HashMap<String, String> headers = new HashMap<String, String>();
-        headers.put("Authorization", "ApiKey " + YNPClient.apiKey);
+        Map<String, String> headers = getHeaders();
 
         //Create request
         GsonRequest<List<News>> request = new GsonRequest<List<News>>(
@@ -80,17 +79,16 @@ public class NewsRequest extends RequestManager {
             headers,
             successListener,
             errorListener);
-        /*{
-                @Override
-                public Map<String, String> getHeaders() throws AuthFailureError {
-                    HashMap<String, String> headers = new HashMap<String, String>();
-                    headers.put("Authorization", "ApiKey " + YNPClient.apiKey);
-                    return headers;
-                }
-        };*/
         request.setGson(gson);
 
         //Launch request
         addRequest(request, errorListener);
+    }
+
+    protected Map<String, String> getHeaders() {
+        HashMap<String, String> headers = new HashMap<String, String>();
+        headers.put("Authorization", "ApiKey " + YNPClient.apiKey);
+
+        return headers;
     }
 }
