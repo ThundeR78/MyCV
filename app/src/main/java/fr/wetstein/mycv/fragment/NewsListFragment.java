@@ -106,7 +106,7 @@ public class NewsListFragment extends ListFragment {
 
         //Go to Detail with parameters
         Intent intent = new Intent(getActivity(), DetailSliderActivity.class);
-        //intent.putExtra(DetailSliderActivity.FRAGMENT_NAME_KEY, NewsDetailFragment.class.getName());
+        intent.putExtra(DetailSliderActivity.FRAGMENT_NAME_KEY, NewsDetailFragment.class.getName());
         intent.putParcelableArrayListExtra(DetailSliderActivity.ITEM_LIST_KEY, (ArrayList<News>) listNews);
         intent.putExtra(DetailSliderActivity.POSITION_KEY, position);
         Bundle extras = new Bundle();
