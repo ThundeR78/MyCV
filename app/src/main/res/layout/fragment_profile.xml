@@ -52,6 +52,11 @@
             </TableRow>
         </TableLayout>
 
+        <Button android:id="@+id/button_read_memoire"
+            android:text="Read Mémoire"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
 
         <fragment android:id="@+id/map_fragment"
             android:layout_width="wrap_content"

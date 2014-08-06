@@ -2,17 +2,21 @@ package fr.wetstein.mycv.fragment;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Path;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TableLayout;
@@ -30,6 +34,11 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.Calendar;
 
 import fr.wetstein.mycv.MyCVApp;
@@ -46,6 +55,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     private static View view;
     private TextView txtAge;
+    private Button btnMemoire;
     private ImageButton btnEmail, btnCall;
     private TableLayout tblPersonnality;
 
@@ -88,10 +98,12 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         txtAge = (TextView) view.findViewById(R.id.profile_age);
         btnEmail = (ImageButton) view.findViewById(R.id.button_email);
         btnCall = (ImageButton) view.findViewById(R.id.button_phone);
+        btnMemoire = (Button) view.findViewById(R.id.button_read_memoire);
         tblPersonnality = (TableLayout) view.findViewById(R.id.profile_table);
 
         btnEmail.setOnClickListener(this);
         btnCall.setOnClickListener(this);
+        btnMemoire.setOnClickListener(this);
         //image.setImageBitmap(getHexagonShape(((BitmapDrawable)image.getDrawable()).getBitmap()));
 
         txtAge.setText(getString(R.string.value_age, calculateAge()));
@@ -316,6 +328,9 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             case R.id.button_phone:
                 callAction(getString(R.string.value_phone));
                 break;
+            case R.id.button_read_memoire:
+                readPDFAction("memoire.pdf");
+                break;
         }
     }
 
@@ -338,6 +353,68 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             Intent callIntent = new Intent(Intent.ACTION_CALL);
             callIntent.setData(Uri.parse("tel:" + phone));
             startActivity(callIntent);
+        }
+    }
+
+    private void readPDFAction(String fileName) {
+        //TODO : copy file into device to read it
+        File filePdf = new File("/sdcard/"+fileName);
+        if (!filePdf.exists()) {
+            CopyAssetsFile(fileName);
+        }
+
+        File file = new File("/sdcard/"+fileName);
+
+        //File file = new File(Environment.getExternalStorageDirectory().getAbsolutePath() +"/"+ fileName);
+        Intent target = new Intent(Intent.ACTION_VIEW);
+        target.setDataAndType(Uri.fromFile(file), "application/pdf");
+        target.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+
+        Intent intent = Intent.createChooser(target, "Open File");
+        try {
+            startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            // Instruct the user to install a PDF reader here, or something
+            Toast.makeText(getActivity(), "NO Pdf Viewer", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void CopyAssetsFile(String fileName) {
+        AssetManager assetManager = getActivity().getAssets();
+        String[] files = null;
+        try {
+            files = assetManager.list("");
+        } catch (IOException e) {
+            Log.e("tag", e.getMessage());
+        }
+
+        for (int i=0; i<files.length; i++) {
+            String fStr = files[i];
+            if (fStr.equalsIgnoreCase(fileName)) {
+                InputStream in = null;
+                OutputStream out = null;
+                try {
+                    in = assetManager.open(files[i]);
+                    out = new FileOutputStream("/sdcard/" + files[i]);
+                    copyFile(in, out);
+                    in.close();
+                    in = null;
+                    out.flush();
+                    out.close();
+                    out = null;
+                    break;
+                } catch(Exception e) {
+                    Log.e("tag", e.getMessage());
+                }
+            }
+        }
+    }
+
+    private void copyFile(InputStream in, OutputStream out) throws IOException {
+        byte[] buffer = new byte[1024];
+        int read;
+        while ((read = in.read(buffer)) != -1) {
+            out.write(buffer, 0, read);
         }
     }
 }
