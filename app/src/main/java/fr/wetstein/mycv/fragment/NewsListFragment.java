@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ListFragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,8 +27,10 @@ import fr.wetstein.mycv.request.NewsRequest;
 /**
  * Created by ThundeR on 05/07/2014.
  */
-public class NewsListFragment extends ListFragment {
+public class NewsListFragment extends ListFragment implements SwipeRefreshLayout.OnRefreshListener {
     public static final String TAG = "NewsListFragment";
+
+    private SwipeRefreshLayout refreshLayout;
 
     private List<News> listNews;
     private ListNewsAdapter listAdapter;
@@ -45,6 +48,11 @@ public class NewsListFragment extends ListFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_list, container, false);
+
+        //RefreshLayout
+        refreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.refresh_layout);
+        refreshLayout.setOnRefreshListener(this);
+        //refreshLayout.setColorScheme(R.color.refresh_blue, R.color.refresh_green, R.color.refresh_orange, R.color.refresh_purple);
 
         return rootView;
     }
@@ -67,7 +75,7 @@ public class NewsListFragment extends ListFragment {
     }
 
     private void launchRequest() {
-        //refreshLayout.setRefreshing(true);
+        refreshLayout.setRefreshing(true);
 
         NewsRequest request = new NewsRequest(getActivity().getApplicationContext());
 
@@ -83,6 +91,8 @@ public class NewsListFragment extends ListFragment {
                     listAdapter = new ListNewsAdapter(getActivity(), R.layout.list_news_item, listNews);
                     setListAdapter(listAdapter);
                 }
+
+                refreshLayout.setRefreshing(false);
             }
         };
         Response.ErrorListener errorListener = new Response.ErrorListener() {
@@ -94,6 +104,8 @@ public class NewsListFragment extends ListFragment {
                     messageError = getString(R.string.error_request_status, error.networkResponse.statusCode);
                 Crouton.makeText(getActivity(), messageError, Style.ALERT).show();*/
                 Toast.makeText(getActivity(), "Error : "+error, Toast.LENGTH_LONG).show();
+
+                refreshLayout.setRefreshing(false);
             }
         };
         request.getListNews(successListener, errorListener);
@@ -113,5 +125,9 @@ public class NewsListFragment extends ListFragment {
         intent.putExtra(DetailSliderActivity.EXTRAS_BUNDLE_KEY, extras);
 
         startActivity(intent);
+    }
+
+    @Override
+    public void onRefresh() {
     }
 }
