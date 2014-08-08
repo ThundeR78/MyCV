@@ -21,6 +21,7 @@ import java.util.List;
 import fr.wetstein.mycv.R;
 import fr.wetstein.mycv.activity.DetailSliderActivity;
 import fr.wetstein.mycv.adapter.ListNewsAdapter;
+import fr.wetstein.mycv.database.DatabaseManager;
 import fr.wetstein.mycv.model.News;
 import fr.wetstein.mycv.request.NewsRequest;
 
@@ -32,17 +33,16 @@ public class NewsListFragment extends ListFragment implements SwipeRefreshLayout
 
     private SwipeRefreshLayout refreshLayout;
 
+    private DatabaseManager db;
+
     private List<News> listNews;
     private ListNewsAdapter listAdapter;
-
-    public NewsListFragment() {
-
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        db = new DatabaseManager(getActivity());
     }
 
     @Override
@@ -52,7 +52,7 @@ public class NewsListFragment extends ListFragment implements SwipeRefreshLayout
         //RefreshLayout
         refreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.refresh_layout);
         refreshLayout.setOnRefreshListener(this);
-        //refreshLayout.setColorScheme(R.color.refresh_blue, R.color.refresh_green, R.color.refresh_orange, R.color.refresh_purple);
+        refreshLayout.setColorScheme(R.color.blue, R.color.green, R.color.red, R.color.violet);
 
         return rootView;
     }
@@ -61,6 +61,8 @@ public class NewsListFragment extends ListFragment implements SwipeRefreshLayout
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        listNews = db.getAllNews();
+        updateListView(listNews);
     }
 
     @Override
@@ -71,6 +73,7 @@ public class NewsListFragment extends ListFragment implements SwipeRefreshLayout
     @Override
     public void onStart() {
         super.onStart();
+
         launchRequest();
     }
 
@@ -84,12 +87,12 @@ public class NewsListFragment extends ListFragment implements SwipeRefreshLayout
             public void onResponse(List<News> listItem) {
                 Log.v(TAG, "SUCCESS REQUEST : "+ (listItem != null ? listItem.size() : "null"));
                 Toast.makeText(getActivity(), "Success", Toast.LENGTH_LONG).show();
-                listNews = listItem;
 
-                if (listNews != null) {
-                    //Fill ExpandableListView with Skills
-                    listAdapter = new ListNewsAdapter(getActivity(), R.layout.list_news_item, listNews);
-                    setListAdapter(listAdapter);
+                if (listItem != null) {
+                    db.insertOrUpdateListNews(listItem);
+
+                    listNews = db.getAllNews();
+                    updateListView(listNews);
                 }
 
                 refreshLayout.setRefreshing(false);
@@ -111,6 +114,15 @@ public class NewsListFragment extends ListFragment implements SwipeRefreshLayout
         request.getListNews(successListener, errorListener);
     }
 
+    private void updateListView(List<News> listItem) {
+        if (listItem != null) {
+            //Fill ListView with News
+            listAdapter = new ListNewsAdapter(getActivity(), R.layout.list_news_item, listItem);
+            setListAdapter(listAdapter);
+            listAdapter.notifyDataSetChanged();
+        }
+    }
+
     @Override
     public void onListItemClick(ListView lv, View view, int position, long id) {
         super.onListItemClick(lv, view, position, id);
@@ -129,5 +141,6 @@ public class NewsListFragment extends ListFragment implements SwipeRefreshLayout
 
     @Override
     public void onRefresh() {
+        launchRequest();
     }
 }

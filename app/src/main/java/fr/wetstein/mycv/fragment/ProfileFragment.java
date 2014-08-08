@@ -342,7 +342,6 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             sharingIntent.putExtra(Intent.EXTRA_EMAIL,  new String[]{email});
 
             startActivity(Intent.createChooser(sharingIntent, getString(R.string.label_send_email)));
-
         }
     }
 
@@ -352,6 +351,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             phone.trim();
             Intent callIntent = new Intent(Intent.ACTION_CALL);
             callIntent.setData(Uri.parse("tel:" + phone));
+
             startActivity(callIntent);
         }
     }
@@ -359,9 +359,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private void readPDFAction(String fileName) {
         //TODO : copy file into device to read it
         File filePdf = new File("/sdcard/"+fileName);
-        if (!filePdf.exists()) {
+        if (!filePdf.exists())
             CopyAssetsFile(fileName);
-        }
 
         File file = new File("/sdcard/"+fileName);
 
