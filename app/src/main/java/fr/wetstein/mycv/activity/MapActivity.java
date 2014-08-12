@@ -121,7 +121,7 @@ public class MapActivity extends Activity implements GoogleMap.OnInfoWindowClick
                     MarkerOptions markerOptions = new MarkerOptions()
                             .position(new LatLng(item.latitude, item.longitude))
                             .title(item.name)
-                            .icon(BitmapDescriptorFactory.defaultMarker(item.pin));
+                            .icon(BitmapDescriptorFactory.defaultMarker(item.pin)); //BitmapDescriptorFactory.HUE_
                     if (expDuration != null && !expDuration.isEmpty())
                         markerOptions.snippet(expDuration);
 

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<travels>
+    <travel>
+        <country>Hollande</country>
+        <context>ESGI</context>
+        <dateBegin>06/12/2013</dateBegin>
+        <dateEnd>08/12/2013</dateEnd>
+        <display color="orange_dark" pin="30" />
+        <places>
+            <place id="1">
+                <city>Amsterdam</city>
+                <address>Stayokay Zeeburg</address>
+                <position latitude="" longitude="" />
+            </place>
+        </places>
+    </travel>
+
+    <travel>
+        <country>République Tchèque</country>
+        <context>ESGI</context>
+        <dateBegin>07/05/2014</dateBegin>
+        <dateEnd>11/05/2014</dateEnd>
+        <display color="violet_dark" pin="30" />
+        <places>
+            <place id="1">
+                <city>Prague</city>
+                <address>Plus Prague Hostel</address>
+                <position latitude="" longitude="" />
+            </place>
+        </places>
+    </travel>
+
+</travels>
