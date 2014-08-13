@@ -14,7 +14,7 @@ import java.util.List;
 import fr.wetstein.mycv.R;
 import fr.wetstein.mycv.adapter.GridConsoleAdapter;
 import fr.wetstein.mycv.model.Console;
-import fr.wetstein.mycv.parser.GameParser;
+import fr.wetstein.mycv.parser.json.GameParser;
 import fr.wetstein.mycv.view.ExpandableHeightGridView;
 
 /**

@@ -20,7 +20,7 @@ import fr.wetstein.mycv.R;
 import fr.wetstein.mycv.adapter.ExpandableListSkillAdapter;
 import fr.wetstein.mycv.model.GroupSkill;
 import fr.wetstein.mycv.model.Skill;
-import fr.wetstein.mycv.parser.SkillParser;
+import fr.wetstein.mycv.parser.json.SkillParser;
 
 /**
  * Created by ThundeR on 05/07/2014.

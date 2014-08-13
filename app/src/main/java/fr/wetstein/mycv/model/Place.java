@@ -13,6 +13,7 @@ import java.util.Date;
 public class Place implements Parcelable {
     public static final String TAG = "Place";
 
+    public int id;
     public String name;
     public String address;
     public Double latitude;
@@ -53,6 +54,7 @@ public class Place implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
         dest.writeString(name);
         dest.writeString(address);
         dest.writeDouble(latitude);
@@ -64,6 +66,7 @@ public class Place implements Parcelable {
     }
 
     public void readFromParcel(Parcel in) {
+        id = in.readInt();
         name = in.readString();
         address = in.readString();
         latitude = in.readDouble();

@@ -1,4 +1,4 @@
-package fr.wetstein.mycv.parser;
+package fr.wetstein.mycv.parser.json;
 
 import android.content.Context;
 import android.util.Log;
@@ -13,6 +13,7 @@ import java.util.List;
 
 import fr.wetstein.mycv.model.School;
 import fr.wetstein.mycv.model.Study;
+import fr.wetstein.mycv.parser.ParserAssets;
 import fr.wetstein.mycv.util.FormatValue;
 
 /**
@@ -28,7 +29,7 @@ public class StudyParser extends ParserAssets {
         List<Study> listItem = new ArrayList<Study>();
 
         try {
-            JSONObject jsonObjectRoot = new JSONObject(loadJSONFromAsset(context, pathData+file));
+            JSONObject jsonObjectRoot = new JSONObject(loadStringFromAsset(context, pathData + file));
             JSONArray jsonArrayRoot = jsonObjectRoot.getJSONArray("studies");
 
             //Loop each node
@@ -73,7 +74,7 @@ public class StudyParser extends ParserAssets {
         List<School> listItem = new ArrayList<School>();
 
         try {
-            JSONObject jsonObjectRoot = new JSONObject(loadJSONFromAsset(context, pathData+file));
+            JSONObject jsonObjectRoot = new JSONObject(loadStringFromAsset(context, pathData + file));
             JSONArray jsonArrayRoot = jsonObjectRoot.getJSONArray("schools");
 
             //Loop each node

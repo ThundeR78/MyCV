@@ -12,9 +12,9 @@ public class ParserAssets {
 	protected static final String pathData = "data/";
 
 
-    //Load File in JSON
-	public static String loadJSONFromAsset(Context context, String filename) {
-        String json = null;
+    //Load File in String
+	public static String loadStringFromAsset(Context context, String filename) {
+        String string = null;
         try {
             InputStream is = context.getAssets().open(filename);
             int size = is.available();
@@ -22,12 +22,21 @@ public class ParserAssets {
             is.read(buffer);
             is.close();
 
-            json = new String(buffer, "UTF-8");
+            string = new String(buffer, "UTF-8");
         } catch (IOException ex) {
             ex.printStackTrace();
             return null;
         }
-        return json;
+        return string;
     }
 
+    public static InputStream loadInputStreamFromAsset(Context context, String filename) {
+        InputStream is = null;
+        try {
+            is = context.getAssets().open(filename);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return is;
+    }
 }

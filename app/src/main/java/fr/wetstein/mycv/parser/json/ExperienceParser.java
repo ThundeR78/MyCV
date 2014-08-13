@@ -1,4 +1,4 @@
-package fr.wetstein.mycv.parser;
+package fr.wetstein.mycv.parser.json;
 
 import android.content.Context;
 import android.util.Log;
@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.wetstein.mycv.model.Experience;
+import fr.wetstein.mycv.parser.ParserAssets;
 import fr.wetstein.mycv.util.FormatValue;
 
 /**
@@ -27,7 +28,7 @@ public class ExperienceParser extends ParserAssets {
         List<Experience> listItem = new ArrayList<Experience>();
 
         try {
-            JSONObject jsonObjectRoot = new JSONObject(loadJSONFromAsset(context, pathData+file));
+            JSONObject jsonObjectRoot = new JSONObject(loadStringFromAsset(context, pathData + file));
             JSONArray jsonArrayRoot = jsonObjectRoot.getJSONArray("career");
 
             //Loop each node

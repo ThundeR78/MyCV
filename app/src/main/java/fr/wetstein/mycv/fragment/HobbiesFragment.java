@@ -67,6 +67,7 @@ public class HobbiesFragment extends Fragment implements ActionBar.TabListener {
         mSectionsPagerAdapter.addItem(new MangaFragment(), getString(R.string.title_manga));
         mSectionsPagerAdapter.addItem(new ParkourFragment(), getString(R.string.title_parkour));
         mSectionsPagerAdapter.addItem(new GamesFragment(), getString(R.string.title_games));
+        mSectionsPagerAdapter.addItem(new TravelFragment(), getString(R.string.title_travels));
     }
 
     public void addTabs() {

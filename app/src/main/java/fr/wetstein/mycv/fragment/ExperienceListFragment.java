@@ -22,7 +22,7 @@ import fr.wetstein.mycv.activity.DetailSliderActivity;
 import fr.wetstein.mycv.activity.MapActivity;
 import fr.wetstein.mycv.adapter.ListExperienceAdapter;
 import fr.wetstein.mycv.model.Experience;
-import fr.wetstein.mycv.parser.ExperienceParser;
+import fr.wetstein.mycv.parser.json.ExperienceParser;
 
 /**
  * Created by ThundeR on 05/07/2014.

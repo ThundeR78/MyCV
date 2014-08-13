@@ -1,4 +1,4 @@
-package fr.wetstein.mycv.parser;
+package fr.wetstein.mycv.parser.json;
 
 import android.content.Context;
 import android.util.Log;
@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.List;
 
 import fr.wetstein.mycv.model.Console;
+import fr.wetstein.mycv.parser.ParserAssets;
 
 /**
  * Created by ThundeR on 18/07/2014.
@@ -26,7 +27,7 @@ public class GameParser extends ParserAssets {
         List<Console> listItem = new ArrayList<Console>();
 
         try {
-            JSONObject jsonObjectRoot = new JSONObject(loadJSONFromAsset(context, pathData+file));
+            JSONObject jsonObjectRoot = new JSONObject(loadStringFromAsset(context, pathData + file));
             JSONArray jsonArrayRoot = jsonObjectRoot.getJSONArray("consoles");
 
             //Loop each node

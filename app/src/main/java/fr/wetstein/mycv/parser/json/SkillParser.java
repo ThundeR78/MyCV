@@ -1,4 +1,4 @@
-package fr.wetstein.mycv.parser;
+package fr.wetstein.mycv.parser.json;
 
 import android.content.Context;
 import android.util.Log;
@@ -13,6 +13,7 @@ import java.util.List;
 
 import fr.wetstein.mycv.model.GroupSkill;
 import fr.wetstein.mycv.model.Skill;
+import fr.wetstein.mycv.parser.ParserAssets;
 
 /**
  * Created by ThundeR on 18/07/2014.
@@ -35,7 +36,7 @@ public class SkillParser extends ParserAssets {
         HashMap<GroupSkill, List<Skill>> mapSkill = new HashMap<GroupSkill, List<Skill>>();
 
         try {
-            JSONObject jsonObjectRoot = new JSONObject(loadJSONFromAsset(context, pathData+fileSkills));
+            JSONObject jsonObjectRoot = new JSONObject(loadStringFromAsset(context, pathData + fileSkills));
 
             //Loop each node
             for (NodesSkill ns : NodesSkill.values()) {

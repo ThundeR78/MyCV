@@ -30,4 +30,44 @@
         </places>
     </travel>
 
+    <travel>
+        <country>Russie</country>
+        <context>Friend</context>
+        <dateBegin>07/05/2014</dateBegin>
+        <dateEnd>11/05/2014</dateEnd>
+        <display color="violet_dark" pin="30" />
+        <places>
+            <place id="1">
+                <city>Saint-Petersburg</city>
+                <address></address>
+                <position latitude="" longitude="" />
+            </place>
+        </places>
+    </travel>
+
+    <travel>
+        <country>Japon</country>
+        <context>En famille</context>
+        <dateBegin>07/05/2014</dateBegin>
+        <dateEnd>11/05/2014</dateEnd>
+        <display color="red" pin="0" />
+        <places>
+            <place id="1">
+                <city>Tokyo</city>
+                <address></address>
+                <position latitude="" longitude="" />
+            </place>
+            <place id="2">
+                <city>Kyoto</city>
+                <address></address>
+                <position latitude="" longitude="" />
+            </place>
+            <place id="3">
+                <city>Osaka</city>
+                <address></address>
+                <position latitude="" longitude="" />
+            </place>
+        </places>
+    </travel>
+
 </travels>

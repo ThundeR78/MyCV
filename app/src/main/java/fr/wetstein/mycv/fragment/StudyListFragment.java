@@ -23,7 +23,7 @@ import fr.wetstein.mycv.activity.MapActivity;
 import fr.wetstein.mycv.adapter.ListStudyAdapter;
 import fr.wetstein.mycv.model.School;
 import fr.wetstein.mycv.model.Study;
-import fr.wetstein.mycv.parser.StudyParser;
+import fr.wetstein.mycv.parser.json.StudyParser;
 
 /**
  * Created by ThundeR on 05/07/2014.
