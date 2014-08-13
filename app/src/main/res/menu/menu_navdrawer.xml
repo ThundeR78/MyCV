@@ -7,5 +7,6 @@
 	<item android:id="@+id/item_career" android:icon="@drawable/ic_launcher" android:title="@string/title_career" android:orderInCategory="3" />
 	<item android:id="@+id/item_skills" android:icon="@drawable/ic_launcher" android:title="@string/title_skills" android:orderInCategory="4" />
 	<item android:id="@+id/item_hobbies" android:icon="@drawable/ic_launcher" android:title="@string/title_hobbies" android:orderInCategory="5" />
+    <item android:id="@+id/item_guestbook" android:icon="@drawable/ic_launcher" android:title="@string/title_guestbook" android:orderInCategory="6" />
 
 </menu>

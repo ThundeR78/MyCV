@@ -20,6 +20,8 @@
     <string name="title_manga">Manga</string>
     <string name="title_parkour">Parkour</string>
     <string name="title_games">Jeux vidéo</string>
+    <string name="title_travel">Voyage</string>
+    <string name="title_guestbook">Livre d\'or</string>
     <string name="title_cv">CV</string>
 
     <!-- ACTION -->

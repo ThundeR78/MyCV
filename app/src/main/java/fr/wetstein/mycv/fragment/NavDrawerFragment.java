@@ -167,6 +167,26 @@ public class NavDrawerFragment extends Fragment {
 
                 getActivity().invalidateOptionsMenu(); // calls onPrepareOptionsMenu()
             }
+
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                bringDrawerToFront();
+                super.onDrawerSlide(drawerView, slideOffset);
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+                bringDrawerToFront();
+                super.onDrawerStateChanged(newState);
+            }
+
+            private void bringDrawerToFront() {
+                mDrawerLayout.bringToFront();
+                mFragmentContainerView.bringToFront();
+                mDrawerLayout.bringChildToFront(mFragmentContainerView);
+                mDrawerLayout.requestLayout();
+                mFragmentContainerView.requestLayout();
+            }
         };
 
         // If the user hasn't 'learned' about the drawer, open it to introduce them to the drawer,

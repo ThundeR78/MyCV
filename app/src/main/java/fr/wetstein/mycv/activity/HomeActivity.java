@@ -15,6 +15,7 @@ import android.widget.Toast;
 import fr.sophiacom.ynp.androidlib.YNPClient;
 import fr.wetstein.mycv.R;
 import fr.wetstein.mycv.fragment.ExperienceListFragment;
+import fr.wetstein.mycv.fragment.GuestbookFragment;
 import fr.wetstein.mycv.fragment.HobbiesFragment;
 import fr.wetstein.mycv.fragment.NavDrawerFragment;
 import fr.wetstein.mycv.fragment.NewsListFragment;
@@ -108,6 +109,9 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
                 break;
             case R.id.item_hobbies:
                 fragment = new HobbiesFragment();
+                break;
+            case R.id.item_guestbook:
+                fragment = new GuestbookFragment();
                 break;
             default:
                 fragment = new ProfileFragment();
