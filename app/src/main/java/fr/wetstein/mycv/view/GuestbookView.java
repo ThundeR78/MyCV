@@ -12,20 +12,13 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import javax.microedition.khronos.opengles.GL10;
-
-import fr.wetstein.mycv.R;
 import fr.wetstein.mycv.draw.Draw;
-import fr.wetstein.mycv.draw.IDraw;
 import fr.wetstein.mycv.draw.LineDraw;
-import fr.wetstein.mycv.draw.OvalDraw;
 import fr.wetstein.mycv.draw.PointDraw;
-import fr.wetstein.mycv.draw.RectDraw;
 import fr.wetstein.mycv.fragment.GuestbookFragment;
 
 /**
@@ -208,8 +201,8 @@ public class GuestbookView extends SurfaceView implements SurfaceHolder.Callback
                 break;
 
             case MotionEvent.ACTION_MOVE:
-                        //mCurrentDraw = new LineDraw(mCanvas, mPaint, oldY, oldX, y, x);
-                mCurrentDraw = new PointDraw(mCanvas, mPaint, x, y);
+                mCurrentDraw = new LineDraw(mCanvas, mPaint, oldY, oldX, y, x);
+                //mCurrentDraw = new PointDraw(mCanvas, mPaint, x, y);
                 //mCurrentDraw = new OvalDraw(mCanvas, mPaint, oldY, oldX, y, x);
                 synchronized (sync) {
                     mDraws.add(mCurrentDraw);

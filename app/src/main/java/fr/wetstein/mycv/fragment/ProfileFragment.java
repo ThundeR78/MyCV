@@ -90,7 +90,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         try {
             view = inflater.inflate(R.layout.fragment_profile, container, false);
         } catch (InflateException e) {
-        /* map is already there, just return view as it is */
+            /* Map is already there, just return view as it is */
         }
         //View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
 

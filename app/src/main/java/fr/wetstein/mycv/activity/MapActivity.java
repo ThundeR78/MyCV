@@ -8,8 +8,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -25,6 +23,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import fr.wetstein.mycv.MyCVApp;
 import fr.wetstein.mycv.R;
 import fr.wetstein.mycv.fragment.ExperienceDetailFragment;
 import fr.wetstein.mycv.model.Experience;
@@ -73,9 +72,7 @@ public class MapActivity extends Activity implements GoogleMap.OnInfoWindowClick
 	}
 
     private void initMap() {
-        //Check if Google Play Services is available on device to display Google Maps
-        int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
-        if (status == ConnectionResult.SUCCESS) {
+        if (MyCVApp.isGooglePlayServicesAvailable(getApplicationContext())) {
             if (mMap == null) {
                 mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map_fragment)).getMap();
 
@@ -98,7 +95,7 @@ public class MapActivity extends Activity implements GoogleMap.OnInfoWindowClick
         mMap.getUiSettings().setMyLocationButtonEnabled(true);
         mMap.setOnInfoWindowClickListener(this);
 
-        //Display Home Marker
+        //Display Markers
         displayItems(listItem);
     }
 

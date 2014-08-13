@@ -1,10 +1,108 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <travels>
+
+    <travel>
+        <country>Espagne</country>
+        <context>School</context>
+        <date begin="" end="" />
+        <display color="violet_dark" pin="30" />
+        <places>
+            <place id="1">
+                <city>Toledo</city>
+                <address></address>
+                <position latitude="" longitude="" />
+            </place>
+        </places>
+    </travel>
+
+    <travel>
+        <country>Angleterre</country>
+        <context>School</context>
+        <date begin="" end="" />
+        <display color="violet_dark" pin="30" />
+        <places>
+            <place id="1">
+                <city>Londres</city>
+                <address></address>
+                <position latitude="" longitude="" />
+            </place>
+        </places>
+    </travel>
+
+    <travel>
+        <country>Belgique</country>
+        <context>Couple</context>
+        <date begin="" end="" />
+        <display color="violet_dark" pin="30" />
+        <places>
+            <place id="1">
+                <city>Bruxelles</city>
+                <address></address>
+                <position latitude="" longitude="" />
+            </place>
+        </places>
+    </travel>
+
+    <travel>
+        <country>Belgique</country>
+        <context>Friend</context>
+        <date begin="" end="" />
+        <display color="violet_dark" pin="30" />
+        <places>
+            <place id="1">
+                <city>Spa</city>
+                <address></address>
+                <position latitude="" longitude="" />
+            </place>
+        </places>
+    </travel>
+
+    <travel>
+        <country>Chine</country>
+        <context>Family</context>
+        <date begin="" end="" />
+        <display color="violet_dark" pin="30" />
+        <places>
+            <place id="1">
+                <city>Hong Kong</city>
+                <address></address>
+                <position latitude="" longitude="" />
+            </place>
+        </places>
+    </travel>
+
+    <travel>
+        <country>Serbie</country>
+        <context>Alone</context>
+        <date begin="20/08/2011" end="28/08/2011" />
+        <display color="violet_dark" pin="30" />
+        <places>
+            <place id="1">
+                <city>Belgrade</city>
+                <address>Hostel Zetska 5</address>
+                <position latitude="44.817297" longitude="20.463944" />
+            </place>
+        </places>
+    </travel>
+
+    <travel>
+        <country>Angleterre</country>
+        <context>ESGI</context>
+        <date begin="01/01/2013" end="01/01/2013" />
+        <display color="violet_dark" pin="30" />
+        <places>
+            <place id="1">
+                <city>Londres</city>
+                <address></address>
+                <position latitude="" longitude="" />
+            </place>
+        </places>
+    </travel>
+
     <travel>
         <country>Hollande</country>
         <context>ESGI</context>
-        <dateBegin>06/12/2013</dateBegin>
-        <dateEnd>08/12/2013</dateEnd>
+        <date begin="06/12/2013" end="08/12/2013" />
         <display color="orange_dark" pin="30" />
         <places>
             <place id="1">
@@ -18,14 +116,13 @@
     <travel>
         <country>République Tchèque</country>
         <context>ESGI</context>
-        <dateBegin>07/05/2014</dateBegin>
-        <dateEnd>11/05/2014</dateEnd>
+        <date begin="07/05/2014" end="11/05/2014" />
         <display color="violet_dark" pin="30" />
         <places>
             <place id="1">
                 <city>Prague</city>
                 <address>Plus Prague Hostel</address>
-                <position latitude="" longitude="" />
+                <position latitude="50.109214" longitude="14.451365" />
             </place>
         </places>
     </travel>
@@ -33,39 +130,64 @@
     <travel>
         <country>Russie</country>
         <context>Friend</context>
-        <dateBegin>07/05/2014</dateBegin>
-        <dateEnd>11/05/2014</dateEnd>
+        <date begin="01/08/2013" end="15/08/2014" />
         <display color="violet_dark" pin="30" />
         <places>
             <place id="1">
                 <city>Saint-Petersburg</city>
-                <address></address>
-                <position latitude="" longitude="" />
+                <address>Primorskiy prospekt, Saint-Petersburg, Russia</address>
+                <position latitude="59.984644" longitude="30.20029" />
             </place>
         </places>
     </travel>
 
     <travel>
         <country>Japon</country>
-        <context>En famille</context>
-        <dateBegin>07/05/2014</dateBegin>
-        <dateEnd>11/05/2014</dateEnd>
+        <context>Family</context>
+        <date begin="20/08/2012" end="30/08/2012" />
         <display color="red" pin="0" />
         <places>
             <place id="1">
                 <city>Tokyo</city>
-                <address></address>
-                <position latitude="" longitude="" />
+                <address>Hotel Tokyu Stay Shibuya</address>
+                <date begin="20/08/2012" end="25/08/2012" />
+                <position latitude="35.655607" longitude="139.693755" />
             </place>
             <place id="2">
                 <city>Kyoto</city>
-                <address></address>
-                <position latitude="" longitude="" />
+                <address>Hearton Hotel Kyoto</address>
+                <date begin="25/08/2012" end="29/08/2012" />
+                <position latitude="35.011776" longitude="135.761004" />
             </place>
             <place id="3">
                 <city>Osaka</city>
-                <address></address>
-                <position latitude="" longitude="" />
+                <address>Nest Hotel Osaka Shinsaibashi</address>
+                <date begin="29/08/2012" end="30/08/2012" />
+                <position latitude="34.675249" longitude="135.50559" />
+            </place>
+        </places>
+    </travel>
+
+    <travel>
+        <country>Chine/Japon</country>
+        <context>Family</context>
+        <date begin="15/08/2014" end="02/09/2014" />
+        <display color="red" pin="0" />
+        <places>
+            <place id="1">
+                <city>Tokyo</city>
+                <address>Hotel Tokyu Stay Shibuya</address>
+                <position latitude="35.655607" longitude="139.693755" />
+            </place>
+            <place id="2">
+                <city>Yamanashi</city>
+                <address>Mount Fuji</address>
+                <position latitude="35.011776" longitude="135.761004" />
+            </place>
+            <place id="3">
+                <city>Osaka</city>
+                <address>Nest Hotel Osaka Shinsaibashi</address>
+                <position latitude="34.675249" longitude="135.50559" />
             </place>
         </places>
     </travel>

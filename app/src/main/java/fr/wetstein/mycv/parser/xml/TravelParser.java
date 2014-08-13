@@ -1,7 +1,6 @@
 package fr.wetstein.mycv.parser.xml;
 
 import android.content.Context;
-import android.util.Log;
 import android.util.Xml;
 
 import org.xmlpull.v1.XmlPullParser;
@@ -9,14 +8,12 @@ import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
 import fr.wetstein.mycv.model.Place;
 import fr.wetstein.mycv.model.Travel;
 import fr.wetstein.mycv.parser.ParserAssets;
-import fr.wetstein.mycv.util.FormatValue;
 
 /**
  * Created by ThundeR on 18/07/2014.
@@ -45,7 +42,7 @@ public class TravelParser extends ParserAssets {
             int eventType = xpp.getEventType();
 
             while (eventType != XmlPullParser.END_DOCUMENT) {
-                String tag = xpp.getName();;
+                String tag = xpp.getName();
 
                 switch (eventType) {
                     case XmlPullParser.START_DOCUMENT:
@@ -97,13 +94,13 @@ public class TravelParser extends ParserAssets {
                 continue;
             }
 
-            Log.v("PARSE TRAVEL", tag);
+            //Log.v("PARSE TRAVEL", tag);
             if (item != null) {
                 if (tag.equals("country")) {
                     item.country = xpp.nextText();
                 } else if (tag.equals("context")) {
                     item.context = xpp.nextText();
-                } else if (tag.equals("dateBegin")) {
+                /*} else if (tag.equals("dateBegin")) {
                     String dateBStr = xpp.nextText();
                     try {
                         if (dateBStr != null)
@@ -114,7 +111,9 @@ public class TravelParser extends ParserAssets {
                     try {
                         if (dateEStr != null)
                             item.dateEnd = FormatValue.dateFormat.parse(dateEStr);
-                    } catch (ParseException e) { e.printStackTrace(); }
+                    } catch (ParseException e) { e.printStackTrace(); }*/
+                } else if (tag.equals("date")) {
+                    //item. = xpp.nextText();
                 } else if (tag.equals("display")) {
                     String resPin = xpp.getAttributeValue(null, "pin");
                     String resColorName = xpp.getAttributeValue(null, "color");
@@ -144,7 +143,7 @@ public class TravelParser extends ParserAssets {
 
                     item.listPlace = listPlace;
 
-                    Log.v("PARSE PLACES", listPlace.size()+"");
+//                    Log.v("PARSE PLACES", listPlace.size()+"");
                 } else
                     skip(xpp);
             }
