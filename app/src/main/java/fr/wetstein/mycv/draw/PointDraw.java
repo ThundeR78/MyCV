@@ -12,8 +12,8 @@ public class PointDraw extends Draw {
 
     public PointDraw(Canvas canvas, Paint paint, float x, float y) {
         super(canvas, paint);
-        x = x;
-        y = y;
+        this.x = x;
+        this.y = y;
     }
 
     public void update(Paint paint, float top, float left, float bottom, float right) {
@@ -21,16 +21,9 @@ public class PointDraw extends Draw {
     }
 
     public void draw() {
-        Paint vPaint = new Paint();
-        vPaint.setAntiAlias(true);
-        vPaint.setDither(true);
-        vPaint.setARGB(0xFF, Color.red(mPaint.getColor()), Color.green(mPaint.getColor()), Color.blue(mPaint.getColor()));
-        vPaint.setStyle(Paint.Style.FILL);
-        vPaint.setStrokeJoin(Paint.Join.ROUND);
-        vPaint.setStrokeCap(Paint.Cap.ROUND);
-        vPaint.setStrokeWidth(1);
+        mPaint.setStyle(Paint.Style.FILL);
 
-        mCanvas.drawCircle(x, y, mPaint.getStrokeWidth() / 2, vPaint);
+        mCanvas.drawCircle(x, y, mPaint.getStrokeWidth() / 2, mPaint);
     }
 
 }

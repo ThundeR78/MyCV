@@ -98,7 +98,8 @@ public class GuestbookView extends SurfaceView implements SurfaceHolder.Callback
             //if (_bgBitmap != null)
               //  mCanvas.drawBitmap(_bgBitmap, 0, 0, mPaint);
             //else
-                mCanvas.drawColor(DEFAULT_BGCOLOR, PorterDuff.Mode.CLEAR);
+            mCanvas.drawColor(DEFAULT_BGCOLOR, PorterDuff.Mode.CLEAR);
+
             synchronized (sync) {
                 if (mDraws != null) {
                     List<Draw> drawsCopy = new ArrayList<Draw>(mDraws);
@@ -198,7 +199,7 @@ public class GuestbookView extends SurfaceView implements SurfaceHolder.Callback
 
 
                 mCurrentDraw = new PointDraw(mCanvas, mPaint, x, y);
-                mCurrentDraw.draw();
+                //mCurrentDraw.draw();
 
                 synchronized (sync) {
                     mDraws.add(mCurrentDraw);
@@ -207,7 +208,9 @@ public class GuestbookView extends SurfaceView implements SurfaceHolder.Callback
                 break;
 
             case MotionEvent.ACTION_MOVE:
-                        mCurrentDraw = new LineDraw(mCanvas, mPaint, oldY, oldX, y, x);
+                        //mCurrentDraw = new LineDraw(mCanvas, mPaint, oldY, oldX, y, x);
+                mCurrentDraw = new PointDraw(mCanvas, mPaint, x, y);
+                //mCurrentDraw = new OvalDraw(mCanvas, mPaint, oldY, oldX, y, x);
                 synchronized (sync) {
                     mDraws.add(mCurrentDraw);
                 }
@@ -243,7 +246,8 @@ public class GuestbookView extends SurfaceView implements SurfaceHolder.Callback
                     canvas = mHolder.lockCanvas();  //Get Canvas to draw on it
                     //Ensure no other thread get the Holder
                     synchronized (mHolder) {
-                        draw(canvas);
+                        //draw(canvas);
+                        postInvalidate();
                     }
                 } finally {
                     //Draw finish, we free Canvas to display draw on view
