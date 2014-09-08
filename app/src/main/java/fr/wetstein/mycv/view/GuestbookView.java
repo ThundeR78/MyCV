@@ -39,6 +39,7 @@ public class GuestbookView extends SurfaceView implements SurfaceHolder.Callback
     private Object sync = new Object();
 
     //DEFAULT
+    public final static int DEFAULT_REFRESH_TIME = 20;
     public final static int DEFAULT_THICKNESS = 3;
     public final static int[] DEFAULT_COLOR = {0xFF, 0xFF, 0xFF};
     public final static int DEFAULT_BGCOLOR = 0xffffff;
@@ -115,20 +116,24 @@ public class GuestbookView extends SurfaceView implements SurfaceHolder.Callback
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        mThread.keepDrawing = true;
+        mThread.setRunning(true);
         mThread.start();
     }
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
-        mThread.keepDrawing = false;
+        //Tell the thread to shut down and wait for it to finish this is a clean shutdown
+
+        mThread.setRunning(false);
 
         boolean joined = false;
         while (!joined) {
             try {
                 mThread.join();
                 joined = true;
-            } catch (InterruptedException e) {}
+            } catch (InterruptedException e) {
+                //Try again shutting down the thread
+            }
         }
     }
 
@@ -149,9 +154,8 @@ public class GuestbookView extends SurfaceView implements SurfaceHolder.Callback
         Bitmap newBitmap = Bitmap.createBitmap(curW, curH, Bitmap.Config.ARGB_8888);
         Canvas newCanvas = new Canvas();
         newCanvas.setBitmap(newBitmap);
-        if (mBitmap != null) {
+        if (mBitmap != null)
             newCanvas.drawBitmap(mBitmap, 0, 0, null);
-        }
         mBitmap = newBitmap;
         mCanvas = newCanvas;
     }
@@ -190,7 +194,6 @@ public class GuestbookView extends SurfaceView implements SurfaceHolder.Callback
                 firstX = x;
                 firstY = y;
 
-
                 mCurrentDraw = new PointDraw(mCanvas, mPaint, x, y);
                 //mCurrentDraw.draw();
 
@@ -228,7 +231,14 @@ public class GuestbookView extends SurfaceView implements SurfaceHolder.Callback
     }
 
     private class DrawingThread extends Thread {
-        boolean keepDrawing = true;      //Use to stop draw when necessary
+        private boolean keepDrawing = true;      //Use to stop draw when necessary
+
+        public boolean isRunning() {
+            return keepDrawing;
+        }
+        public void setRunning(boolean running) {
+            keepDrawing = running;
+        }
 
         @Override
         public void run() {
@@ -250,7 +260,7 @@ public class GuestbookView extends SurfaceView implements SurfaceHolder.Callback
 
                 //Draw at 50fps
                 try {
-                    Thread.sleep(20);
+                    Thread.sleep(DEFAULT_REFRESH_TIME);
                 } catch (InterruptedException e) {}
             }
         }
