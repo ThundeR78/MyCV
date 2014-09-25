@@ -1,17 +1,16 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" style="@style/ScrollView">
     <LinearLayout style="@style/ScrollViewLayout">
 
-        <TextView
-            android:id="@+id/manga_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="MANGA"/>
-
         <fr.wetstein.mycv.view.RemoteImageView android:id="@+id/image_banner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="fitXY"
             app:imageUrl="http://www.manga-news.com/public/sign/ThundeR.png" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/desc_manga"/>
 
         <Button android:id="@+id/button_see_collection"
             android:text="@string/button_see_collection"

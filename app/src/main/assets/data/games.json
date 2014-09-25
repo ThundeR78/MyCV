@@ -136,9 +136,20 @@
             ]
         },
         {
+            "name": "Wii U",
+            "shortname": "Wii U",
+            "logo": "logo_wiiu",
+            "icon": "icon_wiiu",
+            "games": [
+                "Mario Kart 8",
+                "Hyrule Warriors",
+                "New Super Mario Bros.U"
+            ]
+        },
+        {
             "name": "PC",
             "shortname": "PC",
-            "logo": "",
+            "logo": "logo_pc",
             "icon": "icon_pc",
             "games": [
                 "Call of Duty : Mordern Warfare",

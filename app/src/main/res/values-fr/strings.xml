@@ -47,7 +47,14 @@
     <string name="work_experience">Stage</string>
 
     <!-- TEXT -->
-    <string name="text_description_games">Depuis tout jeune, j\'ai porté un certain intérêt aux jeux vidéo, comme beaucoup d\'enfants de ma génération.
+    <string name="desc_manga">
+        Les mangas sont apparus en France que depuis quelques dizaines d\'années, et pourtant nous sommes les deuxième plus gros consommateur au monde après le Japon. Le manga a pu percer en France au début des années 90 grâce au titre Akira, mais notamment Dragonball Z qui a marqué toute une génération. Ce sont les animes diffusés à la télévision qui ont permis de faire connaitre cette culture japonaise au grand public en France.\n\n
+        Pour moi aussi tout a réellement commencé avec DBZ qui passait à la télé, ce qui m\'a poussé à lire les mangas pour connaitre toute l\'histoire et ne pas à avoir à attendre la diffusion de toute la série dans l\'ordre. Puis vient le tour de Devil Devil, Naruto, Shaman King, Bremen, Gantz, Death Note et bien d\'autre encore. Aujourd\'hui je dois en avoir environ 600, et ma liste de mangas est consutable via le bouton en dessous.\n\n
+        Ces oeuvres sont bien souvent peu prises au sérieux, car on en a l\'image de bandes dessinées pour enfant et sans intérêt, hors, il en existe de toute sorte, sur tous les sujets et pour tout public : shôjo, shônen, seinen, manwha, &#8230; Au même titre qu\'un livre, une bande dessinée belge ou un comic américain, les mangas sont un moyen de s\'évader, se laisser emporter dans une histoire, avec parfois un message ou une critique sur notre société.\n
+        Le style particulier du dessin peut surprendre au début, car il est très peu détaillé et sans couleur en général, mais on s\'y habitue très vite et on finit par trouver ça beau.
+    </string>
+    <string name="desc_games">
+        Depuis tout jeune, j\'ai porté un certain intérêt aux jeux vidéo, comme beaucoup d\'enfants de ma génération.
         Tout a commencé avec ma première GameBoy, et ça n\'a toujours pas cessé de m\'intéresser voir m\'impressionner.
         Nintendo a su marquer mon esprit par son côté fun, attractif, divertissant et fantastique, c\'est pourquoi j\'ai préféré suivre l\'aventure de cette marque plutôt qu\'une autre.\n
         Les jeux sur consoles ont été très longtemps mon unique moyen de jouer, puis est arrivé les jeux sur PC.
@@ -55,7 +62,7 @@
         L\'aspect addictif des jeux vidéo peut être dangereux, mais on apprend à prioriser les choses et savoir se contrôler, c\'est pourquoi durant mes études j\'ai préféré faire une petite pause.
         Comme tout le monde, j\'ai mes préférences dans le style de jeux, qui sont : FPS, Combat, Course, Action, Aventure, Plate-forme et Sport.
     </string>
-    <string name="text_description_parkour">J\'ai découvert le Parkour plus jeune, comme la plus part des gens en regardant le célèbre film Yamakasi de Luc Besson sorti en 2001. C\'était la première fois que l\'on pouvait voir de tels mouvements et accrobaties, surtout dans un film français.\n
+    <string name="desc_parkour">J\'ai découvert le Parkour plus jeune, comme la plus part des gens en regardant le célèbre film Yamakasi de Luc Besson sorti en 2001. C\'était la première fois que l\'on pouvait voir de tels mouvements et accrobaties, surtout dans un film français.\n
         Ce n\'est que bien plus tard, que j\'ai réalisé qu\'il s\'agissait d\'une nouvelle pratique sportive inventée par un jeune français, David Belle. Cette activité est en fait un entrainement fait pour apprendre à se déplacer dans notre environnement. Il se peut qu\'il faille franchir un obstacle, grimper un mur, sauter d\'un endroit à un autre, pour cela des techniques ont été travaillés pour le faire de manière fluide, rapide et efficace.\n
         Depuis, je m\'y suis donc intéressé de loin en regardant comme tout le monde des vidéos sur le web, je me renseignais sur les spots où l\'on pouvait pratiquer cet activité et autres. Déjà tout petit, je m\'amusais à sauter sur les rochers à la plage, grimper aux arbres, il y avait une sorte de challenge et de plaisir là dedans.\n
         J\'ai essayé pour la première fois après avoir suivi un camarade de BTS qui en faisait déjà en amateur. Les débuts furent rudes mais c\'était intéressant de voir ce que l\'on est capable de faire si l\'on tente de repousser nos limites ou simplement faire des mouvements que l\'on avait jamais eu l\'occasion d\'essayer. Ensuite, j\'ai continué avec un autre ami, et bien souvent on rencontrait d\'autres traceurs sur les lieux pour nous apprendre quelques trucs.\n\n
@@ -68,7 +75,7 @@
         Aujourd\'hui le Parkour est connu et pratiqué internationnellement, on en voit partout : dans les pubs, films, clips, jeux vidéo, &#8230; Contrairement à ce que les gens pensent, les traceurs ne passent pas leur temps à sauter de toit en toit, même si cela peut arriver pour certains assez expérimentés. En général, on s\'entraine assez bas du sol pour peaufiner les techniques et on augmente la difficulté au fur et à mesure.\n
         Le Parkour est très souvent confondu avec une autre pratique s\'y rapprochant, le Freerun. Il s\'agit là d\'un mélange entre Parkour et gymnastique, puisqu\'il utilise des mouvements du Parkour en y mêlant des accrobaties de la gymnastique (salto, vrille, &#8230;). Dans ce cas, il s\'agit plus de faire du spectacle puisque l\'on prend plus de risques au final pour ne pas faire mieux qu\'en allant au plus simple.
     </string>
-    <string name="text_description_parkour_book">
+    <string name="desc_parkour_book">
         David Belle est le créateur du Parkour même s\'il s\'est inspiré de ce qui se faisait déjà, il a su développer cette pratique avec son groupe qui deviendra plus tard les "Yamakasi" et y a mis tout son coeur dedans. Il a par la suite eu une carrière d\'acteur, mais entre temps il a sorti un livre très intéressant que je recommande sur son parcours : comment il en a eu l\'idée, comment il l\'a appliqué, &#8230;
     </string>
 

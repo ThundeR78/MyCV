@@ -3,12 +3,12 @@
 
     <string-array name="menu_titles">
         <item>@string/title_profile</item>
+        <item>@string/title_news</item>
         <item>@string/title_studies</item>
         <item>@string/title_career</item>
         <item>@string/title_skills</item>
         <item>@string/title_hobbies</item>
-        <item>@string/title_contact</item>
-        <item>@string/title_cv</item>
+        <item>@string/title_guestbook</item>
     </string-array>
 
     <string-array name="array_qualities">
