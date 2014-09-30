@@ -81,6 +81,7 @@ public class TravelFragment extends Fragment implements GoogleMap.OnInfoWindowCl
 
         listTravel = TravelParser.loadTravels(getActivity());
         Log.v(TAG, listTravel.size()+"");
+        Toast.makeText(getActivity(), "NB Travel = "+listTravel.size(), Toast.LENGTH_LONG).show();
 
         initMap();
     }

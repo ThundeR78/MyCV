@@ -52,13 +52,13 @@ public class TravelParser extends ParserAssets {
                     case XmlPullParser.START_TAG:
                         if (tag.equals("travel")) {
                             item = readTravel(xpp);
-                            //listItem.add(item);
+                            listItem.add(item);
                         }
                         break;
 
                     case XmlPullParser.END_TAG:
-                        if (tag.equals("travel") && item != null) {
-                            listItem.add(item);
+                        if (tag.equals("travels") && item != null) {
+//                            listItem.add(item);
                         }
                         break;
                 }
@@ -88,11 +88,10 @@ public class TravelParser extends ParserAssets {
         int color = 0;
 
         while (xpp.next() != XmlPullParser.END_TAG) {
-            String tag = xpp.getName();
-
-            if (xpp.getEventType() != XmlPullParser.START_TAG) {
+            if (xpp.getEventType() != XmlPullParser.START_TAG)
                 continue;
-            }
+
+            String tag = xpp.getName();
 
             //Log.v("PARSE TRAVEL", tag);
             if (item != null) {
@@ -113,7 +112,10 @@ public class TravelParser extends ParserAssets {
                             item.dateEnd = FormatValue.dateFormat.parse(dateEStr);
                     } catch (ParseException e) { e.printStackTrace(); }*/
                 } else if (tag.equals("date")) {
-                    //item. = xpp.nextText();
+                    String dateBegin = xpp.getAttributeValue(null, "begin");
+                    String dateEnd = xpp.getAttributeValue(null, "end");
+
+                    xpp.nextTag();
                 } else if (tag.equals("display")) {
                     String resPin = xpp.getAttributeValue(null, "pin");
                     String resColorName = xpp.getAttributeValue(null, "color");
@@ -129,6 +131,7 @@ public class TravelParser extends ParserAssets {
                     while (xpp.next() != XmlPullParser.END_TAG) {
                         if (xpp.getEventType() != XmlPullParser.START_TAG)
                             continue;
+
                         tag = xpp.getName();
 
                         if (tag.equals("place")) {

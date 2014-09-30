@@ -87,7 +87,7 @@
 
     <travel>
         <country>Angleterre</country>
-        <context>ESGI</context>
+        <context>School</context>
         <date begin="01/01/2013" end="01/01/2013" />
         <display color="violet_dark" pin="30" />
         <places>
@@ -101,7 +101,7 @@
 
     <travel>
         <country>Hollande</country>
-        <context>ESGI</context>
+        <context>School</context>
         <date begin="06/12/2013" end="08/12/2013" />
         <display color="orange_dark" pin="30" />
         <places>
@@ -115,7 +115,7 @@
 
     <travel>
         <country>République Tchèque</country>
-        <context>ESGI</context>
+        <context>School</context>
         <date begin="07/05/2014" end="11/05/2014" />
         <display color="violet_dark" pin="30" />
         <places>
