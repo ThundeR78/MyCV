@@ -5,12 +5,12 @@
         <country>Espagne</country>
         <context>School</context>
         <date begin="" end="" />
-        <display color="violet_dark" pin="30" />
+        <display color="red" pin="0" />
         <places>
             <place id="1">
                 <city>Toledo</city>
                 <address></address>
-                <position latitude="" longitude="" />
+                <position latitude="39.8628316" longitude="-4.0273231" />
             </place>
         </places>
     </travel>
@@ -19,12 +19,12 @@
         <country>Angleterre</country>
         <context>School</context>
         <date begin="" end="" />
-        <display color="violet_dark" pin="30" />
+        <display color="blue_dark" pin="240" />
         <places>
             <place id="1">
                 <city>Londres</city>
                 <address></address>
-                <position latitude="" longitude="" />
+                <position latitude="51.5073509" longitude="-0.1277583" />
             </place>
         </places>
     </travel>
@@ -33,12 +33,12 @@
         <country>Belgique</country>
         <context>Couple</context>
         <date begin="" end="" />
-        <display color="violet_dark" pin="30" />
+        <display color="yellow" pin="60" />
         <places>
             <place id="1">
                 <city>Bruxelles</city>
                 <address></address>
-                <position latitude="" longitude="" />
+                <position latitude="50.854975" longitude="4.3753899" />
             </place>
         </places>
     </travel>
@@ -47,12 +47,12 @@
         <country>Belgique</country>
         <context>Friend</context>
         <date begin="" end="" />
-        <display color="violet_dark" pin="30" />
+        <display color="yellow" pin="60" />
         <places>
             <place id="1">
                 <city>Spa</city>
-                <address></address>
-                <position latitude="" longitude="" />
+                <address>Circuit de Spa</address>
+                <position latitude="50.444057" longitude="5.968299" />
             </place>
         </places>
     </travel>
@@ -60,12 +60,26 @@
     <travel>
         <country>Chine</country>
         <context>Family</context>
-        <date begin="" end="" />
-        <display color="violet_dark" pin="30" />
+        <date begin="18/10/2008" end="31/10/2008" />
+        <display color="blue_light" pin="180" />
         <places>
             <place id="1">
                 <city>Hong Kong</city>
                 <address></address>
+                <position latitude="22.2824605" longitude="114.1615709" />
+            </place>
+        </places>
+    </travel>
+
+    <travel>
+        <country>Angleterre</country>
+        <context>Alone</context>
+        <date begin="07/08/2011" end="14/08/2011" />
+        <display color="blue_dark" pin="240" />
+        <places>
+            <place id="1">
+                <city>Londres</city>
+                <address>Hyde Park Hostel</address>
                 <position latitude="" longitude="" />
             </place>
         </places>
@@ -75,7 +89,7 @@
         <country>Serbie</country>
         <context>Alone</context>
         <date begin="20/08/2011" end="28/08/2011" />
-        <display color="violet_dark" pin="30" />
+        <display color="blue" pin="210" />
         <places>
             <place id="1">
                 <city>Belgrade</city>
@@ -87,37 +101,37 @@
 
     <travel>
         <country>Angleterre</country>
-        <context>School</context>
-        <date begin="01/01/2013" end="01/01/2013" />
-        <display color="violet_dark" pin="30" />
+        <context>BDE</context>
+        <date begin="30/11/2012" end="02/12/2012" />
+        <display color="blue_dark" pin="240" />
         <places>
             <place id="1">
                 <city>Londres</city>
-                <address></address>
-                <position latitude="" longitude="" />
+                <address>Clink 78</address>
+                <position latitude="51.528747" longitude="-0.1154968" />
             </place>
         </places>
     </travel>
 
     <travel>
         <country>Hollande</country>
-        <context>School</context>
+        <context>BDE</context>
         <date begin="06/12/2013" end="08/12/2013" />
         <display color="orange_dark" pin="30" />
         <places>
             <place id="1">
                 <city>Amsterdam</city>
                 <address>Stayokay Zeeburg</address>
-                <position latitude="" longitude="" />
+                <position latitude="52.365353" longitude="4.935752" />
             </place>
         </places>
     </travel>
 
     <travel>
         <country>République Tchèque</country>
-        <context>School</context>
+        <context>BDE</context>
         <date begin="07/05/2014" end="11/05/2014" />
-        <display color="violet_dark" pin="30" />
+        <display color="violet_dark" pin="270" />
         <places>
             <place id="1">
                 <city>Prague</city>
@@ -131,7 +145,7 @@
         <country>Russie</country>
         <context>Friend</context>
         <date begin="01/08/2013" end="15/08/2014" />
-        <display color="violet_dark" pin="30" />
+        <display color="yellow" pin="60" />
         <places>
             <place id="1">
                 <city>Saint-Petersburg</city>
@@ -145,7 +159,7 @@
         <country>Japon</country>
         <context>Family</context>
         <date begin="20/08/2012" end="30/08/2012" />
-        <display color="red" pin="0" />
+        <display color="violet_light" pin="300" />
         <places>
             <place id="1">
                 <city>Tokyo</city>
@@ -175,19 +189,29 @@
         <display color="red" pin="0" />
         <places>
             <place id="1">
-                <city>Tokyo</city>
-                <address>Hotel Tokyu Stay Shibuya</address>
-                <position latitude="35.655607" longitude="139.693755" />
+                <city>Pékin</city>
+                <address>Prime Hotel</address>
+                <position latitude="39.9209622" longitude="116.4076823" />
             </place>
             <place id="2">
-                <city>Yamanashi</city>
-                <address>Mount Fuji</address>
-                <position latitude="35.011776" longitude="135.761004" />
+                <city>Tokyo</city>
+                <address>Hotel Asia Center of Japan</address>
+                <position latitude="35.6707422" longitude="139.7279157" />
             </place>
             <place id="3">
+                <city>Fujiyoshida</city>
+                <address>Fujiyoshida City Hotel</address>
+                <position latitude="35.484818" longitude="138.7948971" />
+            </place>
+            <place id="4">
+                <city>Nagoya</city>
+                <address>Hotel Trusty Nagoya Sakae</address>
+                <position latitude="35.1708074" longitude="136.9074873" />
+            </place>
+            <place id="5">
                 <city>Osaka</city>
-                <address>Nest Hotel Osaka Shinsaibashi</address>
-                <position latitude="34.675249" longitude="135.50559" />
+                <address>APA Hotel Namba</address>
+                <position latitude="34.6693292" longitude="135.4985153" />
             </place>
         </places>
     </travel>
