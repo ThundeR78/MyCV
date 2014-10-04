@@ -9,8 +9,8 @@ import com.android.volley.toolbox.HttpHeaderParser;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
-import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
+import java.nio.charset.Charset;
 import java.util.Map;
 
 /**
@@ -22,6 +22,8 @@ public class GsonRequest<T> extends Request<T> {
     private Type type;
     private Map<String, String> headers;
     private final Response.Listener<T> listener;
+
+    private final Charset UTF8_CHARSET = Charset.forName("UTF-8");
 
     public GsonRequest(int method, String url, Class<T> classType, Map<String, String> headers, Response.Listener<T> listener, Response.ErrorListener errorListener) {
         super(method, url, errorListener);
@@ -44,6 +46,16 @@ public class GsonRequest<T> extends Request<T> {
         return headers != null ? headers : super.getHeaders();
     }
 
+//    @Override
+//    public byte[] getBody() throws AuthFailureError {
+//        return postString != null ? postString.getBytes(Charset.forName("UTF-8")) : super.getBody();
+//    }
+
+//    @Override
+//    public String getBodyContentType() {
+//        return postString != null ? "application/json; charset=utf-8" : super.getBodyContentType();
+//    }
+
     @Override
     protected void deliverResponse(T response) {
         listener.onResponse(response);
@@ -57,7 +69,7 @@ public class GsonRequest<T> extends Request<T> {
     protected Response<T> parseNetworkResponse(NetworkResponse response) {
         try {
             //Parse Response into Object
-            String json = new String(response.data, HttpHeaderParser.parseCharset(response.headers));
+            String json = new String(response.data, UTF8_CHARSET);  //Replace HttpHeaderParser.parseCharset(response.headers) to fix encoding in UTF-8
 
             T parsedObject = null;
             if (clazz != null) {
@@ -69,8 +81,8 @@ public class GsonRequest<T> extends Request<T> {
             }
 
             return Response.success(parsedObject, HttpHeaderParser.parseCacheHeaders(response));
-        } catch (UnsupportedEncodingException e) {
-            return Response.error(new ParseError(e));
+//        } catch (UnsupportedEncodingException e) {
+//            return Response.error(new ParseError(e));
         } catch (JsonSyntaxException e) {
             return Response.error(new ParseError(e));
         }

@@ -18,7 +18,7 @@ public class ParkourFragment extends Fragment implements View.OnClickListener {
     public static final String TAG = "ParkourFragment";
 
     private static final String urlBook = "http://www.amazon.fr/Parkour-David-Belle/dp/2357560258";
-    private static final String urlCPK = "https://www.facebook.com/cultureparkour";
+    private static final String urlCPK = "http://www.cultureparkour.com/";
     private static final String urlGS = "http://www.gravitystyleofficiel.com/fr/content/4-a-propos";
 
     private ImageView imgCPK;

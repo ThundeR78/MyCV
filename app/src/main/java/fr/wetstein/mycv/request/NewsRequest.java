@@ -88,6 +88,7 @@ public class NewsRequest extends RequestManager {
     protected Map<String, String> getHeaders() {
         HashMap<String, String> headers = new HashMap<String, String>();
         headers.put("Authorization", "ApiKey " + YNPClient.apiKey);
+        headers.put("Content-Type", "application/json; charset=utf-8");
 
         return headers;
     }
