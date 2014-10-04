@@ -61,6 +61,12 @@ public class NewsListFragment extends ListFragment implements SwipeRefreshLayout
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        //Empty View
+//        View noResultLayout = getActivity().getLayoutInflater().inflate(R.layout.view_noresult, null);
+//        getActivity().addContentView(noResultLayout, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
+//        getListView().setEmptyView(noResultLayout);
+
+        //Load News in DB
         listNews = db.getAllNews();
         updateListView(listNews);
     }
@@ -86,7 +92,7 @@ public class NewsListFragment extends ListFragment implements SwipeRefreshLayout
             @Override
             public void onResponse(List<News> listItem) {
                 Log.v(TAG, "SUCCESS REQUEST : "+ (listItem != null ? listItem.size() : "null"));
-                Toast.makeText(getActivity(), "Success", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity(), "Success", Toast.LENGTH_LONG).show();
 
                 if (listItem != null) {
                     db.insertOrUpdateListNews(listItem);

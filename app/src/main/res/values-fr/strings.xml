@@ -36,6 +36,7 @@
     <string name="label_send_email">Envoyer un email</string>
     <string name="label_qualities">Qualités</string>
     <string name="label_shortcomings">Défauts</string>
+    <string name="label_no_result">Aucun résultat n\'a été trouvé</string>
 
     <!-- VALUE -->
     <string name="value_email">julienwetstein@msn.com</string>
