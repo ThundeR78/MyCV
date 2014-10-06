@@ -112,7 +112,9 @@ public class NewsListFragment extends ListFragment implements SwipeRefreshLayout
                 if (error != null && error.networkResponse != null)
                     messageError = getString(R.string.error_request_status, error.networkResponse.statusCode);
                 Crouton.makeText(getActivity(), messageError, Style.ALERT).show();*/
-                Toast.makeText(getActivity(), "Error : "+error, Toast.LENGTH_LONG).show();
+
+                if (error != null && error.networkResponse != null)
+                    Toast.makeText(getActivity(), "Error "+(error.networkResponse!=null?error.networkResponse.statusCode:"")+" : "+error.getMessage(), Toast.LENGTH_LONG).show();
 
                 refreshLayout.setRefreshing(false);
             }

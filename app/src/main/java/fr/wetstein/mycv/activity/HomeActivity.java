@@ -78,8 +78,10 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
                 SharedPreferences.Editor editor = PrefsManager.getPreferencesEditor(this);
                 editor.putString(PrefsManager.PREF_INSTALL_ID, installId);
                 editor.commit();
-                Log.v(TAG, installId);
-            }
+                Log.v(TAG, "YNP INSTALL ID = " + installId);
+            } else
+                Log.e(TAG, "YNP INSTALL ID = NO ID");
+
         }
     }
 

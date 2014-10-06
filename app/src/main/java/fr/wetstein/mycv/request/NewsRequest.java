@@ -24,7 +24,8 @@ import fr.wetstein.mycv.util.PrefsManager;
 public class NewsRequest extends RequestManager {
     public static final String TAG = "NewsRequest";
 
-    private static final String BASE_URL_YNPNEWS = "https://sandbox-mobile.youandpush.com/";
+    private static final String BASE_URL_YNPNEWS_SANDBOX = "https://sandbox-mobile.youandpush.com/";
+    private static final String BASE_URL_YNPNEWS_PROD = "https://mobile.youandpush.com/";
     private static final String PREFIX_URL = "v1/";
     private static final String URL_APP = "application/";
     private static final String URL_INSTALL = "/installation/";
@@ -40,10 +41,12 @@ public class NewsRequest extends RequestManager {
 
         if (context != null)
             installId = PrefsManager.getPreferences(context).getString(PrefsManager.PREF_INSTALL_ID, "");
+        installId = YNPClient.getServerRegistrationId(context);
+        installId = "15c6616tjs1rg60e";
     }
 
     public static String getBaseUrl() {
-        StringBuilder urlBuilder = new StringBuilder(YNPClient.serverBaseURL);
+        StringBuilder urlBuilder = new StringBuilder(YNPClient.MODE_PRODUCTION == YNPClient.mode ? BASE_URL_YNPNEWS_PROD : BASE_URL_YNPNEWS_SANDBOX);
         urlBuilder.append(PREFIX_URL);
 
         urlBuilder.append(URL_APP).append(appId);

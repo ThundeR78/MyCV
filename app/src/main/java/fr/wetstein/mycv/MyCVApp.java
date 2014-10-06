@@ -18,7 +18,7 @@ import fr.wetstein.mycv.util.NukeSSLCerts;
 public class MyCVApp extends Application {
     public static final String TAG = "MyCVApp";
 
-    public static boolean DEV_MODE = false;
+    public static boolean DEV_MODE = true;
 
     public static final LatLng HOME_LATLNG = new LatLng(48.8494030, 2.2945998);
 
@@ -38,11 +38,14 @@ public class MyCVApp extends Application {
         YNPClient.sharedSecret = "mvejejv70c";
         YNPClient.senderId = "448487069157";
         YNPClient.mode = DEV_MODE ? YNPClient.MODE_SANDBOX : YNPClient.MODE_PRODUCTION;
-        YNPClient.serverBaseURL = YNPClient.mode == YNPClient.MODE_PRODUCTION ? "https://mobile.youandpush.com/" : "https://sandbox-mobile.youandpush.com/";
+        //YNPClient.serverBaseURL = YNPClient.mode == YNPClient.MODE_PRODUCTION ? "https://mobile.youandpush.com/" : "https://sandbox-mobile.youandpush.com/";
         YNPClient.notificationIconId = R.drawable.me_manga;
         //YNPClient.messageHandler = new NotifHandler();
         if (DEV_MODE) YNPClient.checkManifest(this);
         YNPClient.initialize(this);
+
+        if (YNPClient.isThisDeviceSupported(this))
+            YNPClient.registerApp(this);
     }
 
     //Check if Google Play Services is available on device to display Google Maps
