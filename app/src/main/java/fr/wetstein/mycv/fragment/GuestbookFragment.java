@@ -2,16 +2,11 @@ package fr.wetstein.mycv.fragment;
 
 import android.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.List;
-
 import fr.wetstein.mycv.R;
-import fr.wetstein.mycv.model.Travel;
-import fr.wetstein.mycv.parser.xml.TravelParser;
 import fr.wetstein.mycv.view.GuestbookView;
 
 /**
@@ -53,7 +48,7 @@ public class GuestbookFragment extends Fragment {
 
     private void setCurrentLineColor(int lineColor) {
         int r=0, g=0, b=0;
-        r=41; g=171; b=226;
+       // r=41; g=171; b=226;
 
         mDrawView.setPaintColor(r, g, b);
     }

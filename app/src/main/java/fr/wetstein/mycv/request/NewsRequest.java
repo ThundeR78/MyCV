@@ -43,7 +43,7 @@ public class NewsRequest extends RequestManager {
     }
 
     public static String getBaseUrl() {
-        StringBuilder urlBuilder = new StringBuilder(BASE_URL_YNPNEWS);
+        StringBuilder urlBuilder = new StringBuilder(YNPClient.serverBaseURL);
         urlBuilder.append(PREFIX_URL);
 
         urlBuilder.append(URL_APP).append(appId);
