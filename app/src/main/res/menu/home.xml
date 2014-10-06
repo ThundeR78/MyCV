@@ -2,8 +2,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".HomeActivity" >
 
-    <item android:id="@+id/action_settings"
-        android:title="@string/action_settings"
-        android:orderInCategory="100"
+    <item android:id="@+id/action_contact"
+        android:title="@string/action_contact"
+        android:icon="@android:drawable/ic_menu_info_details"
+        android:showAsAction="never" />
+
+    <item android:id="@+id/action_rate_app"
+        android:title="@string/action_rate_app"
+        android:icon="@android:drawable/ic_menu_view"
+        android:showAsAction="never" />
+
+    <item android:id="@+id/action_share_app"
+        android:title="@string/action_share_app"
+        android:icon="@android:drawable/ic_menu_share"
         android:showAsAction="never" />
 </menu>

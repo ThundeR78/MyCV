@@ -8,11 +8,13 @@ public class PrefsManager {
 
 	public static final String PREFS_MYCV = "fr.wetstein.mycv_prefs";
 
+    //RATE
 	public static final String PREF_DONT_SHOW_AGAIN = "dont_show_again";
 	public static final String PREF_LAUNCH_COUNT = "launch_count";
-	
+
 	//YNP
-	public static final String PREF_INSTALL_ID = "install_id";
+	public static final String PREF_INSTALL_ID = "install_id";  //Need id to get news
+
 
 	private static SharedPreferences prefs;
 	

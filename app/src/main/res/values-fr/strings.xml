@@ -25,6 +25,9 @@
     <string name="title_cv">CV</string>
 
     <!-- ACTION -->
+    <string name="action_contact">Me contacter</string>
+    <string name="action_rate_app">Noter l\'application</string>
+    <string name="action_share_app">Partager l\'application</string>
     <string name="action_settings">Settings</string>
     <string name="action_map">Map</string>
 
@@ -80,5 +83,24 @@
         David Belle est le créateur du Parkour même s\'il s\'est inspiré de ce qui se faisait déjà, il a su développer cette pratique avec son groupe qui deviendra plus tard les "Yamakasi" et y a mis tout son coeur dedans. Il a par la suite eu une carrière d\'acteur, mais entre temps il a sorti un livre très intéressant que je recommande sur son parcours : comment il en a eu l\'idée, comment il l\'a appliqué, &#8230;
     </string>
 
+    <!-- SHARE -->
+    <string name="share_app_title">Application Android %1$s</string>
+    <string name="share_app_message">Bonjour,&lt;br /&gt;&lt;br /&gt;Je souhaitais vous faire découvrir l\'application %1$s, téléchargeable gratuitement : &lt;br /&gt;&lt;a href=\"%2$s\">Play Store&lt;/a&gt;&lt;br /&gt;&lt;br /&gt;Bonne journée.</string>
+
+    <!-- RATE -->
+    <string name="rate_app">Noter l\'application</string>
+    <string name="dialog_rate_message">Vous aimez l\'application %s ? Dites-le nous en notant l\'application sur le Play Store.</string>
+    <string name="rate">Noter</string>
+    <string name="later">Plus tard</string>
+    <string name="never">Jamais</string>
+
+    <!-- CONTACT -->
+    <string name="contact_email_title">WetsteinCV</string>
+    <string name="contact_email_to">julienwetstein@gmail.com</string>
+    <string name="contact_email_subject">Contact Julien Wetstein</string>
+    <string name="contact_email_body">&lt;b&gt;&lt;u&gt;Version de l\'application :&lt;/u&gt;&lt;/b&gt; %1$s&lt;br/&gt;
+	    &lt;b&gt;&lt;u&gt;Appareil utilisé :&lt;/u&gt;&lt;/b&gt; %2$s&lt;br/&gt;
+	    &lt;b&gt;&lt;u&gt;Version d\'Android :&lt;/u&gt;&lt;/b&gt; %3$s&lt;br/&gt;&lt;br/&gt;
+	    Bonjour,&lt;br/&gt;&lt;br/&gt;</string>
 
 </resources>

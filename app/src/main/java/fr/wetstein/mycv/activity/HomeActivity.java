@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
@@ -13,6 +14,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import fr.sophiacom.ynp.androidlib.YNPClient;
+import fr.wetstein.mycv.MyCVApp;
 import fr.wetstein.mycv.R;
 import fr.wetstein.mycv.fragment.ExperienceListFragment;
 import fr.wetstein.mycv.fragment.GuestbookFragment;
@@ -22,6 +24,7 @@ import fr.wetstein.mycv.fragment.NewsListFragment;
 import fr.wetstein.mycv.fragment.ProfileFragment;
 import fr.wetstein.mycv.fragment.SkillsFragment;
 import fr.wetstein.mycv.fragment.StudyListFragment;
+import fr.wetstein.mycv.util.Actions;
 import fr.wetstein.mycv.util.PrefsManager;
 
 
@@ -137,12 +140,11 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
         actionBar.setTitle(mTitle);
     }
 
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         if (!mNavigationDrawerFragment.isDrawerOpen()) {
             // Only show items in the action bar relevant to this screen if the drawer is not showing. Otherwise, let the drawer decide what to show in the action bar.
-            //getMenuInflater().inflate(R.menu.home, menu);
+            getMenuInflater().inflate(R.menu.home, menu);
             restoreActionBar();
             return true;
         }
@@ -153,10 +155,29 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        int itemId = item.getItemId();
+        if (itemId == R.id.action_contact) {
+            String senderTitle = getString(R.string.contact_email_title);
+            String[] emailTO = new String[] { getString(R.string.contact_email_to) };
+            String[] emailCC = null, emailBC = null;
+            String subject = getString(R.string.contact_email_subject);
+            String text = getString(R.string.contact_email_body, MyCVApp.getAppVersion(getApplicationContext()), Build.BRAND+" "+Build.MODEL, Build.VERSION.RELEASE);
+            boolean isHTMLFormat = true;
+            //Send an email
+            Actions.initShareIntent(this, "plain/text", senderTitle, emailTO, emailCC, emailBC, subject, text, isHTMLFormat);
+            return true;
+        } else
+        if (itemId == R.id.action_rate_app) {
+            //Go to Store to rate the app
+            Actions.rateApp(this);
+            return true;
+        } else
+        if (itemId == R.id.action_share_app) {
+            //Share message
+            Actions.shareApp(this);
             return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 
