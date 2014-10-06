@@ -41,8 +41,6 @@ public class NewsRequest extends RequestManager {
 
         if (context != null)
             installId = PrefsManager.getPreferences(context).getString(PrefsManager.PREF_INSTALL_ID, "");
-        installId = YNPClient.getServerRegistrationId(context);
-        installId = "15c6616tjs1rg60e";
     }
 
     public static String getBaseUrl() {

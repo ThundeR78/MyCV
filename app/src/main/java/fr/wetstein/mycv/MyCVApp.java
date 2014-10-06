@@ -18,7 +18,7 @@ import fr.wetstein.mycv.util.NukeSSLCerts;
 public class MyCVApp extends Application {
     public static final String TAG = "MyCVApp";
 
-    public static boolean DEV_MODE = true;
+    public static final boolean DEV_MODE = false;
 
     public static final LatLng HOME_LATLNG = new LatLng(48.8494030, 2.2945998);
 
@@ -43,9 +43,6 @@ public class MyCVApp extends Application {
         //YNPClient.messageHandler = new NotifHandler();
         if (DEV_MODE) YNPClient.checkManifest(this);
         YNPClient.initialize(this);
-
-        if (YNPClient.isThisDeviceSupported(this))
-            YNPClient.registerApp(this);
     }
 
     //Check if Google Play Services is available on device to display Google Maps
