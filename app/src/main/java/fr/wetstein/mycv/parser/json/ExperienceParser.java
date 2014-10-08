@@ -61,7 +61,7 @@ public class ExperienceParser extends ParserAssets {
                     String dateBegin = jsonObjectItem.getString("dateBegin");
                     item.dateBegin = FormatValue.dateFormat.parse(dateBegin);
                     String dateEnd = jsonObjectItem.getString("dateEnd");
-                    item.dateEnd = FormatValue.dateFormat.parse(dateEnd);
+                    item.dateEnd = (!dateEnd.equalsIgnoreCase("now")) ? FormatValue.dateFormat.parse(dateEnd) : null;
 
                     String resTypeName = jsonObjectItem.getString("type");
                     int resTypeId = context.getResources().getIdentifier(resTypeName, "string", context.getPackageName());

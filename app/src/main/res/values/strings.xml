@@ -37,6 +37,8 @@
     <string name="label_qualities">Qualities</string>
     <string name="label_shortcomings">Shortcomings</string>
     <string name="label_no_result">No result found</string>
+    <string name="label_nbemployees">Employees</string>
+    <string name="label_activity">Activity</string>
 
     <!-- VALUE -->
     <string name="value_email">julienwetstein@msn.com</string>
@@ -44,8 +46,15 @@
     <string name="value_age">%1$d years</string>
     <string name="value_dates">From %1$s to %2$s</string>
 
-    <string name="sandwich_training">Sandwich training</string>
-    <string name="work_experience">Work experience</string>
+    <!-- WORD -->
+    <string name="word_today">Today</string>
+    <string name="word_sandwich_training">Sandwich training</string>
+    <string name="word_work_experience">Work experience</string>
+    <string name="word_permanent_contract">Permanent contract</string>
+    <string name="word_ceo">CEO</string>
+    <string name="word_mobile_development">Mobile Development</string>
+    <string name="word_mobile_developer">Mobile Developer</string>
+    <string name="word_android_developer">Android Developer</string>
 
     <!-- TEXT -->
     <string name="desc_games">Depuis tout jeune, j\'ai porté un certain intérêt aux jeux vidéo, comme beaucoup d\'enfants de ma génération.

@@ -41,20 +41,21 @@ public class ListExperienceAdapter extends ArrayAdapter<Experience> {
                 holder.logo = (ImageView) convertView.findViewById(R.id.list_exp_item_logo);
                 holder.name = (TextView) convertView.findViewById(R.id.list_exp_item_name);
                 holder.date = (TextView) convertView.findViewById(R.id.list_exp_item_date);
+                holder.type = (TextView) convertView.findViewById(R.id.list_exp_item_type);
                 convertView.setTag(holder);
-            }
-            else {
+            } else {
                 holder = (ViewHolder) convertView.getTag();
             }
         }
 
         String strDateBegin = FormatValue.monthDateFormat.format(item.dateBegin);
-        String strDateEnd = FormatValue.monthDateFormat.format(item.dateEnd);
+        String strDateEnd = (item.dateEnd != null) ? FormatValue.monthDateFormat.format(item.dateEnd) : getContext().getString(R.string.word_today);
         String expDuration = getContext().getString(R.string.value_dates, strDateBegin, strDateEnd);
 
         holder.logo.setImageResource(item.logo);
         holder.name.setText(item.name);
         holder.date.setText(expDuration);
+        holder.type.setText(item.type);
 
         return convertView;
     }
@@ -63,5 +64,6 @@ public class ListExperienceAdapter extends ArrayAdapter<Experience> {
         public ImageView logo;
         public TextView name;
         public TextView date;
+        public TextView type;
     }
 }

@@ -5,7 +5,7 @@
     <LinearLayout style="@style/ScrollViewLayout">
 
         <fr.wetstein.mycv.view.ResizableImageView android:id="@+id/detail_exp_logo"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:scaleType="fitCenter"
             android:layout_gravity="center" />
         <TextView

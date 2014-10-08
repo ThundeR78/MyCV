@@ -16,6 +16,8 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import fr.wetstein.mycv.R;
@@ -45,6 +47,8 @@ public class ExperienceListFragment extends ListFragment {
         //Load items
         listExperience =  ExperienceParser.loadCareer(getActivity());
         Log.v(TAG, listExperience.toString());
+
+        sortList(listExperience);
 
         setHasOptionsMenu(true);
     }
@@ -113,5 +117,13 @@ public class ExperienceListFragment extends ListFragment {
         intent.putExtra(DetailSliderActivity.EXTRAS_BUNDLE_KEY, extras);
 
         startActivity(intent);
+    }
+
+    public void sortList(List<Experience> list) {
+        Collections.sort(list, new Comparator<Experience>() {
+            public int compare(Experience o1, Experience o2) {
+                return o2.dateBegin.compareTo(o1.dateBegin);
+            }
+        });
     }
 }

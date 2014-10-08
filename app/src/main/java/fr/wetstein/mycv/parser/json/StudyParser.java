@@ -38,6 +38,7 @@ public class StudyParser extends ParserAssets {
                 JSONObject jsonObjectItem = jsonArrayRoot.getJSONObject(i);
 
                 if (jsonObjectItem != null) {
+                    item.id = jsonObjectItem.getInt("id");
                     item.name = jsonObjectItem.getString("name");
                     item.option = jsonObjectItem.getString("option");
                     item.date = jsonObjectItem.getString("date");

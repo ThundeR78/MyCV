@@ -40,6 +40,8 @@
     <string name="label_qualities">Qualités</string>
     <string name="label_shortcomings">Défauts</string>
     <string name="label_no_result">Aucun résultat n\'a été trouvé</string>
+    <string name="label_nbemployees">Effectif</string>
+    <string name="label_activity">Activité</string>
 
     <!-- VALUE -->
     <string name="value_email">julienwetstein@msn.com</string>
@@ -47,8 +49,15 @@
     <string name="value_age">%1$d ans</string>
     <string name="value_dates">De %1$s à %2$s</string>
 
-    <string name="sandwich_training">Alernance</string>
-    <string name="work_experience">Stage</string>
+    <!-- WORD -->
+    <string name="word_today">Aujourd\'hui</string>
+    <string name="word_sandwich_training">Alernance</string>
+    <string name="word_work_experience">Stage</string>
+    <string name="word_permanent_contract">CDI</string>
+    <string name="word_ceo">PDG</string>
+    <string name="word_mobile_development">Développement mobile</string>
+    <string name="word_mobile_developer">Développeur mobile</string>
+    <string name="word_android_developper">Développeur Android</string>
 
     <!-- TEXT -->
     <string name="desc_manga">

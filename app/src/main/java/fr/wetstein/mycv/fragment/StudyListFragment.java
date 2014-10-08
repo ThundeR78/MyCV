@@ -16,6 +16,8 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import fr.wetstein.mycv.R;
@@ -46,6 +48,8 @@ public class StudyListFragment extends ListFragment {
         //Load items
         listStudy =  StudyParser.loadStudies(getActivity(), true);
         Log.v(TAG, listStudy.toString());
+
+        sortList(listStudy);
 
         setHasOptionsMenu(true);
     }
@@ -115,5 +119,13 @@ public class StudyListFragment extends ListFragment {
         intent.putExtra(DetailSliderActivity.EXTRAS_BUNDLE_KEY, extras);
 
         startActivity(intent);
+    }
+
+    public void sortList(List<Study> list) {
+        Collections.sort(list, new Comparator<Study>() {
+            public int compare(Study o1, Study o2) {
+                return o2.id - o1.id;
+            }
+        });
     }
 }
