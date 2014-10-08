@@ -12,9 +12,8 @@ import java.util.List;
 public class Experience extends Place implements Parcelable {
     public static final String TAG = "Experience";
 
-    public String link;
+    public Company company;
     public String function;
-    public int logo;
     public String type;
     public List<String> listTask;
 
@@ -47,18 +46,16 @@ public class Experience extends Place implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         super.writeToParcel(dest, flags);
-        dest.writeInt(logo);
+        dest.writeParcelable(company, flags);
         dest.writeString(function);
-        dest.writeString(link);
         dest.writeString(type);
         dest.writeStringList(listTask);
     }
 
     public void readFromParcel(Parcel in) {
         super.readFromParcel(in);
-        logo = in.readInt();
+        company = in.readParcelable(Company.class.getClassLoader());
         function = in.readString();
-        link = in.readString();
         type = in.readString();
         listTask = new ArrayList<String>();
         in.readStringList(listTask);
