@@ -52,7 +52,7 @@ public class ListExperienceAdapter extends ArrayAdapter<Experience> {
         String strDateEnd = (item.dateEnd != null) ? FormatValue.monthDateFormat.format(item.dateEnd) : getContext().getString(R.string.word_today);
         String expDuration = getContext().getString(R.string.value_dates, strDateBegin, strDateEnd);
 
-        holder.logo.setImageResource(item.logo);
+        //holder.logo.setImageResource(item.logo);
         holder.name.setText(item.name);
         holder.date.setText(expDuration);
         holder.type.setText(item.type);

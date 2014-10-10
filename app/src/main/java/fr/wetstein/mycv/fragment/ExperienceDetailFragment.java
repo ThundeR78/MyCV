@@ -57,10 +57,10 @@ public class ExperienceDetailFragment extends DetailFragment<Experience> impleme
 	protected void displayItem(Experience inItem) {
 		if (null != inItem && this.isAdded()) {
 			//Display item data
-            imgLogo.setImageResource(inItem.logo);
+            //imgLogo.setImageResource(inItem.logo);
             textName.setText(inItem.name);
             textFunction.setText(inItem.function);
-            textLink.setText(inItem.link);
+            //textLink.setText(inItem.link);
             textAddress.setText(inItem.address);
 		}
 	}

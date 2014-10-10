@@ -45,7 +45,7 @@ public class ExperienceListFragment extends ListFragment {
         super.onCreate(savedInstanceState);
 
         //Load items
-        listExperience =  ExperienceParser.loadCareer(getActivity());
+        //listExperience =  ExperienceParser.loadCareer(getActivity());
         Log.v(TAG, listExperience.toString());
 
         sortList(listExperience);

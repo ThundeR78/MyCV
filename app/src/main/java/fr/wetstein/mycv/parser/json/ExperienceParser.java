@@ -38,7 +38,7 @@ public class ExperienceParser extends ParserAssets {
 
                 if (jsonObjectItem != null) {
                     item.name = jsonObjectItem.getString("name");
-                    item.link = jsonObjectItem.getString("link");
+                    //item.link = jsonObjectItem.getString("link");
                     item.function = jsonObjectItem.getString("function");
                     item.address = jsonObjectItem.getString("address");
                     item.latitude = jsonObjectItem.getDouble("latitude");
@@ -54,8 +54,8 @@ public class ExperienceParser extends ParserAssets {
 
                     //Logo
                     String resLogoName = jsonObjectItem.getString("logo");
-                    if (resLogoName != null)
-                        item.logo = context.getResources().getIdentifier(resLogoName, "drawable", context.getPackageName());
+                    //if (resLogoName != null)
+                      //  item.logo = context.getResources().getIdentifier(resLogoName, "drawable", context.getPackageName());
 
                     //Dates
                     String dateBegin = jsonObjectItem.getString("dateBegin");
