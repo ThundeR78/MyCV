@@ -1,6 +1,8 @@
 package fr.wetstein.mycv;
 
+import android.app.Activity;
 import android.app.Application;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
 
@@ -18,7 +20,7 @@ import fr.wetstein.mycv.util.NukeSSLCerts;
 public class MyCVApp extends Application {
     public static final String TAG = "MyCVApp";
 
-    public static final boolean DEV_MODE = false;
+    public static final boolean DEV_MODE = true;
 
     public static final LatLng HOME_LATLNG = new LatLng(48.8494030, 2.2945998);
 
@@ -46,8 +48,16 @@ public class MyCVApp extends Application {
     }
 
     //Check if Google Play Services is available on device to display Google Maps
-    public static boolean isGooglePlayServicesAvailable(Context context) {
+    public static boolean isGooglePlayServicesAvailable(Activity context) {
         int status = GooglePlayServicesUtil.isGooglePlayServicesAvailable(context);
+
+        //Display error dialog
+        if (status != ConnectionResult.SUCCESS) {
+            int requestCode = 10;
+            Dialog dialog = GooglePlayServicesUtil.getErrorDialog(status, context, requestCode);
+            dialog.show();
+        }
+
         return status == ConnectionResult.SUCCESS;
     }
 

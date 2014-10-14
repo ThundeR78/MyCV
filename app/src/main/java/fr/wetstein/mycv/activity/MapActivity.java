@@ -72,7 +72,7 @@ public class MapActivity extends Activity implements GoogleMap.OnInfoWindowClick
 	}
 
     private void initMap() {
-        if (MyCVApp.isGooglePlayServicesAvailable(getApplicationContext())) {
+        if (MyCVApp.isGooglePlayServicesAvailable(this)) {
             if (mMap == null) {
                 mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map_fragment)).getMap();
 
@@ -80,7 +80,7 @@ public class MapActivity extends Activity implements GoogleMap.OnInfoWindowClick
                 if (mMap != null) {
                     setupMap();
                 } else
-                    Toast.makeText(this, "Sorry! unable to create Google Maps", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Sorry! Unable to create Google Maps", Toast.LENGTH_SHORT).show();
             }
         } else {
             findViewById(R.id.map_fragment).setVisibility(View.GONE);
