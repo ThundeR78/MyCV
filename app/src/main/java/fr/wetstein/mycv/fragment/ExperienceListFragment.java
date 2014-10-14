@@ -45,7 +45,7 @@ public class ExperienceListFragment extends ListFragment {
         super.onCreate(savedInstanceState);
 
         //Load items
-        //listExperience =  ExperienceParser.loadCareer(getActivity());
+        listExperience =  ExperienceParser.loadCareer(getActivity(), true);
         Log.v(TAG, listExperience.toString());
 
         sortList(listExperience);
@@ -67,7 +67,6 @@ public class ExperienceListFragment extends ListFragment {
         super.onActivityCreated(savedInstanceState);
 
         if (listExperience != null) {
-            //Fill ExpandableListView with Skills
             listAdapter = new ListExperienceAdapter(getActivity(), R.layout.list_experience_item, listExperience);
             setListAdapter(listAdapter);
         }

@@ -27,6 +27,10 @@ public class StudyParser extends ParserAssets {
     //Load Study list
     public static List<Study> loadStudies(Context context, boolean knowSchool) {
         List<Study> listItem = new ArrayList<Study>();
+        List<School> listSchool = null;
+
+        if (knowSchool)
+            listSchool = loadSchools(context, false);
 
         try {
             JSONObject jsonObjectRoot = new JSONObject(loadStringFromAsset(context, pathData + file));
@@ -50,12 +54,12 @@ public class StudyParser extends ParserAssets {
                     }
 
                     if (knowSchool) {
-                        List<School> listSchool = loadSchools(context, false);
                         //Link Study -> School
                         int schoolId = jsonObjectItem.getInt("school");
                         for (School school : listSchool) {
                             if (school.id == schoolId) {
                                 item.school = school;
+                                break;
                             }
                         }
                     }
@@ -73,6 +77,10 @@ public class StudyParser extends ParserAssets {
     //Load School list
     public static List<School> loadSchools(Context context, boolean knowStudies) {
         List<School> listItem = new ArrayList<School>();
+        List<Study> listStudy = null;
+
+        if (knowStudies)
+            listStudy = loadStudies(context, false);
 
         try {
             JSONObject jsonObjectRoot = new JSONObject(loadStringFromAsset(context, pathData + file));
@@ -112,7 +120,6 @@ public class StudyParser extends ParserAssets {
 
                     //Studies
                     if (knowStudies) {
-                        List<Study> listStudy = loadStudies(context, false);
                         JSONArray jsonArray = jsonObjectItem.getJSONArray("studiesId");
 
                         for (int j = 0; j < jsonArray.length(); j++) {
@@ -121,6 +128,7 @@ public class StudyParser extends ParserAssets {
                             for (Study study : listStudy) {
                                 if (study.id == studyId) {
                                     item.listStudy.add(study);
+                                    break;
                                 }
                             }
                         }

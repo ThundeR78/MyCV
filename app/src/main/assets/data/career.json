@@ -2,6 +2,7 @@
 	"career":[
 	    {
 	        "id": 1,
+	        "company": 4,
             "type": "word_work_experience",
 	        "function": "Editeur de progiciel",
             "dateBegin": "24/01/2011",
@@ -16,13 +17,13 @@
 	    {
 	        "id": 2,
             "company": 3,
+            "type": "word_sandwich_training",
             "function": "Editeur d'applications mobiles",
             "dateBegin": "01/05/2012",
             "dateEnd": "30/11/2012",
             "address": "5 passage Piver, 75011 Paris",
             "latitude": 48.870299,
             "longitude": 2.374684,
-            "type": "word_sandwich_training",
             "tasks": [
                 "Développement d’applications mobiles [HTML, CSS, JavaScript, jQuery] : création d’applications à partir du framework de l’entreprise et qui seront ensuite compilées en applications natives."
             ]
@@ -56,7 +57,7 @@
                 "Développement d’applications mobiles Tizen [HTML5, CSS3, JavaScript] : création des 3 applications clientes citées ci-dessus avec un nouvel outil, Montage Studio.",
                 "Développement d’une application mobile hybride [Android, HTML5, CSS3, JavaScript] : création de l’application de démonstration d’envoi de notification via le service You’n Push."
             ]
-        }
+        },
         {
             "id": 5,
             "company": 1,
@@ -76,9 +77,11 @@
 	    {
 	        "id": 1,
 	        "name": "Sophiacom",
-            "logo": "logo_sophiacom";
+            "logo": "logo_sophiacom",
             "website": "http://www.sophiacom.fr/",
-            "activity": "word_development_mobile",
+            "email": "info@sophiacom.fr",
+            "phone": "01 41 40 05 80",
+            "activity": "word_mobile_development",
             "ceo": "Philippe RABIER",
             "employees": "15~20",
             "dateBegin": "1990",
@@ -87,14 +90,17 @@
             "latitude": 48.898154,
             "longitude": 2.087978,
             "pin": "120",
-            "color": "green_dark"
+            "color": "green_dark",
+            "experiencesId": [3,4]
 	    },
 	    {
 	        "id": 2,
 	        "name": "wezzoo",
             "logo": "logo_wezzoo",
             "website": "http://www.wezzoo.com",
-            "activity": "Service communautaire",
+            "email": "contact@wezzoo.com",
+            "phone": "",
+            "activity": "word_community_service_development",
             "ceo": "Clément GUILLOT",
             "employees": "3~5",
             "dateBegin": "2012",
@@ -103,14 +109,17 @@
             "latitude": 48.80469,
             "longitude": 2.334573,
             "pin": "60",
-            "color": "yellow"
+            "color": "yellow",
+            "experiencesId": [3]
 	    },
 	    {
 	        "id": 3,
 	        "name": "MyApphone",
             "logo": "logo_myapphone",
             "website": "http://www.myapp.net",
-            "activity": "Editeur d'applications mobiles",
+            "email": "aginter@myapphone.com",
+            "phone": "01 48 07 54 77",
+            "activity": "word_mobile_development",
             "ceo": "Anthony GINTER",
             "employees": "10~20",
             "dateBegin": "2011",
@@ -119,14 +128,17 @@
             "latitude": 48.8641096,
             "longitude": 2.3496453,
             "pin": "240",
-            "color": "blue_light"
+            "color": "blue_light",
+            "experiencesId": [2]
 	    },
 	    {
 	        "id": 4,
 	        "name": "MAFISYS",
             "logo": "logo_mafisys",
             "website": "http://www.mafisys.fr",
-            "activity": "Editeur de progiciel",
+            "email": "contact@mafisys.fr",
+            "phone": "01 34 90 13 45",
+            "activity": "word_development_software",
             "ceo": "Julien DUPLANTIER",
             "employees": "6~10",
             "dateBegin": "2009",
@@ -135,7 +147,8 @@
             "latitude": 49.003355,
             "longitude": 2.102085,
             "pin": "30",
-            "color": "orange_dark"
+            "color": "orange_dark",
+            "experiencesId": [1]
 	    }
 	]
 }

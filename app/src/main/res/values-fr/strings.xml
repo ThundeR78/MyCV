@@ -55,7 +55,9 @@
     <string name="word_work_experience">Stage</string>
     <string name="word_permanent_contract">CDI</string>
     <string name="word_ceo">PDG</string>
-    <string name="word_mobile_development">Développement mobile</string>
+    <string name="word_development_software">Développement de logiciels</string>
+    <string name="word_community_service_development">Développement d\'un service communautaire</string>
+    <string name="word_mobile_development">Développement d\'applications mobiles</string>
     <string name="word_mobile_developer">Développeur mobile</string>
     <string name="word_android_developper">Développeur Android</string>
 

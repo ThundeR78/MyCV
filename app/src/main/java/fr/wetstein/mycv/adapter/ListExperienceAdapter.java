@@ -35,6 +35,7 @@ public class ListExperienceAdapter extends ArrayAdapter<Experience> {
 
         Experience item = getItem(in_position);
         if (item != null) {
+            //Holder
             if (convertView == null) {
                 convertView = mLayoutInflater.inflate(mItemResourceId, null);
                 holder = new ViewHolder();
@@ -46,16 +47,19 @@ public class ListExperienceAdapter extends ArrayAdapter<Experience> {
             } else {
                 holder = (ViewHolder) convertView.getTag();
             }
+
+            //Dates
+            String strDateBegin = FormatValue.monthDateFormat.format(item.dateBegin);
+            String strDateEnd = (item.dateEnd != null) ? FormatValue.monthDateFormat.format(item.dateEnd) : getContext().getString(R.string.word_today);
+            String expDuration = getContext().getString(R.string.value_dates, strDateBegin, strDateEnd);
+
+            if (item.company != null) {
+                holder.logo.setImageResource(item.company.logo);
+                holder.name.setText(item.company.name);
+            }
+            holder.date.setText(expDuration);
+            holder.type.setText(item.type);
         }
-
-        String strDateBegin = FormatValue.monthDateFormat.format(item.dateBegin);
-        String strDateEnd = (item.dateEnd != null) ? FormatValue.monthDateFormat.format(item.dateEnd) : getContext().getString(R.string.word_today);
-        String expDuration = getContext().getString(R.string.value_dates, strDateBegin, strDateEnd);
-
-        //holder.logo.setImageResource(item.logo);
-        holder.name.setText(item.name);
-        holder.date.setText(expDuration);
-        holder.type.setText(item.type);
 
         return convertView;
     }

@@ -53,6 +53,8 @@
     <string name="word_work_experience">Work experience</string>
     <string name="word_permanent_contract">Permanent contract</string>
     <string name="word_ceo">CEO</string>
+    <string name="word_development_software">Software development</string>
+    <string name="word_community_service_development">Community service development</string>
     <string name="word_mobile_development">Mobile Development</string>
     <string name="word_mobile_developer">Mobile Developer</string>
     <string name="word_android_developer">Android Developer</string>
