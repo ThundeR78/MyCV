@@ -15,6 +15,8 @@ import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerFragment;
 
+import java.util.Arrays;
+
 import fr.wetstein.mycv.MyCVApp;
 import fr.wetstein.mycv.R;
 
@@ -39,6 +41,8 @@ public class ParkourFragment extends Fragment implements View.OnClickListener, Y
     private ImageView imgGS;
     private ImageView imgBookPK;
 
+    private boolean isFullScreenPlaying = false;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,7 +53,7 @@ public class ParkourFragment extends Fragment implements View.OnClickListener, Y
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_parkour, container, false);
 
-        ytbPlayerFragment = (YouTubePlayerFragment)getFragmentManager().findFragmentById(R.id.youtubeplayerfragment);
+        ytbPlayerFragment = (YouTubePlayerFragment) getFragmentManager().findFragmentById(R.id.youtubeplayerfragment);
         ytbPlayerFragment.initialize(getString(MyCVApp.DEV_MODE ? R.string.android_dev_key : R.string.android_prod_key), this);
 
         imgCPK = (ImageView) rootView.findViewById(R.id.image_cpk);
@@ -69,6 +73,14 @@ public class ParkourFragment extends Fragment implements View.OnClickListener, Y
     }
 
     @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+        if (ytbPlayerFragment != null)
+            getFragmentManager().beginTransaction().remove(ytbPlayerFragment).commit();
+    }
+
+    @Override
     public void onClick(View v) {
         String url;
         url = (v.getId() == R.id.image_cpk) ? urlCPK : (v.getId() == R.id.image_gs) ? urlGS : (v.getId() == R.id.image_pk_book) ? urlBook : null;
@@ -83,16 +95,39 @@ public class ParkourFragment extends Fragment implements View.OnClickListener, Y
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean wasRestored) {
         ytbPlayer = player;
 
-        Toast.makeText(getActivity(), "YouTubePlayer.onInitializationSuccess()", Toast.LENGTH_LONG).show();
+        //Toast.makeText(getActivity(), "YouTubePlayer.onInitializationSuccess()", Toast.LENGTH_LONG).show();
 
         //youTubePlayer.setPlayerStateChangeListener(myPlayerStateChangeListener);
-        //youTubePlayer.setPlaybackEventListener(myPlaybackEventListener);
+        ytbPlayer.setPlaybackEventListener(new YouTubePlayer.PlaybackEventListener() {
+            @Override
+            public void onPlaying() {
+            }
+            @Override
+            public void onPaused() {
+            }
+            @Override
+            public void onStopped() {
+            }
+            @Override
+            public void onBuffering(boolean isBuffering) {
+            }
+            @Override
+            public void onSeekTo(int newPositionMillis) {
+            }
+        });
+
+        //TODO : Allow fullScreen
+        ytbPlayer.setShowFullscreenButton(false);
+        ytbPlayer.setOnFullscreenListener(new YouTubePlayer.OnFullscreenListener() {
+            @Override
+            public void onFullscreen(boolean isFullScreen) {
+                isFullScreenPlaying = isFullScreen;
+            }
+        });
 
         if (!wasRestored) {
-            player.cueVideo(videoCP2013);
-            player.cueVideo(videoCP2014);
+            player.cueVideos(Arrays.asList(videoCP2014, videoCP2013));
         }
-
     }
 
     @Override
@@ -103,4 +138,13 @@ public class ParkourFragment extends Fragment implements View.OnClickListener, Y
             Toast.makeText(getActivity(), "YouTubePlayer.onInitializationFailure(): " + result.toString(), Toast.LENGTH_LONG).show();
         }
     }
+
+    /*@Override
+    public void onBackPressed() {
+        if (isFullScreenPlaying){
+            ytbPlayer.pause();
+            ytbPlayer.setFullscreen(false);
+        }
+        super.onBackPressed();
+    }*/
 }

@@ -8,9 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -108,6 +110,10 @@ public class TravelFragment extends Fragment implements GoogleMap.OnInfoWindowCl
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.getUiSettings().setZoomGesturesEnabled(true);
         mMap.getUiSettings().setMyLocationButtonEnabled(true);
+
+        //Position camera
+        CameraPosition cameraPosition = new CameraPosition.Builder().target(new LatLng(48.8534100, 2.3488000)).zoom(mMap.getMinZoomLevel()).build();
+        mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
         //Display Travels
         displayItems(listTravel);

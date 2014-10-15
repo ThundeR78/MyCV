@@ -119,7 +119,9 @@ public class ExperienceParser extends ParserAssets {
                     item.website = jsonObjectItem.getString("website");
                     item.phone = jsonObjectItem.getString("phone");
                     item.email = jsonObjectItem.getString("email");
+                    item.twitter = jsonObjectItem.getString("twitter");
                     item.address = jsonObjectItem.getString("headOffice");
+                    item.desc = jsonObjectItem.getString("desc");
                     item.ceo = jsonObjectItem.getString("ceo");
                     item.nbEmployees = jsonObjectItem.getString("employees");
                     item.latitude = jsonObjectItem.getDouble("latitude");
@@ -162,12 +164,6 @@ public class ExperienceParser extends ParserAssets {
                             Experience o = map.get(experienceId);
                             if (o != null)
                                 item.listExperience.add(o);
-
-                            /*for (Experience experience : listExperience) {
-                                if (experience.id == experienceId) {
-                                    item.listExperience.add(experience);
-                                }
-                            }*/
                         }
                     }
 
