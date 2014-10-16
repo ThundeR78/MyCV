@@ -3,15 +3,10 @@
 
         <TextView android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/desc_parkour" />
+            android:text="@string/desc_parkour_begin" />
 
-        <fragment
-            android:name="com.google.android.youtube.player.YouTubePlayerFragment"
-            android:id="@+id/youtubeplayerfragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" android:gravity="center" android:orientation="horizontal" android:layout_margin="5dp">
             <ImageView android:id="@+id/image_cpk"
                 android:src="@drawable/logo_cpk"
                 android:layout_width="wrap_content"
@@ -27,13 +22,34 @@
 
         <TextView android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/desc_parkour_info" />
+
+        <fragment
+            android:name="com.google.android.youtube.player.YouTubePlayerFragment"
+            android:id="@+id/youtubeplayerfragment"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="5dp" android:layout_marginBottom="5dp" />
+
+        <TextView android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="@string/desc_parkour_book" />
 
-        <ImageView android:id="@+id/image_pk_book"
-            android:src="@drawable/photo_pk_book"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:scaleType="fitCenter" />
+        <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal" android:gravity="center" android:orientation="horizontal" android:layout_margin="5dp">
+            <ImageView android:id="@+id/image_pk_book1"
+                android:src="@drawable/photo_pk_book"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:scaleType="fitCenter" />
+
+            <ImageView android:id="@+id/image_pk_book2"
+                android:src="@drawable/photo_pk_book"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:scaleType="fitCenter" />
+        </LinearLayout>
+
+
 
     </LinearLayout>
 </ScrollView>
