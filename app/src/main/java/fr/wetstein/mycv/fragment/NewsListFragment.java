@@ -1,10 +1,8 @@
 package fr.wetstein.mycv.fragment;
 
 import android.app.Activity;
-import android.app.ListFragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,10 +26,8 @@ import fr.wetstein.mycv.request.NewsRequest;
 /**
  * Created by ThundeR on 05/07/2014.
  */
-public class NewsListFragment extends ListFragment implements SwipeRefreshLayout.OnRefreshListener {
+public class NewsListFragment extends ListFragment {
     public static final String TAG = "NewsListFragment";
-
-    private SwipeRefreshLayout refreshLayout;
 
     private DatabaseManager db;
 
@@ -47,14 +43,7 @@ public class NewsListFragment extends ListFragment implements SwipeRefreshLayout
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_list, container, false);
-
-        //RefreshLayout
-        refreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.refresh_layout);
-        refreshLayout.setOnRefreshListener(this);
-        refreshLayout.setColorScheme(R.color.blue, R.color.green, R.color.red, R.color.violet);
-
-        return rootView;
+        return super.onCreateView(inflater, container, savedInstanceState);
     }
 
     @Override

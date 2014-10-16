@@ -27,9 +27,8 @@
                 android:layout="@layout/view_noresult" />
         </FrameLayout>
 
-        <fragment
+        <FrameLayout
             android:id="@+id/adFragment"
-            android:name="fr.wetstein.mycv.fragment.AdFragment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true" />

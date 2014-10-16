@@ -1,7 +1,6 @@
 package fr.wetstein.mycv.fragment;
 
 import android.app.Activity;
-import android.app.ListFragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
@@ -37,10 +36,6 @@ public class StudyListFragment extends ListFragment {
     private List<Study> listStudy;
     private ListStudyAdapter listAdapter;
 
-    public StudyListFragment() {
-
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +51,7 @@ public class StudyListFragment extends ListFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_list, container, false);
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
 
         ((SwipeRefreshLayout) rootView.findViewById(R.id.refresh_layout)).setOnRefreshListener(null);
 
