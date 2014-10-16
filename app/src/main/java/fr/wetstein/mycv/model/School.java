@@ -50,7 +50,7 @@ public class School extends Place implements Parcelable {
         dest.writeInt(id);
         dest.writeInt(logo);
         dest.writeString(link);
-        dest.writeList(listStudy);
+        dest.writeTypedList(listStudy);
     }
 
     public void readFromParcel(Parcel in) {
@@ -60,6 +60,6 @@ public class School extends Place implements Parcelable {
         logo = in.readInt();
         link = in.readString();
         listStudy = new ArrayList<Study>();
-        in.readList(listStudy, null);
+        in.readTypedList(listStudy, Study.CREATOR);
     }
 }

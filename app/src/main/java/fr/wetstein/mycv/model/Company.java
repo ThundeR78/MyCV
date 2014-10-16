@@ -61,7 +61,7 @@ public class Company extends Place implements Parcelable {
         dest.writeString(ceo);
         dest.writeString(nbEmployees);
         dest.writeString(twitter);
-        dest.writeList(listExperience);
+        dest.writeTypedList(listExperience);
     }
 
     public void readFromParcel(Parcel in) {
@@ -76,6 +76,6 @@ public class Company extends Place implements Parcelable {
         nbEmployees = in.readString();
         twitter = in.readString();
         listExperience = new ArrayList<Experience>();
-        in.readList(listExperience, null);
+        in.readTypedList(listExperience, Experience.CREATOR);
     }
 }

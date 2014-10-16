@@ -50,7 +50,7 @@ public class Travel implements Parcelable {
         dest.writeString(context);
         dest.writeLong((dateBegin != null) ? dateBegin.getTime() : 0);
         dest.writeLong((dateEnd != null) ? dateEnd.getTime() : 0);
-        dest.writeList(listPlace);
+        dest.writeTypedList(listPlace);
     }
 
     public void readFromParcel(Parcel in) {
@@ -59,6 +59,6 @@ public class Travel implements Parcelable {
         dateBegin = new Date(in.readLong());
         dateEnd = new Date(in.readLong());
         listPlace = new ArrayList<Place>();
-        in.readList(listPlace, null);
+        in.readTypedList(listPlace, Place.CREATOR);
     }
 }
