@@ -16,9 +16,9 @@ import java.util.HashMap;
 import java.util.List;
 
 import fr.wetstein.mycv.R;
+import fr.wetstein.mycv.fragment.SkillListFragment;
 import fr.wetstein.mycv.model.GroupSkill;
 import fr.wetstein.mycv.model.Skill;
-import fr.wetstein.mycv.fragment.SkillsFragment;
 
 /**
  * Created by ThundeR on 10/07/2014.
@@ -65,7 +65,7 @@ public class ExpandableListSkillAdapter extends BaseExpandableListAdapter {
             if (android.os.Build.VERSION.SDK_INT >= 11) {
                 //Will update the "progress" propriety of ProgressBar until it reaches progress
                 ObjectAnimator animation = ObjectAnimator.ofInt(progressChild, "progress", skill.rate);
-                animation.setDuration(SkillsFragment.PROGRESSBAR_ANIMATION_TIME);
+                animation.setDuration(SkillListFragment.PROGRESSBAR_ANIMATION_TIME);
                 animation.setInterpolator(new AccelerateDecelerateInterpolator());
                 animation.start();
             } else

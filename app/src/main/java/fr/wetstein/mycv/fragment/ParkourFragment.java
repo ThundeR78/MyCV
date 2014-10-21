@@ -26,7 +26,8 @@ import fr.wetstein.mycv.R;
 public class ParkourFragment extends Fragment implements View.OnClickListener, YouTubePlayer.OnInitializedListener {
     public static final String TAG = "ParkourFragment";
 
-    private static final String urlBook = "http://www.amazon.fr/Parkour-David-Belle/dp/2357560258";
+    private static final String urlBook1 = "http://www.amazon.fr/Parkour-David-Belle/dp/2357560258";
+    private static final String urlBook2 = "http://book.parkour.center/";
     private static final String urlCPK = "http://www.cultureparkour.com/";
     private static final String urlGS = "http://www.gravitystyleofficiel.com/fr/content/4-a-propos";
 
@@ -37,9 +38,8 @@ public class ParkourFragment extends Fragment implements View.OnClickListener, Y
 
     private YouTubePlayerFragment ytbPlayerFragment;
     private YouTubePlayer ytbPlayer;
-    private ImageView imgCPK;
-    private ImageView imgGS;
-    private ImageView imgBookPK;
+    private ImageView imgCPK, imgGS;
+    private ImageView imgBookPK1, imgBookPK2;
 
     private boolean isFullScreenPlaying = false;
 
@@ -58,11 +58,13 @@ public class ParkourFragment extends Fragment implements View.OnClickListener, Y
 
         imgCPK = (ImageView) rootView.findViewById(R.id.image_cpk);
         imgGS = (ImageView) rootView.findViewById(R.id.image_gs);
-        imgBookPK = (ImageView) rootView.findViewById(R.id.image_pk_book);
+        imgBookPK1 = (ImageView) rootView.findViewById(R.id.image_pk_book1);
+        imgBookPK2 = (ImageView) rootView.findViewById(R.id.image_pk_book2);
 
         imgCPK.setOnClickListener(this);
         imgGS.setOnClickListener(this);
-        imgBookPK.setOnClickListener(this);
+        imgBookPK1.setOnClickListener(this);
+        imgBookPK2.setOnClickListener(this);
 
         return rootView;
     }
@@ -76,14 +78,30 @@ public class ParkourFragment extends Fragment implements View.OnClickListener, Y
     public void onDestroyView() {
         super.onDestroyView();
 
-        if (ytbPlayerFragment != null)
+        if (ytbPlayerFragment != null) {
             getFragmentManager().beginTransaction().remove(ytbPlayerFragment).commit();
+            //ytbPlayerFragment.onDestroyView();
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        if (ytbPlayer != null)
+            ytbPlayer.release();
+        //if (ytbPlayerFragment != null)
+            //ytbPlayerFragment.onDestroy();
     }
 
     @Override
     public void onClick(View v) {
         String url;
-        url = (v.getId() == R.id.image_cpk) ? urlCPK : (v.getId() == R.id.image_gs) ? urlGS : (v.getId() == R.id.image_pk_book) ? urlBook : null;
+        int id = v.getId();
+        url = (id == R.id.image_cpk) ? urlCPK :
+                (id == R.id.image_gs) ? urlGS :
+                (id == R.id.image_pk_book1) ? urlBook1 :
+                (id == R.id.image_pk_book2) ? urlBook2 : null;
 
         if (url != null) {
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));

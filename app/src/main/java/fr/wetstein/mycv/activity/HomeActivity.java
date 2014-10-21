@@ -22,7 +22,7 @@ import fr.wetstein.mycv.fragment.HobbiesFragment;
 import fr.wetstein.mycv.fragment.NavDrawerFragment;
 import fr.wetstein.mycv.fragment.NewsListFragment;
 import fr.wetstein.mycv.fragment.ProfileFragment;
-import fr.wetstein.mycv.fragment.SkillsFragment;
+import fr.wetstein.mycv.fragment.SkillListFragment;
 import fr.wetstein.mycv.fragment.StudyListFragment;
 import fr.wetstein.mycv.util.Actions;
 import fr.wetstein.mycv.util.PrefsManager;
@@ -110,7 +110,7 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
                 fragment = new ExperienceListFragment();
                 break;
             case R.id.item_skills:
-                fragment = new SkillsFragment();
+                fragment = new SkillListFragment();
                 break;
             case R.id.item_hobbies:
                 fragment = new HobbiesFragment();

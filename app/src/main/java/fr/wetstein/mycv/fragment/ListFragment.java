@@ -27,7 +27,7 @@ public abstract class ListFragment extends android.app.ListFragment implements S
         //RefreshLayout
         refreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.refresh_layout);
         refreshLayout.setOnRefreshListener(this);
-        refreshLayout.setColorScheme(R.color.blue, R.color.green, R.color.red, R.color.violet);
+        refreshLayout.setColorSchemeResources(R.color.blue, R.color.green, R.color.red, R.color.violet);
 
         //We shouldn't inflate fragments inside other fragments
         //mAdFragment = (AdFragment) getFragmentManager().findFragmentById(R.id.adFragment);
