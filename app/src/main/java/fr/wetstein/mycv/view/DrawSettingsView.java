@@ -1,6 +1,7 @@
 package fr.wetstein.mycv.view;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -9,6 +10,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.Toast;
+
+import com.chiralcode.colorpicker.ColorPickerDialog;
 
 import fr.wetstein.mycv.R;
 import fr.wetstein.mycv.util.WindowUtil;
@@ -80,6 +83,20 @@ public class DrawSettingsView extends LinearLayout implements View.OnClickListen
 
                 popup.show();
                 //setCurrentLineStyle();
+            }
+            else if (id == R.id.btn_draw_color) {
+                int initialColor = Color.BLACK;
+                ColorPickerDialog colorPickerDialog = new ColorPickerDialog(getContext(), initialColor, new ColorPickerDialog.OnColorSelectedListener() {
+                    @Override
+                    public void onColorSelected(int color) {
+                        Toast.makeText(getContext(), "COLOR = "+color, Toast.LENGTH_LONG).show();
+                        btnColor.se
+                    }
+                });
+                colorPickerDialog.show();
+            }
+            else if (id == R.id.btn_draw_size) {
+
             }
         }
     }
