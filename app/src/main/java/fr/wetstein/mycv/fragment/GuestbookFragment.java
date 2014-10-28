@@ -7,15 +7,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import fr.wetstein.mycv.R;
+import fr.wetstein.mycv.view.DrawSettingsView;
 import fr.wetstein.mycv.view.GuestbookView;
 
 /**
  * Created by ThundeR on 12/07/2014.
  */
-public class GuestbookFragment extends Fragment {
+public class GuestbookFragment extends Fragment implements DrawSettingsView.IDrawSettings {
     public static final String TAG = "GuestbookFragment";
 
     private GuestbookView mDrawView;
+    private DrawSettingsView mDrawSettings;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,6 +32,9 @@ public class GuestbookFragment extends Fragment {
         mDrawView = (GuestbookView) rootView.findViewById(R.id.surfaceview);
         mDrawView.init(this);
 
+        mDrawSettings = (DrawSettingsView) rootView.findViewById(R.id.draw_settings);
+        mDrawSettings.setCallback(this);
+
         return rootView;
     }
 
@@ -39,22 +44,24 @@ public class GuestbookFragment extends Fragment {
 
         setCurrentLineStyle(0);
         setCurrentLineColor(0);
-        setCurrentLineThickness(3);
+        setCurrentLineSize(3);
     }
 
-    private void setCurrentLineStyle(int lineStyle) {
+    public void setCurrentLineStyle(int lineStyle) {
         mDrawView.setPaintStyle(lineStyle);
     }
 
-    private void setCurrentLineColor(int lineColor) {
+    public void setCurrentLineColor(int lineColor) {
         int r=0, g=0, b=0;
        // r=41; g=171; b=226;
 
         mDrawView.setPaintColor(r, g, b);
     }
 
-    private void setCurrentLineThickness(int lineThickness) {
+    public void setCurrentLineSize(int lineThickness) {
         int thickness = 3;
         mDrawView.setPaintThickness(thickness);
     }
+
+
 }

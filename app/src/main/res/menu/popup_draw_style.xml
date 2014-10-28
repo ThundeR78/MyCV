@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/line" android:icon="@drawable/ic_action_about"
+        android:title="line" />
+
+    <item
+        android:id="@+id/round" android:icon="@drawable/ic_action_about"
+        android:title="round" />
+
+    <item
+        android:id="@+id/rect" android:icon="@drawable/ic_action_about"
+        android:title="rect" />
+
+</menu>

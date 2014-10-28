@@ -17,4 +17,5 @@
     <dimen name="table_padding_size">5dp</dimen>
 
     <dimen name="map_height">200dp</dimen>
+
 </resources>

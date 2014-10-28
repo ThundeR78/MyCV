@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:orientation="horizontal">
+
+        <Button android:id="@+id/btn_draw_style"
+            android:layout_width="0dp" android:layout_weight="1"
+            android:layout_height="wrap_content" android:text="Style" />
+
+        <Button android:id="@+id/btn_draw_size"
+            android:layout_width="0dp" android:layout_weight="1"
+            android:layout_height="wrap_content" android:text="Size" />
+
+        <Button android:id="@+id/btn_draw_color"
+            android:layout_width="0dp" android:layout_weight="1"
+            android:layout_height="wrap_content" android:text="Color" />
+
+</LinearLayout>
