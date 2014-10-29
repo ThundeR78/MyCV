@@ -30,8 +30,11 @@ public class DrawSettingsView extends LinearLayout implements View.OnClickListen
         public void setCurrentLineSize(int lineThickness);
     }
 
-    private IDrawSettings mCallbacks;
+    private IDrawSettings mCallback;
     private Button btnStyle, btnSize, btnColor;
+
+    private boolean firstDraw = true;
+    private int mColor = Color.BLACK;
 
     public DrawSettingsView(Context context) {
         this(context, null, 0);
@@ -61,15 +64,27 @@ public class DrawSettingsView extends LinearLayout implements View.OnClickListen
         btnColor.setOnClickListener(this);
     }
 
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+
+        if (firstDraw) {
+            int size = btnColor.getHeight() - (btnColor.getCompoundPaddingTop() + btnColor.getCompoundPaddingBottom());
+            Drawable drawable = makeColoredDrawable(getContext(), size, size, mColor);
+            btnColor.setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
+            firstDraw = false;
+        }
+    }
+
     public void setCallback(IDrawSettings iDrawSettings) {
-        mCallbacks = iDrawSettings;
+        mCallback = iDrawSettings;
     }
 
     @Override
     public void onClick(View v) {
         int id = v.getId();
 
-        if (mCallbacks != null) {
+        if (mCallback != null) {
             if (id == R.id.btn_draw_style) {
                 PopupMenu popup = new PopupMenu(getContext(), btnStyle);
                 //Inflating the Popup using xml file
@@ -90,8 +105,7 @@ public class DrawSettingsView extends LinearLayout implements View.OnClickListen
                 //setCurrentLineStyle();
             }
             else if (id == R.id.btn_draw_color) {
-                int initialColor = Color.BLACK;
-                ColorPickerDialog colorPickerDialog = new ColorPickerDialog(getContext(), initialColor, new ColorPickerDialog.OnColorSelectedListener() {
+                ColorPickerDialog colorPickerDialog = new ColorPickerDialog(getContext(), mColor, new ColorPickerDialog.OnColorSelectedListener() {
                     @Override
                     public void onColorSelected(int color) {
                         int size = btnColor.getHeight() - (btnColor.getCompoundPaddingTop() + btnColor.getCompoundPaddingBottom());
@@ -99,6 +113,7 @@ public class DrawSettingsView extends LinearLayout implements View.OnClickListen
                         Drawable drawable = makeColoredDrawable(getContext(), size, size, color);
 
                         btnColor.setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
+                        mColor = color;
                     }
                 });
                 colorPickerDialog.show();
@@ -110,6 +125,9 @@ public class DrawSettingsView extends LinearLayout implements View.OnClickListen
     }
 
     public static Drawable makeColoredDrawable(Context mContext, int width, int height, int color) {
+        if (width <= 0 && height <= 0)
+            return null;
+
         Paint p = new Paint();
         Bitmap bitmap = null;
         final int FULL_ALPHA = 0xFF123456; // of whatever color you want
