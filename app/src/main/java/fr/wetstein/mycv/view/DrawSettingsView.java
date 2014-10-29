@@ -1,7 +1,12 @@
 package fr.wetstein.mycv.view;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -89,8 +94,11 @@ public class DrawSettingsView extends LinearLayout implements View.OnClickListen
                 ColorPickerDialog colorPickerDialog = new ColorPickerDialog(getContext(), initialColor, new ColorPickerDialog.OnColorSelectedListener() {
                     @Override
                     public void onColorSelected(int color) {
-                        Toast.makeText(getContext(), "COLOR = "+color, Toast.LENGTH_LONG).show();
-                        btnColor.se
+                        int size = btnColor.getHeight() - (btnColor.getCompoundPaddingTop() + btnColor.getCompoundPaddingBottom());
+
+                        Drawable drawable = makeColoredDrawable(getContext(), size, size, color);
+
+                        btnColor.setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null);
                     }
                 });
                 colorPickerDialog.show();
@@ -99,5 +107,22 @@ public class DrawSettingsView extends LinearLayout implements View.OnClickListen
 
             }
         }
+    }
+
+    public static Drawable makeColoredDrawable(Context mContext, int width, int height, int color) {
+        Paint p = new Paint();
+        Bitmap bitmap = null;
+        final int FULL_ALPHA = 0xFF123456; // of whatever color you want
+        int pixel = FULL_ALPHA;
+
+        bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        Canvas c = new Canvas(bitmap);
+        p.setStyle(Paint.Style.FILL);
+        p.setColor(color);
+
+        c.drawColor(color);
+        c.drawRect(0, 0, width, height, p);
+
+        return new BitmapDrawable(mContext.getResources(), bitmap);
     }
 }

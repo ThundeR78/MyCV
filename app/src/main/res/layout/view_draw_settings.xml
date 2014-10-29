@@ -11,7 +11,11 @@
             android:layout_width="0dp" android:layout_weight="1"
             android:layout_height="wrap_content" android:text="Size" />
 
-        <Button android:id="@+id/btn_draw_color" android:drawableLeft="@drawable/ic_action_next_item"
+        <!--<Button android:id="@+id/btn_draw_color" android:drawableLeft="@drawable/rectblack"
+            android:layout_width="0dp" android:layout_weight="1"
+            android:layout_height="wrap_content" android:text="Color" />-->
+
+        <Button android:id="@+id/btn_draw_color"
             android:layout_width="0dp" android:layout_weight="1"
             android:layout_height="wrap_content" android:text="Color" />
 
