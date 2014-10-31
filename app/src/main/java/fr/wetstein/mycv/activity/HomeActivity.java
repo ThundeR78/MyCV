@@ -257,22 +257,37 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
 
     private void displayDonationList() {
         final Activity activity = this;
+        int selectedItem = 0;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle(R.string.iap_choose_donation)
-                .setIcon(R.drawable.ic_action_good)
-                .setCancelable(true)
-                .setItems(getResources().getStringArray(R.array.iap_donation_array), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        String payload = "";
-                        String iapId = getString((which == 0) ? R.string.iap_donate_tiny_id :
-                                (which == 1) ? R.string.iap_donate_small_id :
-                                (which == 2) ? R.string.iap_donate_medium_id :
-                                (which == 3) ? R.string.iap_donate_large_id :
-                                (which == 4) ? R.string.iap_donate_xlarge_id : 0);
-                        mHelper.launchPurchaseFlow(activity, iapId, RC_REQUEST, mPurchaseFinishedListener, payload);
-                    }
-                });
+            .setIcon(R.drawable.ic_action_good)
+            .setCancelable(true)
+            .setSingleChoiceItems(getResources().getStringArray(R.array.iap_donation_array), selectedItem, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                }
+            })
+            .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    String payload = "";
+                    int selectedIndex = ((AlertDialog)dialog).getListView().getCheckedItemPosition();
+                    String iapId = getString((selectedIndex == 0) ? R.string.iap_donate_tiny_id :
+                            (selectedIndex == 1) ? R.string.iap_donate_small_id :
+                                    (selectedIndex == 2) ? R.string.iap_donate_medium_id :
+                                            (selectedIndex == 3) ? R.string.iap_donate_large_id :
+                                                    (selectedIndex == 4) ? R.string.iap_donate_xlarge_id : 0);
+                    //Toast.makeText(getApplicationContext(), selectedIndex+" "+iapId, Toast.LENGTH_LONG).show();
+                    mHelper.launchPurchaseFlow(activity, iapId, RC_REQUEST, mPurchaseFinishedListener, payload);
+                    dialog.dismiss();
+                }
+            })
+            .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
 
         Dialog dialog = builder.create();
         dialog.show();
@@ -318,7 +333,6 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
                 Log.d(TAG, "Purchase donation Ok");
                 mHelper.consumeAsync(purchase, mConsumeFinishedListener);
             }
-
         }
     };
 
