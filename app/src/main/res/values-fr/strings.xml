@@ -126,6 +126,7 @@
 	    Bonjour,&lt;br/&gt;&lt;br/&gt;</string>
 
     <!-- IAP -->
+    <string name="iap_choose_donation">Quel montant voulez-vous donner ?</string>
     <string name="in_app_bill_error">Problem setting up in-app billing</string>
     <string name="purchase_error">Error purchasing: </string>
     <string name="error_verification">Error purchasing:Authenticity verification failed</string>

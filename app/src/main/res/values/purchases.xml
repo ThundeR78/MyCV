@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
 
+    <string-array name="iap_donation_array">
+        <item>1€</item>
+        <item>5€</item>
+        <item>10€</item>
+        <item>25€</item>
+        <item>50€</item>
+    </string-array>
 
+    <string name="iap_donate_tiny_id">donate_tiny</string>
+    <string name="iap_donate_small_id">donate_small</string>
+    <string name="iap_donate_medium_id">donate_medium</string>
+    <string name="iap_donate_large_id">donate_large</string>
+    <string name="iap_donate_xlarge_id">donate_xlarge</string>
 
 </resources>

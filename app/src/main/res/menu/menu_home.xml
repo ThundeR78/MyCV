@@ -19,6 +19,6 @@
 
     <item android:id="@+id/action_donate"
         android:title="@string/action_donate"
-        android:icon="@android:drawable/ic_menu_share"
+        android:icon="@drawable/ic_action_good"
         android:showAsAction="never" />
 </menu>
