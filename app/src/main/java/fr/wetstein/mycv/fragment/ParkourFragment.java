@@ -54,7 +54,7 @@ public class ParkourFragment extends Fragment implements View.OnClickListener, Y
         View rootView = inflater.inflate(R.layout.fragment_parkour, container, false);
 
         ytbPlayerFragment = (YouTubePlayerFragment) getFragmentManager().findFragmentById(R.id.youtubeplayerfragment);
-        ytbPlayerFragment.initialize(getString(MyCVApp.DEV_MODE ? R.string.android_dev_key : R.string.android_prod_key), this);
+        ytbPlayerFragment.initialize(getString(MyCVApp.DEV_MODE ? R.string.app_dev_key : R.string.app_prod_key), this);
 
         imgCPK = (ImageView) rootView.findViewById(R.id.image_cpk);
         imgGS = (ImageView) rootView.findViewById(R.id.image_gs);

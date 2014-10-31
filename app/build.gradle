@@ -8,8 +8,8 @@ android {
         applicationId "fr.wetstein.mycv"
         minSdkVersion 16
         targetSdkVersion 21
-        versionCode 4
-        versionName "0.6"
+        versionCode 5
+        versionName "0.6.1"
     }
     buildTypes {
         release {

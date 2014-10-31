@@ -3,6 +3,7 @@
 
     <string name="app_name">Wetstein CV</string>
 
+    <!-- NAV DRAWER -->
     <string name="navigation_drawer_open">Ouvre navigation drawer</string>
     <string name="navigation_drawer_close">Ferme navigation drawer</string>
 
@@ -28,8 +29,9 @@
     <string name="action_contact">Me contacter</string>
     <string name="action_rate_app">Noter l\'application</string>
     <string name="action_share_app">Partager l\'application</string>
-    <string name="action_settings">Settings</string>
-    <string name="action_map">Map</string>
+    <string name="action_donate">Donation</string>
+    <string name="action_settings">Configuration</string>
+    <string name="action_map">Carte</string>
 
     <!-- BUTTON -->
     <string name="button_see_collection">See collection</string>
@@ -109,7 +111,7 @@
 
     <!-- RATE -->
     <string name="rate_app">Noter l\'application</string>
-    <string name="dialog_rate_message">Vous aimez l\'application %s ? Dites-le nous en notant l\'application sur le Play Store.</string>
+    <string name="dialog_rate_message">Vous aimez l\'application %s ? Dites-le moi en notant l\'application sur le Play Store.</string>
     <string name="rate">Noter</string>
     <string name="later">Plus tard</string>
     <string name="never">Jamais</string>
@@ -122,5 +124,12 @@
 	    &lt;b&gt;&lt;u&gt;Appareil utilisé :&lt;/u&gt;&lt;/b&gt; %2$s&lt;br/&gt;
 	    &lt;b&gt;&lt;u&gt;Version d\'Android :&lt;/u&gt;&lt;/b&gt; %3$s&lt;br/&gt;&lt;br/&gt;
 	    Bonjour,&lt;br/&gt;&lt;br/&gt;</string>
+
+    <!-- IAP -->
+    <string name="in_app_bill_error">Problem setting up in-app billing</string>
+    <string name="purchase_error">Error purchasing: </string>
+    <string name="error_verification">Error purchasing:Authenticity verification failed</string>
+    <string name="thank_you">Thank you for helping the developers!</string>
+    <string name="error_consume">Error while consuming: </string>
 
 </resources>

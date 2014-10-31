@@ -25,3 +25,6 @@ proguard/
 /.idea/workspace.xml
 .DS_Store
 /build
+
+# Secure my keys
+app/src/main/res/values/api_key.xml

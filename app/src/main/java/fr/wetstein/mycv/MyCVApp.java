@@ -20,7 +20,7 @@ import fr.wetstein.mycv.util.NukeSSLCerts;
 public class MyCVApp extends Application {
     public static final String TAG = "MyCVApp";
 
-    public static final boolean DEV_MODE = true;
+    public static final boolean DEV_MODE = false;
 
     public static final LatLng HOME_LATLNG = new LatLng(48.8494030, 2.2945998);
 
