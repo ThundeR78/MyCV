@@ -182,7 +182,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">@dimen/card_margin</item>
     </style>
-    <style name="CardContent" parent="android:Widget">
+    <style name="Widget.CardContent" parent="android:Widget">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingLeft">16dp</item>
