@@ -1,7 +1,7 @@
 <resources>
 
     <dimen name="navdrawer_width">320dp</dimen>
-    
 
+    <dimen name="profile_image_size">300dp</dimen>
     
 </resources>

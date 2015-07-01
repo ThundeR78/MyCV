@@ -348,7 +348,7 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
                 String[] emailCC = null, emailBC = null;
                 String subject = "IAP SkuDetails";
                 boolean isHTMLFormat = false;
-                Actions.initShareIntent(HomeActivity.this, "plain/text", senderTitle, emailTO, emailCC, emailBC, subject, text, isHTMLFormat);
+                //Actions.initShareIntent(HomeActivity.this, "plain/text", senderTitle, emailTO, emailCC, emailBC, subject, text, isHTMLFormat);
 
                 /*SkuDetails sku = listSku.get(0);
                 if (sku != null) {

@@ -18,7 +18,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -90,11 +89,12 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         try {
             view = inflater.inflate(R.layout.fragment_profile, container, false);
         } catch (InflateException e) {
+            Log.e(TAG, e.toString());
             /* Map is already there, just return view as it is */
         }
         //View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        ImageView image = (ImageView) view.findViewById(R.id.image);
+        //CircleImageView image = (CircleImageView) view.findViewById(R.id.profile_photo);
         txtAge = (TextView) view.findViewById(R.id.profile_age);
         btnEmail = (ImageButton) view.findViewById(R.id.button_email);
         btnCall = (ImageButton) view.findViewById(R.id.button_phone);

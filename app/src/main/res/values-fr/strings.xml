@@ -35,8 +35,11 @@
 
     <!-- BUTTON -->
     <string name="button_see_collection">See collection</string>
+    <string name="button_read_memory">Lire le mémoire</string>
 
     <!-- LABEL -->
+    <string name="label_presentation">Presentation</string>
+    <string name="label_personality">Personality</string>
     <string name="label_consoles">Consoles :</string>
     <string name="label_send_email">Envoyer un email</string>
     <string name="label_qualities">Qualités</string>

@@ -4,60 +4,86 @@
     style="@style/ScrollView">
     <LinearLayout style="@style/ScrollViewLayout">
 
-        <de.hdodenhof.circleimageview.CircleImageView android:id="@+id/image"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_photo"
+            android:layout_width="@dimen/profile_image_size"
+            android:layout_height="@dimen/profile_image_size"
             android:layout_gravity="center"
             android:src="@drawable/me_googleglass" />
-        <TextView
-            android:id="@+id/profile_age"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/profile_address"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
 
-        <LinearLayout style="@style/DetailRow">
-            <TextView
-                android:id="@+id/text_email"
-                android:text="@string/value_email"
-                style="@style/DetailValue" />
+        <!-- INFOS -->
+        <android.support.v7.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/card_margin">
+            <LinearLayout style="@style/CardContent">
 
-            <ImageButton android:id="@+id/button_email" style="@style/DetailButton" android:src="@drawable/ic_action_email" />
-        </LinearLayout>
-
-        <LinearLayout style="@style/DetailRow">
-            <TextView
-                android:id="@+id/text_phone"
-                android:text="@string/value_phone"
-                style="@style/DetailValue" />
-
-            <ImageButton android:id="@+id/button_phone" style="@style/DetailButton" android:src="@drawable/ic_action_call" />
-        </LinearLayout>
-
-        <TableLayout android:id="@+id/profile_table"
-            style="@style/TableLayout">
-            <TableRow style="@style/TableRowHeader">
                 <TextView
-                    style="@style/TableRowHeaderLabel"
-                    android:text="@string/label_qualities"
-                    android:layout_margin="@dimen/table_border_size" />
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_presentation"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title" />
                 <TextView
-                    style="@style/TableRowHeaderLabel"
-                    android:text="@string/label_shortcomings"
-                    android:layout_marginTop="@dimen/table_border_size"
-                    android:layout_marginBottom="@dimen/table_border_size"
-                    android:layout_marginRight="@dimen/table_border_size"/>
-            </TableRow>
-        </TableLayout>
+                    android:id="@+id/profile_age"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/profile_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <LinearLayout style="@style/DetailRow">
+                    <TextView
+                        android:id="@+id/text_email"
+                        android:text="@string/value_email"
+                        style="@style/DetailValue" />
+
+                    <ImageButton android:id="@+id/button_email" style="@style/DetailButton" android:src="@drawable/ic_action_email" />
+                </LinearLayout>
+
+                <LinearLayout style="@style/DetailRow">
+                    <TextView
+                        android:id="@+id/text_phone"
+                        android:text="@string/value_phone"
+                        style="@style/DetailValue" />
+
+                    <ImageButton android:id="@+id/button_phone" style="@style/DetailButton" android:src="@drawable/ic_action_call" />
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <!-- PERSONALITY -->
+        <android.support.v7.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/card_margin">
+            <LinearLayout style="@style/CardContent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_personality"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+                <TableLayout android:id="@+id/profile_table"
+                    style="@style/TableLayout">
+                    <TableRow style="@style/TableRowHeader">
+                        <TextView
+                            style="@style/TableRowHeaderLabel"
+                            android:text="@string/label_qualities"
+                            android:layout_margin="@dimen/table_border_size" />
+                        <TextView
+                            style="@style/TableRowHeaderLabel"
+                            android:text="@string/label_shortcomings"
+                            android:layout_marginTop="@dimen/table_border_size"
+                            android:layout_marginBottom="@dimen/table_border_size"
+                            android:layout_marginRight="@dimen/table_border_size"/>
+                    </TableRow>
+                </TableLayout>
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
 
         <Button android:id="@+id/button_read_memoire"
-            android:text="Read Mémoire"
+            android:text="@string/button_read_memory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-
+        <!-- GEOLOC -->
         <fragment android:id="@+id/map_fragment"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/map_height"
@@ -81,9 +107,6 @@
             app:inscribed_circle="false"
             android:background="@drawable/me_manga"
             />
-
-
-
         <fr.wetstein.mycv.view.HexagonView android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
