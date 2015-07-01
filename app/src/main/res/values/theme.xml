@@ -2,6 +2,9 @@
 <resources>
 
     <style name="MyCVTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <item name="colorPrimary">@color/violet</item>
+        <item name="colorPrimaryDark">@color/violet_dark</item>
+        <item name="colorAccent">@color/violet_light</item>
         <!--<item name="android:progressBarStyleHorizontal">@style/CustomProgressBarHorizontal</item>-->
     </style>
 
