@@ -7,7 +7,6 @@ android {
     defaultConfig {
         applicationId "fr.wetstein.mycv"
         minSdkVersion 16
-        targetSdkVersion 21
         versionCode 10
         versionName "0.6.3.4"
     }
