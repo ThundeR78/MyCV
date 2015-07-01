@@ -2,17 +2,15 @@
 <resources>
 
     <style name="MyCVTheme" parent="@android:style/Theme.Material.Light.DarkActionBar">
-        <!--   your app branding color for the app bar -->
-        <item name="android:colorPrimary">@color/violet</item>
-        <!--   darker variant for the status bar and contextual app bars -->
-        <item name="android:colorPrimaryDark">@color/violet_dark</item>
-        <!--   theme UI controls like checkboxes and text fields -->
-        <item name="android:colorAccent">@color/violet_dark</item>
+
+        <item name="android:colorPrimary">@color/violet</item>  <!--   your app branding color for the app bar -->
+        <item name="android:colorPrimaryDark">@color/violet_dark</item> <!--   darker variant for the status bar and contextual app bars -->
+        <item name="android:colorAccent">@color/violet_light</item> <!--   theme UI controls like checkboxes and text fields -->
         <item name="android:textColorPrimary">@color/white</item>
 
         <item name="android:navigationBarColor">@color/violet_dark</item>
 
-        <item name="android:windowBackground">@color/activity_background</item>
+        <item name="android:windowBackground">@color/window_background</item>
     </style>
 
 </resources>

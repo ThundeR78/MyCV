@@ -20,6 +20,7 @@
     <color name="violet_light">#7e57c2</color>
     <color name="violet_dark">#4a148c</color>
 
+    <color name="window_background">#FFF5F5F5</color>
     <color name="actionbar_background">@android:color/background_light</color>
 
     <color name="navdrawer_background">@android:color/background_light</color>
