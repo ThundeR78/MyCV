@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package fr.wetstein.mycv.iap;
+package com.android.vending.billing;
 
 /**
  * Exception thrown when something went wrong with in-app billing.

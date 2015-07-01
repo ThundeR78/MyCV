@@ -17,6 +17,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.android.vending.billing.IabHelper;
+import com.android.vending.billing.IabResult;
+import com.android.vending.billing.Inventory;
+import com.android.vending.billing.Purchase;
+import com.android.vending.billing.SkuDetails;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import fr.sophiacom.ynp.androidlib.YNPClient;
 import fr.wetstein.mycv.MyCVApp;
 import fr.wetstein.mycv.R;
@@ -28,9 +37,6 @@ import fr.wetstein.mycv.fragment.NewsListFragment;
 import fr.wetstein.mycv.fragment.ProfileFragment;
 import fr.wetstein.mycv.fragment.SkillListFragment;
 import fr.wetstein.mycv.fragment.StudyListFragment;
-import fr.wetstein.mycv.iap.IabHelper;
-import fr.wetstein.mycv.iap.IabResult;
-import fr.wetstein.mycv.iap.Purchase;
 import fr.wetstein.mycv.util.Actions;
 import fr.wetstein.mycv.util.PrefsManager;
 
@@ -218,7 +224,7 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
         mHelper.enableDebugLogging(MyCVApp.DEV_MODE);
 
         Log.d(TAG, "Starting setup.");
-        // Start setup. This is asynchronous and the specified listener will be called once setup completes.
+        //Start setup. This is asynchronous and the specified listener will be called once setup completes.
         mHelper.startSetup(new IabHelper.OnIabSetupFinishedListener() {
             public void onIabSetupFinished(IabResult result) {
                 Log.d(TAG, "Setup finished.");
@@ -232,10 +238,16 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
                 if (mHelper == null)
                     return;
 
-                // IAB is fully set up. Now, let's get an inventory of stuff we own.
-                //   --commented out here as we didn't need it for donation purposes.
-                // Log.d(TAG, "Setup successful. Querying inventory.");
-                // mHelper.queryInventoryAsync(mGotInventoryListener);
+                //IAB is fully set up. Now, let's get an inventory of stuff we own.
+                // --commented out here as we didn't need it for donation purposes.
+                Log.d(TAG, "Setup successful. Querying inventory.");
+//                mHelper.queryInventoryAsync(mGotInventoryListener);
+
+                List<String> moreSkus = new ArrayList<String>();
+                moreSkus.add("donate_tiny");
+                moreSkus.add("donate_medium");
+                moreSkus.add("donate_xlarge");
+                mHelper.queryInventoryAsync(true, moreSkus, mGotInventoryListener);
             }
         });
     }
@@ -246,7 +258,7 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
         if (mHelper == null)
             return;
 
-        // Pass on the activity result to the helper for handling
+        //Pass on the activity result to the helper for handling
         if (!mHelper.handleActivityResult(requestCode, resultCode, data)) {
             //Not handled, so handle it ourselves (here's where you'd perform any handling of activity results not related to in-app billing...
             super.onActivityResult(requestCode, resultCode, data);
@@ -304,6 +316,79 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
         return true;
     }
 
+    //Callback when Setup is finished
+    IabHelper.QueryInventoryFinishedListener mGotInventoryListener = new IabHelper.QueryInventoryFinishedListener() {
+        public void onQueryInventoryFinished(IabResult result, Inventory inventory) {
+            // Is it a failure?
+            if (result.isFailure()) {
+                Log.e(TAG, "Failed to query inventory: " + result);
+                return;
+            }
+
+            Log.d(TAG, "Query inventory was successful.");
+
+            /* Check for items we own. Notice that for each purchase, we check
+             * the developer payload to see if it's correct! See verifyDeveloperPayload(). */
+
+            List<SkuDetails> listSku = inventory.getAllSku();
+            Toast.makeText(getApplicationContext(), "NB SKU AVAILABLE = "+(listSku != null ? listSku.size() : 0)+"/3", Toast.LENGTH_LONG).show();
+            Log.v("NB SKU", "SKUS AVAILABLE = "+ (listSku != null ? listSku.size() : 0));
+
+            if (listSku != null && listSku.size() > 0) {
+                String text = "";
+                for (SkuDetails sku : listSku) {
+                    Purchase purchase = inventory.getPurchase(sku.getSku());
+                    if (purchase != null)
+                        text += "Purchase :\nSignature="+purchase.getSignature()+" - Payload="+purchase.getDeveloperPayload()+"\n";
+                    text += "Type="+sku.getType()+"\n";
+                    text += sku.toString() + " \n\n";
+                }
+                String senderTitle = "IAP Test";
+                String[] emailTO = new String[] { "jwetstein@sophiacom.fr" };
+                String[] emailCC = null, emailBC = null;
+                String subject = "IAP SkuDetails";
+                boolean isHTMLFormat = false;
+                Actions.initShareIntent(HomeActivity.this, "plain/text", senderTitle, emailTO, emailCC, emailBC, subject, text, isHTMLFormat);
+
+                /*SkuDetails sku = listSku.get(0);
+                if (sku != null) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
+                    builder.setTitle("SkuDetails")
+                            .setCancelable(false)
+                            .setMessage("Title=" + sku.getTitle() + " - " +
+                                    "Sku=" + sku.getSku() + " - " +
+                                    "Type=" + sku.getType() + " - " +
+                                    "Price=" + sku.getPrice() + " - " +
+                                    "Desc=" + sku.getDescription() + " - \n" +
+                                    "Json=" + sku.toString());
+
+                    Dialog dialog = builder.create();
+                    dialog.show();
+                }*/
+            }
+
+            /* // Check Purchase Premium
+            Purchase premiumPurchase = inventory.getPurchase(SKU_PREMIUM);
+            mIsPremium = (premiumPurchase != null && verifyDeveloperPayload(premiumPurchase));
+            Log.d(TAG, "User is " + (mIsPremium ? "PREMIUM" : "NOT PREMIUM"));
+
+            // Check Subscription
+            Purchase subscribePurchase = inventory.getPurchase(SKU_SUBSCRIPTION);
+            mIsSubscribed = (subscribePurchase != null && verifyDeveloperPayload(subscribePurchase));
+            Log.d(TAG, "User " + (mIsSubscribed ? "HAS" : "DOES NOT HAVE") + " a subscription.");
+
+            // Check Consume Purchase
+            Purchase consumePurchase = inventory.getPurchase(SKU_CONSUME);
+            if (consumePurchase != null && verifyDeveloperPayload(consumePurchase)) {
+                Log.d(TAG, "Consuming it.");
+                mHelper.consumeAsync(inventory.getPurchase(SKU_CONSUME), mConsumeFinishedListener);
+                return;
+            }*/
+
+            Log.d(TAG, "Initial inventory query finished; enabling main UI.");
+        }
+    };
+
     // Callback for when a purchase is finished
     IabHelper.OnIabPurchaseFinishedListener mPurchaseFinishedListener = new IabHelper.OnIabPurchaseFinishedListener() {
         public void onIabPurchaseFinished(IabResult result, Purchase purchase) {
@@ -324,6 +409,34 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
             }
 
             Log.d(TAG, "Purchase successful.");
+
+            if (purchase != null) {
+                String senderTitle = "IAP Test";
+                String[] emailTO = new String[] { "jwetstein@sophiacom.fr" };
+                String[] emailCC = null, emailBC = null;
+                String subject = "IAP Purchase";
+                String text = purchase.toString();
+                text += "\nSku="+purchase.getSku()+"\nOrderId="+purchase.getOrderId()+"\nType="+purchase.getItemType()+"\nSignature="+purchase.getSignature()+"\nPayload="+purchase.getDeveloperPayload();
+                boolean isHTMLFormat = false;
+                Actions.initShareIntent(HomeActivity.this, "plain/text", senderTitle, emailTO, emailCC, emailBC, subject, text, isHTMLFormat);
+
+                /*AlertDialog.Builder builder = new AlertDialog.Builder(HomeActivity.this);
+                builder.setTitle("Purchase")
+                        .setCancelable(false)
+                        .setMessage("Package=" + purchase.getPackageName() + " - " +
+                                "Sku=" + purchase.getSku() + " - " +
+                                "ItemType=" + purchase.getItemType() + " - " +
+                                "OrderId=" + purchase.getOrderId() + " - " +
+                                "PurchaseState=" + purchase.getPurchaseState() + " - " +
+                                "PurchaseTime=" + purchase.getPurchaseTime() + " - " +
+                                "Signature=" + purchase.getSignature() + " - " +
+                                "Token=" + purchase.getToken() + " - " +
+                                "Payload=" + purchase.getDeveloperPayload()+ " \n" +
+                                "Json=" + purchase.toString());
+
+                Dialog dialog = builder.create();
+                dialog.show();*/
+            }
 
             if (purchase.getSku().equals(getString(R.string.iap_donate_tiny_id))
                     || purchase.getSku().equals(getString(R.string.iap_donate_small_id))
@@ -351,7 +464,6 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
             } else {
                 Toast.makeText(getApplicationContext(), getString(R.string.error_consume) + result, Toast.LENGTH_LONG).show();
             }
-
 
             Log.d(TAG, "End consumption flow.");
         }

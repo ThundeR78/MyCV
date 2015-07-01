@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-package fr.wetstein.mycv.iap;
+package com.android.vending.billing;
 
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="fr.wetstein.mycv">
+    package="fr.wetstein.mycv" >
 
-    <supports-screens android:smallScreens="true" android:normalScreens="true" android:largeScreens="true" android:xlargeScreens="true" android:anyDensity="true" />
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+    <uses-feature android:name="android.hardware.touchscreen"  android:required="false" />
+    <uses-feature android:name="android.hardware.telephony"  android:required="false" />
 
-    <permission android:name="fr.wetstein.mycv.permission.MAPS_RECEIVE" android:protectionLevel="signature"/>
+    <permission
+        android:name="fr.wetstein.mycv.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="fr.wetstein.mycv.permission.MAPS_RECEIVE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_GPS" />
     <uses-permission android:name="android.permission.ACCESS_ASSISTED_GPS" />
@@ -22,23 +31,31 @@
 
     <!-- GOOGLE MAPS -->
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
-    <uses-feature android:glEsVersion="0x00020000" android:required="true" />
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
 
     <!-- YNP -->
-    <permission android:name="fr.wetstein.mycv.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+    <permission
+        android:name="fr.wetstein.mycv.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
     <uses-permission android:name="fr.wetstein.mycv.permission.C2D_MESSAGE" />
-    <permission android:name="fr.wetstein.mycv.permission.YNP_MESSAGE" android:protectionLevel="signature" />
+
+    <permission
+        android:name="fr.wetstein.mycv.permission.YNP_MESSAGE"
+        android:protectionLevel="signature" />
+
     <uses-permission android:name="fr.wetstein.mycv.permission.YNP_MESSAGE" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
     <application
-        android:allowBackup="true"
         android:name=".MyCVApp"
+        android:allowBackup="true"
         android:icon="@drawable/me_manga"
-        android:logo="@drawable/me_manga"
         android:label="@string/app_name"
+        android:logo="@drawable/me_manga"
         android:theme="@style/MyCVTheme" >
-
         <activity
             android:name=".activity.HomeActivity"
             android:label="@string/app_name" >
@@ -54,43 +71,54 @@
         <activity
             android:name=".activity.MapActivity"
             android:label="@string/app_name" />
-
-        <activity android:name="com.google.android.gms.ads.AdActivity"
+        <activity
+            android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
             android:theme="@android:style/Theme.Translucent" />
 
         <!-- GOOGLE MAPS -->
         <uses-library android:name="com.google.android.maps" />
         <!-- DEV -->
-        <!--<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="@string/android_dev_key" />-->
+        <!-- <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="@string/app_dev_key" /> -->
         <!-- PROD -->
         <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="@string/app_prod_key" />
         <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
 
         <!-- YOUTUBE -->
 
+
         <!-- YNP -->
         <service android:name="fr.sophiacom.ynp.androidlib.service.YNPService" />
-        <service android:name="fr.sophiacom.ynp.androidlib.service.YNPIDService">
+        <service android:name="fr.sophiacom.ynp.androidlib.service.YNPIDService" >
             <intent-filter>
                 <action android:name="fr.sophiacom.ynp.androidlib.action.GET_GENERATED_ID" />
             </intent-filter>
         </service>
 
         <!-- Only C2DM servers can send messages for the app. If permission is not set - any other app can generate it. -->
-        <receiver android:name="fr.sophiacom.ynp.androidlib.c2dm.C2DMBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+        <receiver
+            android:name="fr.sophiacom.ynp.androidlib.c2dm.C2DMBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+
             <!-- Receive the actual message -->
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
                 <category android:name="fr.wetstein.mycv" />
             </intent-filter>
             <!-- Receive the registration id -->
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
                 <category android:name="fr.wetstein.mycv" />
             </intent-filter>
         </receiver>
 
+        <receiver android:name=".TimeChangedReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.DATE_CHANGED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

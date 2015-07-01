@@ -153,7 +153,9 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private void initMap() {
         if (MyCVApp.isGooglePlayServicesAvailable(getActivity())) {
             if (mMap == null) {
-                mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map_fragment)).getMap();
+                MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map_fragment);
+                if (mapFragment != null)
+                    mMap = mapFragment.getMap();
 
                 //Check if map is created successfully or not
                 if (mMap != null) {
@@ -169,7 +171,9 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private void initStreetView() {
         if (MyCVApp.isGooglePlayServicesAvailable(getActivity())) {
             if (mStreetview == null) {
-                mStreetview = ((StreetViewPanoramaFragment) getFragmentManager().findFragmentById(R.id.streetview_fragment)).getStreetViewPanorama();
+                StreetViewPanoramaFragment streetFragment = (StreetViewPanoramaFragment) getFragmentManager().findFragmentById(R.id.streetview_fragment);
+                if (streetFragment != null)
+                    mStreetview = streetFragment.getStreetViewPanorama();
                 if (mStreetview != null) {
                     setupStreetView();
                 } else

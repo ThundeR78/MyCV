@@ -1,5 +1,7 @@
 package fr.wetstein.mycv.request;
 
+import android.util.Log;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
@@ -9,6 +11,7 @@ import com.android.volley.toolbox.HttpHeaderParser;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
 import java.nio.charset.Charset;
 import java.util.Map;
@@ -17,14 +20,18 @@ import java.util.Map;
  * Created by ThundeR on 05/08/2014.
  */
 public class GsonRequest<T> extends Request<T> {
-    private Gson gson = new Gson();
-    private Class<T> clazz;
-    private Type type;
-    private Map<String, String> headers;
-    private final Response.Listener<T> listener;
+    public static final String TAG = "GsonRequest";
 
-    private final Charset UTF8_CHARSET = Charset.forName("UTF-8");
+    protected Gson gson = new Gson();
+    protected Class<T> clazz;
+    protected Type type;
+    protected Map<String, String> headers;
+    protected String body = null;
+    protected final Response.Listener<T> listener;
 
+    protected final Charset UTF8_CHARSET = Charset.forName("UTF-8");
+
+    //For One
     public GsonRequest(int method, String url, Class<T> classType, Map<String, String> headers, Response.Listener<T> listener, Response.ErrorListener errorListener) {
         super(method, url, errorListener);
         this.clazz = classType;
@@ -32,7 +39,13 @@ public class GsonRequest<T> extends Request<T> {
         this.headers = headers;
         this.listener = listener;
     }
+    //For One with params
+    public GsonRequest(int method, String url, Class<T> classType, Map<String, String> headers, Response.Listener<T> listener, Response.ErrorListener errorListener, String body) {
+        this(method, url, classType, headers, listener, errorListener);
+        this.body = body;
+    }
 
+    //For List
     public GsonRequest(int method, String url, Type type, Map<String, String> headers, Response.Listener<T> listener, Response.ErrorListener errorListener) {
         super(method, url, errorListener);
         this.clazz = null;
@@ -40,16 +53,26 @@ public class GsonRequest<T> extends Request<T> {
         this.headers = headers;
         this.listener = listener;
     }
+    //For List with params
+    public GsonRequest(int method, String url, Type type, Map<String, String> headers, Response.Listener<T> listener, Response.ErrorListener errorListener, String body) {
+        this(method, url, type, headers, listener, errorListener);
+        this.body = body;
+    }
 
     @Override
     public Map<String, String> getHeaders() throws AuthFailureError {
         return headers != null ? headers : super.getHeaders();
     }
 
-//    @Override
-//    public byte[] getBody() throws AuthFailureError {
-//        return postString != null ? postString.getBytes(Charset.forName("UTF-8")) : super.getBody();
-//    }
+    @Override
+    public byte[] getBody() throws AuthFailureError {
+        try {
+            return body.getBytes(getParamsEncoding());
+        } catch (UnsupportedEncodingException e) {
+            Log.e(TAG, e.toString());
+        }
+        return null;
+    }
 
 //    @Override
 //    public String getBodyContentType() {
@@ -70,8 +93,11 @@ public class GsonRequest<T> extends Request<T> {
         try {
             //Parse Response into Object
             String json = new String(response.data, UTF8_CHARSET);  //Replace HttpHeaderParser.parseCharset(response.headers) to fix encoding in UTF-8
-
             T parsedObject = null;
+
+            if (gson == null)
+                gson = new Gson();
+
             if (clazz != null) {
                 //Item
                 parsedObject = gson.fromJson(json, clazz);
@@ -88,3 +114,4 @@ public class GsonRequest<T> extends Request<T> {
         }
     }
 }
+
