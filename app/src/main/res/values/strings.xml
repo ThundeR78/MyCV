@@ -38,8 +38,8 @@
     <string name="button_read_memory">Read memory</string>
 
     <!-- LABEL -->
-    <string name="label_presentation">Présentation</string>
-    <string name="label_personality">Personnalité</string>
+    <string name="label_presentation">Presentation</string>
+    <string name="label_personality">Personality</string>
     <string name="label_consoles">Consoles :</string>
     <string name="label_send_email">Send an email</string>
     <string name="label_qualities">Qualities</string>
