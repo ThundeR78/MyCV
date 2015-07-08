@@ -1,8 +1,8 @@
 package fr.wetstein.mycv.fragment;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.os.Parcelable;
+import android.support.v4.app.Fragment;
 
 public abstract class DetailFragment<Item extends Parcelable> extends Fragment {
 

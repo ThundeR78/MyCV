@@ -1,7 +1,6 @@
 package fr.wetstein.mycv.fragment;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.res.AssetManager;
@@ -11,6 +10,7 @@ import android.graphics.Path;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.InflateException;
 import android.view.LayoutInflater;
@@ -25,9 +25,9 @@ import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.StreetViewPanorama;
-import com.google.android.gms.maps.StreetViewPanoramaFragment;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.SupportStreetViewPanoramaFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.Marker;
@@ -153,7 +153,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private void initMap() {
         if (MyCVApp.isGooglePlayServicesAvailable(getActivity())) {
             if (mMap == null) {
-                MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.map_fragment);
+                SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map_fragment);
                 if (mapFragment != null)
                     mMap = mapFragment.getMap();
 
@@ -171,7 +171,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private void initStreetView() {
         if (MyCVApp.isGooglePlayServicesAvailable(getActivity())) {
             if (mStreetview == null) {
-                StreetViewPanoramaFragment streetFragment = (StreetViewPanoramaFragment) getFragmentManager().findFragmentById(R.id.streetview_fragment);
+                SupportStreetViewPanoramaFragment streetFragment = (SupportStreetViewPanoramaFragment) getChildFragmentManager().findFragmentById(R.id.streetview_fragment);
                 if (streetFragment != null)
                     mStreetview = streetFragment.getStreetViewPanorama();
                 if (mStreetview != null) {

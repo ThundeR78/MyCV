@@ -1,9 +1,9 @@
 package fr.wetstein.mycv.fragment;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
-import com.google.android.youtube.player.YouTubePlayerFragment;
+import com.google.android.youtube.player.YouTubePlayerSupportFragment;
 
 import java.util.Arrays;
 
@@ -36,7 +36,7 @@ public class ParkourFragment extends Fragment implements View.OnClickListener, Y
 
     private static final LatLng CP_LATLNG = new LatLng(48.8028152, 2.3516721);
 
-    private YouTubePlayerFragment ytbPlayerFragment;
+    private YouTubePlayerSupportFragment ytbPlayerFragment;
     private YouTubePlayer ytbPlayer;
     private ImageView imgCPK, imgGS;
     private ImageView imgBookPK1, imgBookPK2;
@@ -53,7 +53,7 @@ public class ParkourFragment extends Fragment implements View.OnClickListener, Y
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_parkour, container, false);
 
-        ytbPlayerFragment = (YouTubePlayerFragment) getFragmentManager().findFragmentById(R.id.youtubeplayerfragment);
+        ytbPlayerFragment = (YouTubePlayerSupportFragment) getChildFragmentManager().findFragmentById(R.id.youtubeplayerfragment);
         ytbPlayerFragment.initialize(getString(MyCVApp.DEV_MODE ? R.string.app_dev_key : R.string.app_prod_key), this);
 
         imgCPK = (ImageView) rootView.findViewById(R.id.image_cpk);
@@ -79,7 +79,7 @@ public class ParkourFragment extends Fragment implements View.OnClickListener, Y
         super.onDestroyView();
 
         if (ytbPlayerFragment != null) {
-            getFragmentManager().beginTransaction().remove(ytbPlayerFragment).commit();
+            getChildFragmentManager().beginTransaction().remove(ytbPlayerFragment).commit();
             //ytbPlayerFragment.onDestroyView();
         }
     }

@@ -1,7 +1,7 @@
 package fr.wetstein.mycv.fragment;
 
-import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
@@ -89,7 +89,7 @@ public class TravelFragment extends Fragment implements GoogleMap.OnInfoWindowCl
     private void initMap() {
         if (MyCVApp.isGooglePlayServicesAvailable(getActivity())) {
             if (mMap == null) {
-                mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map_travel_fragment)).getMap();
+                mMap = ((SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map_travel_fragment)).getMap();
 
                 //Check if map is created successfully or not
                 if (mMap != null) {

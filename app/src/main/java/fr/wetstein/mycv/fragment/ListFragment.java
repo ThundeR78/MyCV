@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import fr.wetstein.mycv.R;
 
-public abstract class ListFragment extends android.app.ListFragment implements SwipeRefreshLayout.OnRefreshListener {
+public abstract class ListFragment extends android.support.v4.app.ListFragment implements SwipeRefreshLayout.OnRefreshListener {
 	public static final String TAG = "ListFragment";
 
     protected SwipeRefreshLayout refreshLayout;

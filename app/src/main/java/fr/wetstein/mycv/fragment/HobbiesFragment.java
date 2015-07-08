@@ -1,11 +1,11 @@
 package fr.wetstein.mycv.fragment;
 
 import android.app.ActionBar;
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
-import android.support.v13.app.FragmentPagerAdapter;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,7 +62,7 @@ public class HobbiesFragment extends Fragment implements ActionBar.TabListener {
 
     public void initTabs() {
         //Create the adapter with fragments
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getChildFragmentManager());
 
         mSectionsPagerAdapter.addItem(new MangaFragment(), getString(R.string.title_manga));
         mSectionsPagerAdapter.addItem(new ParkourFragment(), getString(R.string.title_parkour));

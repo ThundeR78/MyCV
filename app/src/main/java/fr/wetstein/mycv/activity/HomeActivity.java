@@ -4,14 +4,15 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -41,7 +42,7 @@ import fr.wetstein.mycv.util.Actions;
 import fr.wetstein.mycv.util.PrefsManager;
 
 
-public class HomeActivity extends Activity implements NavDrawerFragment.NavigationDrawerCallbacks {
+public class HomeActivity extends AppCompatActivity implements NavDrawerFragment.NavigationDrawerCallbacks {
     public static final String TAG = "HomeActivity";
 
     public static final String EXTRA_CONTENT = "CONTENT";
@@ -74,7 +75,7 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
 
         setContentView(R.layout.activity_home);
 
-        mNavigationDrawerFragment = (NavDrawerFragment) getFragmentManager().findFragmentById(R.id.navigation_drawer);
+        mNavigationDrawerFragment = (NavDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
 
         mTitle = getTitle();
 
@@ -154,7 +155,7 @@ public class HomeActivity extends Activity implements NavDrawerFragment.Navigati
 
         if (fragment != null) {
             //Update the main content by replacing fragments
-            FragmentManager fragmentManager = getFragmentManager();
+            FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction()
                     .replace(R.id.container, fragment)
                     .commit();

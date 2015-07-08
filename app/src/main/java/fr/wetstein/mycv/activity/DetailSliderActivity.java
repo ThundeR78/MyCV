@@ -1,11 +1,11 @@
 package fr.wetstein.mycv.activity;
 
-import android.app.Activity;
-import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 
@@ -16,7 +16,7 @@ import fr.wetstein.mycv.R;
 import fr.wetstein.mycv.adapter.SlidePagerAdapter;
 import fr.wetstein.mycv.fragment.DetailFragment;
 
-public class DetailSliderActivity<Item extends Parcelable> extends Activity {
+public class DetailSliderActivity<Item extends Parcelable> extends AppCompatActivity {
 	
 	private static final String TAG = "DetailSliderActivity";
 
@@ -73,7 +73,7 @@ public class DetailSliderActivity<Item extends Parcelable> extends Activity {
         } else
             finish();
 
-		this.myPagerAdapter = new SlidePagerAdapter(super.getFragmentManager(), fragments);
+		this.myPagerAdapter = new SlidePagerAdapter(super.getSupportFragmentManager(), fragments);
 
 		pager = (ViewPager) super.findViewById(R.id.viewpager);
 		pager.setAdapter(this.myPagerAdapter);

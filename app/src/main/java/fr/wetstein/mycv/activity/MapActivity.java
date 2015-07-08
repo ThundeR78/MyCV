@@ -1,8 +1,8 @@
 package fr.wetstein.mycv.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,7 +31,7 @@ import fr.wetstein.mycv.model.Place;
 import fr.wetstein.mycv.model.School;
 import fr.wetstein.mycv.util.FormatValue;
 
-public class MapActivity extends Activity implements GoogleMap.OnInfoWindowClickListener {
+public class MapActivity extends AppCompatActivity implements GoogleMap.OnInfoWindowClickListener {
 	private static final String TAG = "MapActivity";
 
 	public static final String EXTRA_ITEM_LIST_KEY = "ITEM_LIST";
