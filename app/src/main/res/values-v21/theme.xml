@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="MyCVTheme" parent="@android:style/Theme.Material.Light.DarkActionBar">
+    <style name="MyCVTheme" parent="Base.Theme.MyCV">
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@color/violet_dark</item>
 
-        <item name="android:colorPrimary">@color/violet</item>  <!--   your app branding color for the app bar -->
-        <item name="android:colorPrimaryDark">@color/violet_dark</item> <!--   darker variant for the status bar and contextual app bars -->
-        <item name="android:colorAccent">@color/violet_light</item> <!--   theme UI controls like checkboxes and text fields -->
-        <item name="android:textColorPrimary">@color/white</item>
-
-        <item name="android:navigationBarColor">@color/violet_dark</item>
-
-        <item name="android:windowBackground">@color/window_background</item>
+        <!--<item name="android:navigationBarColor">@color/violet_dark</item>-->
     </style>
 
 </resources>
