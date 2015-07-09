@@ -1,12 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	tools:context="fr.wetstein.mycv.activity.HomeActivity" >
 
-	<item android:id="@+id/item_profile" android:icon="@drawable/ic_launcher" android:title="@string/title_profile" android:orderInCategory="0" />
-    <item android:id="@+id/item_news" android:icon="@drawable/ic_launcher" android:title="@string/title_news" android:orderInCategory="1" />
-	<item android:id="@+id/item_studies" android:icon="@drawable/ic_launcher" android:title="@string/title_studies" android:orderInCategory="2" />
-	<item android:id="@+id/item_career" android:icon="@drawable/ic_launcher" android:title="@string/title_career" android:orderInCategory="3" />
-	<item android:id="@+id/item_skills" android:icon="@drawable/ic_launcher" android:title="@string/title_skills" android:orderInCategory="4" />
-	<item android:id="@+id/item_hobbies" android:icon="@drawable/ic_launcher" android:title="@string/title_hobbies" android:orderInCategory="5" />
-    <item android:id="@+id/item_guestbook" android:icon="@drawable/ic_launcher" android:title="@string/title_guestbook" android:orderInCategory="6" />
+	<group android:checkableBehavior="single">
+		<item
+			android:id="@+id/item_profile"
+			android:icon="@drawable/ic_launcher"
+			android:title="@string/title_profile"
+			android:orderInCategory="0" />
+		<item
+			android:id="@+id/item_news"
+			android:icon="@drawable/ic_launcher"
+			android:title="@string/title_news"
+			android:orderInCategory="1" />
+
+		<item
+			android:id="@+id/item_studies"
+			android:icon="@drawable/ic_launcher"
+			android:title="@string/title_studies"
+			android:orderInCategory="2" />
+
+		<item
+			android:id="@+id/item_career"
+			android:icon="@drawable/ic_launcher"
+			android:title="@string/title_career"
+			android:orderInCategory="3" />
+
+		<item
+			android:id="@+id/item_skills"
+			android:icon="@drawable/ic_launcher"
+			android:title="@string/title_skills"
+			android:orderInCategory="4" />
+
+		<item
+			android:id="@+id/item_hobbies"
+			android:icon="@drawable/ic_launcher"
+			android:title="@string/title_hobbies"
+			android:orderInCategory="5" />
+
+		<item
+			android:id="@+id/item_guestbook"
+			android:icon="@drawable/ic_launcher"
+			android:title="@string/title_guestbook"
+			android:orderInCategory="6" />
+	</group>
 
 </menu>

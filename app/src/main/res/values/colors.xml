@@ -33,4 +33,12 @@
 
     <color name="table_border_color">@android:color/darker_gray</color>
     <color name="table_row_background">@android:color/white</color>
+
+    <color name="my_primary_color">@color/violet</color>
+    <color name="my_primary_dark_color">@color/violet_dark</color>
+    <color name="my_primary_accent">@color/violet_light</color>
+    <color name="my_primary_text">#000000</color>
+    <color name="my_secondary_text">#222222</color>
+    <color name="my_divider">#B6B6B6</color>
+    <color name="my_icons">#FFFFFF</color>
 </resources>

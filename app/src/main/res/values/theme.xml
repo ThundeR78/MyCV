@@ -4,11 +4,13 @@
     <style name="MyCVTheme" parent="Base.Theme.MyCV">
     </style>
 
-    <style name="Base.Theme.MyCV" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/violet</item>
-        <item name="colorPrimaryDark">@color/violet_dark</item>
-        <item name="colorAccent">@color/violet_light</item>
+    <style name="Base.Theme.MyCV" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/my_primary_color</item>
+        <item name="colorPrimaryDark">@color/my_primary_dark_color</item>
+        <item name="colorAccent">@color/my_primary_accent</item>
 
+        <item name="windowActionBar">false</item>
+        <item name="windowActionModeOverlay">true</item>
         <item name="android:windowBackground">@color/window_background</item>
         <!--<item name="android:progressBarStyleHorizontal">@style/CustomProgressBarHorizontal</item>-->
     </style>

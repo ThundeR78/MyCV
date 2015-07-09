@@ -9,13 +9,17 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.android.vending.billing.IabHelper;
@@ -42,7 +46,7 @@ import fr.wetstein.mycv.util.Actions;
 import fr.wetstein.mycv.util.PrefsManager;
 
 
-public class HomeActivity extends AppCompatActivity implements NavDrawerFragment.NavigationDrawerCallbacks {
+public class HomeActivity extends AppCompatActivity implements NavDrawerFragment.NavigationDrawerCallbacks, NavigationView.OnNavigationItemSelectedListener {
     public static final String TAG = "HomeActivity";
 
     public static final String EXTRA_CONTENT = "CONTENT";
@@ -53,8 +57,12 @@ public class HomeActivity extends AppCompatActivity implements NavDrawerFragment
     private IabHelper mHelper;
     private static final int RC_REQUEST = 10001;
 
+    //NAVIGATION
     /** Fragment managing the behaviors, interactions and presentation of the navigation drawer */
-    private NavDrawerFragment mNavigationDrawerFragment;
+    //private NavDrawerFragment mNavigationDrawerFragment;
+    private Toolbar mToolbar;
+    private NavigationView mNavigationView;
+    private DrawerLayout mDrawerLayout;
 
     private String[] mArrayTitle;
     /** Used to store the last screen title. For use in {@link #restoreActionBar()}. */
@@ -75,12 +83,38 @@ public class HomeActivity extends AppCompatActivity implements NavDrawerFragment
 
         setContentView(R.layout.activity_home);
 
-        mNavigationDrawerFragment = (NavDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
+        //mNavigationDrawerFragment = (NavDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
 
         mTitle = getTitle();
 
         // Set up the drawer.
-        mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
+        //mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
+        // Initializing Toolbar and setting it as the actionbar
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+
+        mNavigationView = (NavigationView) findViewById(R.id.navigation_view);
+        mNavigationView.setNavigationItemSelectedListener(this); //Setting Navigation View Item Selected Listener to handle the item click of the navigation menu
+
+        // Initializing Drawer Layout and ActionBarToggle
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close){
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                // Code here will be triggered once the drawer closes as we dont want anything to happen so we leave this blank
+                super.onDrawerClosed(drawerView);
+            }
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                // Code here will be triggered once the drawer open as we dont want anything to happen so we leave this blank
+                super.onDrawerOpened(drawerView);
+            }
+        };
+
+        //Setting the actionbarToggle to drawer layout
+        mDrawerLayout.setDrawerListener(actionBarDrawerToggle);
+        //calling sync state is necessay or else your hamburger icon wont show up
+        actionBarDrawerToggle.syncState();
 
         initIAP();
     }
@@ -157,7 +191,7 @@ public class HomeActivity extends AppCompatActivity implements NavDrawerFragment
             //Update the main content by replacing fragments
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction()
-                    .replace(R.id.container, fragment)
+                    .replace(R.id.fragment_container, fragment)
                     .commit();
 
             mTitle = mArrayTitle[position];
@@ -174,12 +208,12 @@ public class HomeActivity extends AppCompatActivity implements NavDrawerFragment
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        if (!mNavigationDrawerFragment.isDrawerOpen()) {
+       /* if (!mNavigationDrawerFragment.isDrawerOpen()) {
             // Only show items in the action bar relevant to this screen if the drawer is not showing. Otherwise, let the drawer decide what to show in the action bar.
             getMenuInflater().inflate(R.menu.menu_home, menu);
             restoreActionBar();
             return true;
-        }
+        }*/
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -469,4 +503,56 @@ public class HomeActivity extends AppCompatActivity implements NavDrawerFragment
             Log.d(TAG, "End consumption flow.");
         }
     };
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem menuItem) {
+        int id = menuItem.getItemId();
+        Fragment fragment = null;
+
+        //Checking if the item is in checked state or not, if not make it in checked state
+        menuItem.setChecked(!menuItem.isChecked());
+
+        //Closing drawer on item click
+        mDrawerLayout.closeDrawers();
+
+        switch (id) {
+            case R.id.item_profile:
+                fragment = new ProfileFragment();
+                break;
+            case R.id.item_news:
+                fragment = new NewsListFragment();
+                break;
+            case R.id.item_studies:
+                fragment = new StudyListFragment();
+                break;
+            case R.id.item_career:
+                fragment = new ExperienceListFragment();
+                break;
+            case R.id.item_skills:
+                fragment = new SkillListFragment();
+                break;
+            case R.id.item_hobbies:
+                fragment = new HobbiesFragment();
+                break;
+            case R.id.item_guestbook:
+                fragment = new GuestbookFragment();
+                break;
+            default:
+                fragment = new ProfileFragment();
+                break;
+        }
+
+        if (fragment != null) {
+            //Update the main content by replacing fragments
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.fragment_container, fragment)
+                    .commit();
+
+            mTitle = mArrayTitle[menuItem.getOrder()];
+        } else
+            Toast.makeText(this, "En travaux, sera bientôt disponible", Toast.LENGTH_SHORT).show();
+
+        return false;
+    }
 }
