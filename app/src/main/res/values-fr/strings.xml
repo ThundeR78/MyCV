@@ -9,15 +9,15 @@
 
     <!-- TITLE -->
     <string name="title_profile">Profile</string>
-    <string name="title_news">Actualités</string>
+    <string name="title_list_news">Actualités</string>
     <string name="title_detail_news">Actualité</string>
-    <string name="title_studies">Études</string>
+    <string name="title_list_study">Études</string>
     <string name="title_detail_study">Étude</string>
-    <string name="title_career">Expériences</string>
+    <string name="title_list_experience">Expériences</string>
     <string name="title_detail_experience">Expérience</string>
-    <string name="title_skills">Compétences</string>
+    <string name="title_list_skill">Compétences</string>
     <string name="title_contact">Contact</string>
-    <string name="title_hobbies">Loisirs</string>
+    <string name="title_list_hobby">Loisirs</string>
     <string name="title_manga">Manga</string>
     <string name="title_parkour">Parkour</string>
     <string name="title_games">Jeux vidéo</string>

@@ -35,8 +35,6 @@ public class DetailSliderActivity<Item extends Parcelable> extends AppCompatActi
 	List<Fragment> fragments;
 
 	protected ViewPager pager;
-	
-//	protected abstract void updateTitle();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -80,8 +78,8 @@ public class DetailSliderActivity<Item extends Parcelable> extends AppCompatActi
 		pager.setCurrentItem(currentIndex);
 		pager.setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);		//Stop problem auto scroll when swipe
 		
-		getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setHomeButtonEnabled(true);
+		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setHomeButtonEnabled(true);
 	}
 	
 	public ViewPager getPager() {

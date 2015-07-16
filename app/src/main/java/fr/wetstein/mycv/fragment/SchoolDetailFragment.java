@@ -23,7 +23,7 @@ public class SchoolDetailFragment extends DetailFragment<School> implements OnCl
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);		
+		super.onCreate(savedInstanceState);
 
 		Bundle args = getArguments();
 		if (args != null) {

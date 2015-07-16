@@ -1,6 +1,7 @@
 package fr.wetstein.mycv.fragment;
 
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -21,7 +22,9 @@ public class NewsDetailFragment extends DetailFragment<News> implements OnClickL
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);		
+		super.onCreate(savedInstanceState);
+
+		((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.title_detail_news);
 
 		Bundle args = getArguments();
 		if (args != null) {

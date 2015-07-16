@@ -13,31 +13,31 @@
 		<item
 			android:id="@+id/item_news"
 			android:icon="@drawable/ic_announcement_black"
-			android:title="@string/title_news"
+			android:title="@string/title_list_news"
 			android:orderInCategory="1" />
 
 		<item
 			android:id="@+id/item_studies"
 			android:icon="@drawable/ic_school_black"
-			android:title="@string/title_studies"
+			android:title="@string/title_list_study"
 			android:orderInCategory="2" />
 
 		<item
 			android:id="@+id/item_career"
 			android:icon="@drawable/ic_work_black"
-			android:title="@string/title_career"
+			android:title="@string/title_list_experience"
 			android:orderInCategory="3" />
 
 		<item
 			android:id="@+id/item_skills"
 			android:icon="@drawable/ic_extension_black"
-			android:title="@string/title_skills"
+			android:title="@string/title_list_skill"
 			android:orderInCategory="4" />
 
 		<item
 			android:id="@+id/item_hobbies"
 			android:icon="@drawable/ic_palette_black"
-			android:title="@string/title_hobbies"
+			android:title="@string/title_list_hobby"
 			android:orderInCategory="5" />
 
 		<item

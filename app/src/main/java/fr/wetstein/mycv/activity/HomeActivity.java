@@ -1,6 +1,5 @@
 package fr.wetstein.mycv.activity;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -37,7 +36,6 @@ import fr.wetstein.mycv.R;
 import fr.wetstein.mycv.fragment.ExperienceListFragment;
 import fr.wetstein.mycv.fragment.GuestbookFragment;
 import fr.wetstein.mycv.fragment.HobbiesFragment;
-import fr.wetstein.mycv.fragment.NavDrawerFragment;
 import fr.wetstein.mycv.fragment.NewsListFragment;
 import fr.wetstein.mycv.fragment.ProfileFragment;
 import fr.wetstein.mycv.fragment.SkillListFragment;
@@ -46,7 +44,7 @@ import fr.wetstein.mycv.util.Actions;
 import fr.wetstein.mycv.util.PrefsManager;
 
 
-public class HomeActivity extends AppCompatActivity implements NavDrawerFragment.NavigationDrawerCallbacks, NavigationView.OnNavigationItemSelectedListener {
+public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     public static final String TAG = "HomeActivity";
 
     public static final String EXTRA_CONTENT = "CONTENT";
@@ -58,15 +56,10 @@ public class HomeActivity extends AppCompatActivity implements NavDrawerFragment
     private static final int RC_REQUEST = 10001;
 
     //NAVIGATION
-    /** Fragment managing the behaviors, interactions and presentation of the navigation drawer */
-    //private NavDrawerFragment mNavigationDrawerFragment;
     private Toolbar mToolbar;
     private NavigationView mNavigationView;
     private DrawerLayout mDrawerLayout;
 
-    private String[] mArrayTitle;
-    /** Used to store the last screen title. For use in {@link #restoreActionBar()}. */
-    private CharSequence mTitle;
     private int mCurrentPosition = 0;
     private long mCurrentId = -1;
 
@@ -79,16 +72,8 @@ public class HomeActivity extends AppCompatActivity implements NavDrawerFragment
             mContent = getFragmentManager().getFragment(savedInstanceState, EXTRA_CONTENT);
         }*/
 
-        mArrayTitle = getResources().getStringArray(R.array.menu_titles);
-
         setContentView(R.layout.activity_home);
 
-        //mNavigationDrawerFragment = (NavDrawerFragment) getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
-
-        mTitle = getTitle();
-
-        // Set up the drawer.
-        //mNavigationDrawerFragment.setUp(R.id.navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
         // Initializing Toolbar and setting it as the actionbar
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
@@ -115,6 +100,8 @@ public class HomeActivity extends AppCompatActivity implements NavDrawerFragment
         mDrawerLayout.setDrawerListener(actionBarDrawerToggle);
         //calling sync state is necessay or else your hamburger icon wont show up
         actionBarDrawerToggle.syncState();
+
+        changeCurrentFragment(R.id.item_profile);
 
         initIAP();
     }
@@ -157,8 +144,21 @@ public class HomeActivity extends AppCompatActivity implements NavDrawerFragment
         }
     }
 
-        @Override
-    public void onNavigationDrawerItemSelected(int id, int position) {
+    @Override
+    public boolean onNavigationItemSelected(MenuItem menuItem) {
+        //Checking if the item is in checked state or not, if not make it in checked state
+        menuItem.setChecked(!menuItem.isChecked());
+
+        //Closing drawer on item click
+        mDrawerLayout.closeDrawers();
+
+        changeCurrentFragment(menuItem.getItemId());
+        //mTitle = mArrayTitle[menuItem.getOrder()];
+
+        return false;
+    }
+
+    public boolean changeCurrentFragment(int id) {
         Fragment fragment = null;
         switch (id) {
             case R.id.item_profile:
@@ -193,18 +193,19 @@ public class HomeActivity extends AppCompatActivity implements NavDrawerFragment
             fragmentManager.beginTransaction()
                     .replace(R.id.fragment_container, fragment)
                     .commit();
-
-            mTitle = mArrayTitle[position];
-        } else
+            return true;
+        } else {
             Toast.makeText(this, "En travaux, sera bientôt disponible", Toast.LENGTH_SHORT).show();
+            return false;
+        }
     }
 
-    public void restoreActionBar() {
+    /*public void restoreActionBar() {
         ActionBar actionBar = getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setTitle(mTitle);
-    }
+    }*/
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -504,55 +505,5 @@ public class HomeActivity extends AppCompatActivity implements NavDrawerFragment
         }
     };
 
-    @Override
-    public boolean onNavigationItemSelected(MenuItem menuItem) {
-        int id = menuItem.getItemId();
-        Fragment fragment = null;
 
-        //Checking if the item is in checked state or not, if not make it in checked state
-        menuItem.setChecked(!menuItem.isChecked());
-
-        //Closing drawer on item click
-        mDrawerLayout.closeDrawers();
-
-        switch (id) {
-            case R.id.item_profile:
-                fragment = new ProfileFragment();
-                break;
-            case R.id.item_news:
-                fragment = new NewsListFragment();
-                break;
-            case R.id.item_studies:
-                fragment = new StudyListFragment();
-                break;
-            case R.id.item_career:
-                fragment = new ExperienceListFragment();
-                break;
-            case R.id.item_skills:
-                fragment = new SkillListFragment();
-                break;
-            case R.id.item_hobbies:
-                fragment = new HobbiesFragment();
-                break;
-            case R.id.item_guestbook:
-                fragment = new GuestbookFragment();
-                break;
-            default:
-                fragment = new ProfileFragment();
-                break;
-        }
-
-        if (fragment != null) {
-            //Update the main content by replacing fragments
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container, fragment)
-                    .commit();
-
-            mTitle = mArrayTitle[menuItem.getOrder()];
-        } else
-            Toast.makeText(this, "En travaux, sera bientôt disponible", Toast.LENGTH_SHORT).show();
-
-        return false;
-    }
 }

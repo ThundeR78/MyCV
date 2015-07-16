@@ -1,6 +1,7 @@
 package fr.wetstein.mycv.fragment;
 
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -22,7 +23,9 @@ public class StudyDetailFragment extends DetailFragment<Study> implements OnClic
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);		
+		super.onCreate(savedInstanceState);
+
+		((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.title_detail_study);
 
 		Bundle args = getArguments();
 		if (args != null) {

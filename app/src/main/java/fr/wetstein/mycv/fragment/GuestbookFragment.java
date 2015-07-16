@@ -2,6 +2,7 @@ package fr.wetstein.mycv.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,7 @@ public class GuestbookFragment extends Fragment implements DrawSettingsView.IDra
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.title_guestbook);
     }
 
     @Override
