@@ -1,12 +1,11 @@
 package fr.wetstein.mycv.fragment;
 
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,20 +19,17 @@ import fr.wetstein.mycv.R;
 /**
  * Created by ThundeR on 12/07/2014.
  */
-public class HobbiesFragment extends Fragment implements ActionBar.TabListener {
+public class HobbiesFragment extends Fragment implements TabLayout.OnTabSelectedListener {
     public static final String TAG = "HobbiesFragment";
 
-    public SectionsPagerAdapter mSectionsPagerAdapter;  //Provide mFragments for each of the sections
-    public ViewPager mViewPager;    //Host the section contents
-    public List<ActionBar.Tab> mTabs;  //Contain tabs
+    private TabLayout mTabLayout;
+    private SectionsPagerAdapter mSectionsPagerAdapter;  //Provide mFragments for each of the sections
+    private ViewPager mViewPager;    //Host the section contents
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //Create Tabs
-        initTabs();
-        addTabs();
     }
 
     @Override
@@ -41,14 +37,20 @@ public class HobbiesFragment extends Fragment implements ActionBar.TabListener {
         View rootView = inflater.inflate(R.layout.fragment_hobbies, container, false);
 
         // Set up the ViewPager with the sections adapter
-        mViewPager = (ViewPager) rootView.findViewById(R.id.pager);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
-        mViewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+        mViewPager = (ViewPager) rootView.findViewById(R.id.viewpager);
+        initTabsAdapter();
+
+        mTabLayout = (TabLayout) rootView.findViewById(R.id.sliding_tabs);
+        //mTabLayout.setupWithViewPager(mViewPager);
+        //mTabLayout.setTabsFromPagerAdapter(mSectionsPagerAdapter);
+        mTabLayout.setOnTabSelectedListener(this);
+
+        addTabsWithAdapter();
+
+        mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
-                //actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-                //actionBar.setSelectedNavigationItem(position);
-                mTabs.get(position).select();
+                mTabLayout.getTabAt(position).select();
             }
         });
 
@@ -62,47 +64,44 @@ public class HobbiesFragment extends Fragment implements ActionBar.TabListener {
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.title_list_hobby);
     }
 
-    public void initTabs() {
-        //Create the adapter with fragments
+    //Create the adapter with fragments
+    private void initTabsAdapter() {
         mSectionsPagerAdapter = new SectionsPagerAdapter(getChildFragmentManager());
 
         mSectionsPagerAdapter.addItem(new MangaFragment(), getString(R.string.title_manga));
         mSectionsPagerAdapter.addItem(new ParkourFragment(), getString(R.string.title_parkour));
         mSectionsPagerAdapter.addItem(new GamesFragment(), getString(R.string.title_games));
         mSectionsPagerAdapter.addItem(new TravelFragment(), getString(R.string.title_travel));
+
+        mViewPager.setAdapter(mSectionsPagerAdapter);
     }
 
-    public void addTabs() {
-        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
-        mTabs = new ArrayList<ActionBar.Tab>();
-
-        if (actionBar != null) {
-            //For each of the sections in the app, add a tab to the action bar
+    private void addTabsWithAdapter() {
+        if (mTabLayout != null && mSectionsPagerAdapter != null) {
             for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
                 //Create Tab with text corresponding to the page title defined by the adapter
-                ActionBar.Tab tab = actionBar.newTab()
+                TabLayout.Tab tab = mTabLayout.newTab()
                         .setText(mSectionsPagerAdapter.getPageTitle(i))
-                        .setTabListener(this);
+                        .setIcon(R.drawable.ic_school_black);
 
                 //Add Tab
-                mTabs.add(tab);
-                actionBar.addTab(tab);
+                mTabLayout.addTab(tab);
             }
         }
     }
 
     @Override
-    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
+    public void onTabSelected(TabLayout.Tab tab) {
         mViewPager.setCurrentItem(tab.getPosition());
     }
 
     @Override
-    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
+    public void onTabUnselected(TabLayout.Tab tab) {
 
     }
 
     @Override
-    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
+    public void onTabReselected(TabLayout.Tab tab) {
 
     }
 
@@ -111,19 +110,16 @@ public class HobbiesFragment extends Fragment implements ActionBar.TabListener {
         private List<Fragment> mFragments;
         private List<String> mTitles;
 
-
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
             mFragments = new ArrayList<Fragment>();
             mTitles = new ArrayList<String>();
-
         }
 
         public void addItem(Fragment myFragment, String title) {
             mFragments.add(myFragment);
             mTitles.add(title);
         }
-
 
         @Override
         public Fragment getItem(int position) {

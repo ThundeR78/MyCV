@@ -29,4 +29,8 @@
         <item name="android:maxHeight">20dip</item>
     </style>
 
+    <!--<style name="MyTabLayout" parent="Widget.Design.TabLayout">-->
+        <!--<item name="tabBackground">@color/violet</item>-->
+    <!--</style>-->
+
 </resources>
