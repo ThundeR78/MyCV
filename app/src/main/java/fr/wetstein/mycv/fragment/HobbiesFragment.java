@@ -68,10 +68,10 @@ public class HobbiesFragment extends Fragment implements TabLayout.OnTabSelected
     private void initTabsAdapter() {
         mSectionsPagerAdapter = new SectionsPagerAdapter(getChildFragmentManager());
 
-        mSectionsPagerAdapter.addItem(new MangaFragment(), getString(R.string.title_manga));
-        mSectionsPagerAdapter.addItem(new ParkourFragment(), getString(R.string.title_parkour));
-        mSectionsPagerAdapter.addItem(new GamesFragment(), getString(R.string.title_games));
-        mSectionsPagerAdapter.addItem(new TravelFragment(), getString(R.string.title_travel));
+        mSectionsPagerAdapter.addItem(new MangaFragment(), getString(R.string.title_manga), R.drawable.ic_book_black);
+        mSectionsPagerAdapter.addItem(new ParkourFragment(), getString(R.string.title_parkour), R.drawable.ic_directions_run_black);
+        mSectionsPagerAdapter.addItem(new GamesFragment(), getString(R.string.title_games), R.drawable.ic_games_black);
+        mSectionsPagerAdapter.addItem(new TravelFragment(), getString(R.string.title_travel), R.drawable.ic_public_black);
 
         mViewPager.setAdapter(mSectionsPagerAdapter);
     }
@@ -82,7 +82,8 @@ public class HobbiesFragment extends Fragment implements TabLayout.OnTabSelected
                 //Create Tab with text corresponding to the page title defined by the adapter
                 TabLayout.Tab tab = mTabLayout.newTab()
                         .setText(mSectionsPagerAdapter.getPageTitle(i))
-                        .setIcon(R.drawable.ic_school_black);
+                        .setContentDescription(mSectionsPagerAdapter.getPageTitle(i))
+                        .setIcon(mSectionsPagerAdapter.getPageIcon(i));
 
                 //Add Tab
                 mTabLayout.addTab(tab);
@@ -109,16 +110,19 @@ public class HobbiesFragment extends Fragment implements TabLayout.OnTabSelected
 
         private List<Fragment> mFragments;
         private List<String> mTitles;
+        private List<Integer> mIcons;
 
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
             mFragments = new ArrayList<Fragment>();
             mTitles = new ArrayList<String>();
+            mIcons = new ArrayList<>();
         }
 
-        public void addItem(Fragment myFragment, String title) {
+        public void addItem(Fragment myFragment, String title, int icon) {
             mFragments.add(myFragment);
             mTitles.add(title);
+            mIcons.add(icon);
         }
 
         @Override
@@ -134,6 +138,10 @@ public class HobbiesFragment extends Fragment implements TabLayout.OnTabSelected
         @Override
         public CharSequence getPageTitle(int position) {
             return mTitles.get(position);
+        }
+
+        public int getPageIcon(int position) {
+            return mIcons.get(position);
         }
     }
 }
