@@ -89,7 +89,9 @@ public class TravelFragment extends Fragment implements GoogleMap.OnInfoWindowCl
     private void initMap() {
         if (MyCVApp.isGooglePlayServicesAvailable(getActivity())) {
             if (mMap == null) {
-                mMap = ((SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map_travel_fragment)).getMap();
+                SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map_travel_fragment);
+                if (mapFragment != null)
+                    mMap = mapFragment.getMap();
 
                 //Check if map is created successfully or not
                 if (mMap != null) {
