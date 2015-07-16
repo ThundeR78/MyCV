@@ -39,8 +39,6 @@ public class NewsListFragment extends ListFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.title_list_news);
-
         db = new DatabaseManager(getActivity());
     }
 
@@ -52,6 +50,8 @@ public class NewsListFragment extends ListFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.title_list_news);
 
         //Empty View
 //        View noResultLayout = getActivity().getLayoutInflater().inflate(R.layout.view_noresult, null);

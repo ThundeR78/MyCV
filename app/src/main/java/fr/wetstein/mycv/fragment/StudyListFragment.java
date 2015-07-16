@@ -41,8 +41,6 @@ public class StudyListFragment extends ListFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.title_list_study);
-
         //Load items
         listStudy =  StudyParser.loadStudies(getActivity(), true);
         Log.v(TAG, listStudy.toString());
@@ -64,6 +62,8 @@ public class StudyListFragment extends ListFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.title_list_study);
 
         if (listStudy != null) {
             //Fill ExpandableListView with Skills

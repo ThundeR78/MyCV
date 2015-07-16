@@ -40,8 +40,6 @@ public class ExperienceListFragment extends ListFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.title_list_experience);
-
         //Load items
         listExperience =  ExperienceParser.loadCareer(getActivity(), true);
         Log.v(TAG, listExperience.toString());
@@ -63,6 +61,8 @@ public class ExperienceListFragment extends ListFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.title_list_experience);
 
         if (listExperience != null) {
             listAdapter = new ListExperienceAdapter(getActivity(), R.layout.list_experience_item, listExperience);

@@ -24,7 +24,6 @@ public class GuestbookFragment extends Fragment implements DrawSettingsView.IDra
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.title_guestbook);
     }
 
     @Override
@@ -43,6 +42,8 @@ public class GuestbookFragment extends Fragment implements DrawSettingsView.IDra
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.title_guestbook);
 
         setCurrentLineStyle(0);
         setCurrentLineColor(0);

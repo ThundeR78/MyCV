@@ -24,8 +24,6 @@ public class NewsDetailFragment extends DetailFragment<News> implements OnClickL
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.title_detail_news);
-
 		Bundle args = getArguments();
 		if (args != null) {
 
@@ -47,8 +45,8 @@ public class NewsDetailFragment extends DetailFragment<News> implements OnClickL
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		
-		getActivity().getActionBar().setTitle(R.string.title_detail_news);
+
+		((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.title_detail_news);
 	}
 	
 	@Override

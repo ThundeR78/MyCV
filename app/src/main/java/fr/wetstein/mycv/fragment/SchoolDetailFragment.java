@@ -1,6 +1,7 @@
 package fr.wetstein.mycv.fragment;
 
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -46,8 +47,8 @@ public class SchoolDetailFragment extends DetailFragment<School> implements OnCl
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		
-		getActivity().getActionBar().setTitle(R.string.title_detail_study);
+
+		((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.title_detail_study);
 	}
 	
 	@Override

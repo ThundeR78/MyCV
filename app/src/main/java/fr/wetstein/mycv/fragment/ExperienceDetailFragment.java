@@ -26,8 +26,6 @@ public class ExperienceDetailFragment extends DetailFragment<Experience> impleme
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.title_detail_experience);
-
 		Bundle args = getArguments();
 		if (args != null) {
 
@@ -59,8 +57,8 @@ public class ExperienceDetailFragment extends DetailFragment<Experience> impleme
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		
-		getActivity().getActionBar().setTitle(R.string.title_detail_experience);
+
+		((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.title_detail_experience);
 	}
 	
 	@Override

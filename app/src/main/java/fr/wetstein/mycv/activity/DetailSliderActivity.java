@@ -6,6 +6,7 @@ import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 
@@ -25,6 +26,8 @@ public class DetailSliderActivity<Item extends Parcelable> extends AppCompatActi
 	public static final String POSITION_KEY = "POSITION";
 	public final static String EXTRAS_BUNDLE_KEY = "EXTRA_BUNDLE";
 	public final static String EXTRAS_RESULT_KEY = "EXTRA_RESULT";
+
+	private Toolbar mToolbar;
 
 	protected SlidePagerAdapter myPagerAdapter;
 	protected String fragmentName;
@@ -53,6 +56,10 @@ public class DetailSliderActivity<Item extends Parcelable> extends AppCompatActi
         }
 
         setContentView(R.layout.activity_slide_detail);
+
+		// Initializing Toolbar and setting it as the actionbar
+		mToolbar = (Toolbar) findViewById(R.id.toolbar);
+		setSupportActionBar(mToolbar);
 
         if (extras != null && results != null)
             extras.putAll(results);

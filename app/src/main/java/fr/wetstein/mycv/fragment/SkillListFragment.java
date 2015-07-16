@@ -46,8 +46,6 @@ public class SkillListFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.title_list_skill);
-
         //Load Skills
         mapSkills =  SkillParser.loadSkills(getActivity());
         Log.v(TAG, mapSkills.toString());
@@ -66,6 +64,8 @@ public class SkillListFragment extends Fragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.title_list_skill);
 
         if (mapSkills != null) {
             //Get all keys

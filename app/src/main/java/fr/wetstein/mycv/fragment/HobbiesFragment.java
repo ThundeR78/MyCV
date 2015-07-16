@@ -1,12 +1,12 @@
 package fr.wetstein.mycv.fragment;
 
-import android.app.ActionBar;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,8 +30,6 @@ public class HobbiesFragment extends Fragment implements ActionBar.TabListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.title_list_hobby);
 
         //Create Tabs
         initTabs();
@@ -61,6 +59,7 @@ public class HobbiesFragment extends Fragment implements ActionBar.TabListener {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.title_list_hobby);
     }
 
     public void initTabs() {
@@ -74,19 +73,21 @@ public class HobbiesFragment extends Fragment implements ActionBar.TabListener {
     }
 
     public void addTabs() {
-        ActionBar actionBar = getActivity().getActionBar();
+        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
         mTabs = new ArrayList<ActionBar.Tab>();
 
-        //For each of the sections in the app, add a tab to the action bar
-        for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
-            //Create Tab with text corresponding to the page title defined by the adapter
-            ActionBar.Tab tab = actionBar.newTab()
-                .setText(mSectionsPagerAdapter.getPageTitle(i))
-                .setTabListener(this);
+        if (actionBar != null) {
+            //For each of the sections in the app, add a tab to the action bar
+            for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
+                //Create Tab with text corresponding to the page title defined by the adapter
+                ActionBar.Tab tab = actionBar.newTab()
+                        .setText(mSectionsPagerAdapter.getPageTitle(i))
+                        .setTabListener(this);
 
-            //Add Tab
-            mTabs.add(tab);
-            actionBar.addTab(tab);
+                //Add Tab
+                mTabs.add(tab);
+                actionBar.addTab(tab);
+            }
         }
     }
 

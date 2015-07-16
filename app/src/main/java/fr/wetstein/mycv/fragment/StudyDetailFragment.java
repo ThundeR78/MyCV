@@ -25,8 +25,6 @@ public class StudyDetailFragment extends DetailFragment<Study> implements OnClic
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.title_detail_study);
-
 		Bundle args = getArguments();
 		if (args != null) {
 
@@ -48,8 +46,8 @@ public class StudyDetailFragment extends DetailFragment<Study> implements OnClic
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		
-		getActivity().getActionBar().setTitle(R.string.title_detail_study);
+
+		((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.title_detail_study);
 	}
 	
 	@Override
