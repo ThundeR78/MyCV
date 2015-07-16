@@ -38,7 +38,27 @@
 			android:id="@+id/item_hobbies"
 			android:icon="@drawable/ic_palette_black"
 			android:title="@string/title_list_hobby"
-			android:orderInCategory="5" />
+			app:showAsAction="collapseActionView"
+			android:orderInCategory="5" >
+			<!--<group>
+				<item
+					android:id="@+id/item_hobby_manga"
+					android:icon="@drawable/ic_book_black"
+					android:title="@string/title_manga"/>
+				<item
+					android:id="@+id/item_hobby_parkour"
+					android:icon="@drawable/ic_book_black"
+					android:title="@string/title_parkour"/>
+				<item
+					android:id="@+id/item_hobby_"
+					android:icon="@drawable/ic_book_black"
+					android:title="@string/title_games"/>
+				<item
+					android:id="@+id/item_hobby_travel"
+					android:icon="@drawable/ic_book_black"
+					android:title="@string/title_travel"/>
+			</group>-->
+		</item>
 
 		<item
 			android:id="@+id/item_guestbook"
