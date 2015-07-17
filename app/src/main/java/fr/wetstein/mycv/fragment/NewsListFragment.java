@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -117,26 +116,26 @@ public class NewsListFragment extends ListFragment {
     private void updateListView(List<News> listItem) {
         if (listItem != null) {
             //Fill ListView with News
-            listAdapter = new ListNewsAdapter(getActivity(), R.layout.list_news_item, listItem);
-            setListAdapter(listAdapter);
+            listAdapter = new ListNewsAdapter(listItem);
+            list.setAdapter(listAdapter);
+
+            listAdapter.setOnItemClickListener(new ListNewsAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(View view, int position) {
+                    //Go to Detail with parameters
+                    Intent intent = new Intent(getActivity(), DetailSliderActivity.class);
+                    intent.putExtra(DetailSliderActivity.FRAGMENT_NAME_KEY, NewsDetailFragment.class.getName());
+                    intent.putParcelableArrayListExtra(DetailSliderActivity.ITEM_LIST_KEY, (ArrayList<News>) listNews);
+                    intent.putExtra(DetailSliderActivity.POSITION_KEY, position);
+                    Bundle extras = new Bundle();
+                    intent.putExtra(DetailSliderActivity.EXTRAS_BUNDLE_KEY, extras);
+
+                    startActivity(intent);
+                }
+            });
+
             listAdapter.notifyDataSetChanged();
         }
-    }
-
-    @Override
-    public void onListItemClick(ListView lv, View view, int position, long id) {
-        super.onListItemClick(lv, view, position, id);
-        ListNewsAdapter lc_adapter = (ListNewsAdapter) lv.getAdapter();
-
-        //Go to Detail with parameters
-        Intent intent = new Intent(getActivity(), DetailSliderActivity.class);
-        intent.putExtra(DetailSliderActivity.FRAGMENT_NAME_KEY, NewsDetailFragment.class.getName());
-        intent.putParcelableArrayListExtra(DetailSliderActivity.ITEM_LIST_KEY, (ArrayList<News>) listNews);
-        intent.putExtra(DetailSliderActivity.POSITION_KEY, position);
-        Bundle extras = new Bundle();
-        intent.putExtra(DetailSliderActivity.EXTRAS_BUNDLE_KEY, extras);
-
-        startActivity(intent);
     }
 
     @Override
