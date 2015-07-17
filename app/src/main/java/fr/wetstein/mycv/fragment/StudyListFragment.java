@@ -13,7 +13,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -66,9 +65,23 @@ public class StudyListFragment extends ListFragment {
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.title_list_study);
 
         if (listStudy != null) {
-            //Fill ExpandableListView with Skills
-            listAdapter = new ListStudyAdapter(getActivity(), R.layout.list_study_item, listStudy);
-            setListAdapter(listAdapter);
+            listAdapter = new ListStudyAdapter(listStudy);
+            list.setAdapter(listAdapter);
+
+            listAdapter.setOnItemClickListener(new ListStudyAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(View view, int position) {
+                    //Go to Detail with parameters
+                    Intent intent = new Intent(getActivity(), DetailSliderActivity.class);
+                    intent.putExtra(DetailSliderActivity.FRAGMENT_NAME_KEY, StudyDetailFragment.class.getName());
+                    intent.putParcelableArrayListExtra(DetailSliderActivity.ITEM_LIST_KEY, (ArrayList<Study>) listStudy);
+                    intent.putExtra(DetailSliderActivity.POSITION_KEY, position);
+                    Bundle extras = new Bundle();
+                    intent.putExtra(DetailSliderActivity.EXTRAS_BUNDLE_KEY, extras);
+
+                    startActivity(intent);
+                }
+            });
         }
     }
 
@@ -101,22 +114,6 @@ public class StudyListFragment extends ListFragment {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onListItemClick(ListView lv, View view, int position, long id) {
-        super.onListItemClick(lv, view, position, id);
-        ListStudyAdapter lc_adapter = (ListStudyAdapter) lv.getAdapter();
-
-        //Go to Detail with parameters
-        Intent intent = new Intent(getActivity(), DetailSliderActivity.class);
-        intent.putExtra(DetailSliderActivity.FRAGMENT_NAME_KEY, StudyDetailFragment.class.getName());
-        intent.putParcelableArrayListExtra(DetailSliderActivity.ITEM_LIST_KEY, (ArrayList<Study>) listStudy);
-        intent.putExtra(DetailSliderActivity.POSITION_KEY, position);
-        Bundle extras = new Bundle();
-        intent.putExtra(DetailSliderActivity.EXTRAS_BUNDLE_KEY, extras);
-
-        startActivity(intent);
     }
 
     public void sortList(List<Study> list) {

@@ -69,7 +69,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         /*if (savedInstanceState != null) {
             //Restore the fragment's instance
-            mContent = getFragmentManager().getFragment(savedInstanceState, EXTRA_CONTENT);
+            content = getFragmentManager().getFragment(savedInstanceState, EXTRA_CONTENT);
         }*/
 
         setContentView(R.layout.activity_home);
@@ -131,7 +131,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         super.onSaveInstanceState(outState);
 
         //Save the fragment's instance
-        //getFragmentManager().putFragment(outState, EXTRA_CONTENT, mContent);
+        //getFragmentManager().putFragment(outState, EXTRA_CONTENT, content);
     }
 
     @Override
@@ -153,7 +153,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         mDrawerLayout.closeDrawers();
 
         changeCurrentFragment(menuItem.getItemId());
-        //mTitle = mArrayTitle[menuItem.getOrder()];
+        //title = mArrayTitle[menuItem.getOrder()];
 
         return false;
     }
@@ -204,7 +204,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         ActionBar actionBar = getActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_STANDARD);
         actionBar.setDisplayShowTitleEnabled(true);
-        actionBar.setTitle(mTitle);
+        actionBar.setTitle(title);
     }*/
 
     @Override

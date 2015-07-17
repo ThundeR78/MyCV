@@ -1,10 +1,10 @@
 package fr.wetstein.mycv.adapter;
 
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,57 +17,83 @@ import fr.wetstein.mycv.util.FormatValue;
 /**
  * Created by ThundeR on 10/07/2014.
  */
-public class ListExperienceAdapter extends ArrayAdapter<Experience> {
+public class ListExperienceAdapter extends RecyclerView.Adapter<ListExperienceAdapter.ViewHolder> {
     public static final String TAG = "ListExperienceAdapter";
 
-    private LayoutInflater mLayoutInflater;
-    private int mItemResourceId;
+    private List<Experience> mListItem;
+    private OnItemClickListener mOnItemClickListener;
+    private Context mContext;
 
-    public ListExperienceAdapter(Context context, int viewResourceId, List<Experience> listExperience) {
-        super(context, viewResourceId, listExperience);
-
-        mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        mItemResourceId = viewResourceId;
+    public ListExperienceAdapter(List<Experience> listItem) {
+        mListItem = listItem;
     }
 
-    public View getView(int in_position, View convertView, ViewGroup in_parent) {
-        ViewHolder holder = null;
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        mContext = parent.getContext();
+        View view = LayoutInflater.from(mContext).inflate(R.layout.list_experience_item, parent, false);
+        ViewHolder viewHolder = new ViewHolder(view);
 
-        Experience item = getItem(in_position);
-        if (item != null) {
-            //Holder
-            if (convertView == null) {
-                convertView = mLayoutInflater.inflate(mItemResourceId, null);
-                holder = new ViewHolder();
-                holder.logo = (ImageView) convertView.findViewById(R.id.list_exp_item_logo);
-                holder.name = (TextView) convertView.findViewById(R.id.list_exp_item_name);
-                holder.date = (TextView) convertView.findViewById(R.id.list_exp_item_date);
-                holder.type = (TextView) convertView.findViewById(R.id.list_exp_item_type);
-                convertView.setTag(holder);
-            } else {
-                holder = (ViewHolder) convertView.getTag();
-            }
+        return viewHolder;
+    }
 
-            //Dates
-            String strDateBegin = FormatValue.monthDateFormat.format(item.dateBegin);
-            String strDateEnd = (item.dateEnd != null) ? FormatValue.monthDateFormat.format(item.dateEnd) : getContext().getString(R.string.word_today);
-            String expDuration = getContext().getString(R.string.value_dates, strDateBegin, strDateEnd);
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        Experience item = mListItem.get(position);
 
-            if (item.company != null) {
-                holder.logo.setImageResource(item.company.logo);
-                holder.name.setText(item.company.name);
-            }
-            holder.date.setText(expDuration);
-            holder.type.setText(item.type);
+        //Dates
+        String strDateBegin = FormatValue.monthDateFormat.format(item.dateBegin);
+        String strDateEnd = (item.dateEnd != null) ? FormatValue.monthDateFormat.format(item.dateEnd) : mContext.getString(R.string.word_today);
+        String expDuration = mContext.getString(R.string.value_dates, strDateBegin, strDateEnd);
+
+        if (item.company != null) {
+            holder.logo.setImageResource(item.company.logo);
+            holder.name.setText(item.company.name);
         }
-
-        return convertView;
+        holder.date.setText(expDuration);
+        holder.type.setText(item.type);
     }
 
-    public static class ViewHolder {
+    @Override
+    public int getItemCount() {
+        return mListItem.size();
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        mOnItemClickListener = onItemClickListener;
+    }
+
+    //View Holder
+    public class ViewHolder extends RecyclerView.ViewHolder  implements View.OnClickListener {
         public ImageView logo;
         public TextView name;
         public TextView date;
         public TextView type;
+
+        private View.OnClickListener mOnClickListener;
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+
+            if (itemView != null) {
+                logo = (ImageView) itemView.findViewById(R.id.list_exp_item_logo);
+                name = (TextView) itemView.findViewById(R.id.list_exp_item_name);
+                date = (TextView) itemView.findViewById(R.id.list_exp_item_date);
+                type = (TextView) itemView.findViewById(R.id.list_exp_item_type);
+                itemView.setOnClickListener(this);
+            }
+        }
+
+        @Override
+        public void onClick(View v) {
+            if (mOnItemClickListener != null) {
+                mOnItemClickListener.onItemClick(v, getLayoutPosition());
+            }
+        }
+    }
+
+    //Click Listener
+    public interface OnItemClickListener {
+        public void onItemClick(View view , int position);
     }
 }

@@ -13,7 +13,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -65,8 +64,23 @@ public class ExperienceListFragment extends ListFragment {
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.title_list_experience);
 
         if (listExperience != null) {
-            listAdapter = new ListExperienceAdapter(getActivity(), R.layout.list_experience_item, listExperience);
-            setListAdapter(listAdapter);
+            listAdapter = new ListExperienceAdapter(listExperience);
+            list.setAdapter(listAdapter);
+
+            listAdapter.setOnItemClickListener(new ListExperienceAdapter.OnItemClickListener() {
+                @Override
+                public void onItemClick(View view, int position) {
+                    //Go to Detail with parameters
+                    Intent intent = new Intent(getActivity(), DetailSliderActivity.class);
+                    intent.putExtra(DetailSliderActivity.FRAGMENT_NAME_KEY, ExperienceDetailFragment.class.getName());
+                    intent.putParcelableArrayListExtra(DetailSliderActivity.ITEM_LIST_KEY, (ArrayList<Experience>) listExperience);
+                    intent.putExtra(DetailSliderActivity.POSITION_KEY, position);
+                    Bundle extras = new Bundle();
+                    intent.putExtra(DetailSliderActivity.EXTRAS_BUNDLE_KEY, extras);
+
+                    startActivity(intent);
+                }
+            });
         }
     }
 
@@ -98,22 +112,6 @@ public class ExperienceListFragment extends ListFragment {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    @Override
-    public void onListItemClick(ListView lv, View view, int position, long id) {
-        super.onListItemClick(lv, view, position, id);
-        ListExperienceAdapter lc_adapter = (ListExperienceAdapter) lv.getAdapter();
-
-        //Go to Detail with parameters
-        Intent intent = new Intent(getActivity(), DetailSliderActivity.class);
-        intent.putExtra(DetailSliderActivity.FRAGMENT_NAME_KEY, ExperienceDetailFragment.class.getName());
-        intent.putParcelableArrayListExtra(DetailSliderActivity.ITEM_LIST_KEY, (ArrayList<Experience>) listExperience);
-        intent.putExtra(DetailSliderActivity.POSITION_KEY, position);
-        Bundle extras = new Bundle();
-        intent.putExtra(DetailSliderActivity.EXTRAS_BUNDLE_KEY, extras);
-
-        startActivity(intent);
     }
 
     public void sortList(List<Experience> list) {

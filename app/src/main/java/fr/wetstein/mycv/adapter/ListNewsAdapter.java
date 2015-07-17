@@ -37,13 +37,13 @@ public class ListNewsAdapter extends RecyclerView.Adapter<ListNewsAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, int position) {
         News item = mListItem.get(position);
 
-        holder.mTitle.setText(item.title);
-        holder.mContent.setText(item.content);
+        holder.title.setText(item.title);
+        holder.content.setText(item.content);
         if (item.listTag != null && item.listTag.size()>0 && !item.listTag.get(0).equals("ynp_default_tag")) {
             String tags = TextUtils.join(", ", item.listTag);
-            holder.mTags.setText(tags);
+            holder.tags.setText(tags);
         } else
-            holder.mTags.setVisibility(View.GONE);
+            holder.tags.setVisibility(View.GONE);
     }
 
     @Override
@@ -55,10 +55,11 @@ public class ListNewsAdapter extends RecyclerView.Adapter<ListNewsAdapter.ViewHo
         mOnItemClickListener = onItemClickListener;
     }
 
+    //View Holder
     public class ViewHolder extends RecyclerView.ViewHolder  implements View.OnClickListener {
-        public TextView mTitle;
-        public TextView mContent;
-        public TextView mTags;
+        public TextView title;
+        public TextView content;
+        public TextView tags;
 
         private View.OnClickListener mOnClickListener;
 
@@ -66,9 +67,10 @@ public class ListNewsAdapter extends RecyclerView.Adapter<ListNewsAdapter.ViewHo
             super(itemView);
 
             if (itemView != null) {
-                mTitle = (TextView) itemView.findViewById(R.id.list_news_item_title);
-                mContent = (TextView) itemView.findViewById(R.id.list_news_item_content);
-                mTags = (TextView) itemView.findViewById(R.id.list_news_item_tags);
+                title = (TextView) itemView.findViewById(R.id.list_news_item_title);
+                content = (TextView) itemView.findViewById(R.id.list_news_item_content);
+                tags = (TextView) itemView.findViewById(R.id.list_news_item_tags);
+                itemView.setOnClickListener(this);
             }
         }
 
@@ -80,6 +82,7 @@ public class ListNewsAdapter extends RecyclerView.Adapter<ListNewsAdapter.ViewHo
         }
     }
 
+    //Click Listener
     public interface OnItemClickListener {
         public void onItemClick(View view , int position);
     }
