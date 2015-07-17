@@ -39,19 +39,23 @@ public class ListExperienceAdapter extends RecyclerView.Adapter<ListExperienceAd
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Experience item = mListItem.get(position);
+        if (mListItem != null) {
+            Experience item = mListItem.get(position);
 
-        //Dates
-        String strDateBegin = FormatValue.monthDateFormat.format(item.dateBegin);
-        String strDateEnd = (item.dateEnd != null) ? FormatValue.monthDateFormat.format(item.dateEnd) : mContext.getString(R.string.word_today);
-        String expDuration = mContext.getString(R.string.value_dates, strDateBegin, strDateEnd);
+            if (item != null) {
+                //Dates
+                String strDateBegin = FormatValue.monthDateFormat.format(item.dateBegin);
+                String strDateEnd = (item.dateEnd != null) ? FormatValue.monthDateFormat.format(item.dateEnd) : mContext.getString(R.string.word_today);
+                String expDuration = mContext.getString(R.string.value_dates, strDateBegin, strDateEnd);
 
-        if (item.company != null) {
-            holder.logo.setImageResource(item.company.logo);
-            holder.name.setText(item.company.name);
+                if (item.company != null) {
+                    holder.logo.setImageResource(item.company.logo);
+                    holder.name.setText(item.company.name);
+                }
+                holder.date.setText(expDuration);
+                holder.type.setText(item.type);
+            }
         }
-        holder.date.setText(expDuration);
-        holder.type.setText(item.type);
     }
 
     @Override

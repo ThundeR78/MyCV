@@ -26,7 +26,7 @@ public class ListStudyAdapter extends RecyclerView.Adapter<ListStudyAdapter.View
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_news_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_study_item, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
 
         return viewHolder;
@@ -34,15 +34,19 @@ public class ListStudyAdapter extends RecyclerView.Adapter<ListStudyAdapter.View
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Study item = mListItem.get(position);
+        if (mListItem != null) {
+            Study item = mListItem.get(position);
 
-        holder.name.setText(item.name);
-        holder.option.setText(item.option);
-        holder.date.setText(item.date);
-        if (item.school != null)
-            holder.school.setText(item.school.name);
-        else
-            holder.school.setVisibility(View.GONE);
+            if (item != null) {
+                holder.name.setText(item.name);
+                holder.option.setText(item.option);
+                holder.date.setText(item.date);
+                if (item.school != null)
+                    holder.school.setText(item.school.name);
+                else
+                    holder.school.setVisibility(View.GONE);
+            }
+        }
     }
 
     @Override
