@@ -9,6 +9,9 @@
     <dimen name="navdrawer_image_size">100dp</dimen>
 
     <dimen name="card_margin">16dp</dimen>
+    <dimen name="card_margin_item">8dp</dimen>
+    <dimen name="card_padding">16dp</dimen>
+    <dimen name="card_padding_item">16dp</dimen>
 
     <dimen name="button_textsize">22sp</dimen>
     <dimen name="button_corners_radius">3dp</dimen>

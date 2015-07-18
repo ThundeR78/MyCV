@@ -117,8 +117,6 @@ public class ParkourFragment extends Fragment implements View.OnClickListener, Y
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer player, boolean wasRestored) {
         ytbPlayer = player;
 
-        //Toast.makeText(getActivity(), "YouTubePlayer.onInitializationSuccess()", Toast.LENGTH_LONG).show();
-
         //youTubePlayer.setPlayerStateChangeListener(myPlayerStateChangeListener);
         ytbPlayer.setPlaybackEventListener(new YouTubePlayer.PlaybackEventListener() {
             @Override

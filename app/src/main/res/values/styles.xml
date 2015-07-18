@@ -180,16 +180,24 @@
     <style name="CardContainer">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_margin">@dimen/card_margin</item>
+        <item name="android:layout_margin">0dp</item>
     </style>
     <style name="CardContent" parent="android:Widget">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:paddingLeft">16dp</item>
-        <item name="android:paddingRight">16dp</item>
-        <item name="android:paddingTop">24dp</item>
-        <item name="android:paddingBottom">24dp</item>
+        <item name="android:padding">@dimen/card_padding</item>
         <item name="android:orientation">vertical</item>
+    </style>
+    <style name="CardContainerItem">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/card_margin</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="android:layout_marginLeft">@dimen/card_margin</item>
+        <item name="android:layout_marginRight">@dimen/card_margin</item>
+    </style>
+    <style name="CardContent.Item">
+        <item name="android:padding">@dimen/card_padding_item</item>
     </style>
 
 </resources>
