@@ -2,7 +2,9 @@ package fr.wetstein.mycv.fragment;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Html;
 import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -57,7 +59,13 @@ public class NewsDetailFragment extends DetailFragment<News> implements OnClickL
 		if (null != inItem && this.isAdded()) {
 			//Display item data
             textTitle.setText(inItem.title);
-            textContent.setText(inItem.content);
+
+			if (inItem.getType() == News.Type.HTML) {
+				textContent.setText(Html.fromHtml(inItem.content));
+				textContent.setMovementMethod(LinkMovementMethod.getInstance());
+			} else {
+				textContent.setText(inItem.content);
+			}
 
 			List<String> tags = new ArrayList<>();
 			for (String tag : inItem.listTag)

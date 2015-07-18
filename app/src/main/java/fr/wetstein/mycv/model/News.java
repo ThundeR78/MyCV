@@ -33,6 +33,16 @@ public class News implements Parcelable {
         listTag = new ArrayList<String>();
     }
 
+    public enum Type {
+        TEXT, MARKDOWN, HTML
+    }
+
+    public Type getType() {
+        return contentType.equals("HTML") ? Type.HTML :
+                contentType.equals("MARKDOWN") ? Type.MARKDOWN :
+                        Type.TEXT;
+    }
+
     public static final Creator<News> CREATOR = new Creator<News>() {
         @Override
         public News createFromParcel(Parcel in) {
