@@ -41,7 +41,7 @@ public class ListNewsAdapter extends RecyclerView.Adapter<ListNewsAdapter.ViewHo
             if (item != null) {
                 holder.title.setText(item.title);
                 holder.content.setText(item.content);
-                if (item.listTag != null && item.listTag.size() > 0 && !item.listTag.get(0).equals("ynp_default_tag")) {
+                if (item.listTag != null && item.listTag.size() > 0 && !item.listTag.get(0).equalsIgnoreCase("ynp_default_tag")) {
                     String tags = TextUtils.join(", ", item.listTag);
                     holder.tags.setText(tags);
                 } else

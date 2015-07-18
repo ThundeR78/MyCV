@@ -31,6 +31,8 @@ public class NewsRequest extends RequestManager {
     private static final String URL_INSTALL = "/installation/";
     private static final String URL_STREAM = "/stream/";
     private static final String URL_ITEMS = "/items";
+    private static final String PARAM_TAGS = "tags=";
+    private static final String VALUE_TAGS = "job,conf,study";
 
     private static String appId = "uut9ogl8j1ofvhc6";
     private static String installId = "";
@@ -58,6 +60,8 @@ public class NewsRequest extends RequestManager {
 
         urlBuilder.append(URL_STREAM).append(streamId);
         urlBuilder.append(URL_ITEMS);
+        urlBuilder.append("?");
+        //urlBuilder.append(PARAM_TAGS).append(VALUE_TAGS);
 
         return urlBuilder.toString();
     }

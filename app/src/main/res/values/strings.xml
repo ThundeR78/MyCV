@@ -137,4 +137,6 @@
     <string name="thank_you">Thank you for helping the developers!</string>
     <string name="error_consume">Error while consuming: </string>
 
+    <!-- ALERT -->
+    <string name="alert_new_news">You have %1$d new News !</string>
 </resources>

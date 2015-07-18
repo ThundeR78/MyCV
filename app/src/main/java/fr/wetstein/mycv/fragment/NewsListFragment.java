@@ -3,6 +3,7 @@ package fr.wetstein.mycv.fragment;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -83,13 +84,20 @@ public class NewsListFragment extends ListFragment {
             @Override
             public void onResponse(List<News> listItem) {
                 Log.v(TAG, "SUCCESS REQUEST : "+ (listItem != null ? listItem.size() : "null"));
-                //Toast.makeText(getActivity(), "Success", Toast.LENGTH_LONG).show();
 
                 if (listItem != null) {
                     db.insertOrUpdateListNews(listItem);
 
                     listNews = db.getAllNews();
+                    int nbNewNews = listNews.size() - list.getChildCount();
                     updateListView(listNews);
+
+                    if (nbNewNews > 0) {
+                        Snackbar.make(getActivity().findViewById(R.id.fragment_container),
+                                getString(R.string.alert_new_news, nbNewNews),
+                                Snackbar.LENGTH_SHORT)
+                                .show();
+                    }
                 }
 
                 refreshLayout.setRefreshing(false);

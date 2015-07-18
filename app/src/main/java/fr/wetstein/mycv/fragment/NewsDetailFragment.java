@@ -12,6 +12,9 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fr.wetstein.mycv.R;
 import fr.wetstein.mycv.model.News;
 
@@ -55,7 +58,11 @@ public class NewsDetailFragment extends DetailFragment<News> implements OnClickL
 			//Display item data
             textTitle.setText(inItem.title);
             textContent.setText(inItem.content);
-            textTags.setText(TextUtils.join(", ", inItem.listTag));
+
+			List<String> tags = new ArrayList<>();
+			for (String tag : inItem.listTag)
+				tags.add("#"+ tag);
+            textTags.setText(TextUtils.join(" ", tags));
 		}
 	}
 	

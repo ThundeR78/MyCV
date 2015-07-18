@@ -20,9 +20,9 @@
         "color": "violet",
         "values": [
             { "label": "Eclipse", "rate": "75", "color": "violet_dark" },
-            { "label": "Android Studio", "rate": "40", "color": "green_light" },
-            { "label": "Xcode", "rate": "60", "color": "blue_light" },
-            { "label": "Visual Studio", "rate": "50", "color": "violet_dark" },
+            { "label": "Android Studio", "rate": "75", "color": "green_light" },
+            { "label": "Xcode", "rate": "45", "color": "blue_light" },
+            { "label": "Visual Studio", "rate": "40", "color": "violet_dark" },
             { "label": "MySQL", "rate": "70", "color": "blue_dark" }
         ]
     },
@@ -48,7 +48,8 @@
        "color": "orange_light",
        "values": [
             { "label": "English", "rate": "60", "color": "blue_dark" },
-            { "label": "Spanish", "rate": "20", "color": "red" }
+            { "label": "Spanish", "rate": "20", "color": "yellow" },
+            { "label": "Japanese", "rate": "10", "color": "red" }
         ]
     }
 }
