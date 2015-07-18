@@ -30,15 +30,11 @@
             "games": [
                 "Super Mario Land",
                 "Spirou",
-                "Pokémon Version Bleue",
-                "Pokémon Version Rouge",
+                "Pokémon [Bleue,Rouge,Jaune,Or,Argent]",
                 "Tetris",
                 "The Legend of Zelda : Oracle of Seasons",
                 "Les Schtroumpfs",
                 "Obélix",
-                "Pokémon Version Jaune",
-                "Pokémon Version Or",
-                "Pokémon Version Argent",
                 "Spirou",
                 "Titeuf"
             ]
@@ -72,8 +68,7 @@
             "icon": "icon_gba",
             "games": [
                 "Dragon Ball Z : Supersonic Warriors ",
-                "Golden Sun",
-                "Golden Sun : L'Age Perdu",
+                "Golden Sun [1,2]",
                 "Dragon Ball : Advanced Adventure",
                 "Bomberman Tournament",
                 "The Legend of Zelda : The Minish Cap",
@@ -101,8 +96,7 @@
                 "Burnout 2 : Point of Impact",
                 "Super Mario Sunshine",
                 "Mario Power Tennis",
-                "Metroid Prime",
-                "Metroid Prime 2 : Echoes",
+                "Metroid Prime [1,2]",
                 "Star Fox Adventures",
                 "Resident Evil 4",
                 "Prince of Persia : Warrior Within",
@@ -116,9 +110,7 @@
                 "Super Smash Bros. Melee",
                 "Mario Kart: Double Dash!!",
                 "Sega Soccer Slam",
-                "Tony Hawk's Wasteland",
-                "Tony Hawk's Underground",
-                "Tony Hawk's Underground 2"
+                "Tony Hawk's [Wasteland,Underground(1,2)]"
             ]
         },
         {
@@ -132,8 +124,7 @@
                 "New Super Mario Bros. Wii",
                 "Super Smash Bros. Brawl",
                 "Mario Strikers Charged Football",
-                "The Legend of Zelda : Twilight Princess",
-                "The Legend of Zelda : Skyward Sword"
+                "The Legend of Zelda [Twilight Princess,Skyward Sword]"
             ]
         },
         {
@@ -153,19 +144,14 @@
             "logo": "logo_pc",
             "icon": "icon_pc",
             "games": [
-                "Call of Duty : Mordern Warfare",
-                "Half-Life",
-                "Red Faction"
-            ]
-        },
-        {
-            "name": "Steam",
-            "shortname": "Steam",
-            "logo": "logo_steam",
-            "icon": "icon_steam",
-            "games": [
-                "Borderlands 1",
-                "Borderlands 2"
+                "Call of Duty [Mordern Warfare 1,2]",
+                "Half-Life [1,2]",
+                "Red Faction",
+                "Borderlands [1,2,Presequel]",
+                "Hearthstone",
+                "Counter-Strike [1.6,Source,GO]",
+                "Far Cry [1,2,4]",
+                "Portal [1,2]"
             ]
         }
 	]

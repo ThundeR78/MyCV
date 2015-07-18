@@ -83,7 +83,7 @@ public class ParkourFragment extends Fragment implements View.OnClickListener, Y
         super.onDestroyView();
 
         if (ytbPlayerFragment != null) {
-            getChildFragmentManager().beginTransaction().remove(ytbPlayerFragment).commit();
+            //getChildFragmentManager().beginTransaction().remove(ytbPlayerFragment).commit();
             //ytbPlayerFragment.onDestroyView();
         }
     }
