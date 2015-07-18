@@ -3,21 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/ScrollView">
     <LinearLayout style="@style/ScrollViewLayout">
+        <android.support.v7.widget.CardView
+            style="@style/CardContainerItem"
+            app:cardUseCompatPadding="true">
+            <LinearLayout style="@style/CardContent.Item">
 
-        <TextView
-            android:id="@+id/detail_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:layout_gravity="center_horizontal" />
-        <TextView
-            android:id="@+id/detail_content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/detail_tags"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/detail_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal" />
+                <TextView
+                    android:id="@+id/detail_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <!--<TextView
+                    android:id="@+id/detail_tags"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />-->
+                <LinearLayout android:id="@+id/detail_tags"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:orientation="horizontal"></LinearLayout>
+            </LinearLayout>
 
+        </android.support.v7.widget.CardView>
     </LinearLayout>
 </ScrollView>

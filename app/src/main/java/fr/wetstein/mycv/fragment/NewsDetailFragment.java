@@ -3,7 +3,6 @@ package fr.wetstein.mycv.fragment;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
-import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -12,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -24,6 +24,7 @@ public class NewsDetailFragment extends DetailFragment<News> implements OnClickL
 	private static final String TAG = "NewsDetailFragment";
 
 	private TextView textTitle, textTags, textContent;
+	private LinearLayout layoutTags;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,8 @@ public class NewsDetailFragment extends DetailFragment<News> implements OnClickL
 		//Bind layout elements
         textTitle = (TextView) contentView.findViewById(R.id.detail_title);
 		textContent = (TextView) contentView.findViewById(R.id.detail_content);
-        textTags = (TextView) contentView.findViewById(R.id.detail_tags);
+        //textTags = (TextView) contentView.findViewById(R.id.detail_tags);
+		layoutTags = (LinearLayout) contentView.findViewById(R.id.detail_tags);
 
 		return contentView;
 	}
@@ -70,7 +72,8 @@ public class NewsDetailFragment extends DetailFragment<News> implements OnClickL
 			List<String> tags = new ArrayList<>();
 			for (String tag : inItem.listTag)
 				tags.add("#"+ tag);
-            textTags.setText(TextUtils.join(" ", tags));
+            //textTags.setText(TextUtils.join(" ", tags));
+			displayTags(tags);
 		}
 	}
 	
@@ -90,5 +93,23 @@ public class NewsDetailFragment extends DetailFragment<News> implements OnClickL
 	@Override
 	public void onClick(View v) {
 
+	}
+
+	private void displayTags(List<String> tags) {
+		if (tags != null && tags.size() > 0 && layoutTags != null) {
+			for (int i=0; i < tags.size() ;i++) {
+				String tag = tags.get(i);
+
+				TextView txtTag = new TextView(getActivity());
+				txtTag.setText(tag);
+
+				//Custom TextView
+				txtTag.setTextColor(getResources().getColor(R.color.white));
+				txtTag.setBackgroundResource(R.color.my_primary_color);
+				txtTag.setPadding(3,1,3,3);
+
+				layoutTags.addView(txtTag);
+			}
+		}
 	}
 }
