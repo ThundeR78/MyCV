@@ -47,6 +47,8 @@
     <string name="label_no_result">Aucun résultat n\'a été trouvé</string>
     <string name="label_nbemployees">Effectif</string>
     <string name="label_activity">Activité</string>
+    <string name="label_school">Ecole</string>
+    <string name="label_certifications">Diplômes</string>
 
     <!-- VALUE -->
     <string name="value_email">julienwetstein@msn.com</string>

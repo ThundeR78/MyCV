@@ -4,19 +4,50 @@
     style="@style/ScrollView">
     <LinearLayout style="@style/ScrollViewLayout">
 
-        <TextView
-            android:id="@+id/detail_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/detail_option"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/detail_dates"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        <android.support.v7.widget.CardView style="@style/CardContainer">
+            <LinearLayout style="@style/CardContent">
+                <TextView
+                    android:id="@+id/detail_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/detail_option"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/detail_dates"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_certifications"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
+
+                <ListView
+                    android:id="@+id/listview_certifs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/violet"/>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView style="@style/CardContainer">
+            <LinearLayout style="@style/CardContent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_school"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+                <fr.wetstein.mycv.view.SchoolView
+                    android:id="@+id/detail_school"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
 
     </LinearLayout>
 </ScrollView>

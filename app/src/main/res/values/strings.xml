@@ -50,6 +50,8 @@
     <string name="label_no_result">No result found</string>
     <string name="label_nbemployees">Employees</string>
     <string name="label_activity">Activity</string>
+    <string name="label_school">School</string>
+    <string name="label_certifications">Certifications</string>
 
     <!-- VALUE -->
     <string name="value_email">julienwetstein@msn.com</string>
