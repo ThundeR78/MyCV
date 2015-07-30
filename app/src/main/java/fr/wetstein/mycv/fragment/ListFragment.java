@@ -31,13 +31,6 @@ public abstract class ListFragment extends Fragment implements SwipeRefreshLayou
         mList = (RecyclerView) rootView.findViewById(R.id.list);
         mList.setLayoutManager(new LinearLayoutManager(getActivity()));
         mList.setHasFixedSize(true);
-        mList.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                int topRowVerticalPosition = (recyclerView == null || recyclerView.getChildCount() == 0) ? 0 : recyclerView.getChildAt(0).getTop();
-                mRefreshLayout.setEnabled(topRowVerticalPosition >= 0);
-            }
-        });
 
         //RefreshLayout
         mRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.refresh_layout);

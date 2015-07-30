@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,6 +53,14 @@ public class NewsListFragment extends ListFragment {
         super.onActivityCreated(savedInstanceState);
 
         ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle(R.string.title_list_news);
+
+        mList.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                int topRowVerticalPosition = (recyclerView == null || recyclerView.getChildCount() == 0) ? 0 : recyclerView.getChildAt(0).getTop();
+                mRefreshLayout.setEnabled(topRowVerticalPosition >= 0);
+            }
+        });
 
         //Empty View
 //        View noResultLayout = getActivity().getLayoutInflater().inflate(R.layout.view_noresult, null);
