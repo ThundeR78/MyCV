@@ -46,7 +46,10 @@ public class ExperienceParser extends ParserAssets {
                 JSONObject jsonObjectItem = jsonArrayRoot.getJSONObject(i);
 
                 if (jsonObjectItem != null) {
-                    item.function = jsonObjectItem.getString("function");
+                    //Function
+                    item.function = getStringRessourceFromName(context, jsonObjectItem.getString("function"));
+
+                    //Localisation
                     item.address = jsonObjectItem.getString("address");
                     item.latitude = jsonObjectItem.getDouble("latitude");
                     item.longitude = jsonObjectItem.getDouble("longitude");
@@ -58,14 +61,8 @@ public class ExperienceParser extends ParserAssets {
                     item.dateEnd = (!dateEnd.equalsIgnoreCase("now")) ? FormatValue.dateFormat.parse(dateEnd) : null;
 
                     //Type
-                    String resTypeName = jsonObjectItem.getString("type");
-                    if (resTypeName != null) {
-                        int resTypeId = context.getResources().getIdentifier(resTypeName, "string", context.getPackageName());
-                        if (resTypeId != 0) {
-                            item.type = context.getString(resTypeId);
-                            item.name = item.type;
-                        }
-                    }
+                    item.type = getStringRessourceFromName(context, jsonObjectItem.getString("type"));
+                    item.name = item.type;
 
                     //Loop each Task in node
                     JSONArray jsonArray = jsonObjectItem.getJSONArray("tasks");

@@ -67,6 +67,9 @@
     <string name="word_mobile_development">Développement d\'applications mobiles</string>
     <string name="word_mobile_developer">Développeur mobile</string>
     <string name="word_android_developper">Développeur Android</string>
+    <string name="word_pgi_editor">Editeur de progiciel</string>
+    <string name="word_mobile_app_editor">Editeur d\'applications mobiles</string>
+    <string name="word_community_service">Service communautaire</string>
 
     <!-- TEXT -->
     <string name="desc_mafisys">

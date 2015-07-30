@@ -76,7 +76,7 @@ public class NewsListFragment extends ListFragment {
     }
 
     private void launchRequest() {
-        refreshLayout.setRefreshing(true);
+        mRefreshLayout.setRefreshing(true);
 
         NewsRequest request = new NewsRequest(getActivity().getApplicationContext());
 
@@ -89,7 +89,7 @@ public class NewsListFragment extends ListFragment {
                     db.insertOrUpdateListNews(listItem);
 
                     listNews = db.getAllNews();
-                    int nbNewNews = listNews.size() - list.getChildCount();
+                    int nbNewNews = listNews.size() - mList.getChildCount();
                     updateListView(listNews);
 
                     if (nbNewNews > 0) {
@@ -100,7 +100,7 @@ public class NewsListFragment extends ListFragment {
                     }
                 }
 
-                refreshLayout.setRefreshing(false);
+                mRefreshLayout.setRefreshing(false);
             }
         };
         Response.ErrorListener errorListener = new Response.ErrorListener() {
@@ -115,7 +115,7 @@ public class NewsListFragment extends ListFragment {
                 if (error != null && error.networkResponse != null)
                     Toast.makeText(getActivity(), "Error "+(error.networkResponse!=null?error.networkResponse.statusCode:"")+" : "+error.getMessage(), Toast.LENGTH_LONG).show();
 
-                refreshLayout.setRefreshing(false);
+                mRefreshLayout.setRefreshing(false);
             }
         };
         request.getListNews(successListener, errorListener);
@@ -125,7 +125,7 @@ public class NewsListFragment extends ListFragment {
         if (listItem != null) {
             //Fill ListView with News
             listAdapter = new ListNewsAdapter(listItem);
-            list.setAdapter(listAdapter);
+            mList.setAdapter(listAdapter);
 
             listAdapter.setOnItemClickListener(new ListNewsAdapter.OnItemClickListener() {
                 @Override

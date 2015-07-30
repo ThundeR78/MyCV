@@ -52,9 +52,9 @@
     <application
         android:name=".MyCVApp"
         android:allowBackup="true"
-        android:icon="@drawable/me_manga"
+        android:icon="@drawable/wetstein_logo"
         android:label="@string/app_name"
-        android:logo="@drawable/me_manga"
+        android:logo="@drawable/wetstein_logo"
         android:theme="@style/MyCVTheme" >
         <activity
             android:name=".activity.HomeActivity">

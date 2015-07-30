@@ -14,8 +14,8 @@ import fr.wetstein.mycv.R;
 public abstract class ListFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 	public static final String TAG = "ListFragment";
 
-    protected RecyclerView list;
-    protected SwipeRefreshLayout refreshLayout;
+    protected RecyclerView mList;
+    protected SwipeRefreshLayout mRefreshLayout;
     protected AdFragment mAdFragment;
 
     @Override
@@ -28,14 +28,21 @@ public abstract class ListFragment extends Fragment implements SwipeRefreshLayou
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_list, container, false);
 
-        list = (RecyclerView) rootView.findViewById(R.id.list);
-        list.setLayoutManager(new LinearLayoutManager(getActivity()));
-        list.setHasFixedSize(true);
+        mList = (RecyclerView) rootView.findViewById(R.id.list);
+        mList.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mList.setHasFixedSize(true);
+        mList.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                int topRowVerticalPosition = (recyclerView == null || recyclerView.getChildCount() == 0) ? 0 : recyclerView.getChildAt(0).getTop();
+                mRefreshLayout.setEnabled(topRowVerticalPosition >= 0);
+            }
+        });
 
         //RefreshLayout
-        refreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.refresh_layout);
-        refreshLayout.setOnRefreshListener(this);
-        refreshLayout.setColorSchemeResources(R.color.blue, R.color.green, R.color.red, R.color.violet);
+        mRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.refresh_layout);
+        mRefreshLayout.setOnRefreshListener(this);
+        mRefreshLayout.setColorSchemeResources(R.color.blue, R.color.green, R.color.red, R.color.violet);
 
         //We shouldn't inflate fragments inside other fragments
         //mAdFragment = (AdFragment) getFragmentManager().findFragmentById(R.id.adFragment);

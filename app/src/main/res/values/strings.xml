@@ -70,6 +70,9 @@
     <string name="word_mobile_development">Mobile Development</string>
     <string name="word_mobile_developer">Mobile Developer</string>
     <string name="word_android_developper">Android Developer</string>
+    <string name="word_pgi_editor">PGI editor</string>
+    <string name="word_mobile_app_editor">Mobile applications editor</string>
+    <string name="word_community_service">Community service</string>
 
     <!-- TEXT -->
     <string name="desc_mafisys">

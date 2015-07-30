@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -52,7 +51,8 @@ public class ExperienceListFragment extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
 
-        ((SwipeRefreshLayout) rootView.findViewById(R.id.refresh_layout)).setOnRefreshListener(null);
+        mRefreshLayout.setOnRefreshListener(null);
+        mRefreshLayout.setEnabled(false);
 
         return rootView;
     }
@@ -65,7 +65,7 @@ public class ExperienceListFragment extends ListFragment {
 
         if (listExperience != null) {
             listAdapter = new ListExperienceAdapter(listExperience);
-            list.setAdapter(listAdapter);
+            mList.setAdapter(listAdapter);
 
             listAdapter.setOnItemClickListener(new ListExperienceAdapter.OnItemClickListener() {
                 @Override

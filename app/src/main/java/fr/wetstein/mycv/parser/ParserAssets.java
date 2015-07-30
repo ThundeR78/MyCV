@@ -39,4 +39,14 @@ public class ParserAssets {
         }
         return is;
     }
+
+    public static String getStringRessourceFromName(Context context, String resourceName) {
+        if (resourceName != null) {
+            int resTypeId = context.getResources().getIdentifier(resourceName, "string", context.getPackageName());
+            if (resTypeId != 0) {
+                return context.getString(resTypeId);
+            }
+        }
+        return "";
+    }
 }
