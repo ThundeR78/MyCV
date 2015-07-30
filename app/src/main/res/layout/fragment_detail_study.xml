@@ -30,7 +30,7 @@
                     android:id="@+id/listview_certifs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/violet"/>
+                    android:background="@color/listview_background" />
             </LinearLayout>
         </android.support.v7.widget.CardView>
 
