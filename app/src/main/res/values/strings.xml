@@ -51,6 +51,7 @@
     <string name="label_nbemployees">Employees</string>
     <string name="label_activity">Activity</string>
     <string name="label_school">School</string>
+    <string name="label_company">Company</string>
     <string name="label_certifications">Certifications</string>
 
     <!-- VALUE -->
@@ -58,6 +59,7 @@
     <string name="value_phone">06 38 66 43 64</string>
     <string name="value_age">%1$d years</string>
     <string name="value_dates">From %1$s to %2$s</string>
+    <string name="value_employees">%1$s employees</string>
 
     <!-- WORD -->
     <string name="word_today">Today</string>

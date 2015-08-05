@@ -78,7 +78,7 @@ public class ExperienceDetailFragment extends DetailFragment<Experience> impleme
                 textPhone.setText(inItem.company.phone);
                 textEmail.setText(inItem.company.email);
                 textCeo.setText(inItem.company.ceo);
-                textNbEmployees.setText(inItem.company.nbEmployees);
+                textNbEmployees.setText(getString(R.string.value_employees, inItem.company.nbEmployees));
                 textDesc.setText(inItem.company.desc);
             }
 		}

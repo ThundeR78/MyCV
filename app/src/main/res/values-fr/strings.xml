@@ -48,6 +48,7 @@
     <string name="label_nbemployees">Effectif</string>
     <string name="label_activity">Activité</string>
     <string name="label_school">Ecole</string>
+    <string name="label_company">Entreprise</string>
     <string name="label_certifications">Diplômes</string>
 
     <!-- VALUE -->
@@ -55,6 +56,7 @@
     <string name="value_phone">06 38 66 43 64</string>
     <string name="value_age">%1$d ans</string>
     <string name="value_dates">De %1$s à %2$s</string>
+    <string name="value_employees">%1$s employés</string>
 
     <!-- WORD -->
     <string name="word_today">Aujourd\'hui</string>

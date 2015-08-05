@@ -4,65 +4,81 @@
     style="@style/ScrollView">
     <LinearLayout style="@style/ScrollViewLayout">
 
-        <fr.wetstein.mycv.view.ResizableImageView android:id="@+id/detail_exp_logo"
-            android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxHeight="100dp"
-            android:scaleType="fitCenter"
-            android:layout_gravity="center" />
-        <TextView
-            android:id="@+id/detail_exp_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/detail_exp_function"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/detail_exp_link"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/detail_exp_address"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        <android.support.v7.widget.CardView style="@style/CardContainer">
+            <LinearLayout style="@style/CardContent" android:background="@color/white">
 
-        <TextView
-            android:id="@+id/detail_exp_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/detail_exp_dates"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+                <fr.wetstein.mycv.view.ResizableImageView android:id="@+id/detail_exp_logo"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxHeight="100dp"
+                    android:scaleType="fitCenter"
+                    android:layout_gravity="center" />
 
-        <TextView
-            android:id="@+id/detail_exp_email"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/detail_exp_phone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/detail_exp_desc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/detail_exp_activity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/detail_exp_headoffice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/detail_exp_ceo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/detail_exp_nbemployees"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/detail_exp_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/detail_exp_function"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/detail_exp_link"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/detail_exp_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/detail_exp_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/detail_exp_dates"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView style="@style/CardContainer">
+            <LinearLayout style="@style/CardContent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/label_company"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+                <TextView
+                    android:id="@+id/detail_exp_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/detail_exp_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/detail_exp_desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/detail_exp_activity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/detail_exp_headoffice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/detail_exp_ceo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/detail_exp_nbemployees"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
 
     </LinearLayout>
 </ScrollView>
