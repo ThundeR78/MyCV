@@ -4,19 +4,17 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.List;
-
 import fr.wetstein.mycv.R;
+import fr.wetstein.mycv.view.EmptyRecyclerView;
 
 public abstract class ListFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 	public static final String TAG = "ListFragment";
 
-    protected RecyclerView mList;
+    protected EmptyRecyclerView mList;
     protected SwipeRefreshLayout mRefreshLayout;
     protected View mEmptyView;
     protected AdFragment mAdFragment;
@@ -31,11 +29,12 @@ public abstract class ListFragment extends Fragment implements SwipeRefreshLayou
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_list, container, false);
 
-        mList = (RecyclerView) rootView.findViewById(R.id.list);
+        mEmptyView = rootView.findViewById(R.id.emptyView);
+
+        mList = (EmptyRecyclerView) rootView.findViewById(R.id.list);
         mList.setLayoutManager(new LinearLayoutManager(getActivity()));
         mList.setHasFixedSize(true);
-
-        mEmptyView = rootView.findViewById(android.R.id.empty);
+        mList.setEmptyView(mEmptyView);
 
         //RefreshLayout
         mRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.refresh_layout);
@@ -79,15 +78,5 @@ public abstract class ListFragment extends Fragment implements SwipeRefreshLayou
     @Override
     public void onRefresh() {
 
-    }
-
-    protected void refreshViews(List listItem) {
-        if (listItem == null || listItem.isEmpty()) {
-            mEmptyView.setVisibility(View.VISIBLE);
-            mList.setVisibility(View.GONE);
-        } else {
-            mEmptyView.setVisibility(View.GONE);
-            mList.setVisibility(View.VISIBLE);
-        }
     }
 }

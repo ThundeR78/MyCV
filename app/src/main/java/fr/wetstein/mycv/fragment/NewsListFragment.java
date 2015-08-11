@@ -104,7 +104,6 @@ public class NewsListFragment extends ListFragment {
                     }
                 }
 
-                refreshViews(listItem);
                 mRefreshLayout.setRefreshing(false);
             }
         };
@@ -120,7 +119,6 @@ public class NewsListFragment extends ListFragment {
                 if (error != null && error.networkResponse != null)
                     Toast.makeText(getActivity(), "Error "+(error.networkResponse!=null?error.networkResponse.statusCode:"")+" : "+error.getMessage(), Toast.LENGTH_LONG).show();
 
-                refreshViews(null);
                 mRefreshLayout.setRefreshing(false);
             }
         };
