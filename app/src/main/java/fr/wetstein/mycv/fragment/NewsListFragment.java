@@ -62,11 +62,6 @@ public class NewsListFragment extends ListFragment {
             }
         });
 
-        //Empty View
-//        View noResultLayout = getActivity().getLayoutInflater().inflate(R.layout.view_noresult, null);
-//        getActivity().addContentView(noResultLayout, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
-//        getListView().setEmptyView(noResultLayout);
-
         //Load News in DB
         listNews = db.getAllNews();
         updateListView(listNews);
@@ -109,6 +104,7 @@ public class NewsListFragment extends ListFragment {
                     }
                 }
 
+                refreshViews(listItem);
                 mRefreshLayout.setRefreshing(false);
             }
         };
@@ -124,6 +120,7 @@ public class NewsListFragment extends ListFragment {
                 if (error != null && error.networkResponse != null)
                     Toast.makeText(getActivity(), "Error "+(error.networkResponse!=null?error.networkResponse.statusCode:"")+" : "+error.getMessage(), Toast.LENGTH_LONG).show();
 
+                refreshViews(null);
                 mRefreshLayout.setRefreshing(false);
             }
         };

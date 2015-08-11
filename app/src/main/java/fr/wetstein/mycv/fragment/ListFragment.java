@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 import fr.wetstein.mycv.R;
 
 public abstract class ListFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
@@ -16,6 +18,7 @@ public abstract class ListFragment extends Fragment implements SwipeRefreshLayou
 
     protected RecyclerView mList;
     protected SwipeRefreshLayout mRefreshLayout;
+    protected View mEmptyView;
     protected AdFragment mAdFragment;
 
     @Override
@@ -31,6 +34,8 @@ public abstract class ListFragment extends Fragment implements SwipeRefreshLayou
         mList = (RecyclerView) rootView.findViewById(R.id.list);
         mList.setLayoutManager(new LinearLayoutManager(getActivity()));
         mList.setHasFixedSize(true);
+
+        mEmptyView = rootView.findViewById(android.R.id.empty);
 
         //RefreshLayout
         mRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.refresh_layout);
@@ -74,5 +79,15 @@ public abstract class ListFragment extends Fragment implements SwipeRefreshLayou
     @Override
     public void onRefresh() {
 
+    }
+
+    protected void refreshViews(List listItem) {
+        if (listItem == null || listItem.isEmpty()) {
+            mEmptyView.setVisibility(View.VISIBLE);
+            mList.setVisibility(View.GONE);
+        } else {
+            mEmptyView.setVisibility(View.GONE);
+            mList.setVisibility(View.VISIBLE);
+        }
     }
 }
